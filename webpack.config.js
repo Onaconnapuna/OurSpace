@@ -1,7 +1,6 @@
 webpack.config.js
 
 const path = require('path');
-const { javascript } = require('webpack');
 
 module.exports = {
     context: __dirname,
