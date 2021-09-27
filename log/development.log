@@ -27,3 +27,24 @@ Started GET "/" for ::1 at 2021-09-27 14:30:53 -0400
 ActiveRecord::ConnectionNotEstablished - No connection pool with 'primary' found.:
 
 Started POST "/__better_errors/c749ef2cdb5d4948/variables" for ::1 at 2021-09-27 14:30:53 -0400
+Started GET "/" for ::1 at 2021-09-27 14:39:25 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 431ms (Views: 427.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 14:39:33 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 17ms (Views: 16.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2021-09-27 14:47:30 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 254ms (Views: 252.9ms | ActiveRecord: 0.0ms)
+
+
