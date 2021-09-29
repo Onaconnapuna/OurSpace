@@ -24,9 +24,25 @@ class SessionForm extends React.Component {
     this.props.processForm(user)
   }
 
-  render() {
+  handleLogIn() {
     return (
-      <div>
+        <form onSubmit={this.handleSubmit}>
+          Welcome to OurSpace
+          <br />
+          <label>Email
+            <input type="text" value={this.state.email} onChange={this.update('email')}/>
+          </label>
+            <br />
+          <label>Password
+            <input type="password" value={this.state.password} onChange={this.update('password')} />
+          </label>
+          <button>Log In</button>
+        </form>
+    )
+  }
+
+  handleSignUp() {
+    return (  
         <form onSubmit={this.handleSubmit}>
           Welcome to OurSpace
           <br />
@@ -47,27 +63,20 @@ class SessionForm extends React.Component {
           </label>  
           <button>Sign Up</button>
         </form>
-      </div>
+    )
+  }
+
+  render() {
+    return (
+    <div>
+      {
+        this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
+      }
+    </div>
     )
   }
     
 }
 
 export default SessionForm
-
-// class SessionForm extends React.Component {
-//   constructor(props) {
-//     super(props)
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         Hello?
-//       </div>
-//     )
-//   }
-// }
-
-// export default SessionForm
 

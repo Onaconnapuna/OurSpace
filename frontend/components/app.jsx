@@ -3,15 +3,15 @@ import { Provider } from 'react-redux'
 import { Route, Switch, Link, HashRouter} from 'react-router-dom';
 
 import SignUpFormContainer from './session_form/signup_form_comtainer';
+import LogInFormContainer from './session_form/login_form_container';
+import NavBarContainer from './nav_bar/nav_bar_container';
 
 const App = () => (
   <div>
-    <header>
-      <h1>OurSpace</h1>
-    </header>
-
     <Switch>
       <Route path='/signup' component={SignUpFormContainer}/>
+      <Route path='/login' component={LogInFormContainer}/>
+      <Route path='/' component={NavBarContainer}/>
     </Switch>
 
   </div>
