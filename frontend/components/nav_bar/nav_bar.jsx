@@ -6,10 +6,12 @@ class NavBar extends React.Component {
     super(props)
   }
 
+
+
   navBarWhileLoggedIn() {
     return (
       <div>
-        <p>Hello {this.props.currentUser.firstName}</p>
+        <p>Hello, {this.props.currentUser.firstName}</p>
         <button onClick={ () => this.props.logout()}>Log Out</button>
       </div>
     )
@@ -17,12 +19,12 @@ class NavBar extends React.Component {
 
   navBarWhileLoggedOut() {
     return (
-      <div>
-        <button>
+      <div className='banner'>
+        <button className='splashbutton'>
           <Link to='/signup'>Sign Up</Link>
         </button>
 
-        <button>
+        <button className='splashbutton'>
           <Link to='/login'>Log In</Link>
         </button>
       </div>

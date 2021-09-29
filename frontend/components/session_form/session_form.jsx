@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom'
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -18,6 +19,26 @@ class SessionForm extends React.Component {
     })
   }
 
+  renderErrors() {
+    return(
+      <ul className='session-form-errors'>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`} className='error'>
+            {error}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  demoSignUp() {
+    const user = {
+      email: 'demouser@demo.com',
+      password: 'password'
+    }
+    this.props.demoForm(user)
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
@@ -26,49 +47,57 @@ class SessionForm extends React.Component {
 
   handleLogIn() {
     return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className='session-form'>
           Welcome to OurSpace
           <br />
-          <label>Email
+          <label className='session-input'>Email
             <input type="text" value={this.state.email} onChange={this.update('email')}/>
           </label>
             <br />
-          <label>Password
-            <input type="password" value={this.state.password} onChange={this.update('password')} />
+          <label className='session-input'>Password
+            <input type="password" value={this.state.password} onChange={this.update('password')}/>
           </label>
-          <button>Log In</button>
+          <br />
+          <button className='session-button'>Log In</button>
+          <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+          {this.renderErrors()}
+          {this.props.navLink}
         </form>
     )
   }
 
   handleSignUp() {
     return (  
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className='session-form'>
           Welcome to OurSpace
           <br />
           <label>Email
-            <input type="text" value={this.state.email} onChange={this.update('email')}/>
+            <input type="text" value={this.state.email} onChange={this.update('email')} className='session-input'/>
           </label>
             <br />
           <label>Password
-            <input type="password" value={this.state.password} onChange={this.update('password')} />
+            <input type="password" value={this.state.password} onChange={this.update('password')} className='session-input' />
           </label>
             <br />
-          <label>First Name:
-            <input type="text" value={this.state.firstName} onChange={this.update('firstName')}/>
+          <label>First Name
+            <input type="text" value={this.state.firstName} onChange={this.update('firstName')} className='session-input'/>
           </label>
             <br />
           <label>Last Name
-            <input type="text" value={this.state.lastName} onChange={this.update('lastName')}/>
+            <input type="text" value={this.state.lastName} onChange={this.update('lastName')} className='session-input'/>
           </label>  
-          <button>Sign Up</button>
+          <br />
+          <button className='session-button'>Sign Up</button>
+          <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+          {this.renderErrors()}
+          {this.props.navLink}
         </form>
     )
   }
 
   render() {
     return (
-    <div>
+    <div className='form-container'>
       {
         this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
       }
