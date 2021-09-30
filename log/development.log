@@ -9560,3 +9560,12 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 498ms (Views: 495.4ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/" for ::1 at 2021-09-30 16:12:22 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Completed 200 OK in 465ms (Views: 459.0ms | ActiveRecord: 3.0ms)
+
+
