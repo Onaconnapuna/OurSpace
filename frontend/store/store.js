@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import RootReducer from '../reducers/root_reducer'
 import logger from 'redux-logger'
 
-let configureStore = {};
+let configureStore;
 
 if (process.env.NODE_ENV === 'production') {
   configureStore = (preloadedState = {}) => {
