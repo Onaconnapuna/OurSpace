@@ -10,9 +10,9 @@ class NavBar extends React.Component {
 
   navBarWhileLoggedIn() {
     return (
-      <div>
+      <div className='banner'>
         <p>Hello, {this.props.currentUser.firstName}</p>
-        <button onClick={ () => this.props.logout()}>Log Out</button>
+        <button className='splashbutton' onClick={ () => this.props.logout()}>Log Out</button>
       </div>
     )
   }
@@ -33,8 +33,8 @@ class NavBar extends React.Component {
 
  render() {
    return(
-     <header>
-       <h1>OurSpace</h1>
+     <header className='navbar-container'>
+       <h1 className='logo'>OurSpace</h1>
        {
         this.props.currentUser ? this.navBarWhileLoggedIn() : this.navBarWhileLoggedOut()
        }

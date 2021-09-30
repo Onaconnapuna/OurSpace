@@ -1,5 +1,4 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom'
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -31,6 +30,10 @@ class SessionForm extends React.Component {
     )
   }
 
+  componentWillUnmount() {
+    this.props.removeErrors()
+  }
+
   demoSignUp() {
     const user = {
       email: 'demouser@demo.com',
@@ -48,7 +51,7 @@ class SessionForm extends React.Component {
   handleLogIn() {
     return (
         <form onSubmit={this.handleSubmit} className='session-form'>
-          Welcome to OurSpace
+          <h3>Welcome to OurSpace</h3>
           <br />
           <label className='session-input'>Email
             <input type="text" value={this.state.email} onChange={this.update('email')}/>
@@ -58,10 +61,17 @@ class SessionForm extends React.Component {
             <input type="password" value={this.state.password} onChange={this.update('password')}/>
           </label>
           <br />
-          <button className='session-button'>Log In</button>
-          <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
-          {this.renderErrors()}
-          {this.props.navLink}
+          <div className='session-form-buttons'>
+            <button className='session-button'>Log In</button>
+            <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+          </div>
+          <div className='navlink-container'>
+            {this.props.navLink}
+            </div>
+          <div className='errors-container'>
+            <br />
+            {this.renderErrors()}
+          </div>
         </form>
     )
   }
@@ -69,7 +79,7 @@ class SessionForm extends React.Component {
   handleSignUp() {
     return (  
         <form onSubmit={this.handleSubmit} className='session-form'>
-          Welcome to OurSpace
+          <h3>Welcome to OurSpace</h3>
           <br />
           <label>Email
             <input type="text" value={this.state.email} onChange={this.update('email')} className='session-input'/>
@@ -87,10 +97,17 @@ class SessionForm extends React.Component {
             <input type="text" value={this.state.lastName} onChange={this.update('lastName')} className='session-input'/>
           </label>  
           <br />
-          <button className='session-button'>Sign Up</button>
-          <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
-          {this.renderErrors()}
-          {this.props.navLink}
+          <div className='session-form-buttons'>
+            <button className='session-button'>Sign Up</button>
+            <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+          </div>
+          <div className='navlink-container'>
+            {this.props.navLink}
+          </div>
+          <div className='errors-container'>
+            <br />
+            {this.renderErrors()}
+          </div>
         </form>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux'
-import { Route, Switch, Link, HashRouter} from 'react-router-dom';
+import { Route, Switch, Link, HashRouter, Redirect} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 import SignUpFormContainer from './session_form/signup_form_comtainer';
@@ -12,9 +12,9 @@ const App = () => (
     <Switch>
       <AuthRoute exact path='/signup' component={SignUpFormContainer}/>
       <AuthRoute exact path='/login' component={LogInFormContainer}/>
-      <Route path='/' component={NavBarContainer}/>
+      <Route exact path='/' component={NavBarContainer}/>
+      <Redirect to='/'/>
     </Switch>
-
   </div>
 )
 
