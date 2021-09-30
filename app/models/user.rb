@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts, 
     foreign_key: :post_id,
-    source: 'POST'
+    class_name: 'POST'
   
   attr_reader :password
 

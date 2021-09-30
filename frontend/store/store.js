@@ -15,8 +15,4 @@ if (process.env.NODE_ENV === 'production') {
   };
 }
 
-// const configureStore = (preloadedState = {}) => {
-//   return createStore(RootReducer, preloadedState, applyMiddleware(thunk, logger))
-// };
-
 export default configureStore
