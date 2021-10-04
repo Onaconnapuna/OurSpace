@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { fetchPosts, deletePost, removePosts } from '../../actions/post_actions';
+import { fetchUser } from '../../actions/users_actions'
 import MainPage from './main_page';
 
 
 const mapStateToProps = (state) => {
   return {
-    posts: Object.values(state.entities.posts),
+    posts: Object.values(state.entities.posts)
   }
 }
 

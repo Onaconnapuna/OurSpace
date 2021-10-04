@@ -1,5 +1,5 @@
 import React from "react";
-import PostItem from "./post_item";
+import PostItem from "../posts/post_item";
 import NavBarContainer from "../nav_bar/nav_bar_container";
 
 class MainPage extends React.Component {
@@ -15,9 +15,11 @@ class MainPage extends React.Component {
     return(
       <div>
         <NavBarContainer/>
+        <div className='posts-container'>
         {
-          this.props.posts.map((post, idx) => <PostItem key={idx} post={post} deletePost={this.props.deletePost}/> )
+          this.props.posts.map((post, idx) => <PostItem key={idx} post={post} fetchUser={this.props.fetchUser} deletePost={this.props.deletePost}/> )
         }
+        </div>
       </div>
     )
   }

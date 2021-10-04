@@ -13,7 +13,7 @@ class NavBar extends React.Component {
   navBarWhileLoggedIn() {
     return (
       <div className='banner'>
-        <p>Hello, {this.props.currentUser.firstName}</p>
+        <Link to='/profiles/:userId'>Hello, {this.props.currentUser.firstName}</Link> 
         <button className='splashbutton' onClick={ () => this.props.logout()}>Log Out</button>
       </div>
     )
