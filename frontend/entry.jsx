@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { fetchPosts } from "./actions/post_actions";
 import Root from './components/root'
 import configureStore from './store/store'
 
@@ -17,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () =>{
   // } else {
   //   store = configureStore();
   // }
+  window.fetchPosts = fetchPosts
+
   let preloadedState = undefined;
   if (window.currentUser) {
       preloadedState = {

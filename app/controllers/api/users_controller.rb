@@ -2,6 +2,11 @@ class Api::UsersController < ApplicationController
 
   before_action :underscore_params! 
 
+  def index 
+    @posts = Post.where(user_id: params[:id])
+    render :index
+  end 
+
   def create 
     @user = User.new(user_params) 
     if @user.save
@@ -14,6 +19,7 @@ class Api::UsersController < ApplicationController
 
   def show 
     @user = User.find_by(id: params[:id])
+    @user_posts = @user.posts
     if @user 
       render :show 
     else  

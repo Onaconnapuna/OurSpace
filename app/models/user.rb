@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 8 }, allow_nil: true
 
   has_many :posts, 
-    foreign_key: :post_id,
+    foreign_key: :user_id,
     class_name: 'Post'
 
   has_many :posts_made,

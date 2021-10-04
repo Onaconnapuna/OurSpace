@@ -7,4 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 
-demoUser = User.create( email:'demouser@demo.com', password:'password', first_name: 'YourFirstName', last_name: 'YourLastName')
+demo_user = User.create( email:'demouser@demo.com', password:'password', first_name: 'YourFirstName', last_name: 'YourLastName')
+
+user1 = User.create( email: 'bezukov@ourspace.org', password: 'password', first_name: 'Pierre', last_name: 'Bezukov')
+user2 = User.create( email: 'bolkonskya@ourspace.org', password: 'password', first_name: 'Andre', last_name: 'Bolkonsky')
+user3 = User.create( email: 'rostovn@ourspace.org', password: 'password', first_name: 'Nikolay', last_name: 'Rostov')
+user4 = User.create( email: 'rostovnatalia@ourspace.org', password: 'password', first_name: 'Natalia', last_name: 'Rostov')
+user5 = User.create( email: 'napoleon@ourspace.org', password: 'password', first_name: 'Napolean', last_name: 'Bonaparte')
+user6 = User.create( email: 'karaginj@ourspace.org', password: 'password', first_name: 'Julia', last_name: 'Karagin')
+
+demopost1 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: 'My first Post')
+demopost1 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: 'My second Post')
+
+post1 = Post.create( user_id: user1.id, poster_id: user1.id, body: 'Wait a minute, I, a bastard, became the primary beneficiary to my fathers will? Im Rich!')
+post2 = Post.create( user_id: user1.id, poster_id: user1.id, body: 'I will free my serfs')
