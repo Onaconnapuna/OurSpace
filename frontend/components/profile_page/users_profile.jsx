@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBarContainer from '../nav_bar/nav_bar_container'
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class UsersProfile extends React.Component {
   render() {
     return (
       <div>
-          <h1>Users Show Page </h1>
+        <NavBarContainer/>
+          <h1></h1>
           <div>
             Friends List 
           </div>
