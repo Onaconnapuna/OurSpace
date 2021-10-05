@@ -1,6 +1,4 @@
-import App from '../components/app';
 import * as APIUtil from '../util/posts_api_util'; 
-import { receiveErrors } from './session_actions';
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const RECEIVE_POST = 'RECEIVE_POST'
@@ -31,8 +29,8 @@ export const removePost = postId => ({
 //   errors
 // })
 
-export const fetchPosts = () => dispatch => {
-  return APIUtil.fetchPosts()
+export const fetchPosts = (userId) => dispatch => {
+  return APIUtil.fetchPosts(userId)
     .then((posts) => dispatch(receivePosts(posts)))
 }
 

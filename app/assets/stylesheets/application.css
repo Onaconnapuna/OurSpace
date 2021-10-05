@@ -16,6 +16,11 @@
 
  * {box-sizing: border-box;}
 
+ /* body {
+   display: flex;
+   justify-content: center;
+ } */
+
  html, body{
   margin: 0;
   height: 100%;
@@ -116,9 +121,58 @@ label {
 
 .posts-container {
   background-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   position: relative;
-  left: 40%;
+  width: 50%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.posts {
+  height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
+}
+
+.main-page{
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.window {
+  height: 100%;
+  margin: 0;
+}
+
+.post {
+  width: 100%;
+  height: 20%;
+}
+
+.profile-page {
+  height: 100%;
+  margin: 0;
+}
+
+.friends-list {
+  
+}
+
+.bio-friends-photos {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-background-photo {
+  height: 40%;
 }

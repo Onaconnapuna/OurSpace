@@ -10,10 +10,10 @@ import MainPageContainer from './main_page/main_page_container';
 import UsersProfileContainer from './profile_page/user_profile_container';
 
 const App = () => (
-  <div>
+  <div className='window'>
     <Switch>
       <ProtectedRoute path='/profiles/:userId' component={UsersProfileContainer}/>
-      <ProtectedRoute path='/main/:userId' component={MainPageContainer}/>
+      <ProtectedRoute path='/main/' component={MainPageContainer}/>
       <AuthRoute exact path='/signup' component={SignUpFormContainer}/>
       <AuthRoute exact path='/login' component={LogInFormContainer}/>
       <Route exact path='/' component={NavBarContainer}/>

@@ -13,16 +13,17 @@ class MainPage extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='main-page'>
         <NavBarContainer/>
         <div className='posts-container'>
         {
-          this.props.posts.map((post, idx) => <PostItem key={idx} post={post} fetchUser={this.props.fetchUser} deletePost={this.props.deletePost}/> )
+          this.props.posts.map((post, idx) => <PostItem  key={idx} post={post} deletePost={this.props.deletePost}/> )
         }
         </div>
       </div>
     )
   }
 }
+
 
 export default MainPage

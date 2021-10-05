@@ -1,7 +1,10 @@
 class Api::PostsController < ApplicationController
 
+  before_action :underscore_params! 
+
   def index 
-    @posts = current_user.posts
+    @posts = Post.where(user_id: params[:user_id])
+    # @posts = Post.all
     render :index
   end
 
