@@ -4,8 +4,11 @@ class PostFrom extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = this.props.post;
+    this.state = this.props.post
+
+      
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   update(field) {
@@ -14,9 +17,23 @@ class PostFrom extends React.Component {
     }
   }
 
+  handleFile(e) {
+    this.setState({photoFile: e.currentTarget.files[0]});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state)
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('post[userId]', this.state.userId);
+    formData.append('post[posterId]', this.state.posterId);
+    formData.append('post[body]', this.state.body);
+    if (this.state.photoFile) {
+  
+      formData.append('post[photo]', this.state.photoFile);
+    }
+    
+    this.props.action(formData)
   }
 
   render() {
@@ -25,6 +42,7 @@ class PostFrom extends React.Component {
         <h3>Whats on your mind?</h3>
         <form onSubmit={this.handleSubmit}>  
           <textarea value = {this.state.body} onChange={this.update('body')}cols="30" rows="10"></textarea>
+          <input type='file' onChange={this.handleFile}/>
           <button>{this.props.formType}</button>
         </form>
       </div>

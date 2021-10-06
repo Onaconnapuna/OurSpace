@@ -5,9 +5,10 @@ import { createPost } from '../../actions/post_actions'
 const mapStateToProps = (state, ownProps) => {
   return {
     post: {
-      user_id: 56,
+      userId: 71,
       poster_id: state.session.currentUser.id,
       body: '',
+      photoFile: null
     },
     formType: 'Create Post'
   }

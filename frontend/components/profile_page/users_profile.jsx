@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostContainer from '../posts/post_container';
-import PostFromContainer from '../posts/post_form_container';
+import PostFormContainer from '../posts/post_form_container';
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -36,10 +36,10 @@ class UsersProfile extends React.Component {
             </div>
           </div>
             <div className='posts'>
-                <PostFromContainer/>
+                <PostFormContainer userId={this.props.user.id}/>
               {
                 this.props.posts.reverse().map((post, idx) => <PostContainer 
-                key={idx} 
+                key={idx}
                 post={post} 
                 firstName={this.props.user.firstName}
                 lastName={this.props.user.lastName}  /> )
