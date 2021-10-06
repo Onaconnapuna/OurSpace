@@ -21,8 +21,8 @@ class PostFrom extends React.Component {
 
   render() {
     return(
-      <div>
-        <h1>{this.props.formType}</h1>
+      <div className='post-form-container'>
+        <h3>Whats on your mind?</h3>
         <form onSubmit={this.handleSubmit}>  
           <textarea value = {this.state.body} onChange={this.update('body')}cols="30" rows="10"></textarea>
           <button>{this.props.formType}</button>

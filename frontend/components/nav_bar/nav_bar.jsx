@@ -9,7 +9,9 @@ class NavBar extends React.Component {
   navBarWhileLoggedIn() {
     return (
       <div className='banner'>
-        <Link to={`/profiles/${this.props.currentUser.id}`}> Hello, {this.props.currentUser.firstName}</Link> 
+        <div className='profile-link'>
+          <Link to={`/profiles/${this.props.currentUser.id}`}> Hello, {this.props.currentUser.firstName}</Link> 
+        </div>
         <button className='splashbutton' onClick={ () => this.props.logout()}>Log Out</button>
       </div>
     )
@@ -32,7 +34,7 @@ class NavBar extends React.Component {
  render() {
    return(
      <header className='navbar-container'>
-       <h1 className='logo'>OurSpace</h1>
+       <h1 className='logo'>Ourspace</h1>
        {
         this.props.currentUser ? this.navBarWhileLoggedIn() : this.navBarWhileLoggedOut()
        }

@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require_reset
  */
 
  * {box-sizing: border-box;}
@@ -140,57 +141,94 @@ label {
   width: 100%;
   background-color: white;
   opacity: .9;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.banner {
+  display: flex;
+  width: 100%;
   justify-content: right;
 }
 
-.posts-container {
-  background-color: red;
+.splashbutton {
+  padding: 8px;
+  margin: 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  width: 72px;
+  background-color: #1473e6;
+  border-color: #1473e6;
+  color: white;
+}
+
+/* .posts-bio-container {
+  background-color: rgb(151, 151, 151);
+  border-radius: 8px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   position: relative;
+  align-items: stretch;
+  z-index: 0;
   width: 50%;
+  max-width: 50%;
   height: 100%;
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
-.posts {
+/* .posts {
   height: 100%;
-  width: 50%;
+  max-width: 500px;
+  margin-right: 8px;
+  position: relative;
+  min-width: 0;
+  flex-basis: 500px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  margin-bottom: 8px;
+  margin-top: 8px;
   display: flex;
-  flex-direction: column;
-}
+  flex-wrap: wrap;
+} */
 
-.main-page{
+/* .main-page{
   height: 100%;
   margin: 0;
-}
+} */
 
 #root {
   height: 100%;
   margin: 0;
 }
-
+ 
 .window {
   height: 100%;
   margin: 0;
-}
+} 
 
-.post {
+/* .post {
   width: 100%;
-  height: 20%;
-  border: black;
-}
+  height: 30%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border-radius: 8px;
+  background-color: white;
+} */
 
 .profile-page {
   height: 100%;
   margin: 0;
 }
 
-.friends-list {
+/* .friends-list {
   
-}
+} */
 
 .bio-friends-photos {
   width: 50%;
@@ -200,4 +238,59 @@ label {
 
 .profile-background-photo {
   height: 40%;
+}
+/* 
+.posts-background {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+} */
+
+/* .post-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 12px;
+} */
+
+.posts-background {
+  border: solid black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.posts-bio-container {
+  border: solid black;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+
+.posts {
+  width: 50%;
+  border: solid black;
+  display: flex;
+  flex-direction: column;
+  max-width: inherit;
+}
+
+.post {
+  border: solid black;
+  padding: 8px;
+  max-width: 100%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+}
+
+.post-body {
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  border: solid black;
+  padding: 4px;
+  overflow-wrap: break-word;
 }

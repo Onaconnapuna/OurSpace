@@ -27,7 +27,8 @@ class UsersProfile extends React.Component {
             <div>Profile Photo 
             </div>
           </div>
-          <div className='posts-container'>
+          <div className='posts-background'>
+          <div className='posts-bio-container'>
             <div className='bio-friends-photos'>
               Bio
             <div className='friends-list'>
@@ -35,13 +36,16 @@ class UsersProfile extends React.Component {
             </div>
           </div>
             <div className='posts'>
-              <div>
                 <PostFromContainer/>
-              </div>
               {
-                this.props.posts.reverse().map((post, idx) => <PostContainer  key={idx} post={post} /> )
+                this.props.posts.reverse().map((post, idx) => <PostContainer 
+                key={idx} 
+                post={post} 
+                firstName={this.props.user.firstName}
+                lastName={this.props.user.lastName}  /> )
               }
             </div>
+          </div>
           </div>
       </div>
     )

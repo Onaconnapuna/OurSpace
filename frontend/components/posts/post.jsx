@@ -7,8 +7,8 @@ class PostItem extends React.Component{
   }
 
   componentDidMount() {
-    if(this.props.comment == undefined) {
-      this.props.fetchComments(this.props.post.id)
+    if(this.props.post == undefined) {
+      return null
     } else {
       this.props.fetchComments(this.props.post.id)
     }
@@ -20,13 +20,13 @@ class PostItem extends React.Component{
     } else {
       return (
         <div className='post'>
-          {this.props.post.body}
-          <div className='comments-container'>
-            {
-              this.props.comments.map((comment, idx) => <Comment key={idx} comment={comment}/>)
-            }
+          <div className='poster-id'>
+            {this.props.firstName}, {this.props.lastName}
           </div>
-          <button onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
+          <div className='post-body'>
+          {this.props.post.body}
+          </div>
+          <button className='delete-post-button' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
         </div>
       )
     }
@@ -34,3 +34,9 @@ class PostItem extends React.Component{
 }
   
 export default PostItem
+
+ {/* <div className='comments-container'>
+            {
+              this.props.comments.map((comment, idx) => <Comment key={idx} comment={comment}/>)
+            } */}
+            // </div>
