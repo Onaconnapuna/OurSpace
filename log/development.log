@@ -50434,3 +50434,60 @@ Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.9ms)
 Completed 200 OK in 25ms (Views: 21.5ms | ActiveRecord: 2.7ms)
 
 
+Started GET "/" for ::1 at 2021-10-06 17:25:23 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.9ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "bhR7oJhYZyExT2HIMxM2zA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "bhR7oJhYZyExT2HIMxM2zA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "bhR7oJhYZyExT2HIMxM2zA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "bhR7oJhYZyExT2HIMxM2zA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "bhR7oJhYZyExT2HIMxM2zA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11
+Completed 200 OK in 73ms (Views: 63.7ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/api/users/71" for ::1 at 2021-10-06 17:25:23 -0400
+Processing by Api::UsersController#show as JSON
+  Parameters: {"id"=>"71"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 71], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:21
+Started GET "/api/users/71/posts" for ::1 at 2021-10-06 17:25:23 -0400
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/show.json.jbuilder (0.5ms)
+Completed 200 OK in 25ms (Views: 4.3ms | ActiveRecord: 0.8ms)
+
+
+Processing by Api::PostsController#index as JSON
+  Parameters: {"user_id"=>"71"}
+  Rendering api/posts/index.json.jbuilder
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 71]]
+  ↳ app/views/api/posts/index.json.jbuilder:1
+  Rendered api/posts/index.json.jbuilder (12.5ms)
+Completed 200 OK in 19ms (Views: 10.4ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/api/posts/104/comments" for ::1 at 2021-10-06 17:25:23 -0400
+Started GET "/api/posts/103/comments" for ::1 at 2021-10-06 17:25:23 -0400
+Processing by Api::CommentsController#index as JSON
+Processing by Api::CommentsController#index as JSON
+  Parameters: {"post_id"=>"104"}
+  Parameters: {"post_id"=>"103"}
+  Rendering api/comments/index.json.jbuilder
+  Rendering api/comments/index.json.jbuilder
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 103]]
+  ↳ app/views/api/comments/index.json.jbuilder:1
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 104]]
+  Rendered api/comments/index.json.jbuilder (3.6ms)
+  ↳ app/views/api/comments/index.json.jbuilder:1
+Completed 200 OK in 20ms (Views: 7.3ms | ActiveRecord: 2.8ms)
+
+
+  Rendered api/comments/index.json.jbuilder (13.0ms)
+Completed 200 OK in 31ms (Views: 14.2ms | ActiveRecord: 3.1ms)
+
+
