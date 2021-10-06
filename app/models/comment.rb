@@ -13,11 +13,11 @@ class Comment < ApplicationRecord
   has_one :parent_comment,
     class_name: 'Comment'
   
-  has_many :replies.
+  has_many :replies,
     foreign_key: :parent_comment_id,
     class_name: 'Comment'
     
-  has_many :likes 
+  has_many :likes,
     foreign_key: :comment_id,
     class_name: 'Like'
 end

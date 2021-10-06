@@ -18,7 +18,7 @@ class Api::PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find_by(user_id: params[:id])
+    @post = Post.find_by(id: params[:id])
     @post.destroy 
     render :show 
   end
@@ -26,7 +26,7 @@ class Api::PostsController < ApplicationController
   private 
 
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, :user_id, :poster_id)
   end
 
 end

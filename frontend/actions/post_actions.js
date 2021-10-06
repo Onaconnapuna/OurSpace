@@ -20,10 +20,6 @@ export const removePost = postId => ({
   postId
 })
 
-// export const removePosts = () => ({
-//   type: REMOVE_POSTS
-// })
-
 // export const receiveErrors = errors => ({
 //   type: RECEIVE_SESSION_ERRORS, 
 //   errors

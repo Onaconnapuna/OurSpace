@@ -1,6 +1,7 @@
-import React from 'react'
-import NavBarContainer from '../nav_bar/nav_bar_container'
-import PostItem from '../posts/post_item'
+import React from 'react';
+import NavBarContainer from '../nav_bar/nav_bar_container';
+import PostContainer from '../posts/post_container';
+import PostFromContainer from '../posts/post_form_container';
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -13,10 +14,6 @@ class UsersProfile extends React.Component {
     }
     this.props.fetchPosts(this.props.match.params.userId)
   }
-
-  // render() {
-  //   return null
-  // }
 
   render() {
     if (this.props.user == undefined) {
@@ -38,8 +35,11 @@ class UsersProfile extends React.Component {
             </div>
           </div>
             <div className='posts'>
+              <div>
+                <PostFromContainer/>
+              </div>
               {
-                this.props.posts.map((post, idx) => <PostItem  key={idx} post={post} deletePost={this.props.deletePost}/> )
+                this.props.posts.reverse().map((post, idx) => <PostContainer  key={idx} post={post} /> )
               }
             </div>
           </div>

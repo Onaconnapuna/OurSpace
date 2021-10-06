@@ -20,13 +20,15 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return(
-      <ul className='session-form-errors'>
+      <div className='session-form-errors'>
+
         {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`} className='error'>
+          <div key={`error-${i}`} className='error'>
             {error}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div> 
+  
     )
   }
 
@@ -51,7 +53,8 @@ class SessionForm extends React.Component {
   handleLogIn() {
     return (
         <form onSubmit={this.handleSubmit} className='session-form'>
-          <h3>Welcome to OurSpace</h3>
+          <h3>Welcome to Ourspace</h3>
+          <h4>Log In</h4>
           <br />
           <label className='session-input'>Email
             <input type="text" value={this.state.email} onChange={this.update('email')}/>
@@ -79,7 +82,8 @@ class SessionForm extends React.Component {
   handleSignUp() {
     return (  
         <form onSubmit={this.handleSubmit} className='session-form'>
-          <h3>Welcome to OurSpace</h3>
+          <h3>Welcome to Ourspace</h3>
+          <h4>Create an Account</h4>
           <br />
           <label>Email
             <input type="text" value={this.state.email} onChange={this.update('email')} className='session-input'/>
@@ -114,11 +118,13 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-    <div className='form-container'>
-      {
-        this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
-      }
-    </div>
+      <div className='session-form-background'>
+        <div className='form-container'>
+          {
+            this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
+          }
+        </div>
+      </div>
     )
   }
     
