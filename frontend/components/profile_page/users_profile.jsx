@@ -2,6 +2,7 @@ import React from 'react';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostContainer from '../posts/post_container';
 import PostFormContainer from '../posts/post_form_container';
+import BioContainer from '../bio/bio_container';
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class UsersProfile extends React.Component {
           <div className='posts-background'>
           <div className='posts-bio-container'>
             <div className='bio-friends-photos'>
-              Bio
+              <BioContainer user={this.props.user}/>
             <div className='friends-list'>
               Friends List 
             </div>

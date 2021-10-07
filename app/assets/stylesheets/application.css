@@ -265,11 +265,11 @@ label {
   border: solid black;
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 65%;
 }
 
 .posts {
-  width: 50%;
+  width: 60%;
   border: solid black;
   display: flex;
   flex-direction: column;

@@ -1,14 +1,17 @@
-import connect from 'react-redux';
+import {connect} from 'react-redux';
 import Bio from './bio'
+import updateUser from '../../actions/users_actions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.session.currentUser
+    // user: state.entities.users[ownProps.params.userId]
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-
+  return {
+    updateUser: (user) => dispatch(updateUser(user))
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bio)
