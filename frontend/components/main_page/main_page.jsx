@@ -1,6 +1,5 @@
 import React from "react";
 import PostContainer from "../posts/post_container";
-import NavBarContainer from "../nav_bar/nav_bar_container";
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -14,7 +13,6 @@ class MainPage extends React.Component {
   render() {
     return(
       <div className='main-page'>
-        <NavBarContainer/>
         <div className='posts-container'>
         {
           this.props.posts.map((post, idx) => <PostContainer  key={idx} post={post} deletePost={this.props.deletePost}/> )

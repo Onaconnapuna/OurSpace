@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Bio from './bio'
-import updateUser from '../../actions/users_actions'
+import {updateUser} from '../../actions/users_actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {

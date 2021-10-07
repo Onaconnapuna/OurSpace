@@ -20,25 +20,30 @@ class NavBar extends React.Component {
   navBarWhileLoggedOut() {
     return (
       <div className='banner'>
-        <button className='splashbutton'>
+        {/* <button className='splashbutton'>
           <Link to='/signup'>Sign Up</Link>
-        </button>
+        </button> */}
+        <button  className='splashbutton'  onClick={() => this.props.openModal('signup')}>Signup</button>
 
-        <button className='splashbutton'>
+        <button className='splashbutton' onClick={() => this.props.openModal('login')}>Login</button>
+
+        {/* <button className='splashbutton'>
           <Link to='/login'>Log In</Link>
-        </button>
+        </button> */}
       </div>
     )
   }
 
  render() {
    return(
-     <header className='navbar-container'>
+    //  <div className='landing-page'>
+    <header className='navbar-container'>
        <h1 className='logo'>Ourspace</h1>
        {
         this.props.currentUser ? this.navBarWhileLoggedIn() : this.navBarWhileLoggedOut()
        }
-     </header>
+    </header>
+    //  </div>
    )
  }
 }

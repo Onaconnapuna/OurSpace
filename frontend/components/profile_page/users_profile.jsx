@@ -22,7 +22,6 @@ class UsersProfile extends React.Component {
     } else {
     return (
       <div className='profile-page'>
-        <NavBarContainer/>
           <div className='profile-background-photo'>
         <h1>{this.props.user.firstName}, {this.props.user.lastName}</h1>
             <div>Profile Photo 
