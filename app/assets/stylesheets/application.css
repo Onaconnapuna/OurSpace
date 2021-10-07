@@ -18,6 +18,10 @@
  * {box-sizing: border-box;}
  * {font-family: sans-serif;}
 
+ .window {
+   z-index: 0;
+ }
+
  .modal-background {
   position: fixed;
   top: 0;

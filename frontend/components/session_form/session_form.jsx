@@ -42,13 +42,16 @@ class SessionForm extends React.Component {
       password: 'password'
     }
     this.props.demoForm(user)
+    this.props.closeModal()
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
     this.props.processForm(user)
-    this.props.closeModal()
+    if (!this.props.errors) {
+      this.props.closeModal()
+    }
   }
 
   handleLogIn() {
@@ -67,10 +70,10 @@ class SessionForm extends React.Component {
           <br />
           <div className='session-form-buttons'>
             <button className='session-button'>Log In</button>
-            <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+            {/* <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button> */}
           </div>
           <div className='navlink-container'>
-            {this.props.navLink}
+            {this.props.otherForm}
             </div>
           <div className='errors-container'>
             <br />
@@ -104,10 +107,10 @@ class SessionForm extends React.Component {
           <br />
           <div className='session-form-buttons'>
             <button className='session-button'>Sign Up</button>
-            <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+            {/* <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button> */}
           </div>
           <div className='navlink-container'>
-            {this.props.navLink}
+            {this.props.otherForm}
           </div>
           <div className='errors-container'>
             <br />
@@ -124,6 +127,7 @@ class SessionForm extends React.Component {
           {
             this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
           }
+          <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
         </div>
       </div>
     )

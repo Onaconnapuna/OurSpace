@@ -1,8 +1,9 @@
 import React from 'react';
-import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostContainer from '../posts/post_container';
 import PostFormContainer from '../posts/post_form_container';
 import BioContainer from '../bio/bio_container';
+
+
 
 class UsersProfile extends React.Component {
   constructor(props) {

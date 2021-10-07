@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import Bio from './bio'
 import {updateUser} from '../../actions/users_actions'
+import { closeModal, openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -10,7 +11,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateUser: (user) => dispatch(updateUser(user))
+    updateUser: (user) => dispatch(updateUser(user)),
+    openModal: modal => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal())
   }
 }
 
