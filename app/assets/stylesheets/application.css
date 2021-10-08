@@ -90,6 +90,13 @@
   justify-content: center;
  }
 
+ .profile-link {
+   color: black;
+   text-decoration: none;
+   font-size: 20px;
+   font-weight: 700;
+ }
+
 input[type=text] {
   width: 100%;
   padding: 8px 12px;
@@ -125,6 +132,19 @@ label {
   border-color: #1473e6;
   color: white;
  }
+
+ .demo-button {
+  padding: 8px;
+  margin: 10px;
+  border-radius: 12px;
+  font-weight: 700;
+  height: 40px;
+  width: 72px;
+  background-color: #1473e6;
+  border-color: #1473e6;
+  color: white;
+ }
+
 
  .session-form-errors {
   color: red;
@@ -183,43 +203,6 @@ label {
   color: white;
 }
 
-/* .posts-bio-container {
-  background-color: rgb(151, 151, 151);
-  border-radius: 8px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  position: relative;
-  align-items: stretch;
-  z-index: 0;
-  width: 50%;
-  max-width: 50%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
-/* .posts {
-  height: 100%;
-  max-width: 500px;
-  margin-right: 8px;
-  position: relative;
-  min-width: 0;
-  flex-basis: 500px;
-  flex-shrink: 1;
-  flex-grow: 1;
-  margin-bottom: 8px;
-  margin-top: 8px;
-  display: flex;
-  flex-wrap: wrap;
-} */
-
-/* .main-page{
-  height: 100%;
-  margin: 0;
-} */
-
 #root {
   height: 100%;
   margin: 0;
@@ -230,23 +213,10 @@ label {
   margin: 0;
 } 
 
-/* .post {
-  width: 100%;
-  height: 30%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  border-radius: 8px;
-  background-color: white;
-} */
-
 .profile-page {
   height: 100%;
   margin: 0;
 }
-
-/* .friends-list {
-  
-} */
 
 .bio-friends-photos {
   width: 50%;
@@ -257,23 +227,8 @@ label {
 .profile-background-photo {
   height: 40%;
 }
-/* 
-.posts-background {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-} */
-
-/* .post-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 12px;
-} */
 
 .posts-background {
-  border: solid black;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -281,6 +236,7 @@ label {
 
 .posts-bio-container {
   border: solid black;
+  border-radius: 4px;
   display: flex;
   flex-direction: row;
   width: 65%;
@@ -288,7 +244,8 @@ label {
 
 .posts {
   width: 60%;
-  border: solid black;
+  /* border: solid black; */
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   max-width: inherit;
@@ -296,6 +253,7 @@ label {
 
 .post {
   border: solid black;
+  margin: 10px;
   padding: 8px;
   max-width: 100%;
   min-height: 250px;

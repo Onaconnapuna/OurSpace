@@ -4,22 +4,17 @@ import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
 import UpdateBioContainer from '../bio/update_bio_container';
+import UpdateUserProfileContainer  from '../profile_page/update_profile_container';
+import PostFormContainer from '../posts/post_form_container';
 
 class Modal extends React.Component {
   constructor(props){
     super(props)
 
-    // let user = this.props.user
-
     this.modalType = this.modalType.bind(this)
   }
 
-  componentDidMount() {
-    console.log(this.props)
-  }
-
   modalType = () => {
-    console.log(this.props)
     if (!this.props.modal) {
       return null;
     }
@@ -28,14 +23,17 @@ class Modal extends React.Component {
       case 'login':
         component = <LoginFormContainer />;
         return component;
-        break;
       case'signup':
         component = <SignupFormContainer />;
         return component;
-        break;
       case  'updateBio':
-        console.log(this.props)
         component = <UpdateBioContainer />;
+        return component;
+      case 'editProfile':
+        component = <UpdateUserProfileContainer/>;
+        return component;
+      case 'createPost':
+        component = <PostFormContainer userId={this.props.userId}/>;
         return component;
       default:
         return null;
@@ -45,7 +43,6 @@ class Modal extends React.Component {
     if (this.props.modal == null) {
       return null
     } else  {
-      console.log(this.props)
       return ( 
         <div className="modal-background" onClick={ () => this.props.closeModal()}>
           <div className="modal-child" onClick={e => e.stopPropagation()}>

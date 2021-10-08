@@ -70,7 +70,7 @@ class SessionForm extends React.Component {
           <br />
           <div className='session-form-buttons'>
             <button className='session-button'>Log In</button>
-            {/* <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button> */}
+            {/* <button className='session-button' onClick={ (e) => {this.demoSignUp()}}>Demo</button> */}
           </div>
           <div className='navlink-container'>
             {this.props.otherForm}
@@ -107,7 +107,7 @@ class SessionForm extends React.Component {
           <br />
           <div className='session-form-buttons'>
             <button className='session-button'>Sign Up</button>
-            {/* <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button> */}
+            {/* <button className='session-button' onClick={ (e) => {this.demoSignUp()}}>Demo</button> */}
           </div>
           <div className='navlink-container'>
             {this.props.otherForm}
@@ -127,7 +127,7 @@ class SessionForm extends React.Component {
           {
             this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
           }
-          <button className='session-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+          <button className='demo-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
         </div>
       </div>
     )

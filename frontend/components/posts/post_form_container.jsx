@@ -2,14 +2,9 @@ import { connect } from 'react-redux'
 import PostForm from './post_form'
 import { createPost } from '../../actions/post_actions'
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    post: {
-      userId: 71,
-      poster_id: state.session.currentUser.id,
-      body: '',
-      photoFile: null
-    },
+    posterId: state.session.currentUser.id,
     formType: 'Create Post'
   }
 }
@@ -21,3 +16,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostForm)
+

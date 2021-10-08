@@ -3,7 +3,9 @@ import { Provider } from 'react-redux'
 import { Route, Switch, Link, HashRouter, Redirect} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
+
 import Modal from './modal/modal';
+import PostFormContainer from './posts/post_form_container';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
@@ -16,8 +18,8 @@ const App = () => (
     <Modal />
     
     <NavBarContainer/>
-    {/* <LandingPage/> */}
     <Switch>
+      <ProtectedRoute path = '/profiles/:userId/creatpost' component={PostFormContainer}/>
       <ProtectedRoute path='/profiles/:userId' component={UsersProfileContainer}/>
       <ProtectedRoute path='/main/' component={MainPageContainer}/>
       {/* <AuthRoute exact path='/signup' component={SignUpFormContainer}/>
@@ -29,11 +31,3 @@ const App = () => (
 )
 
 export default App
-
-
-{/* <header> */}
-      {/* <Link to="/" className="header-link">
-        <h1>Ourspace</h1>
-      </Link>
-      <NavBarContainer/>
-    </header> */}

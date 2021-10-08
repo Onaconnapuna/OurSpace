@@ -6,13 +6,7 @@ class PostItem extends React.Component{
     super(props)
   }
 
-  // componentDidMount() {
-  //   if(this.props.post == undefined) {
-  //     return null
-  //   } else {
-  //     this.props.fetchComments(this.props.post.id)
-  //   }
-  // }
+  //  
 
   render() {
     if (this.props.comments == null) {
@@ -27,7 +21,11 @@ class PostItem extends React.Component{
            {this.props.post.body}
           </div>
           <img src={this.props.post.photoUrl}/>
+          <div>
+          <button className='share-post-button'>Share</button>
           <button className='delete-post-button' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
+          <button className='edit-post-button'>Edit Post</button>
+          </div>
         </div>
       )
     }

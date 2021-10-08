@@ -4,9 +4,13 @@ class PostFrom extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = this.props.post
+    this.state = {
+      userId: this.props.userId,
+      posterId: this.props.posterId,
+      body: '',
+      photoFile: null
+    }
 
-      
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
   }
@@ -23,13 +27,11 @@ class PostFrom extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    e.preventDefault();
     const formData = new FormData();
     formData.append('post[userId]', this.state.userId);
     formData.append('post[posterId]', this.state.posterId);
     formData.append('post[body]', this.state.body);
     if (this.state.photoFile) {
-  
       formData.append('post[photo]', this.state.photoFile);
     }
     
@@ -38,14 +40,12 @@ class PostFrom extends React.Component {
 
   render() {
     return(
-      <div className='post-form-container'>
-        <h3>Whats on your mind?</h3>
-        <form onSubmit={this.handleSubmit}>  
-          <textarea value = {this.state.body} onChange={this.update('body')}cols="30" rows="10"></textarea>
+      <form onSubmit={this.handleSubmit}>
+          <h3>Whats on your mind?</h3>
+          <textarea value = {this.state.body} onChange={this.update('body')} cols="30" rows="10"></textarea>  
           <input type='file' onChange={this.handleFile}/>
           <button>{this.props.formType}</button>
         </form>
-      </div>
     )
   }
 }

@@ -13,10 +13,8 @@ class Bio extends React.Component {
     this.renderRelationshipStatus = this.renderRelationshipStatus.bind(this)
   }
 
-
-
   renderBio = () => {
-    if (this.props.user.bio === undefined || this.props.user.bio === '' ) {
+    if (this.props.user.bio === null || this.props.user.bio === '' ) {
       return (
         <div>
           <button onClick={() => this.props.openModal('updateBio')}>Add Bio</button>
@@ -25,14 +23,14 @@ class Bio extends React.Component {
     } else {
       return (
         <div>
-          Bio: {this.props.user.bio} 
+          Bio: {this.state.bio} 
         </div>
       )
     }
   }
 
   renderBirthday = () => {
-    if (this.props.user.birthday === undefined || this.props.user.birthday === '') {
+    if (this.state.birthday === null || this.state.birthday === '') {
       return (
         <div>
           <button onClick={() => this.props.openModal('updateBio')}>Add Birthday</button>
@@ -41,14 +39,14 @@ class Bio extends React.Component {
     } else {
       return (
         <div>
-          Birthday: {this.props.user.birthday} 
+          Birthday: {this.state.birthday} 
         </div>
       )
     }
   }
 
   renderGender = () => {
-    if (this.props.user.gender === undefined || this.props.user.gender === '') {
+    if (this.state.gender === null || this.state.gender === '') {
       return (
         <div>
           <button onClick={() => this.props.openModal('updateBio')}>Add Gender/Pronouns</button>
@@ -57,14 +55,14 @@ class Bio extends React.Component {
     } else {
       return (
         <div>
-          Gender/Pronouns: {this.props.user.gender} 
+          Gender/Pronouns: {this.state.gender} 
         </div>
       )
     }
   }
  
   renderRelationshipStatus = () => {
-    if (this.props.user.bio === undefined || this.props.user.relationshipStatus === '') {
+    if (this.state.relationshipStatus === null || this.state.relationshipStatus === '') {
       return (
         <div>
           <button onClick={() => this.props.openModal('updateBio')}>Add Relationship Status</button>
@@ -73,7 +71,7 @@ class Bio extends React.Component {
     } else {
       return (
         <div>
-          RelationshipStatus: {this.props.user.relationshipStatus} 
+          RelationshipStatus: {this.state.relationshipStatus} 
         </div>
       )
     }

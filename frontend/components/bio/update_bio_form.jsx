@@ -7,15 +7,23 @@ class UpdateForm extends React.Component {
     this.state = {
       id: this.props.user.id,
       email: this.props.user.email,
-      firstName: this.props.firstName,
-      lastName: this.props.lastName,
-      bio: '',
-      birthday: '',
-      gender: '',
-      relationshipStatus: ''
+      firstName: this.props.user.firstName,
+      lastName: this.props.user.lastName,
+      bio: this.props.user.bio,
+      birthday: this.props.user.birthday,
+      gender: this.props.user.gender,
+      relationshipStatus: this.props.user.relationshipStatus
     }
 
     this.handleSubmit=this.handleSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.fetchUser(this.state.id)
+  }
+
+  componentWillUnmount(){
+    this.props.fetchUser(this.state.id)
   }
 
   update(field) {
@@ -27,6 +35,8 @@ class UpdateForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.updateUser(this.state)
+    this.props.closeModal()
+    this.props.fetchUser(this.state.id)
   }
 
   render() {
