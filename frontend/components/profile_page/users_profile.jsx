@@ -29,6 +29,7 @@ class UsersProfile extends React.Component {
             <div className='profile-photo'>
             </div>
         </div>
+        <div className='bio-posts-background'>
           <div className='bio-posts-container'>
               <BioContainer user={this.props.user}/>
             <div className='posts'>
@@ -42,6 +43,7 @@ class UsersProfile extends React.Component {
               }
             </div>
           </div>
+        </div>
         </div>
     )
     }

@@ -23,7 +23,7 @@ class Bio extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div className='user-info'>
           Bio: {this.state.bio} 
         </div>
       )
@@ -39,7 +39,7 @@ class Bio extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div className='user-info'>
           Birthday: {this.state.birthday} 
         </div>
       )
@@ -55,7 +55,7 @@ class Bio extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div className='user-info'>
           Gender/Pronouns: {this.state.gender} 
         </div>
       )
@@ -71,7 +71,7 @@ class Bio extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div className='user-info'>
           RelationshipStatus: {this.state.relationshipStatus} 
         </div>
       )
@@ -93,10 +93,9 @@ class Bio extends React.Component {
       
       <div className='bio-container'>
         <Modal />
-
       <div className='bio'>
 
-        <h3> {this.props.user.firstName}, {this.props.user.lastName}</h3>
+        <h3> {this.props.user.firstName} {this.props.user.lastName}</h3>
 
         {this.editProfile()}
 
