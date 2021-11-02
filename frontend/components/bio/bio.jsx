@@ -7,6 +7,7 @@ class Bio extends React.Component {
 
     this.state = this.props.user
 
+    this.editProfile = this.editProfile.bind(this)
     this.renderBio = this.renderBio.bind(this)
     this.renderBirthday = this.renderBirthday.bind(this)
     this.renderGender = this.renderGender.bind(this)
@@ -78,11 +79,27 @@ class Bio extends React.Component {
   }
 
 
+  editProfile() {
+    if (this.props.user.id === window.currentUser.id) {
+      return (
+        <button onClick={ () => this.props.openModal('editProfile')}>Edit Profile</button>
+      )
+    }
+  }
+
+
   render() {
     return(
       
-      <div>
+      <div className='bio-container'>
         <Modal />
+
+      <div className='bio'>
+
+        <h3> {this.props.user.firstName}, {this.props.user.lastName}</h3>
+
+        {this.editProfile()}
+
         {this.renderBio()}
 
         {this.renderBirthday()}
@@ -90,6 +107,8 @@ class Bio extends React.Component {
         {this.renderGender()}
 
         {this.renderRelationshipStatus()}
+
+      </div>
 
       </div>
     )

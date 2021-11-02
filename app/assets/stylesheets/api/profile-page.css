@@ -1,0 +1,44 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.profile-photos-container {
+  width: 100%;
+  height: 45%;
+  display: flex;
+  justify-content: center;
+}
+
+.posts-background {
+  border: solid blue;
+  display: flex;
+  justify-content: center;
+}
+
+.bio-container {
+  border: solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bio {
+  padding: 10px;
+}
+
+.bio button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.bio-posts-container {
+  border: solid red;
+  margin-top: 40px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
