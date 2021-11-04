@@ -15,24 +15,19 @@
    height: 200px;
    width: 200px;
    background-image: image_url('pierre.png');
-  //  background-color: blue;
    background-size: cover;
    border-radius: 50%;
-   border: solid black;
+   border: solid #E7E7E7 5px;
    z-index: 10;
  }
-//  .profile-photo img {
-//   width: 100%;
-//   height: 100%;
-//  }
 
  .profile-background-photo {
-   
-  width: 80%;
-  height: 100%;
-  border: solid black;
+  width: 60%;
+  height: 75%;
   background-image: image_url('stockbridge.png');
   background-size: cover;
+  border-radius: 10px;
   z-index: 5;
+  margin-bottom: 5%;
  }
   

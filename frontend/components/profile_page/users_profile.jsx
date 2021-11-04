@@ -33,7 +33,7 @@ class UsersProfile extends React.Component {
           <div className='bio-posts-container'>
               <BioContainer user={this.props.user}/>
             <div className='posts'>
-                <PostFormContainer userId={this.props.user.id}/>
+                {/* <PostFormContainer userId={this.props.user.id}/> */}
               {
                 this.props.posts.reverse().map((post, idx) => <PostContainer 
                 key={idx}

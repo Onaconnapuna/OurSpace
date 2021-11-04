@@ -15,9 +15,12 @@
  *= require_reset
  */
 
-
  * {box-sizing: border-box;}
  * {font-family: sans-serif;}
+
+ textarea {
+   resize: none;
+ }
 
  .window {
    z-index: 0;
