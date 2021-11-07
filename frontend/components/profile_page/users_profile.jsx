@@ -1,6 +1,7 @@
 import React from 'react';
 import PostContainer from '../posts/post_container';
 import PostFormContainer from '../posts/post_form_container';
+import PostsIndexContainer from '../posts/posts_index_container';
 import BioContainer from '../bio/bio_container';
 import Modal from '../modal/modal'
 
@@ -32,16 +33,21 @@ class UsersProfile extends React.Component {
         <div className='bio-posts-background'>
           <div className='bio-posts-container'>
               <BioContainer user={this.props.user}/>
-            <div className='posts'>
+
+              <PostsIndexContainer 
+              user={this.props.user}
+              />
+            {/* <div className='posts'> */}
                 {/* <PostFormContainer userId={this.props.user.id}/> */}
-              {
+              {/* {
                 this.props.posts.reverse().map((post, idx) => <PostContainer 
                 key={idx}
                 post={post} 
                 firstName={this.props.user.firstName}
                 lastName={this.props.user.lastName}  /> )
-              }
-            </div>
+              } */}
+
+            {/* </div> */}
           </div>
         </div>
         </div>
