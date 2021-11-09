@@ -15,7 +15,6 @@ class UsersProfile extends React.Component {
     if (this.props.user == undefined) {
       this.props.fetchUser(this.props.match.params.userId)
     }
-    this.props.fetchPosts(this.props.match.params.userId)
   }
 
   render() {
@@ -37,17 +36,6 @@ class UsersProfile extends React.Component {
               <PostsIndexContainer 
               user={this.props.user}
               />
-            {/* <div className='posts'> */}
-                {/* <PostFormContainer userId={this.props.user.id}/> */}
-              {/* {
-                this.props.posts.reverse().map((post, idx) => <PostContainer 
-                key={idx}
-                post={post} 
-                firstName={this.props.user.firstName}
-                lastName={this.props.user.lastName}  /> )
-              } */}
-
-            {/* </div> */}
           </div>
         </div>
         </div>

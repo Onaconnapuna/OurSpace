@@ -80,24 +80,22 @@ class Bio extends React.Component {
 
 
   editProfile() {
-    if (this.props.user.id === window.currentUser.id) {
-      return (
-        <button onClick={ () => this.props.openModal('editProfile')}>Edit Profile</button>
-      )
-    }
+    return <button onClick={ () => this.props.openModal('editProfile')}>Edit Profile</button>
   }
 
 
   render() {
     return(
-      
+  
       <div className='bio-container'>
         <Modal />
       <div className='bio'>
 
         <h3> {this.props.user.firstName} {this.props.user.lastName}</h3>
 
-        {this.editProfile()}
+        {console.log(window.currentUser)}
+
+        {this.props.user.id === this.props.currentUser.id ? this.editProfile() : null}
 
         {this.renderBio()}
 
