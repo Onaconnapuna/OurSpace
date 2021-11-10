@@ -9,9 +9,6 @@ document.addEventListener('DOMContentLoaded', () =>{
   if (window.currentUser) {
     const preloadedState = {
       session: { currentUser: window.currentUser},
-      entities: {
-        users: { [window.currentUser.id]: window.currentUser }
-      }
     };
     store = configureStore(preloadedState);
     delete window.currentUser;
@@ -19,17 +16,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     store = configureStore();
   }
 
-  window.fetchPosts = fetchPosts
-
-  let preloadedState = undefined;
-  if (window.currentUser) {
-      preloadedState = {
-          session: {
-              currentUser: window.currentUser
-          }
-      }
-    }
-  // const store = configureStore(preloadedState);
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root)
 

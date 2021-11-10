@@ -33,9 +33,7 @@ class UsersProfile extends React.Component {
           <div className='bio-posts-container'>
               <BioContainer user={this.props.user}/>
 
-              <PostsIndexContainer 
-              user={this.props.user}
-              />
+              <PostsIndexContainer user={this.props.user}/>
           </div>
         </div>
         </div>

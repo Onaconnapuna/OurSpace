@@ -1,11 +1,17 @@
-import React from 'react';
-import Modal from '../modal/modal'
+import React, {useState} from 'react';
+import Modal from 'react-modal'
+import UpdateBioContainer from './update_bio_container'
 
 class Bio extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = this.props.user
+    this.state = {
+      user: this.props.user,
+      modalIsOpen : false 
+    } 
+
+    Modal.setAppElement('#root')
 
     this.editProfile = this.editProfile.bind(this)
     this.renderBio = this.renderBio.bind(this)
@@ -15,7 +21,7 @@ class Bio extends React.Component {
   }
 
   renderBio = () => {
-    if (this.props.user.bio === null || this.props.user.bio === '' ) {
+    if (this.state.user.bio === null || this.state.user.bio === '' ) {
       return (
         <div>
           <button onClick={() => this.props.openModal('updateBio')}>Add Bio</button>
@@ -24,14 +30,14 @@ class Bio extends React.Component {
     } else {
       return (
         <div className='user-info'>
-          Bio: {this.state.bio} 
+          Bio: {this.state.user.bio} 
         </div>
       )
     }
   }
 
   renderBirthday = () => {
-    if (this.state.birthday === null || this.state.birthday === '') {
+    if (this.state.user.birthday === null || this.state.user.birthday === '') {
       return (
         <div>
           <button onClick={() => this.props.openModal('updateBio')}>Add Birthday</button>
@@ -40,30 +46,30 @@ class Bio extends React.Component {
     } else {
       return (
         <div className='user-info'>
-          Birthday: {this.state.birthday} 
+          Birthday: {this.state.user.birthday} 
         </div>
       )
     }
   }
 
   renderGender = () => {
-    if (this.state.gender === null || this.state.gender === '') {
+    if (this.state.user.gender === null || this.state.user.gender === '') {
       return (
         <div>
-          <button onClick={() => this.props.openModal('updateBio')}>Add Gender/Pronouns</button>
+          <button onClick={() => setModalIsOpen(true)}>Add Gender/Pronouns</button>
         </div>
       )
     } else {
       return (
         <div className='user-info'>
-          Gender/Pronouns: {this.state.gender} 
+          Gender/Pronouns: {this.state.user.gender} 
         </div>
       )
     }
   }
  
   renderRelationshipStatus = () => {
-    if (this.state.relationshipStatus === null || this.state.relationshipStatus === '') {
+    if (this.state.user.relationshipStatus === null || this.state.user.relationshipStatus === '') {
       return (
         <div>
           <button onClick={() => this.props.openModal('updateBio')}>Add Relationship Status</button>
@@ -72,7 +78,7 @@ class Bio extends React.Component {
     } else {
       return (
         <div className='user-info'>
-          RelationshipStatus: {this.state.relationshipStatus} 
+          RelationshipStatus: {this.state.user.relationshipStatus} 
         </div>
       )
     }
@@ -80,22 +86,27 @@ class Bio extends React.Component {
 
 
   editProfile() {
-    return <button onClick={ () => this.props.openModal('editProfile')}>Edit Profile</button>
+    // return <button onClick={() => this.props.openModal('editProfile')}>Edit Profile</button>
+    return <button onClick={() => this.setState({modalIsOpen:true})}> Edit Profile </button>
   }
 
 
   render() {
+    console.log(this.props.user)
     return(
-  
+
       <div className='bio-container'>
-        <Modal />
+
+      <Modal isOpen={this.state.modalIsOpen}>
+        <h1>HEllO?</h1>
+        <UpdateBioContainer user={this.props.user}/>
+      </Modal>
+
       <div className='bio'>
 
         <h3> {this.props.user.firstName} {this.props.user.lastName}</h3>
-
-        {console.log(window.currentUser)}
-
-        {this.props.user.id === this.props.currentUser.id ? this.editProfile() : null}
+      
+        {this.props.user.id == this.props.currentUser.id ? this.editProfile() : 'hello'}
 
         {this.renderBio()}
 

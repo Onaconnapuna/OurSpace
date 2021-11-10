@@ -1,19 +1,21 @@
 import React from 'react'
+import Modal from 'react-modal'
 
 class UpdateForm extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      id: this.props.user.id,
-      email: this.props.user.email,
-      firstName: this.props.user.firstName,
-      lastName: this.props.user.lastName,
-      bio: this.props.user.bio,
-      birthday: this.props.user.birthday,
-      gender: this.props.user.gender,
-      relationshipStatus: this.props.user.relationshipStatus
-    }
+    this.state = this.props.user
+    // this.state = {
+    //   id: this.props.user.id,
+    //   email: this.props.user.email,
+    //   firstName: this.props.user.firstName,
+    //   lastName: this.props.user.lastName,
+    //   bio: this.props.user.bio,
+    //   birthday: this.props.user.birthday,
+    //   gender: this.props.user.gender,
+    //   relationshipStatus: this.props.user.relationshipStatus
+    // }
 
     this.handleSubmit=this.handleSubmit.bind(this)
   }
@@ -40,6 +42,7 @@ class UpdateForm extends React.Component {
   }
 
   render() {
+
     return (
     <div className='session-form-background'>
       <div className='form-container'>
@@ -65,8 +68,6 @@ class UpdateForm extends React.Component {
         </form>
       </div>
     </div>
-
-
     )
   }
 }

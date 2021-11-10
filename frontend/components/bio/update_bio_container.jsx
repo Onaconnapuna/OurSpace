@@ -5,7 +5,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => {
   return {
-    user: state.session.currentUser,
+    // user: state.entities.users,
   }
 } 
 
