@@ -4,9 +4,7 @@ import { updateUser, fetchUser } from '../../actions/users_actions';
 import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state) => {
-  return {
-    // user: state.entities.users,
-  }
+  return {}
 } 
 
 const mapDispatchToProps = (dispatch) => {

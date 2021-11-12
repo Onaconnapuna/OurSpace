@@ -10,9 +10,10 @@ class Bio extends React.Component {
       user: this.props.user,
       modalIsOpen : false 
     } 
-
+    
     Modal.setAppElement('#root')
-
+    
+    this.setStateOfParent = this.setStateOfParent.bind(this)
     this.editProfile = this.editProfile.bind(this)
     this.renderBio = this.renderBio.bind(this)
     this.renderBirthday = this.renderBirthday.bind(this)
@@ -20,11 +21,24 @@ class Bio extends React.Component {
     this.renderRelationshipStatus = this.renderRelationshipStatus.bind(this)
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.user !== prevProps.user) {
+      this.setState({
+        user: this.props.user
+      })
+    }
+  }
+
+  setStateOfParent = (bool) => {
+    this.setState({modalIsOpen: bool});
+  }
+
+
   renderBio = () => {
     if (this.state.user.bio === null || this.state.user.bio === '' ) {
       return (
         <div>
-          <button onClick={() => this.props.openModal('updateBio')}>Add Bio</button>
+          <button onClick={() => this.setState({modalIsOpen:true})}>Add Bio</button>
         </div>
       )
     } else {
@@ -40,7 +54,7 @@ class Bio extends React.Component {
     if (this.state.user.birthday === null || this.state.user.birthday === '') {
       return (
         <div>
-          <button onClick={() => this.props.openModal('updateBio')}>Add Birthday</button>
+          <button onClick={() => this.setState({modalIsOpen:true})}>Add Birthday</button>
         </div>
       )
     } else {
@@ -56,7 +70,7 @@ class Bio extends React.Component {
     if (this.state.user.gender === null || this.state.user.gender === '') {
       return (
         <div>
-          <button onClick={() => setModalIsOpen(true)}>Add Gender/Pronouns</button>
+          <button onClick={() => this.setState({modalIsOpen:true})}>Add Gender/Pronouns</button>
         </div>
       )
     } else {
@@ -72,7 +86,7 @@ class Bio extends React.Component {
     if (this.state.user.relationshipStatus === null || this.state.user.relationshipStatus === '') {
       return (
         <div>
-          <button onClick={() => this.props.openModal('updateBio')}>Add Relationship Status</button>
+          <button onClick={() => this.setState({modalIsOpen:true})}>Add Relationship Status</button>
         </div>
       )
     } else {
@@ -86,7 +100,6 @@ class Bio extends React.Component {
 
 
   editProfile() {
-    // return <button onClick={() => this.props.openModal('editProfile')}>Edit Profile</button>
     return <button onClick={() => this.setState({modalIsOpen:true})}> Edit Profile </button>
   }
 
@@ -97,9 +110,13 @@ class Bio extends React.Component {
 
       <div className='bio-container'>
 
-      <Modal isOpen={this.state.modalIsOpen}>
-        <h1>HEllO?</h1>
-        <UpdateBioContainer user={this.props.user}/>
+      <Modal 
+        isOpen={this.state.modalIsOpen}
+        overlayClassName='modal-background'
+        className='modal-child'
+        onRequestClose={() => this.setState({modalIsOpen:false})}
+      >
+        <UpdateBioContainer user={this.props.user} setStateOfParent={this.setStateOfParent}/>
       </Modal>
 
       <div className='bio'>

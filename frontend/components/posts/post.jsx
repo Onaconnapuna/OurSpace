@@ -4,9 +4,7 @@ import Comment from '../comments/comments'
 class PostItem extends React.Component{
   constructor(props) {
     super(props)
-  }
-
-  //  
+  } 
 
   render() {
     if (this.props.comments == null) {
