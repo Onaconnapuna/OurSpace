@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import PostForm from './post_form'
-import { createPost } from '../../actions/post_actions'
+import { createPost, fetchPosts } from '../../actions/post_actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchPosts:(userId) => dispatch(fetchPosts(userId)),
     action:(post) => dispatch(createPost(post))
   }
 }

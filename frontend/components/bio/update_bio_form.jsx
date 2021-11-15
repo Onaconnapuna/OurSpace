@@ -7,11 +7,13 @@ class UpdateForm extends React.Component {
 
     this.state = this.props.user
 
-    this.handleSubmit=this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFile = this.handleFile.bind(this)
   }
-
+  
   componentDidMount() {
     this.props.fetchUser(this.state.id)
+    this.setState({photoFile: null})
   }
 
   componentWillUnmount(){
@@ -24,11 +26,33 @@ class UpdateForm extends React.Component {
     })
   }
 
+  handleFile(e) {
+    this.setState({photoFile: e.currentTarget.files[0]});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.setStateOfParent(false)
-    this.props.updateUser(this.state)
-    this.props.fetchUser(this.state.id)
+
+    const formData = new FormData();
+    formData.append('user[id]', this.state.id)
+    formData.append('user[email]', this.state.email)
+    formData.append('user[firstName]', this.state.firstName);
+    formData.append('user[lastName]', this.state.lastName);
+    formData.append('user[bio]', this.state.bio);
+    formData.append('user[birthday]', this.state.birthday);
+    formData.append('user[gender]', this.state.gender);
+    formData.append('user[relationshipStatus]', this.state.relationshipStatus);
+    if (this.state.photoFile) {
+      formData.append('user[photo]', this.state.photoFile);
+    }
+    $.ajax({
+      url: `/api/users/${this.state.id}`,
+      method: 'PATCH',
+      data: formData,
+      contentType: false,
+      processData: false
+    });
   }
 
   render() {
@@ -39,6 +63,11 @@ class UpdateForm extends React.Component {
         <form className ='session-form' onSubmit={this.handleSubmit}>
          
           <h3>Profile</h3>
+
+          <label>Profile Picture
+            <input type="file" onChange={this.handleFile} />
+          </label>
+
           <label>Bio
             <input type='text' value={this.state.bio} onChange={this.update('bio')}/>
           </label>

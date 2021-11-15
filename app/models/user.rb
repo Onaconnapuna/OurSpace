@@ -4,6 +4,8 @@ class User < ApplicationRecord
   validates :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 8 }, allow_nil: true
 
+  has_one_attached :photo
+
   has_many :posts, 
     foreign_key: :user_id,
     class_name: 'Post'

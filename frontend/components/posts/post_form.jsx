@@ -1,4 +1,5 @@
 import React from 'react'
+import { fetchPosts } from '../../util/posts_api_util';
 
 class PostFrom extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class PostFrom extends React.Component {
       formData.append('post[photo]', this.state.photoFile);
     }
     
-    this.props.action(formData)
+    this.props.action(formData).then(fetchPosts(userId))
   }
 
   render() {

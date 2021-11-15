@@ -33,21 +33,19 @@ class UpdateUserProfile extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // const userUpdate = new FormData();
-    // userUpdate.append('user[id]', this.state.id)
-    // userUpdate.append('user[email]', this.state.email)
-    // userUpdate.append('user[firstName]', this.state.firstName);
-    // userUpdate.append('user[lastName]', this.state.lastName);
-    // userUpdate.append('user[bio]', this.state.bio);
-    // userUpdate.append('user[birthday]', this.state.birthday);
-    // userUpdate.append('user[gender]', this.state.gender);
-    // userUpdate.append('user[relationshipStatus]', this.state.relationshipStatus);
-  //   if (this.state.photoFile) {
-  //     userUpdate.append('user[photo]', this.state.photoFile);
-  //   }
-  //   console.log(userUpdate.keys)
-  //   this.props.updateUser(userUpdate);
-      this.props.updateUser(this.state)
+    const userUpdate = new FormData();
+    userUpdate.append('user[id]', this.state.id)
+    userUpdate.append('user[email]', this.state.email)
+    userUpdate.append('user[firstName]', this.state.firstName);
+    userUpdate.append('user[lastName]', this.state.lastName);
+    userUpdate.append('user[bio]', this.state.bio);
+    userUpdate.append('user[birthday]', this.state.birthday);
+    userUpdate.append('user[gender]', this.state.gender);
+    userUpdate.append('user[relationshipStatus]', this.state.relationshipStatus);
+    if (this.state.photoFile) {
+      userUpdate.append('user[photo]', this.state.photoFile);
+    }
+    this.props.updateUser(userUpdate);
   }
 
 
