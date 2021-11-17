@@ -9,6 +9,15 @@ class Api::ProfilePhotos < ApplicationController
     end
   end
 
+  def update 
+    @profile_photo = ProfilePhoto.find_by(id: params[:id])
+    if @user.update(user_params)
+      render :show 
+    else 
+      render ['update unsuccessful'], status: 422
+    end
+  end 
+
   def profile_photo_params 
     params.require(:profile_photo).permit(:user_id, :photo)
   end

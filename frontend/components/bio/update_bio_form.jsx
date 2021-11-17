@@ -6,14 +6,15 @@ class UpdateForm extends React.Component {
     super(props)
 
     this.state = this.props.user
-
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFile = this.handleFile.bind(this)
   }
   
   componentDidMount() {
     this.props.fetchUser(this.state.id)
-    this.setState({photoFile: null})
+    // this.setState({profilePhotoFile: null})
+    // this.setState({backgroundPhoto: null})
+    console.log(this.props.user)
   }
 
   componentWillUnmount(){
@@ -33,27 +34,32 @@ class UpdateForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.setStateOfParent(false)
+    console.log(this.state)
+    this.props.updateUser(this.state)
 
     const formData = new FormData();
     formData.append('user[id]', this.state.id)
-    formData.append('user[email]', this.state.email)
-    formData.append('user[firstName]', this.state.firstName);
-    formData.append('user[lastName]', this.state.lastName);
-    formData.append('user[bio]', this.state.bio);
-    formData.append('user[birthday]', this.state.birthday);
-    formData.append('user[gender]', this.state.gender);
-    formData.append('user[relationshipStatus]', this.state.relationshipStatus);
-    if (this.state.photoFile) {
-      formData.append('user[photo]', this.state.photoFile);
-    }
-    $.ajax({
-      url: `/api/users/${this.state.id}`,
-      method: 'PATCH',
-      data: formData,
-      contentType: false,
-      processData: false
-    });
   }
+
+    // formData.append('user[email]', this.state.email)
+    // formData.append('user[firstName]', this.state.firstName);
+    // formData.append('user[lastName]', this.state.lastName);
+    // formData.append('user[bio]', this.state.bio);
+    // formData.append('user[birthday]', this.state.birthday);
+    // formData.append('user[gender]', this.state.gender);
+    // formData.append('user[relationshipStatus]', this.state.relationshipStatus);
+    // if (this.state.photoFile) {
+    //   formData.append('user[photo]', this.state.photoFile);
+    // }
+
+    // $.ajax({
+    //   url: `/api/users/${this.state.id}`,
+    //   method: 'PATCH',
+    //   data: formData,
+    //   contentType: false,
+    //   processData: false
+    // });
+  // }
 
   render() {
 
