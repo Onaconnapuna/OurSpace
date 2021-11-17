@@ -3,7 +3,7 @@ class Api::BackgroundPhotos < ApplicationController
   def create
     @background_photo = ProfilePhoto.new(background_photo_params)
     if @background_photo.save 
-      render :show 
+      render 'api/users/show'
     else  
       render json: @background_photo.errors.full_messages, status: 422
     end

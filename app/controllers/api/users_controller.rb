@@ -29,6 +29,8 @@ class Api::UsersController < ApplicationController
   def show 
     @user = User.find_by(id: params[:id])
     @user_posts = @user.posts
+    @user_background_photo = @user.background_photo
+    @user_profile_photo = @user.profile_picture
     if @user 
       render :show 
     else  
