@@ -1,17 +1,15 @@
-class Api::BackgroundPhotos < ApplicationController
+class Api::BackgroundPhotosController < ApplicationController
 
   def create
     @background_photo = BackgroundPhoto.new(background_photo_params)
-    if @background_photo.save 
-      render 'api/users/show'
-    else  
+    if !@background_photo.save!  
       render json: @background_photo.errors.full_messages, status: 422
     end
   end
 
   def update 
     @background_photo = BackgroundPhoto.find_by(id: params[:id])
-    if @user.update(user_params)
+    if @background_photo.update(background_photo_params)
       render :show 
     else 
       render ['update unsuccessful'], status: 422

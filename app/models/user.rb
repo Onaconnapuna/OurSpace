@@ -4,10 +4,10 @@ class User < ApplicationRecord
   validates :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 8 }, allow_nil: true
 
-  has_one :profile_picture,
+  has_one :profile_photo,
     foreign_key: :user_id,
     class_name: 'ProfilePhoto'
-
+ 
   has_one :background_photo,
     foreign_key: :user_id,
     class_name: 'BackgroundPhoto'
@@ -31,6 +31,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   after_initialize :ensure_session_token
+  after_save :add_default_photos
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -60,7 +61,11 @@ class User < ApplicationRecord
   def ensure_session_token
     self.session_token ||= SecureRandom::urlsafe_base64
   end
+
+  def add_default_photos
+    self.profile_photo ||= ProfilePhoto.create(user_id: self.id) 
+    self.background_photo ||= BackgroundPhoto.create(user_id: self.id) 
+  end
   
 end
-
 

@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 Post.destroy_all
+ProfilePhoto.destroy_all
+BackgroundPhoto.destroy_all
 
 demo_user = User.create( email:'demouser@demo.com', password:'password', first_name: 'YourFirstName', last_name: 'YourLastName')
 
@@ -23,5 +25,5 @@ demopost1 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: '
 post1 = Post.create( user_id: user1.id, poster_id: user1.id, body: 'Wait a minute, I, a bastard, became the primary beneficiary to my fathers will? Im Rich!')
 post2 = Post.create( user_id: user1.id, poster_id: user1.id, body: 'I will free my serfs')
 
-comment1 = Comment.create( user_id: user2.id, post_id: demopost1.id, body: 'congrats on your first post')
-comment2 = Comment.create( user_id: user2.id, post_id: demopost1.id, body: 'hope to see you post more!')
+# comment1 = Comment.create( user_id: user2.id, post_id: demopost1.id, body: 'congrats on your first post')
+# comment2 = Comment.create( user_id: user2.id, post_id: demopost1.id, body: 'hope to see you post more!')
