@@ -8,4 +8,11 @@ class ProfilePhoto < ApplicationRecord
 
   has_one_attached :photo
 
+  after_save :attach_default_photo
+
+  def attach_default_photo
+    file = File.open('app/assets/images/default_profile_pic.png')
+    self.photo.attach(io: file, filename: 'default_profile_pic.png')
+  end
+
 end
