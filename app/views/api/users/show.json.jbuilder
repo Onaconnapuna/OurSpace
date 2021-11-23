@@ -1,5 +1,5 @@
 json.extract! @user, :id, :email, :first_name, :last_name, :bio, :birthday, :gender, :relationship_status
-json.set! :user_background_photo do 
+json.set! :background_photo do 
   json.image_url url_for(@user_background_photo.photo)
 end
 json.set! :profile_photo do 
