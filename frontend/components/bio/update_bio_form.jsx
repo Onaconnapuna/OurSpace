@@ -1,25 +1,26 @@
 import React from 'react'
-import Modal from 'react-modal'
 
 class UpdateForm extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = this.props.user
+    this.state = {
+      user: this.props.user,
+      updateProfilePhotoFile: null,
+      updateBackgroundPhotoFile: null
+     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleFile = this.handleFile.bind(this)
+    this.handleProfileFile = this.handleProfileFile.bind(this)
+    this.handleBackgroundFile = this.handleBackgroundFile.bind(this)
   }
   
   componentDidMount() {
-    this.props.fetchUser(this.state.id)
-    // this.setState({profilePhotoFile: null})
-    // this.setState({backgroundPhoto: null})
-    console.log(this.props.user)
+    this.props.fetchUser(this.state.user.id)
   }
 
-  componentWillUnmount(){
-    this.props.fetchUser(this.state.id)
-  }
+  // componentWillUnmount(){
+  //   this.props.fetchUser(this.state.id)
+  // }
 
   update(field) {
     return (e) => this.setState({
@@ -27,18 +28,48 @@ class UpdateForm extends React.Component {
     })
   }
 
-  handleFile(e) {
-    this.setState({photoFile: e.currentTarget.files[0]});
+  handleProfileFile(e) {
+    const file =  e.currentTarget.files[0]
+    this.setState({updateProfilePhotoFile: file})
+  }
+
+  handleBackgroundFile(e) {
+    const file =  e.currentTarget.files[0]
+    this.setState({updateBackgroundPhotoFile: file})
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.setStateOfParent(false)
-    console.log(this.state)
-    this.props.updateUser(this.state)
+    this.props.setStateOfParent(false);
+    // this.props.updateUser(this.state);
 
-    const formData = new FormData();
-    formData.append('user[id]', this.state.id)
+    if (this.state.updateProfilePhotoFile) {
+      const formData = new FormData();
+      formData.append('profile_photo[photo]', this.state.updateProfilePhotoFile);
+      formData.append('profile_photo[user_id]', this.state.user.id)
+  
+      $.ajax({
+        url: `/api/users/${this.props.user.id}/profile_photos/${this.props.user.profilePhoto.id}`,
+        method: 'PUT',
+        data: formData,
+        contentType: false,
+        processData: false
+      });
+    }
+
+    if (this.state.updateBackgroundPhotoFile) {
+      const backgroundFormData = new FormData();
+      backgroundFormData.append('background_photo[photo]', this.state.updateBackgroundPhotoFile),
+      backgroundFormData.append('background_photo[user_id]', this.state.user.id)
+  
+      $.ajax({
+        url: `/api/users/${this.props.user.id}/background_photos/${this.props.user.backgroundPhoto.id}`,
+        method: 'PUT',
+        data: backgroundFormData,
+        contentType: false,
+        processData: false
+      });
+    }
   }
 
     // formData.append('user[email]', this.state.email)
@@ -70,24 +101,28 @@ class UpdateForm extends React.Component {
          
           <h3>Profile</h3>
 
-          <label>Profile Picture
-            <input type="file" onChange={this.handleFile} />
+          <label>Profile Photo
+            <input type="file" onChange={this.handleProfileFile} />
+          </label>
+
+          <label>Background Photo
+            <input type="file" onChange={this.handleBackgroundFile}/>
           </label>
 
           <label>Bio
-            <input type='text' value={this.state.bio} onChange={this.update('bio')}/>
+            <input type='text' value={this.state.user.bio} onChange={this.update('bio')}/>
           </label>
 
           <label>Birthday
-            <input type="text" value={this.state.birthday} onChange={this.update('birthday')} />
+            <input type="text" value={this.state.user.birthday} onChange={this.update('birthday')} />
           </label>
 
           <label>Gender/Pronouns
-            <input type="text" value={this.state.gender} onChange={this.update('gender')} />
+            <input type="text" value={this.state.user.gender} onChange={this.update('gender')} />
           </label>
 
           <label>RelationshipStatus
-            <input type="text" value={this.state.relationshipStatus} onChange={this.update('relationshipStatus')} />
+            <input type="text" value={this.state.user.relationshipStatus} onChange={this.update('relationshipStatus')} />
           </label>
           <button>Update Bio</button>
         </form>

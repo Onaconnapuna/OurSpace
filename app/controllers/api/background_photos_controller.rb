@@ -2,7 +2,9 @@ class Api::BackgroundPhotosController < ApplicationController
 
   def create
     @background_photo = BackgroundPhoto.new(background_photo_params)
-    if !@background_photo.save!  
+    if @background_photo.save!  
+      render json: @background_photo
+    else 
       render json: @background_photo.errors.full_messages, status: 422
     end
   end
@@ -10,7 +12,7 @@ class Api::BackgroundPhotosController < ApplicationController
   def update 
     @background_photo = BackgroundPhoto.find_by(id: params[:id])
     if @background_photo.update(background_photo_params)
-      render :show 
+      render json: @background_photo
     else 
       render ['update unsuccessful'], status: 422
     end

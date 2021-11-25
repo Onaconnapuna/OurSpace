@@ -25,9 +25,8 @@ class UsersProfile extends React.Component {
       <div className='profile-page'>
         <div className='profile-photos-container'>
           <div className='profile-background-photo' style={{backgroundImage: `url(${this.props.user.backgroundPhoto.imageUrl})`}}>
-          </div>
-            <div className='profile-photo' style={{backgroundImage: `url(${this.props.user.profilePhoto.imageUrl})`}}>
-            </div>
+        </div>
+            <div className='profile-photo' style={{backgroundImage: `url(${this.props.user.profilePhoto.imageUrl})`}}></div>
         </div>
         <div className='bio-posts-background'>
           <div className='bio-posts-container'>

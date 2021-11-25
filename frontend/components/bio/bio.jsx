@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Modal from 'react-modal'
 import UpdateBioContainer from './update_bio_container'
-import UpdateUserProfileContainer from '../profile_page/update_profile_container'
 
 class Bio extends React.Component {
   constructor(props) {
