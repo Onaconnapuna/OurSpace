@@ -2,7 +2,8 @@ class Api::BackgroundPhotosController < ApplicationController
 
   def create
     @background_photo = BackgroundPhoto.new(background_photo_params)
-    if @background_photo.save!  
+    if @background_photo.save! 
+      # @background_photo.attach_default_photo
       render json: @background_photo
     else 
       render json: @background_photo.errors.full_messages, status: 422

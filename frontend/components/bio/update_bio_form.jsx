@@ -22,10 +22,18 @@ class UpdateForm extends React.Component {
   //   this.props.fetchUser(this.state.id)
   // }
 
+  // update(field) {
+  //   return (e) => this.setState({
+  //     [field]: e.currentTarget.value
+  //   })
+  // }
+
   update(field) {
-    return (e) => this.setState({
-      [field]: e.currentTarget.value
-    })
+    return(e) => {
+      let user = {...this.state.user} 
+      user[field] = e.currentTarget.value
+      this.setState({user})
+    }
   }
 
   handleProfileFile(e) {
@@ -41,7 +49,7 @@ class UpdateForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.setStateOfParent(false);
-    // this.props.updateUser(this.state);
+    this.props.updateUser(this.state.user);
 
     if (this.state.updateProfilePhotoFile) {
       const formData = new FormData();
@@ -72,25 +80,6 @@ class UpdateForm extends React.Component {
     }
   }
 
-    // formData.append('user[email]', this.state.email)
-    // formData.append('user[firstName]', this.state.firstName);
-    // formData.append('user[lastName]', this.state.lastName);
-    // formData.append('user[bio]', this.state.bio);
-    // formData.append('user[birthday]', this.state.birthday);
-    // formData.append('user[gender]', this.state.gender);
-    // formData.append('user[relationshipStatus]', this.state.relationshipStatus);
-    // if (this.state.photoFile) {
-    //   formData.append('user[photo]', this.state.photoFile);
-    // }
-
-    // $.ajax({
-    //   url: `/api/users/${this.state.id}`,
-    //   method: 'PATCH',
-    //   data: formData,
-    //   contentType: false,
-    //   processData: false
-    // });
-  // }
 
   render() {
 

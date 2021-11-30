@@ -3,6 +3,7 @@ class Api::ProfilePhotosController < ApplicationController
   def create
     @profile_photo = ProfilePhoto.new(profile_photo_params)
     if @profile_photo.save!
+      @profile_photo.attach_default_photo
       render json: @profile_photo
     else 
       render json: @profile_photo.errors.full_messages, status: 422

@@ -20,6 +20,9 @@ class Api::UsersController < ApplicationController
   def update 
     @user = User.find_by(id: params[:id])
     if @user.update(user_params)
+      @user_posts = @user.posts
+      @user_background_photo = @user.background_photo 
+      @user_profile_photo = @user.profile_photo
       render :show 
     else  
       render ['update unsuccessful'], status: 422

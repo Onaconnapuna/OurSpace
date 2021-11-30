@@ -8,10 +8,12 @@ class BackgroundPhoto < ApplicationRecord
 
   has_one_attached :photo
 
-  # after_save :attach_default_photo
+  after_save :attach_default_photo
 
-  # def attach_default_photo
-  #   file = File.open('app/assets/images/default_background_photo.png')
-  #   self.photo.attach(io: file, filename: 'default_background_photo.png')
-  # end
+  def attach_default_photo
+    if !self.photo.attached?
+      file = File.open('app/assets/images/default_background_photo.png')
+      self.photo.attach(io: file, filename: 'default_background_photo.png')
+    end
+  end
 end
