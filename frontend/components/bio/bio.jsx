@@ -98,7 +98,6 @@ class Bio extends React.Component {
     }
   }
 
-
   editProfile() {
     return <button onClick={() => this.setState({modalIsOpen:true})}> Edit Profile </button>
   }

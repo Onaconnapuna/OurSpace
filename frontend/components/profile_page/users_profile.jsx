@@ -17,6 +17,12 @@ class UsersProfile extends React.Component {
     }
   }
 
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.user !== this.props.user) {
+  //     this.props.fetchUser(this.props.match.params.userId)
+  //   }
+  // }
+
   render() {
     if (this.props.user == undefined) {
       return null 
