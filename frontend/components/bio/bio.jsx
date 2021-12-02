@@ -114,7 +114,12 @@ class Bio extends React.Component {
         className='modal-child'
         onRequestClose={() => this.setState({modalIsOpen:false})}
       >
-        <UpdateBioContainer user={this.props.user} setStateOfParent={this.setStateOfParent}/>
+        <UpdateBioContainer 
+        user={this.props.user} 
+        setStateOfParent={this.setStateOfParent}
+        updateBackgroundPhoto={this.props.updateBackgroundPhoto}
+        updateProfilePhoto={this.props.updateProfilePhoto}
+        />
       </Modal>
 
       <div className='bio'>
