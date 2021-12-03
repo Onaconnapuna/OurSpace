@@ -117,8 +117,7 @@ class Bio extends React.Component {
         <UpdateBioContainer 
         user={this.props.user} 
         setStateOfParent={this.setStateOfParent}
-        updateBackgroundPhoto={this.props.updateBackgroundPhoto}
-        updateProfilePhoto={this.props.updateProfilePhoto}
+        forceProfileRender={this.props.forceProfileRender}
         />
       </Modal>
 

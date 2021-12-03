@@ -13,31 +13,6 @@ class UpdateForm extends React.Component {
     this.handleProfileFile = this.handleProfileFile.bind(this)
     this.handleBackgroundFile = this.handleBackgroundFile.bind(this)
   }
-  
-  componentDidMount() {
-    this.props.fetchUser(this.state.user.id)
-    console.log(this.state)
-  }
-
-  // componentWillUnmount(){
-  //   this.props.fetchUser(this.state.id)
-  // }
-
-  // update(field) {
-  //   return (e) => this.setState({
-  //     [field]: e.currentTarget.value
-  //   })
-  // }
-
-  // componentDidUpdate() {
-  //   if (this.prevProps.user !== this.props.user) {
-  //     this.setState({
-  //       user: this.props.user,
-  //       updateProfilePhotoFile: null,
-  //       updateBackgroundPhotoFile: null
-  //     })
-  //   }
-  // }
 
   update(field) {
     return(e) => {
@@ -68,9 +43,6 @@ class UpdateForm extends React.Component {
       const formData = new FormData();
       formData.append('profile_photo[photo]', this.state.updateProfilePhotoFile);
       formData.append('profile_photo[user_id]', this.state.user.id)
-
-      // let imageUrl = {...this.state.user.profilePhoto.imageUrl} 
-      // imageUrl = this.state.updateProfilePhotoFile
   
       $.ajax({
         url: `/api/users/${this.props.user.id}/profile_photos/${this.props.user.profilePhoto.id}`,
@@ -78,16 +50,13 @@ class UpdateForm extends React.Component {
         data: formData,
         contentType: false,
         processData: false
-      }).then(this.props.updateProfilePhoto(this.state.updateProfilePhotoFile));
+      }).then(this.props.forceProfileRender())
     }
 
     if (this.state.updateBackgroundPhotoFile) {
       const backgroundFormData = new FormData();
       backgroundFormData.append('background_photo[photo]', this.state.updateBackgroundPhotoFile),
       backgroundFormData.append('background_photo[user_id]', this.state.user.id)
-
-      // let imageUrl = {...this.state.user.backgroundPhoto.imageUrl} 
-      // imageUrl = this.state.updateBackgroundPhotoFile
   
       $.ajax({
         url: `/api/users/${this.props.user.id}/background_photos/${this.props.user.backgroundPhoto.id}`,
@@ -95,10 +64,9 @@ class UpdateForm extends React.Component {
         data: backgroundFormData,
         contentType: false,
         processData: false
-      }).then(this.props.updateBackgroundPhoto(this.state.updateBackgroundPhotoFile));
+      }).then(this.props.forceProfileRender())
     }
   }
-
 
   render() {
 
