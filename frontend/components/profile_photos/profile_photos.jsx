@@ -21,7 +21,8 @@ class ProfilePhotos extends React.Component {
     setTimeout(() => {
       console.log(this.props.user)
       this.setState({
-        profilePhoto: this.props.user.profilePhoto.imageUrl
+        profilePhoto: this.props.user.profilePhoto.imageUrl,
+        backgroundPhoto: this.props.backgroundPhoto.imageUrl
       })
     }, 1000);
   }
