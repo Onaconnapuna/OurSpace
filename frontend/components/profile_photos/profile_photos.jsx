@@ -22,15 +22,9 @@ class ProfilePhotos extends React.Component {
       console.log(this.props.user)
       this.setState({
         profilePhoto: this.props.user.profilePhoto.imageUrl,
-        backgroundPhoto: this.props.backgroundPhoto.imageUrl
+        backgroundPhoto: this.props.user.backgroundPhoto.imageUrl
       })
     }, 1000);
-  }
-
-  componentDidUpdate() {
-    // this.setState({
-    //   profilePhoto: this.props.user.profilePhoto.imageUrl
-    // })
   }
 
   render() { 
