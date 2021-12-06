@@ -112,7 +112,7 @@ class Bio extends React.Component {
         isOpen={this.state.modalIsOpen}
         overlayClassName='modal-background'
         className='modal-child'
-        onRequestClose={() => this.setState({modalIsOpen:false})}
+        onRequestClose={() => this.setState({modalIsOpen: false})}
       >
         <UpdateBioContainer 
         user={this.props.user} 
