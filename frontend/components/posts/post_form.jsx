@@ -51,8 +51,8 @@ class PostFrom extends React.Component {
         className='modal-child'
         onRequestClose={() => this.setState({modalIsOpen: false})}
         >
-        <form onSubmit={this.handleSubmit}>
-            <h3>Whats on your mind?</h3>
+        <form className='post-form' onSubmit={this.handleSubmit}>
+            <h3>Whats on your mind? </h3>
             <textarea value = {this.state.body} onChange={this.update('body')} cols="30" rows="10"></textarea>  
             <input type='file' onChange={this.handleFile}/>
             <button>{this.props.formType}</button>
