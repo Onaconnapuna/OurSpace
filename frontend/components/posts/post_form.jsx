@@ -60,7 +60,6 @@ class PostFrom extends React.Component {
         </Modal>
 
         <div className='whats-on-your-mind'>
-          {/* <img src="" /> */}
           <button onClick={() => this.setState({modalIsOpen: true})}>Whats on your mind?</button>
         </div>
       </div>

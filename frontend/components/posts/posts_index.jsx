@@ -12,7 +12,7 @@ class PostsIndex extends React.Component {
 
   render() {
     return(
-      <div className='posts'>
+      <div className='posts-index'>
         {
           this.props.posts.reverse().map((post, idx) => <PostItemContainer
           key={idx}

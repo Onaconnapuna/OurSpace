@@ -57,7 +57,7 @@ class UsersProfile extends React.Component {
               user={this.props.user}
               forceProfileRender={this.forceProfileRender}
               />
-              <div>
+              <div className='posts'>
               <PostFormContainer user={this.props.user}/>
               <PostsIndexContainer user={this.props.user}/>
               </div>
