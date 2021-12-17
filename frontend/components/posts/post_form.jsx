@@ -43,7 +43,7 @@ class PostFrom extends React.Component {
     if (this.state.photoFile) {
       formData.append('post[photo]', this.state.photoFile);
     }
-    this.props.action(formData).then(this.setState({modalIsOpen:false}))
+    this.props.action(formData).then(this.setState({modalIsOpen:false})).then(this.props.forceProfileRender())
   }
 
   render() {

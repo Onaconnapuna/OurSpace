@@ -24,17 +24,15 @@ class UsersProfile extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.user && prevProps.user) {
-      if (this.props.user.profilePhoto.imageUrl !== prevProps.user.profilePhoto.imageUrl) {
-        this.props.fetchUser(this.props.match.params.userId)
-      }
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.user && prevProps.user) {
+  //     if (this.props.user.profilePhoto.imageUrl !== prevProps.user.profilePhoto.imageUrl) {
+  //       this.props.fetchUser(this.props.match.params.userId)
+  //     }
+  //   }
+  // }
 
   forceProfileRender() {
-    console.log('hello')
-    this.forceUpdate()
     this.props.fetchUser(this.props.match.params.userId)
     this.setState({
       key: this.state.key + 1
@@ -58,8 +56,14 @@ class UsersProfile extends React.Component {
               forceProfileRender={this.forceProfileRender}
               />
               <div className='posts'>
-              <PostFormContainer user={this.props.user}/>
-              <PostsIndexContainer user={this.props.user}/>
+              <PostFormContainer 
+              user={this.props.user}
+              forceProfileRender={this.forceProfileRender}
+              />
+              <PostsIndexContainer
+              forceProfileRender={this.forceProfileRender} 
+              key={this.state.key}
+              user={this.props.user}/>
               </div>
           </div>
         </div>

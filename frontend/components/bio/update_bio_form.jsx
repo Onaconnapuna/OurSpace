@@ -3,7 +3,7 @@ import React from 'react'
 class UpdateForm extends React.Component {
   constructor(props) {
     super(props)
-
+    
     this.state = {
       user: this.props.user,
       updateProfilePhotoFile: null,
