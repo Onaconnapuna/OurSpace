@@ -7,9 +7,11 @@ class PostFrom extends React.Component {
     super(props)
 
     this.state = {
-      userId: this.props.userId,
-      posterId: this.props.posterId,
-      body: '',
+      post: {
+        userId: this.props.user.id,
+        posterId: this.props.posterId,
+        body: '',
+      },
       photoFile: null,
       modalIsOpen: false 
     }
@@ -22,7 +24,9 @@ class PostFrom extends React.Component {
 
   update(field) {
     return (e) => {
-      this.setState( {[field]: e.target.value} )
+      let post = {...this.state.post}
+      post[field] = e.currentTarget.value
+      this.setState({post})
     }
   }
 
@@ -33,13 +37,13 @@ class PostFrom extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('post[userId]', this.state.userId);
-    formData.append('post[posterId]', this.state.posterId);
-    formData.append('post[body]', this.state.body);
+    formData.append('post[userId]', this.state.post.userId);
+    formData.append('post[posterId]', this.state.post.posterId);
+    formData.append('post[body]', this.state.post.body);
     if (this.state.photoFile) {
       formData.append('post[photo]', this.state.photoFile);
     }
-    this.props.action(formData).then(fetchPosts(userId))
+    this.props.action(formData).then(this.setState({modalIsOpen:false}))
   }
 
   render() {
@@ -53,7 +57,7 @@ class PostFrom extends React.Component {
         >
         <form className='post-form' onSubmit={this.handleSubmit}>
             <h3>Whats on your mind? </h3>
-            <textarea value = {this.state.body} onChange={this.update('body')} cols="30" rows="10"></textarea>  
+            <textarea value = {this.state.post.body} onChange={this.update('body')} cols="30" rows="10"></textarea>  
             <input type='file' onChange={this.handleFile}/>
             <button>{this.props.formType}</button>
         </form>

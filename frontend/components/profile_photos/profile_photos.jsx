@@ -5,18 +5,18 @@ class ProfilePhotos extends React.Component {
     super(props)
     this.state = {
       profilePhoto: this.props.user.profilePhoto.imageUrl,
-      profilePhotoHash: null,
+      profilePhotoHash: Date.now(),
       backgroundPhoto: this.props.user.backgroundPhoto.imageUrl,
-      backgroundPhotoHash: null,
+      backgroundPhotoHash: Date.now(),
     }
   }
 
+ 
   componentDidMount(){
-    console.log('I rerenderd')
     
     setTimeout(() => {
       this.props.fetchUser(this.props.user.id)
-    }, 500);
+    }, 3000);
 
     setTimeout(() => {
       console.log(this.props.user)
@@ -24,17 +24,17 @@ class ProfilePhotos extends React.Component {
         profilePhoto: this.props.user.profilePhoto.imageUrl,
         backgroundPhoto: this.props.user.backgroundPhoto.imageUrl
       })
-    }, 1000);
+    }, 4000);
   }
 
   render() { 
     return(
     <div className='profile-photos-container'>
       <div className='profile-background-photo'>
-        <img key={Date.now()} className='background-photos' src={`${this.state.backgroundPhoto}?${this.state.backgroundPhotoHash}`}/>
+        <img className='background-photos' src={`${this.state.backgroundPhoto}?${this.state.backgroundPhotoHash}`}/>
       </div>
       <div className='profile-photo'>
-        <img key={Date.now()} className='profile-photos' src={`${this.state.profilePhoto}?${this.state.profilePhotoHash}`}/>
+        <img className='profile-photos' src={`${this.state.profilePhoto}?${this.state.profilePhotoHash}`}/>
       </div>
     </div>
     )
