@@ -4,7 +4,7 @@ import Comment from '../comments/comments'
 class PostItem extends React.Component{
   constructor(props) {
     super(props)
-  } 
+  }
 
   render() {
     if (this.props.comments == null) {
@@ -13,7 +13,10 @@ class PostItem extends React.Component{
       return (
         <div className='post'>
           <div className='poster-id'>
-            {this.props.firstName}, {this.props.lastName}
+            <img src={`${this.props.post.poster.imageUrl}`}/>
+            <p>
+            {this.props.post.poster.firstName} {this.props.post.poster.lastName}
+            </p>
           </div>
           <div className='post-body'>
            {this.props.post.body}

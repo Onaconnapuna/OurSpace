@@ -8,7 +8,7 @@ class Post < ApplicationRecord
     foreign_key: :user_id,
     class_name: 'User'
 
-  has_one :poster,
+  belongs_to :poster,
     foreign_key: :poster_id,
     class_name: 'User'
 

@@ -139,3 +139,15 @@
 .posts-index {
   width: 100%;
 }
+
+.poster-id {
+  display: flex;
+}
+
+.poster-id img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+}

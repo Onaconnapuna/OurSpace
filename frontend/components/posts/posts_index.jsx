@@ -19,8 +19,7 @@ class PostsIndex extends React.Component {
           this.props.posts.reverse().map((post, idx) => <PostItemContainer
           key={idx}
           post={post} 
-          firstName={this.props.user.firstName}
-          lastName={this.props.user.lastName}
+          user={this.props.user}
           />)
         }
       </div>

@@ -24,14 +24,6 @@ class UsersProfile extends React.Component {
     }
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.user && prevProps.user) {
-  //     if (this.props.user.profilePhoto.imageUrl !== prevProps.user.profilePhoto.imageUrl) {
-  //       this.props.fetchUser(this.props.match.params.userId)
-  //     }
-  //   }
-  // }
-
   forceProfileRender() {
     this.props.fetchUser(this.props.match.params.userId)
     this.setState({
