@@ -34,8 +34,8 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 10;
+  background: rgba(156, 156, 156, 0.7);
+  z-index: 9;
 }
 
 .modal-child {
@@ -81,12 +81,13 @@
 .session-form {
   border-radius: 8px;
   padding: 20px;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   margin: auto;
   display: flex;
   flex-direction: column;
   opacity: 0.8;
  }
+
 .session-form label {
   padding: 5px;
 }

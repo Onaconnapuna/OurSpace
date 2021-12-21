@@ -48,23 +48,26 @@ class PostFrom extends React.Component {
 
   render() {
     return(
-      <div className='post-form-container'>
+      <div className='whats-on-your-mind-container'>
         <Modal
         isOpen={this.state.modalIsOpen}
         overlayClassName='modal-background'
         className='modal-child'
         onRequestClose={() => this.setState({modalIsOpen: false})}
         >
+        <div className='post-form-container'>
         <form className='post-form' onSubmit={this.handleSubmit}>
             <h3>Whats on your mind? </h3>
             <textarea value = {this.state.post.body} onChange={this.update('body')} cols="30" rows="10"></textarea>  
             <input type='file' onChange={this.handleFile}/>
             <button>{this.props.formType}</button>
         </form>
+        </div>
         </Modal>
 
         <div className='whats-on-your-mind'>
-          <button onClick={() => this.setState({modalIsOpen: true})}>Whats on your mind?</button>
+            <img src={`${this.props.user.profilePhoto.imageUrl}`}/>
+            <button onClick={() => this.setState({modalIsOpen: true})}>What's on your mind?</button>
         </div>
       </div>
     )
