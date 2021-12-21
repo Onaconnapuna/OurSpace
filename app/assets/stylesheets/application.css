@@ -34,12 +34,13 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(156, 156, 156, 0.7);
+  background: rgba(238, 238, 238, 0.7);
   z-index: 9;
 }
 
 .modal-child {
   position: absolute;
+  box-shadow: 50px, 50px, 50px, 50px, tomato;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
