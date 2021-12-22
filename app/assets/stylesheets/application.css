@@ -80,15 +80,16 @@
 }
 
 .session-form {
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 20px;
   background-color: white;
   margin: auto;
   display: flex;
   flex-direction: column;
   opacity: 0.8;
+  box-shadow: 2px 2px 5px 2px #D1D1D1;
  }
-
+ 
 .session-form label {
   padding: 5px;
 }
