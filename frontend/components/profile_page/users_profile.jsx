@@ -41,6 +41,7 @@ class UsersProfile extends React.Component {
         key={this.state.key}
         user={this.props.user} 
         />
+        <h3 className='profile-name'> {this.props.user.firstName} {this.props.user.lastName}</h3>
         <div className='bio-posts-background'>
           <div className='bio-posts-container'>
               <BioContainer 

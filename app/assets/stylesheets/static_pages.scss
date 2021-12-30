@@ -22,8 +22,8 @@
  }
 
  .profile-background-photo {
-  width: 60%;
-  height: 75%;
+  min-width: 60%;
+  min-height: 75%;
   background-size: cover;
   border-radius: 10px;
   z-index: 5;

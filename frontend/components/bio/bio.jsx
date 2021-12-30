@@ -122,8 +122,6 @@ class Bio extends React.Component {
       </Modal>
 
       <div className='bio'>
-
-        <h3> {this.props.user.firstName} {this.props.user.lastName}</h3>
       
         {this.props.user.id == this.props.currentUser.id ? this.editProfile() : 'hello'}
 
