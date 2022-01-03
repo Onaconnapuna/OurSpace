@@ -152,10 +152,17 @@
 }
 
 .post-body {
+  margin-top: 30px;
+  padding-left: 10px;
   min-height: 50px;
-  border-bottom: solid black;
   width: 100%;
-  padding: 5px;
+  font-size: 18px;
+}
+
+.post-photo {
+  object-fit: cover;
+  overflow: hidden;
+  width: 100%;
 }
 
 .posts-index {
@@ -164,6 +171,9 @@
 
 .poster-id {
   display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: solid #D1D1D1;;
 }
 
 .poster-id img {
@@ -223,3 +233,34 @@
   object-fit: cover;
   overflow: hidden;
 }
+
+.poster-name {
+  font-size: 18px;
+  font-weight: 600;
+  padding-left: 10px;
+}
+
+.post-ellipsis-button {
+  float: right;
+}
+
+.ellipsis-button-background {
+  margin-left: 225px;
+  display: flex;
+  justify-content: center;
+  color: rgb(75, 75, 75);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #e4e4e4
+}
+
+.ellipsis-button {
+  all: unset; 
+  margin-bottom: 30%;
+  font-size: 30px;
+  font-weight: 900;
+  text-align: center;
+}
+
+

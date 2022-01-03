@@ -14,18 +14,22 @@ class PostItem extends React.Component{
         <div className='post'>
           <div className='poster-id'>
             <img src={`${this.props.post.poster.imageUrl}`}/>
-            <p>
-            {this.props.post.poster.firstName} {this.props.post.poster.lastName}
+            <p className='poster-name'>
+              {this.props.post.poster.firstName} {this.props.post.poster.lastName}
             </p>
+            <div className='ellipsis-button-background'>
+              <button className='ellipsis-button'> &#8230; </button>
+            </div>
           </div>
           <div className='post-body'>
            {this.props.post.body}
           </div>
-          <img src={this.props.post.photoUrl}/>
+          <img className='post-photo' src={this.props.post.photoUrl}/>
           <div>
-          <button className='share-post-button'>Share</button>
+
+          {/* <button className='share-post-button'>Share</button>
           <button className='delete-post-button' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
-          <button className='edit-post-button'>Edit Post</button>
+          <button className='edit-post-button'>Edit Post</button> */}
           </div>
         </div>
       )
