@@ -154,6 +154,8 @@
 .post-body {
   margin-top: 30px;
   padding-left: 10px;
+  padding-right: 10px;
+  overflow-wrap: break-word ;
   min-height: 50px;
   width: 100%;
   font-size: 18px;
@@ -240,19 +242,23 @@
   padding-left: 10px;
 }
 
-.post-ellipsis-button {
-  float: right;
-}
-
 .ellipsis-button-background {
   margin-left: 225px;
   display: flex;
   justify-content: center;
-  color: rgb(75, 75, 75);
   min-width: 50px;
   min-height: 50px;
   border-radius: 50%;
-  background-color: #e4e4e4
+  background-color: #ffffff
+}
+
+.ellipsis-button-background:hover {
+  cursor: pointer;
+  background-color: #D1D1D1;
+}
+
+.ellipsis-button-background:active {
+  background-color: #B6B6B6;
 }
 
 .ellipsis-button {
