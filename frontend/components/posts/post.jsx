@@ -18,7 +18,7 @@ class PostItem extends React.Component{
               {this.props.post.poster.firstName} {this.props.post.poster.lastName}
             </p>
             <div className='ellipsis-button-background'>
-              <button className='ellipsis-button'> &#8230; </button>
+              <button className='ellipsis-button' onClick={() => this.props.deletePost(this.props.post.id)}> &#8230; </button>
             </div>
           </div>
           <div className='post-body'>
