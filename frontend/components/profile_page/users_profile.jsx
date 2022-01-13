@@ -12,7 +12,7 @@ class UsersProfile extends React.Component {
     super (props)
 
     this.state = {
-      key: 1
+    key: 1
     }
 
     this.forceProfileRender = this.forceProfileRender.bind(this)
@@ -50,6 +50,7 @@ class UsersProfile extends React.Component {
               />
               <div className='posts'>
               <PostFormContainer 
+              currentUser={this.props.currentUser}
               user={this.props.user}
               forceProfileRender={this.forceProfileRender}
               />

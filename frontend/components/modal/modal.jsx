@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
 import UpdateBioContainer from '../bio/update_bio_container';
-import UpdateUserProfileContainer  from '../profile_page/update_profile_container';
 import PostFormContainer from '../posts/post_form_container';
 
 class Modal extends React.Component {
@@ -28,9 +27,6 @@ class Modal extends React.Component {
         return component;
       case  'updateBio':
         component = <UpdateBioContainer />;
-        return component;
-      case 'editProfile':
-        component = <UpdateUserProfileContainer/>;
         return component;
       case 'createPost':
         component = <PostFormContainer userId={this.props.userId}/>;

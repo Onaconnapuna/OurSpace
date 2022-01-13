@@ -25,7 +25,7 @@ class PostItem extends React.Component{
            {this.props.post.body}
           </div>
           <img className='post-photo' src={this.props.post.photoUrl}/>
-          <div>
+          <div> 
 
           {/* <button className='share-post-button'>Share</button>
           <button className='delete-post-button' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>

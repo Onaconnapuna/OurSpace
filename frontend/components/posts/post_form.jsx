@@ -1,6 +1,5 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { fetchPosts } from '../../util/posts_api_util';
 
 class PostFrom extends React.Component {
   constructor(props) {
@@ -57,8 +56,14 @@ class PostFrom extends React.Component {
         >
         <div className='post-form-container'>
         <form className='post-form' onSubmit={this.handleSubmit}>
-            <h3>Whats on your mind? </h3>
-            <textarea value = {this.state.post.body} onChange={this.update('body')} cols="30" rows="10"></textarea>  
+            <h3 className='create-post'> Create Post </h3>
+            <div className='create-post-poster-id'>
+              <img className='create-post-poster-img' src={`${this.props.currentUser.profilePhoto}`} />
+              <p className='poster-name'>
+                {this.props.currentUser.firstName} {this.props.currentUser.lastName}
+              </p>
+            </div>
+            <textarea className='create-post-body' value = {this.state.post.body} onChange={this.update('body')} cols="30" rows="10"></textarea>  
             <input type='file' onChange={this.handleFile}/>
             <button>{this.props.formType}</button>
         </form>

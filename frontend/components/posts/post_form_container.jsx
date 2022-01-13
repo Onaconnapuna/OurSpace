@@ -5,7 +5,7 @@ import { createPost, fetchPosts } from '../../actions/post_actions'
 const mapStateToProps = (state) => {
   return {
     posterId: state.session.currentUser.id,
-    formType: 'Create Post'
+    formType: 'Create Post',
   }
 }
 

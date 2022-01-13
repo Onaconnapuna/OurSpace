@@ -20,6 +20,8 @@
 
  textarea {
    resize: none;
+   outline: none;
+   border: none;
  }
 
  .window {
@@ -39,6 +41,7 @@
 }
 
 .modal-child {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: absolute;
   box-shadow: 50px, 50px, 50px, 50px, tomato;
   top: 50%;

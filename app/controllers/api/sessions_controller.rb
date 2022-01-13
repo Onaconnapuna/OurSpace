@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
       login(@user)
       @user_profile_photo = @user.profile_photo
       @user_background_photo = @user.background_photo
-      render 'api/users/show'
+      render :show
     else  
       render json: ['Invalid credentials'], status: 401
     end

@@ -8,7 +8,9 @@ import UsersProfile from './users_profile';
 const mapStateToProps = (state, ownProps) => {
   return {
     user: state.entities.users[ownProps.match.params.userId],
-    posts: Object.values(state.entities.posts)
+    posts: Object.values(state.entities.posts),
+    currentUserId: state.session.currentUser.id,
+    currentUser: state.session.currentUser
   }
 }
 
