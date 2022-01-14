@@ -63,7 +63,7 @@ class PostFrom extends React.Component {
                 {this.props.currentUser.firstName} {this.props.currentUser.lastName}
               </p>
             </div>
-            <textarea className='create-post-body' value = {this.state.post.body} onChange={this.update('body')} cols="30" rows="10"></textarea>  
+            <textarea className='create-post-body' value = {this.state.post.body} placeholder="What's on your mind?" onChange={this.update('body')} cols="30" rows="10"></textarea>  
             <input type='file' onChange={this.handleFile}/>
             <button>{this.props.formType}</button>
         </form>
