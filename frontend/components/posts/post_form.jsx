@@ -58,7 +58,7 @@ class PostFrom extends React.Component {
         <form className='post-form' onSubmit={this.handleSubmit}>
             <h3 className='create-post'> Create Post </h3>
             <div className='create-post-poster-id'>
-              <img className='create-post-poster-img' src={`${this.props.currentUser.profilePhoto}`} />
+              <img className='create-post-poster-img' src={`${this.props.currentUser.profilePhoto.imageUrl}`} />
               <p className='poster-name'>
                 {this.props.currentUser.firstName} {this.props.currentUser.lastName}
               </p>
