@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
       firstName: '',
       lastName: ''
     }
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -42,7 +43,7 @@ class SessionForm extends React.Component {
       password: 'password'
     }
     this.props.demoForm(user)
-    this.props.closeModal()
+    this.props.switchModals(false, false)
   }
 
   handleSubmit(e) {
@@ -50,7 +51,7 @@ class SessionForm extends React.Component {
     const user = this.state;
     this.props.processForm(user)
     if (!this.props.errors) {
-      this.props.closeModal()
+      this.setState({modalIsOpen: false})
     }
   }
 
@@ -73,7 +74,7 @@ class SessionForm extends React.Component {
             {/* <button className='session-button' onClick={ (e) => {this.demoSignUp()}}>Demo</button> */}
           </div>
           <div className='navlink-container'>
-            {this.props.otherForm}
+            <button onClick={ ()=> this.props.switchModals(true, false)}>Sign Up Instead</button>
             </div>
           <div className='errors-container'>
             <br />
@@ -110,7 +111,7 @@ class SessionForm extends React.Component {
             {/* <button className='session-button' onClick={ (e) => {this.demoSignUp()}}>Demo</button> */}
           </div>
           <div className='navlink-container'>
-            {this.props.otherForm}
+            <button onClick={ ()=> this.props.switchModals(false, true)}>Log In Instead</button>
           </div>
           <div className='errors-container'>
             <br />
@@ -122,17 +123,14 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div className='session-form-background'>
-        <div className='form-container'>
+        <div className='session-form-container'>
           {
             this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
           }
           <button className='demo-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
         </div>
-      </div>
     )
-  }
-    
+  }   
 }
 
 export default SessionForm
