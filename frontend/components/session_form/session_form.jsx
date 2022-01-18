@@ -22,14 +22,12 @@ class SessionForm extends React.Component {
   renderErrors() {
     return(
       <div className='session-form-errors'>
-
         {this.props.errors.map((error, i) => (
           <div key={`error-${i}`} className='error'>
             {error}
           </div>
         ))}
       </div> 
-  
     )
   }
 
@@ -50,9 +48,8 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     this.props.processForm(user)
-    if (!this.props.errors) {
-      this.setState({modalIsOpen: false})
-    }
+    if (this.props.errors == false) this.props.switchModals(false, false) 
+
   }
 
   handleLogIn() {

@@ -80,14 +80,13 @@
   position: relative; */
   width: 100%;
   height: 60%;
-  background-color: red;
-  color: red;
+  background-color: white;
 }
 
 .session-form {
   border-radius: 10px;
   padding: 20px;
-  background-color: red;
+  background-color: white;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -137,15 +136,32 @@ label {
  }
 
  .session-button {
-  padding: 8px;
+  /* padding: 8px;
   margin: 10px;
   border-radius: 12px;
   font-weight: 700;
   width: 72px;
   background-color: #1473e6;
   border-color: #1473e6;
-  color: white;
+  color: white; */
+  border: none;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: #e4e4e4;
  }
+
+ .session-button:hover {
+  cursor: pointer;
+  background-color: #D1D1D1;
+}
+
+.session-button:active {
+  background-color: #B6B6B6;
+}
 
  .demo-button {
   padding: 8px;
