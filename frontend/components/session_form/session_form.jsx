@@ -11,6 +11,8 @@ class SessionForm extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderError = this.renderError.bind(this);
+    this.renderErrorHelper = this.renderErrorHelper.bind(this)
   }
 
   update(field) {
@@ -19,7 +21,21 @@ class SessionForm extends React.Component {
     })
   }
 
-  renderErrors() {
+  renderErrorHelper(string) {
+    for(let i = 0; i < this.props.errors.length; i++) {
+      if (this.props.errors[i].toLowerCase().includes(string)) {
+        return this.props.errors[i]
+      }
+    }
+  }
+
+  renderError(string) {
+    return (
+      <div className='error'> {this.renderErrorHelper(string)} </div>
+    )
+  }
+
+  renderAllErrors() {
     return(
       <div className='session-form-errors'>
         {this.props.errors.map((error, i) => (
@@ -52,15 +68,19 @@ class SessionForm extends React.Component {
       if (this.props.errors == false) {
         this.props.switchModals(false, false)
       } 
-    }, 500)
+    }, 750)
   }
 
   handleLogIn() {
     return (
         <form onSubmit={this.handleSubmit} className='session-form'>
-          <h3>Welcome to Ourspace</h3>
-          <h4>Log In</h4>
-          <br />
+          <div className='session-form-heading'>
+            <h3>Welcome to Ourspace</h3>
+            <br />
+            <h4>Log In</h4>
+            <br />
+            {this.renderAllErrors()}
+          </div>
           <label className='session-input'>Email
             <input type="text" value={this.state.email} onChange={this.update('email')}/>
           </label>
@@ -71,7 +91,6 @@ class SessionForm extends React.Component {
           <br />
           <div className='session-form-buttons'>
             <button className='session-button'>Log In</button>
-            
           </div>
           <div className='navlink-container'>
             <p>Don't have an account? </p>
@@ -84,24 +103,31 @@ class SessionForm extends React.Component {
   handleSignUp() {
     return (  
         <form onSubmit={this.handleSubmit} className='session-form'>
-          <h3>Welcome to Ourspace</h3>
-          <h4>Create an Account</h4>
+          <div className='session-form-heading'>
+            <h3>Welcome to Ourspace</h3>
+            <br />
+            <h4>Create an Account</h4>
+          </div>
           <br />
           <label>Email
             <input type="text" value={this.state.email} onChange={this.update('email')} className='session-input'/>
           </label>
+            {this.renderError('email')}
             <br />
           <label>Password
             <input type="password" value={this.state.password} onChange={this.update('password')} className='session-input' />
           </label>
+          {this.renderError('password')}
             <br />
           <label>First Name
             <input type="text" value={this.state.firstName} onChange={this.update('firstName')} className='session-input'/>
           </label>
+          {this.renderError('first name')}
             <br />
           <label>Last Name
             <input type="text" value={this.state.lastName} onChange={this.update('lastName')} className='session-input'/>
           </label>  
+          {this.renderError('last name')}
           <br />
           <div className='session-form-buttons'>
             <button className='session-button'>Sign Up</button>
@@ -121,10 +147,6 @@ class SessionForm extends React.Component {
             this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
           }
           <button className='demo-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
-          <div className='errors-container'>
-            <br />
-            {this.renderErrors()}
-          </div>
         </div>
     )
   }   

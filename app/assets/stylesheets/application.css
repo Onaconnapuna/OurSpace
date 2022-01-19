@@ -94,6 +94,12 @@
   display: flex;
   flex-direction: column;
  }
+
+ .session-form-heading {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
  
 .session-form label {
   padding: 5px;
@@ -217,6 +223,10 @@ label {
   color: red;
  }
 
+ .error {
+   color: red;
+ }
+
  .session-form-errors li {
   display: inline-block;
   flex-wrap: wrap;
@@ -245,7 +255,6 @@ label {
   flex-direction: column;
   align-items: center;
   text-align: left;
-  /* padding: 5px; */
  }
 
 .navbar-container {
