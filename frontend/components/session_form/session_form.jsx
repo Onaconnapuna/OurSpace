@@ -48,8 +48,11 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = this.state;
     this.props.processForm(user)
-    if (this.props.errors == false) this.props.switchModals(false, false) 
-
+    setTimeout( () => {
+      if (this.props.errors == false) {
+        this.props.switchModals(false, false)
+      } 
+    }, 500)
   }
 
   handleLogIn() {
@@ -68,15 +71,12 @@ class SessionForm extends React.Component {
           <br />
           <div className='session-form-buttons'>
             <button className='session-button'>Log In</button>
-            {/* <button className='session-button' onClick={ (e) => {this.demoSignUp()}}>Demo</button> */}
+            
           </div>
           <div className='navlink-container'>
-            <button onClick={ ()=> this.props.switchModals(true, false)}>Sign Up Instead</button>
+            <p>Don't have an account? </p>
+            <button className='switch-forms' onClick={ ()=> this.props.switchModals(true, false)}>Sign Up Instead</button>
             </div>
-          <div className='errors-container'>
-            <br />
-            {this.renderErrors()}
-          </div>
         </form>
     )
   }
@@ -105,14 +105,10 @@ class SessionForm extends React.Component {
           <br />
           <div className='session-form-buttons'>
             <button className='session-button'>Sign Up</button>
-            {/* <button className='session-button' onClick={ (e) => {this.demoSignUp()}}>Demo</button> */}
           </div>
           <div className='navlink-container'>
-            <button onClick={ ()=> this.props.switchModals(false, true)}>Log In Instead</button>
-          </div>
-          <div className='errors-container'>
-            <br />
-            {this.renderErrors()}
+            <p>Already have an account? </p>
+            <button className='switch-forms' onClick={ ()=> this.props.switchModals(false, true)}>Log In Instead</button>
           </div>
         </form>
     )
@@ -125,6 +121,10 @@ class SessionForm extends React.Component {
             this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
           }
           <button className='demo-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+          <div className='errors-container'>
+            <br />
+            {this.renderErrors()}
+          </div>
         </div>
     )
   }   
