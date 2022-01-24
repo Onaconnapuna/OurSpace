@@ -14,16 +14,27 @@
   top: 35%;
   display: flex;
   flex-direction: column;
-  align-items: left;
 }
 
-.welcome * {
-  margin-bottom: 20px;
+.landing-page-welcome h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 60px;
+  color: #282828;
+  margin-bottom: 15px;
 }
 
-.welcome h3 {
-  font-size: 40px;
-  color: #282828
+.landing-page-welcome {
+  display: flex;
+}
+
+.landing-page-logo {
+  position: relative;
+  bottom: 10px;
+  height: 100px;
+  width: 100px;
+  margin-bottom: 15px;
 }
 
 .welcome h4 {

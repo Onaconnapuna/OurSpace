@@ -50,7 +50,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  overflow: hidden;
 }
   
  html, body{
@@ -88,7 +87,7 @@
   background-color: white;
   box-shadow: 2px 2px 5px 2px #D1D1D1;
   border-radius: 10px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .session-form {
@@ -250,10 +249,16 @@ label {
   opacity: .9;
 }
 
-.logo {
+.ourspace {
   margin-left: 20px ;
   font-weight: 700;
   font-size: 32px;
+  color: #282828;
+}
+
+.logo-navbar {
+  height: 50px;
+  width: 50px;
 }
 
 .navbar-container {

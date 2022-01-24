@@ -28,8 +28,11 @@ class LandingPage extends React.Component{
     return (
       <div className='landing-page'>
         <div className='welcome'>
-          <h3>Ourspace</h3>
-          <h4>A Demo Application Made By Connor Germain</h4>
+          <div className='landing-page-welcome'>
+            <h3>Ourspace</h3>
+            <img className='landing-page-logo' src="https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/ourspace.png"/>
+          </div>
+          <h4>A Demo Application Made by Connor Germain</h4>
         </div>
   
         <div className='landing-page-session-buttons-container'>

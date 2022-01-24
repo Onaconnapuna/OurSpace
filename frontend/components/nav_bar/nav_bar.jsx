@@ -73,9 +73,8 @@ class NavBar extends React.Component {
         switchModals={this.switchModals}
         />
       </Modal>
-       <h1 className='logo'>Ourspace</h1>
-       {/* <img src="../../../app/assets/images/ourspace.png"/> */}
-       <div className="logo-pic"></div>
+       <h1 className='ourspace'>Ourspace</h1>
+       <img className='logo-navbar' src="https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/ourspace.png"/>
        {
         this.props.currentUser ? this.navBarWhileLoggedIn() : this.navBarWhileLoggedOut()
        }
