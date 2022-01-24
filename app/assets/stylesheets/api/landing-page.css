@@ -22,7 +22,7 @@
   align-items: center;
   font-size: 60px;
   color: #282828;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .landing-page-welcome {
@@ -31,10 +31,10 @@
 
 .landing-page-logo {
   position: relative;
-  bottom: 10px;
+  bottom: 15px;
   height: 100px;
   width: 100px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .welcome h4 {
