@@ -1,3 +1,4 @@
+require 'open-uri'
 class BackgroundPhoto < ApplicationRecord
 
   validates :user_id, presence: true
@@ -12,7 +13,7 @@ class BackgroundPhoto < ApplicationRecord
 
   def attach_default_photo
     if !self.photo.attached?
-      file = File.open('app/assets/images/default_background_photo.png')
+      file = URI.open('https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/default_background_photo.png')
       self.photo.attach(io: file, filename: 'default_background_photo.png')
     end
   end
