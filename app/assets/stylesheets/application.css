@@ -15,8 +15,11 @@
  *= require_reset
  */
 
- * {box-sizing: border-box;}
- * {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+ * {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
 
  textarea {
    resize: none;
@@ -40,12 +43,14 @@
   z-index: 9;
 }
 
+
 .modal-child {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  overflow: hidden;
 }
   
  html, body{
@@ -78,7 +83,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 500px;
   height: 60%;
   background-color: white;
   box-shadow: 2px 2px 5px 2px #D1D1D1;
@@ -87,6 +92,7 @@
 }
 
 .session-form {
+  width: 100%;
   border-radius: 10px;
   padding: 20px;
   background-color: white;
@@ -100,10 +106,6 @@
    flex-direction: column;
    align-items: center;
  }
- 
-.session-form label {
-  padding: 5px;
-}
 
  .session-form-buttons{
   display: flex;
@@ -111,10 +113,10 @@
  }
 
  .profile-link {
-   color: black;
+   color: #282828;
    text-decoration: none;
    font-size: 20px;
-   font-weight: 700;
+   font-weight: 600;
  }
 
 input[type=text] {
@@ -133,7 +135,7 @@ label {
   font-size: 12px;
   font-weight: 400;
   color: #747474;
-  padding: 4px;
+  padding: 12px;
   vertical-align: top;
 }
 
@@ -143,14 +145,6 @@ label {
  }
 
  .session-button {
-  /* padding: 8px;
-  margin: 10px;
-  border-radius: 12px;
-  font-weight: 700;
-  width: 72px;
-  background-color: #1473e6;
-  border-color: #1473e6;
-  color: white; */
   border: none;
   width: 100%;
   padding: 10px;
@@ -171,15 +165,6 @@ label {
 }
 
  .demo-button {
-  /* padding: 8px;
-  margin: 10px;
-  border-radius: 12px;
-  font-weight: 700;
-  height: 40px;
-  width: 72px;
-  background-color: #1473e6;
-  border-color: #1473e6;
-  color: white; */
   border: none;
   width: 90%;
   padding: 10px;
@@ -221,10 +206,12 @@ label {
 
  .session-form-errors {
   color: red;
+  text-align: center;
  }
 
  .error {
    color: red;
+   text-align: center;
  }
 
  .session-form-errors li {
@@ -234,7 +221,6 @@ label {
 
  .navlink-container {
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -260,11 +246,12 @@ label {
 .navbar-container {
   display: flex;
   width: 100%;
-  background-color: white;
+  background-color: #F5F5F5;
   opacity: .9;
 }
 
 .logo {
+  margin-left: 20px ;
   font-weight: 700;
   font-size: 32px;
 }
@@ -274,7 +261,6 @@ label {
   align-items: center;
   box-shadow: 0px 4px 2px -2px #D1D1D1;
   height: 75px;
-  margin-bottom: 10px;
 }
 
 .banner {

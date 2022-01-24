@@ -14,13 +14,13 @@ class NavBar extends React.Component {
         password: 'password'
       },
       signUpModalIsOpen: false,
-      loginModalIsOpen: false
+      loginModalIsOpen: false,
     }
 
     this.switchModals = this.switchModals.bind(this)
-
     Modal.setAppElement('#root')
   }
+
 
 
   navBarWhileLoggedIn() {
@@ -54,8 +54,8 @@ class NavBar extends React.Component {
     <header className='navbar-container'>
       <Modal
         isOpen={this.state.signUpModalIsOpen}
-        overlayClassName='modal-background'
-        className='modal-child'
+        overlayClassName='modal-background-alt'
+        className='modal-child-alt'
         onRequestClose={() => this.setState({signUpModalIsOpen: false})}
       >
         <SignUpFormContainer
@@ -65,8 +65,8 @@ class NavBar extends React.Component {
 
       <Modal
         isOpen={this.state.loginModalIsOpen}
-        overlayClassName='modal-background'
-        className='modal-child'
+        overlayClassName='modal-background-alt'
+        className='modal-child-alt'
         onRequestClose={() => this.setState({loginModalIsOpen: false})}
       >
         <LoginFormContainer
@@ -74,6 +74,8 @@ class NavBar extends React.Component {
         />
       </Modal>
        <h1 className='logo'>Ourspace</h1>
+       {/* <img src="../../../app/assets/images/ourspace.png"/> */}
+       <div className="logo-pic"></div>
        {
         this.props.currentUser ? this.navBarWhileLoggedIn() : this.navBarWhileLoggedOut()
        }

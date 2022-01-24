@@ -1,0 +1,68 @@
+.landing-page{
+  margin: 0;
+  height: 100%;
+  background-size: cover;
+  background-color: #F5F5F5;
+  display: flex;
+}
+
+.welcome {
+  height: 50%;
+  width: 50%;
+  position: relative;
+  left: 20%;
+  top: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.welcome * {
+  margin-bottom: 20px;
+}
+
+.welcome h3 {
+  font-size: 40px;
+  color: #282828
+}
+
+.welcome h4 {
+  font-size: 20px;
+  color: #282828
+}
+
+.landing-page-session-buttons-container {
+  position: relative;
+  left: 5%;
+  width: 25%;
+  top: 35%;
+}
+
+.landing-page-session-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-page-session-buttons button {
+  border: none;
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  background-color: #e4e4e4;
+}
+
+.landing-page-session-buttons button:hover {
+  cursor: pointer;
+  background-color: #D1D1D1;
+}
+
+.landing-page-session-buttons button:active {
+  background-color: #B6B6B6;
+}
+
+
+

@@ -8,7 +8,7 @@ import PostFormContainer from './posts/post_form_container';
 import NavBarContainer from './nav_bar/nav_bar_container';
 import MainPageContainer from './main_page/main_page_container';
 import UsersProfileContainer from './profile_page/user_profile_container';
-import LandingPage from './background/background';
+import LandingPage from './landing-page/landing-page';
 
 const App = () => (
   <div className='window'>

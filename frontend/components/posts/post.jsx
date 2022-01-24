@@ -22,7 +22,7 @@ class PostItem extends React.Component{
             </div>
           </div>
           <div className='post-body'>
-           {this.props.post.body}
+          {this.props.post.body}
           </div>
           <img className='post-photo' src={this.props.post.photoUrl}/>
           <div> 
