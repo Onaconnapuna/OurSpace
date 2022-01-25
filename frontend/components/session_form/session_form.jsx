@@ -16,15 +16,36 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderError = this.renderError.bind(this);
     this.renderErrorHelper = this.renderErrorHelper.bind(this);
-    this.passwordsDontMatchError = this.passwordsDontMatchError.bind(this)
+    this.passwordsDontMatchError = this.passwordsDontMatchError.bind(this);
+    this.checkValidForm = this.checkValidForm.bind(this);
   }
-  
+
+
+
   update(field) {
     return (e) => this.setState({
       [field]: e.currentTarget.value
     })
   }
 
+  checkValidForm() {
+    if (this.state.password !== this.state.password2) {
+      return false
+    }
+    if (this.state.email === '' || this.state.password === '' || this.state.firstName === '' || this.state.lastName === '') {
+      return false
+    } else {
+      return true 
+    }
+  }
+
+  checkValidLogIn() {
+    if (this.state.email === '' || this.state.password === '') {
+      return false 
+    } else { 
+      return true
+    }
+  } 
   renderErrorHelper(string) {
     for(let i = 0; i < this.props.errors.length; i++) {
       if (this.props.errors[i].toLowerCase().includes(string)) {
@@ -85,7 +106,7 @@ class SessionForm extends React.Component {
         this.props.switchModals(false, false);
         this.props.history.push(`/main`)
       } 
-    }, 1000);
+    }, 1500);
   }
 
   handleLogIn() {
@@ -107,7 +128,7 @@ class SessionForm extends React.Component {
           </label>
           <br />
           <div className='session-form-buttons'>
-            <button className='session-button'>Log In</button>
+            <button className='session-button' disabled={!this.checkValidLogIn()}>Log In</button>
           </div>
           <div className='navlink-container'>
             <p>Don't have an account? </p>
@@ -147,11 +168,8 @@ class SessionForm extends React.Component {
           </label>  
           {this.renderError('last name')}
           <br />
-        
           <div className='session-form-buttons'>
-    
-            <button className='session-button'>Sign Up</button>
-      
+            <button className='session-button' disabled={!this.checkValidForm()}>Sign Up</button>
           </div>
           <div className='navlink-container'>
             <p>Already have an account? </p>
