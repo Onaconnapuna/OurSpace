@@ -1,4 +1,6 @@
 import React from 'react'; 
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -6,15 +8,17 @@ class SessionForm extends React.Component {
     this.state = {
       email: '',
       password: '',
+      password2: '',
       firstName: '',
-      lastName: ''
+      lastName: '',
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderError = this.renderError.bind(this);
-    this.renderErrorHelper = this.renderErrorHelper.bind(this)
+    this.renderErrorHelper = this.renderErrorHelper.bind(this);
+    this.passwordsDontMatchError = this.passwordsDontMatchError.bind(this)
   }
-
+  
   update(field) {
     return (e) => this.setState({
       [field]: e.currentTarget.value
@@ -26,6 +30,14 @@ class SessionForm extends React.Component {
       if (this.props.errors[i].toLowerCase().includes(string)) {
         return this.props.errors[i]
       }
+    }
+  }
+
+  passwordsDontMatchError() {
+    if (this.state.password !== this.state.password2) {
+      return (
+        <div className='error'>Passwords don't match</div>
+      )
     }
   }
 
@@ -58,22 +70,27 @@ class SessionForm extends React.Component {
     }
     this.props.demoForm(user)
     this.props.switchModals(false, false)
+  
+    setTimeout( () => {
+      this.props.history.push(`/main`)
+    }, 1000)
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm(user)
+    this.props.processForm(user);
     setTimeout( () => {
       if (this.props.errors == false) {
-        this.props.switchModals(false, false)
+        this.props.switchModals(false, false);
+        this.props.history.push(`/main`)
       } 
-    }, 750)
+    }, 1000);
   }
 
   handleLogIn() {
     return (
-        <form onSubmit={this.handleSubmit} className='session-form'>
+      <form onSubmit={this.handleSubmit} className='session-form'>
           <div className='session-form-heading'>
             <h3>Welcome to Ourspace</h3>
             <br />
@@ -108,29 +125,33 @@ class SessionForm extends React.Component {
             <br />
             <h4>Create an Account</h4>
           </div>
-          <br />
           <label>Email
             <input type="text" value={this.state.email} onChange={this.update('email')} className='session-input'/>
           </label>
             {this.renderError('email')}
-            <br />
           <label>Password
             <input type="password" value={this.state.password} onChange={this.update('password')} className='session-input' />
           </label>
           {this.renderError('password')}
-            <br />
+          <label>Password
+            <input type="password" value={this.state.password2} onChange={this.update('password2')} className='session-input' />
+          </label>
+          {this.passwordsDontMatchError()}
           <label>First Name
             <input type="text" value={this.state.firstName} onChange={this.update('firstName')} className='session-input'/>
           </label>
           {this.renderError('first name')}
-            <br />
+          
           <label>Last Name
             <input type="text" value={this.state.lastName} onChange={this.update('lastName')} className='session-input'/>
           </label>  
           {this.renderError('last name')}
           <br />
+        
           <div className='session-form-buttons'>
+    
             <button className='session-button'>Sign Up</button>
+      
           </div>
           <div className='navlink-container'>
             <p>Already have an account? </p>
@@ -146,11 +167,12 @@ class SessionForm extends React.Component {
           {
             this.props.formType === 'signup' ? this.handleSignUp() : this.handleLogIn()
           }
-          <button className='demo-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+            <button className='demo-button' onClick={ () => {this.demoSignUp()}}>Demo</button>
+
         </div>
     )
   }   
 }
 
-export default SessionForm
+export default withRouter(SessionForm)
 
