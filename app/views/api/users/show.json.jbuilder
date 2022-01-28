@@ -7,3 +7,6 @@ json.set! :profile_photo do
   json.image_url url_for(@user_profile_photo.photo)
   json.extract! @user_profile_photo, :id, :user_id
 end 
+json.set! :friends do 
+  json.array! @user_friends, :id, :first_name, :last_name
+end

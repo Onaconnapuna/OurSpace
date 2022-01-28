@@ -10,9 +10,9 @@ class Api::UsersController < ApplicationController
   def create 
     @user = User.new(user_params) 
     if @user.save
-      @user.add_default_photos
       @user_background_photo = @user.background_photo
       @user_profile_photo = @user.profile_photo
+      @user_friends = @user.friends
       login(@user)
       render :show
     else 
@@ -36,6 +36,8 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @user_background_photo = @user.background_photo 
     @user_profile_photo = @user.profile_photo
+    @user_friends = @user.friends 
+    @user_friendships = @user.friendships
     if @user 
       render :show 
     else  

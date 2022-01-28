@@ -6,12 +6,13 @@ class Api::SessionsController < ApplicationController
       login(@user)
       @user_profile_photo = @user.profile_photo
       @user_background_photo = @user.background_photo
+      @user_friends = @user.friends
       render 'api/users/show'
     else  
       render json: ['Invalid credentials'], status: 401
     end
   end
-
+  
   def destroy 
     @user = current_user
     if @user 

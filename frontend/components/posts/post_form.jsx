@@ -12,7 +12,7 @@ class PostFrom extends React.Component {
         body: '',
       },
       photoFile: null,
-      modalIsOpen: true 
+      modalIsOpen: false
     }
 
     Modal.setAppElement('#root')
