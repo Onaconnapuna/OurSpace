@@ -94,19 +94,21 @@ class SessionForm extends React.Component {
   
     setTimeout( () => {
       this.props.history.push(`/main`)
-    }, 1000)
+    }, 1500)
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm(user);
+    this.props.processForm(user).then(this.props.removeErrors());
+    console.log(this.props.errors)
     setTimeout( () => {
       if (this.props.errors == false) {
         this.props.switchModals(false, false);
+        // console.log(this.props.history)
         this.props.history.push(`/main`)
       } 
-    }, 1500);
+    }, 3000);
   }
 
   handleLogIn() {

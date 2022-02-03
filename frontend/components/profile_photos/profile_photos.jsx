@@ -26,6 +26,13 @@ class ProfilePhotos extends React.Component {
     }, 4000);
   }
 
+  // async componentDidMount () {
+  //   const user = await this.props.fetchUSer(this.props.user.id)
+  //   this.setState({
+  //     profilePhoto: user.profilePhoto.imageUrl,
+  //     backgroundPhoto: user.backgroundPhoto.imageUrl})
+  // } 
+
   render() { 
     return(
     <div className='profile-photos-container'>
