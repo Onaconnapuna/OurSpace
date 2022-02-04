@@ -1,6 +1,7 @@
 import React from 'react'; 
-import { Link } from 'react-router-dom'
-import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import Modal from 'react-modal/lib/components/Modal';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -89,6 +90,7 @@ class SessionForm extends React.Component {
       email: 'demouser@demo.com',
       password: 'password'
     }
+    this.setState({loading: true})
     this.props.demoForm(user)
     this.props.switchModals(false, false)
   
@@ -100,20 +102,19 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.processForm(user).then(this.props.removeErrors());
-    console.log(this.props.errors)
+    this.props.processForm(user).then(this.props.removeErrors())
     setTimeout( () => {
+      console.log(this.props.errors)
       if (this.props.errors == false) {
         this.props.switchModals(false, false);
-        // console.log(this.props.history)
         this.props.history.push(`/main`)
       } 
-    }, 3000);
+    }, 1500);
   }
 
   handleLogIn() {
     return (
-      <form onSubmit={this.handleSubmit} className='session-form'>
+      <form onSubmit={this.handleSubmit} className='session-form'>   
           <div className='session-form-heading'>
             <h3>Welcome to Ourspace</h3>
             <br />

@@ -13,7 +13,7 @@ const mapStateToProps = ( {errors, session} ) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    processForm: (user) => dispatch(signup(user)).then(this.props.history.push(`main`)),
+    processForm: (user) => dispatch(signup(user)),
     demoForm: (user) => dispatch(login(user)),
     removeErrors: () => dispatch(removeErrors()),
   };

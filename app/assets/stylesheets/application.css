@@ -18,6 +18,7 @@
  * {
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #282828;;
   }
 
 
@@ -31,6 +32,16 @@
    z-index: 0;
    height: 100%;
    margin: 0;
+ }
+ 
+ .loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(92, 92, 92, 0.7);
+  z-index: 9;
  }
 
  .modal-background {

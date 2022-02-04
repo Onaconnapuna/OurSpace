@@ -4,7 +4,7 @@ import PostsIndexContainer from '../posts/posts_index_container';
 import BioContainer from '../bio/bio_container';
 import ProfilePhotosContainer from '../profile_photos/profile_photos_container';
 import FriendshipIndexContainer from '../friendships/friendships_index_container';
-import 'regenerator-runtime/runtime'
+import { useHistory } from 'react-router-dom'
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class UsersProfile extends React.Component {
     }
 
     this.forceProfileRender = this.forceProfileRender.bind(this)
+    this.backListener = this.backListener.bind(this)
   }
 
   componentDidMount() {
@@ -23,13 +24,31 @@ class UsersProfile extends React.Component {
         this.props.fetchUser(this.props.match.params.userId)
       }, 1000)
     }
+    this.listen = this.props.history.listen((location, action) => {
+      if(action === "POP" ) {
+        this.forceProfileRender();
+      } else if (action === "PUSH") {
+        this.forceProfileRender();
+      }
+    });
+  }
+  
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.match.params.id !== prevProps.match.params.id) { 
+      this.forceProfileRender();
+    }
+  }
+
+  backListener() {
+    this.props.history.listen()
   }
 
   componentWillUnmount() {
-    this.setState({key: 1})
+    this.listen(); 
   }
 
   forceProfileRender() {
+    console.log(this.props.history)
     this.setState({
       key: this.state.key + 1
     })
@@ -49,6 +68,7 @@ class UsersProfile extends React.Component {
         <h3 className='profile-name'> {this.props.user.firstName} {this.props.user.lastName}</h3>
         <div className='bio-posts-background'>
           <div className='bio-posts-container'>
+            <div className='bio-friends'>
               <BioContainer 
               user={this.props.user}
               forceProfileRender={this.forceProfileRender}
@@ -57,6 +77,7 @@ class UsersProfile extends React.Component {
               user={this.props.user}
               forceProfileRender={this.forceProfileRender}
               />
+            </div>
               <div className='posts'>
               <PostFormContainer 
               currentUser={this.props.currentUser}

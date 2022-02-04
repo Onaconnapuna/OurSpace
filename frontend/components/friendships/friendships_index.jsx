@@ -21,16 +21,22 @@ class FrienshipIndex extends React.Component {
 
   render() {
     return(
-      <div className='friensdhips-index'>
-        {
-          this.friendshipPreview().map((friendship, idx) => <FriendshipItem
-          key={idx}
-          friendship={friendship}
-          user={this.props.user}
-          forceProfileRender={this.props.forceProfileRender}
-          fetchUser={this.props.fetchUser}
-          />)
-        }
+      <div className='friendships-container'>
+        <div className='friendships-index-container'>
+        <div className='friends'> Friends </div>
+          <div className='friendships-index'>
+            {
+              this.friendshipPreview().map((friendship, idx) => <FriendshipItem
+              key={idx}
+              friendship={friendship}
+              user={this.props.user}
+              forceProfileRender={this.props.forceProfileRender}
+              fetchUser={this.props.fetchUser}
+              />)
+            }
+          </div>
+        <button className='view-all-friends'> View all friends </button>
+        </div>
       </div>
     )
   }
