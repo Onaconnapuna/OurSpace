@@ -27,7 +27,7 @@ class NavBar extends React.Component {
     return (
       <div className='banner'>
         <div>
-          <Link className='profile-link'to={`/profiles/${this.props.currentUser.id}`}> Hello, {this.props.currentUser.firstName}</Link> 
+          <Link className='profile-link'to={`/profiles/${this.props.currentUser.id}`} onClick={() => this.props.fetchUser(this.props.currentUser.id)}> Hello, {this.props.currentUser.firstName}</Link> 
         </div>
         <button className='splashbutton' onClick={ () => this.props.logout()}>Log Out</button>
       </div>

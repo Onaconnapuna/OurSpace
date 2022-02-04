@@ -4,6 +4,8 @@ import FriendshipItem from './friendship_item'
 class FrienshipIndex extends React.Component {
   constructor(props) {
     super(props)
+
+    this.friendshipPreview = this.friendshipPreview.bind(this)
   }
 
   componentDidMount() {
@@ -12,15 +14,21 @@ class FrienshipIndex extends React.Component {
     }, 1500)
   }
 
+  friendshipPreview() {
+    let friendshipPreview = this.props.friendships.slice(0, 6);
+    return friendshipPreview;
+  }
 
   render() {
     return(
       <div className='friensdhips-index'>
         {
-          this.props.friendships.map((friendship, idx) => <FriendshipItem
+          this.friendshipPreview().map((friendship, idx) => <FriendshipItem
           key={idx}
           friendship={friendship}
           user={this.props.user}
+          forceProfileRender={this.props.forceProfileRender}
+          fetchUser={this.props.fetchUser}
           />)
         }
       </div>

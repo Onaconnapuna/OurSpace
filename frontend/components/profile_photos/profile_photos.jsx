@@ -1,37 +1,27 @@
 import React from 'react'
+// import 'regenerator-runtime/runtime'
 
 class ProfilePhotos extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       profilePhoto: this.props.user.profilePhoto.imageUrl,
-      profilePhotoHash: Date.now(),
       backgroundPhoto: this.props.user.backgroundPhoto.imageUrl,
-      backgroundPhotoHash: Date.now(),
     }
   }
 
- 
   componentDidMount(){
-    
     setTimeout(() => {
       this.props.fetchUser(this.props.user.id)
-    }, 3000);
+    }, 1000);
 
     setTimeout(() => {
       this.setState({
         profilePhoto: this.props.user.profilePhoto.imageUrl,
         backgroundPhoto: this.props.user.backgroundPhoto.imageUrl
       })
-    }, 4000);
+    }, 2000);
   }
-
-  // async componentDidMount () {
-  //   const user = await this.props.fetchUSer(this.props.user.id)
-  //   this.setState({
-  //     profilePhoto: user.profilePhoto.imageUrl,
-  //     backgroundPhoto: user.backgroundPhoto.imageUrl})
-  // } 
 
   render() { 
     return(

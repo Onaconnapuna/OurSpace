@@ -4,6 +4,7 @@ import PostsIndexContainer from '../posts/posts_index_container';
 import BioContainer from '../bio/bio_container';
 import ProfilePhotosContainer from '../profile_photos/profile_photos_container';
 import FriendshipIndexContainer from '../friendships/friendships_index_container';
+import 'regenerator-runtime/runtime'
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -17,16 +18,22 @@ class UsersProfile extends React.Component {
   }
 
   componentDidMount() {
-    // if (this.props.user == undefined) {
-      this.props.fetchUser(this.props.match.params.userId)
-    // }
+    if (this.props.user == undefined) {
+      setTimeout(() => {
+        this.props.fetchUser(this.props.match.params.userId)
+      }, 1000)
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({key: 1})
   }
 
   forceProfileRender() {
-    this.props.fetchUser(this.props.match.params.userId)
     this.setState({
       key: this.state.key + 1
     })
+    this.props.fetchUser(this.props.match.params.userId)
   }
 
   render() {
@@ -48,6 +55,7 @@ class UsersProfile extends React.Component {
               />
               <FriendshipIndexContainer 
               user={this.props.user}
+              forceProfileRender={this.forceProfileRender}
               />
               <div className='posts'>
               <PostFormContainer 
