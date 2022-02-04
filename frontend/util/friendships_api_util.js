@@ -1,19 +1,19 @@
 export const fetchFriendships = (userId) => {
-  return $ajax({
+  return $.ajax({
     url: `/api/users/${userId}/friendships`
   })
 }
 
 export const createFriendship = friendship => {
-  return $ajax({
+  return $.ajax({
     url: '/api/friendships',
     method: 'POST',
-    data: post
+    data: friendship
   })
 }
 
 export const deleteFriendship = friendshipId => {
-  return $ajax({
+  return $.ajax({
     url: `/api/friendships/${friendshipId}`,
     method: 'DElETE'
   })

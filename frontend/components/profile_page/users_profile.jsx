@@ -1,11 +1,9 @@
 import React from 'react';
-import PostContainer from '../posts/post_container';
 import PostFormContainer from '../posts/post_form_container';
 import PostsIndexContainer from '../posts/posts_index_container';
 import BioContainer from '../bio/bio_container';
 import ProfilePhotosContainer from '../profile_photos/profile_photos_container';
-import Modal from '../modal/modal'
-
+import FriendshipIndexContainer from '../friendships/friendships_index_container';
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -19,9 +17,9 @@ class UsersProfile extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.user == undefined) {
+    // if (this.props.user == undefined) {
       this.props.fetchUser(this.props.match.params.userId)
-    }
+    // }
   }
 
   forceProfileRender() {
@@ -47,6 +45,9 @@ class UsersProfile extends React.Component {
               <BioContainer 
               user={this.props.user}
               forceProfileRender={this.forceProfileRender}
+              />
+              <FriendshipIndexContainer 
+              user={this.props.user}
               />
               <div className='posts'>
               <PostFormContainer 
