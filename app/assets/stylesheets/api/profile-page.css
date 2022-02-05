@@ -21,6 +21,7 @@
   justify-content: center;
   width: 100%;
   box-shadow: 0px 2px 4px -2px #4e4d4d;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   z-index: 6;
 }
 
@@ -35,14 +36,14 @@
   flex-wrap: wrap;
   flex-direction: column;
   align-items: space-around;
-  background-color: #F5F5F5;
+  background-color: #ebedf0;
   margin-bottom: 25px;
   padding-right: 20px;
 }
 
 .bio {
   background-color: white;
-  box-shadow: 2px 2px 2px 2px #D1D1D1;
+  box-shadow: 1px 1px 1px 1px #D1D1D1;
   padding: 15px;
   width: 100%;
   border-radius: 5px;
@@ -74,7 +75,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #f5f5f5;
+  background-color: #ebedf0;
 }
 
 .bio-posts-container {
@@ -175,7 +176,7 @@
   flex-direction: column;
   justify-content: flex-start;
   background-color: white;
-  box-shadow: 2px 2px 2px 2px #D1D1D1;
+  box-shadow: 1px 1px 1px 1px #D1D1D1;
   width: 100%;
   min-width: 100%;
   border-radius: 5px;
@@ -184,6 +185,7 @@
 }
 
 .post-body {
+  text-align: start;
   margin-top: 20px;
   padding-left: 10px;
   padding-right: 10px;
@@ -192,7 +194,8 @@
   overflow-wrap: break-word ;
   /* min-height: 50px; */
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.333;
   font-weight: 400;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #282828;
@@ -228,7 +231,7 @@
   display: flex;
   align-items: center;
   background-color: white;
-  box-shadow: 2px 2px 2px 2px #D1D1D1;
+  box-shadow: 1px 1px 1px 1px #D1D1D1;
   height: 100px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -275,13 +278,13 @@
 
 .poster-name {
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   padding-left: 10px;
 }
 
 .ellipsis-button-background {
-  margin-left: 225px;
+  margin-left: 250px;
   display: flex;
   justify-content: center;
   min-width: 50px;
@@ -310,7 +313,7 @@
 .friendships-container{
   justify-content: center;
   max-width: 400px;
-  background-color: #F5F5F5;
+  background-color: #ebedf0;
   margin-bottom: 25px;
   padding-right: 20px;
 }
@@ -326,7 +329,7 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  box-shadow: 2px 2px 2px 2px #D1D1D1;
+  box-shadow: 1px 1px 1px 1px #D1D1D1;
   padding: 15px;
   width: 100%;
   border-radius: 5px;
@@ -349,9 +352,12 @@
 
 .friend-id img {
   margin-left: 5px;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
+  /* height: 50px; */
+  /* width: 50px; */
+  /* border-radius: 50%; */
+  border-radius: 5%;
+  height: 90%;
+  width: 90%;
   object-fit: cover;
   overflow: hidden;
 }
