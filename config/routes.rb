@@ -9,11 +9,13 @@ Rails.application.routes.draw do
       resources :friendships, only: [:index]
       resources :background_photos, only: [:create, :update]
       resources :profile_photos, only: [:create, :update]
+      resources :friend_requests, only: [:index]
     end
     resources :posts, only: [:show, :create, :destroy] do 
       resources :comments, only: [:index]
     end
     resources :friendships, only: [:create, :destroy]
+    resources :friend_requests, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     resource :session, only: [:index, :create, :destroy]
   end

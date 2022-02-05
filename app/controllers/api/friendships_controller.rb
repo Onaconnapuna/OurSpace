@@ -10,7 +10,7 @@ class Api::FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friendship_params)
     if @friendship.save
-      render 'api/users/show'
+      render :show
     else 
       render json: ['Friendship unsuccessful :('], status: 400
     end

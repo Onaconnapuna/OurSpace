@@ -94,19 +94,27 @@ class UpdateForm extends React.Component {
           </label>
 
           <label>Bio
-            <input type='text' value={this.defaultValue(this.state.user.bio)} onChange={this.update('bio')}/>
+            <input type='text' value={this.state.user.bio}
+            // value={this.defaultValue(this.state.user.bio)} 
+            onChange={this.update('bio')}/>
           </label>
 
           <label>Birthday
-            <input type="text" value={this.defaultValue(this.state.user.birthday)} onChange={this.update('birthday')} />
+            <input type="text" value={this.state.user.birthday}
+            // {this.defaultValue(this.state.user.birthday)} 
+            onChange={this.update('birthday')} />
           </label>
 
           <label>Gender/Pronouns
-            <input type="text" value={this.defaultValue(this.state.user.gender)} onChange={this.update('gender')} />
+            <input type="text" value={this.state.user.gender}
+            // {this.defaultValue(this.state.user.gender)} 
+            onChange={this.update('gender')} />
           </label>
 
           <label>RelationshipStatus
-            <input type="text" value={this.defaultValue(this.state.user.relationshipStatus)} onChange={this.update('relationshipStatus')} />
+            <input type="text" value={this.state.user.relationshipStatus}
+            // value={this.defaultValue(this.state.user.relationshipStatus)}
+             onChange={this.update('relationshipStatus')} />
           </label>
           <button>Update Bio</button>
         </form>

@@ -7,7 +7,7 @@ const friendshipReducer = (oldState = {}, action) => {
     case RECEIVE_FRIENDSHIPS:
       return action.friendships;
     case REMOVE_FRIENDSHIP:
-      delete newState[action.postId];
+      delete newState[action.friendshipId];
       return newState;
     default: 
       return oldState

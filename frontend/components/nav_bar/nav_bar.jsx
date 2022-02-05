@@ -29,7 +29,9 @@ class NavBar extends React.Component {
         <div>
           <Link className='profile-link'to={`/profiles/${this.props.currentUser.id}`} onClick={() => this.props.fetchUser(this.props.currentUser.id)}> Hello, {this.props.currentUser.firstName}</Link> 
         </div>
-        <button className='splashbutton' onClick={ () => this.props.logout()}>Log Out</button>
+        <div className="ellipsis-button-background-nav">
+          <button className='ellipsis-button' onClick={ () => this.props.logout()}> &#8230; </button>
+        </div>
       </div>
     )
   }
@@ -37,9 +39,9 @@ class NavBar extends React.Component {
   navBarWhileLoggedOut() {
     return (
       <div className='banner'>
-        <button  className='splashbutton' onClick={() => this.setState({signUpModalIsOpen: true})}>Signup</button>
+        {/* <button  className='splashbutton' onClick={() => this.setState({signUpModalIsOpen: true})}>Signup</button> */}
 
-        <button className='splashbutton' onClick={() => this.setState({loginModalIsOpen: true})}>Login</button>
+        {/* <button className='splashbutton' onClick={() => this.setState({loginModalIsOpen: true})}>Login</button> */}
       </div>
     )
   }
