@@ -356,8 +356,8 @@
   /* width: 50px; */
   /* border-radius: 50%; */
   border-radius: 5%;
-  height: 90%;
-  width: 90%;
+  height: 100px;
+  width: 100px;
   object-fit: cover;
   overflow: hidden;
 }
