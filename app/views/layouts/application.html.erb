@@ -16,7 +16,8 @@
           "lastName": "<%= current_user.last_name %>",
           "profilePhoto": {
             "imageUrl": "<%= url_for(current_user.profile_photo.photo)%>"
-          }
+          },
+          "friends": "<%=current_user.friendships.to_a%>".split('#&lt')
         };
       </script>
     <% end %>

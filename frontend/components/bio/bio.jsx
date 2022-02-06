@@ -19,6 +19,8 @@ class Bio extends React.Component {
     this.renderBirthday = this.renderBirthday.bind(this)
     this.renderGender = this.renderGender.bind(this)
     this.renderRelationshipStatus = this.renderRelationshipStatus.bind(this)
+    this.addFriendButton = this.addFriendButton.bind(this)
+    this.isFriend = this.isFriend.bind(this)
   }
 
   componentDidUpdate(prevProps) {
@@ -35,66 +37,98 @@ class Bio extends React.Component {
 
 
   renderBio = () => {
-    if (this.state.user.bio === null || this.state.user.bio === '' ) {
+    if ((this.state.user.bio === null || this.state.user.bio === '' )  && this.props.user.id === this.props.currentUser.id) {
       return (
         <div>
           <button onClick={() => this.setState({modalIsOpen:true})}>Add Bio</button>
         </div>
       )
     } else {
-      return (
-        <div className='user-info'>
-          Bio: {this.state.user.bio} 
-        </div>
-      )
+       if(this.state.user.bio === null ) {
+        return (
+          <div className='user-info'>
+            Bio: Pending
+          </div>
+        )
+       } else {
+         return (
+           <div className='user-info'>
+             Bio: {this.state.user.bio} 
+           </div>
+         )
+       }
     }
   }
 
   renderBirthday = () => {
-    if (this.state.user.birthday === null || this.state.user.birthday === '') {
+    if ((this.state.user.birthday === null || this.state.user.birthday === '')  && this.props.user.id === this.props.currentUser.id)  {
       return (
         <div>
           <button onClick={() => this.setState({modalIsOpen:true})}>Add Birthday</button>
         </div>
       )
-    } else {
-      return (
-        <div className='user-info'>
-          Birthday: {this.state.user.birthday} 
-        </div>
-      )
+    } else { 
+      if (this.state.user.birthday === null) {
+        return (
+          <div className='user-info'>
+          Birthday: Pending
+          </div>
+        )
+      } else  {
+        return (
+          <div className='user-info'>
+            Birthday: {this.state.user.birthday} 
+          </div>
+        )
+      }
     }
   }
 
   renderGender = () => {
-    if (this.state.user.gender === null || this.state.user.gender === '') {
+    if ((this.state.user.gender === null || this.state.user.gender === '')  && this.props.user.id === this.props.currentUser.id)  {
       return (
         <div>
           <button onClick={() => this.setState({modalIsOpen:true})}>Add Gender/Pronouns</button>
         </div>
       )
     } else {
-      return (
-        <div className='user-info'>
-          Gender/Pronouns: {this.state.user.gender} 
-        </div>
-      )
+      if (this.state.user.gener === null) {
+        return (
+          <div className='user-info'>
+            Gender: Pending 
+          </div>
+        )
+      } else {
+        return (
+          <div className='user-info'>
+            Gender/Pronouns: {this.state.user.gender} 
+          </div>
+        )
+      }
     }
   }
  
   renderRelationshipStatus = () => {
-    if (this.state.user.relationshipStatus === null || this.state.user.relationshipStatus === '') {
+    if ((this.state.user.relationshipStatus === null || this.state.user.relationshipStatus === '') && this.props.user.id === this.props.currentUser.id)  {
       return (
         <div>
           <button onClick={() => this.setState({modalIsOpen:true})}>Add Relationship Status</button>
         </div>
       )
     } else {
-      return (
-        <div className='user-info'>
-          RelationshipStatus: {this.state.user.relationshipStatus} 
+      if (this.state.user.relationshipStatus === null ) {
+        return (
+          <div className='user-info'>
+          RelationshipStatus: Pending
         </div>
-      )
+        )
+      } else {
+        return (
+          <div className='user-info'>
+            RelationshipStatus: {this.state.user.relationshipStatus} 
+          </div>
+        )
+      }
     }
   }
 
@@ -102,7 +136,36 @@ class Bio extends React.Component {
     return <button onClick={() => this.setState({modalIsOpen:true})}> Edit Profile </button>
   }
 
+  isFriend() {
+    this.props.currentUser.friends.forEach((friend) => {
+      if (friend.includes(`${this.props.user.id}`)) {
+        return <div>
+          Friends 'Checkmark'
+        </div>
+      } else {
+        return (
+            <button> Add Friend </button>
+        )
+      }
+    })
+  }
+
+  addFriendButton() {
+    if (!this.isFriend()) {
+      return (
+        <div>
+          Friends 'Checkmark'
+        </div>
+      )
+    } else {
+      return(
+        <button> Add Friend </button>
+      )
+    }
+  }
+
   render() {
+    {console.log(this.props.currentUser)}
     return(
 
       <div className='bio-container'>
@@ -122,7 +185,7 @@ class Bio extends React.Component {
 
       <div className='bio'>
       
-        {this.props.user.id == this.props.currentUser.id ? this.editProfile() : 'hello'}
+        {this.props.user.id == this.props.currentUser.id ? this.editProfile() : this.isFriend() }
 
         {this.renderBio()}
 
