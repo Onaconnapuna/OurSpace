@@ -17,7 +17,7 @@
           "profilePhoto": {
             "imageUrl": "<%= url_for(current_user.profile_photo.photo)%>"
           },
-          "friends": "<%=current_user.friendships.to_a%>".split('#&lt')
+          "friends": "<%=current_user.friendships.to_a%>".split('friend_id')
         };
       </script>
     <% end %>

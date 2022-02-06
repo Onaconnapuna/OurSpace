@@ -137,21 +137,19 @@ class Bio extends React.Component {
   }
 
   isFriend() {
-    this.props.currentUser.friends.forEach((friend) => {
-      if (friend.includes(`${this.props.user.id}`)) {
-        return <div>
-          Friends 'Checkmark'
-        </div>
-      } else {
-        return (
-            <button> Add Friend </button>
-        )
+    console.log(this.props.user.id.toString())
+    for(let i = 1; i < this.props.currentUser.friends.length, i++; ) {
+      if (this.props.currentUser.friends[i].includes(`${this.props.user.id}`)) {
+        console.log('returned true')
+        return true
       }
-    })
+    }
+    console.log('returned false')
+    return false
   }
 
   addFriendButton() {
-    if (!this.isFriend()) {
+    if (this.isFriend()) {
       return (
         <div>
           Friends 'Checkmark'
@@ -185,7 +183,7 @@ class Bio extends React.Component {
 
       <div className='bio'>
       
-        {this.props.user.id == this.props.currentUser.id ? this.editProfile() : this.isFriend() }
+        {this.props.user.id == this.props.currentUser.id ? this.editProfile() : this.addFriendButton() }
 
         {this.renderBio()}
 
