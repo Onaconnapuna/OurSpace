@@ -11,7 +11,7 @@ class FrienshipIndex extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.fetchFriendships(this.props.user.id)
-    }, 1500)
+    }, 500)
   }
 
   friendshipPreview() {

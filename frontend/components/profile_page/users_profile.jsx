@@ -18,12 +18,6 @@ class UsersProfile extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.user == undefined) {
-      setTimeout(() => {
-        this.props.fetchUser(this.props.match.params.userId)
-        this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
-      }, 1000)
-    }
     this.listen = this.props.history.listen((location, action) => {
       if(action === "POP" ) {
         this.forceProfileRender();
@@ -31,6 +25,12 @@ class UsersProfile extends React.Component {
         this.forceProfileRender();
       }
     });
+    if (this.props.user == undefined) {
+      setTimeout(() => {
+        this.props.fetchUser(this.props.match.params.userId)
+        this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
+      }, 500)
+    }
   }
   
   componentDidUpdate(prevProps, prevState) {
