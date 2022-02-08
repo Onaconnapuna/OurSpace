@@ -5,7 +5,8 @@ import { deletePost } from '../../actions/post_actions';
   
   const mapStateToProps = (state) => {
     return {
-      comments: Object.values(state.entities.comments)
+      comments: Object.values(state.entities.comments),
+      currentUser: state.session.currentUser
     }
   }
 

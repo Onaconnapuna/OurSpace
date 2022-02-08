@@ -59,8 +59,8 @@ class NavBar extends React.Component {
 
   navBarWhileLoggedIn() {
     return (
-      <div className='banner' ref={this.container}>
-        <div>
+      <div className='banner'>
+        <div className>
           <Link className='profile-link'to={`/profiles/${this.props.currentUser.id}`} onClick={() => this.props.fetchUser(this.props.currentUser.id)}> Hello, {this.props.currentUser.firstName}</Link> 
         </div>
         <div className="ellipsis-button-background-nav" ref={this.container}>
@@ -75,6 +75,8 @@ class NavBar extends React.Component {
         </div>
     )
   }
+
+
 
   navBarWhileLoggedOut() {
     return (
@@ -115,8 +117,10 @@ class NavBar extends React.Component {
         switchModals={this.switchModals}
         />
       </Modal>
+      <Link to={'/main'} className="main-page-link">
        <h1 className='ourspace'>Ourspace</h1>
        <img className='logo-navbar' src="https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/ourspace.png"/>
+      </Link>
        {
         this.props.currentUser ? this.navBarWhileLoggedIn() : this.navBarWhileLoggedOut()
        }

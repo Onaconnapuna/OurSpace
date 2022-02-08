@@ -11,9 +11,9 @@ ProfilePhoto.destroy_all
 BackgroundPhoto.destroy_all
 Friendship.destroy_all
 
-demo_user = User.create( email:'demouser@demo.com', password:'password', first_name: 'YourFirstName', last_name: 'YourLastName')
+demo_user = User.create( email:'demouser@demo.com', password:'password', first_name: 'Pierre', last_name: 'Bezukhov')
 
-user1 = User.create( email: 'bezukov@ourspace.org', password: 'password', first_name: 'Pierre', last_name: 'Bezukov')
+user1 = User.create( email: 'bezukov@ourspace.org', password: 'password', first_name: 'Kiril', last_name: 'Bezukhov')
 user2 = User.create( email: 'bolkonskya@ourspace.org', password: 'password', first_name: 'Andre', last_name: 'Bolkonsky')
 user3 = User.create( email: 'rostovn@ourspace.org', password: 'password', first_name: 'Nikolay', last_name: 'Rostov')
 user4 = User.create( email: 'rostovnatalia@ourspace.org', password: 'password', first_name: 'Natalia', last_name: 'Rostov')

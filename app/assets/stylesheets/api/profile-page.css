@@ -6,9 +6,9 @@
 }
 
 .profile-photos-container {
-  margin-top: 75px;
+  /* margin-top: 75px; */
   width: 100%;
-  min-height: 55%;
+  min-height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,11 +18,13 @@
 .profile-name {
   display: flex;
   padding-bottom: 20px;
+  padding-top: 20px;
   justify-content: center;
   width: 100%;
   box-shadow: 0px 2px 4px -2px #4e4d4d;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   z-index: 6;
+  outline: none;
 }
 
 .posts-background {
@@ -36,7 +38,7 @@
   flex-wrap: wrap;
   flex-direction: column;
   align-items: space-around;
-  background-color: #ebedf0;
+  background-color: #ECF3FF;
   margin-bottom: 25px;
   padding-right: 20px;
 }
@@ -59,7 +61,7 @@
   font-size: 16px;
   font-weight: 600;
   border-radius: 10px;
-  background-color: #e4e4e4;
+  background-color: #EBEDF0;
 }
 
 .bio button:hover {
@@ -75,7 +77,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #ebedf0;
+  background-color: #ECF3FF;
 }
 
 .bio-posts-container {
@@ -232,7 +234,7 @@
   align-items: center;
   background-color: white;
   box-shadow: 1px 1px 1px 1px #D1D1D1;
-  height: 100px;
+  height: 80px;
   border-radius: 5px;
   margin-bottom: 10px;
   width: 100%;
@@ -250,12 +252,13 @@
   margin-left: 10px;
   margin-right: 10px;
   width: 80%;
-  padding: 20px;
-  font-weight: 600;
+  padding: 15px;
+  /* font-weight: 600; */
   color: #282828;
   font-size: 16px;
   border-radius: 20px;
-  background-color: #e4e4e4;
+  background-color: #ECF3FF;
+  color: #AAAAAA;
 }
 
 .whats-on-your-mind button:hover {
@@ -284,7 +287,8 @@
 }
 
 .ellipsis-button-background {
-  margin-left: 250px;
+  position: absolute;
+  right: 24%;
   display: flex;
   justify-content: center;
   min-width: 50px;
@@ -316,7 +320,7 @@
 .friendships-container{
   justify-content: center;
   max-width: 400px;
-  background-color: #ebedf0;
+  background-color: #ECF3FF;
   margin-bottom: 25px;
   padding-right: 20px;
 }
@@ -389,7 +393,7 @@
   font-size: 16px;
   font-weight: 600;
   border-radius: 10px;
-  background-color: #e4e4e4;
+  background-color: #EBEDF0;
 }
 
 .view-all-friends:hover {
@@ -398,5 +402,21 @@
 }
 
 .view-all-friends:active {
-  background-color: #B6B6B6;
+  background-color: #B6B6B6; 
 }
+
+.dropdown-post {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  z-index: 10;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+}
+
+
+
+

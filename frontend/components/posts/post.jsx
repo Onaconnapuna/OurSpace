@@ -4,6 +4,58 @@ import Comment from '../comments/comments'
 class PostItem extends React.Component{
   constructor(props) {
     super(props)
+
+    this.container = React.createRef();
+
+    this.state = {
+      dropDownIsOpen: false 
+    }
+
+    this.handleDropDown = this.handleDropDown.bind(this)
+    this.checkUser = this.checkUser.bind(this)
+  }
+
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  handleClickOutside = (event) => {
+    if (
+      this.container.current &&
+      !this.container.current.contains(event.target)
+    ) {
+      this.setState({
+        dropDownIsOpen: false,
+      });
+    }
+  };
+
+  handleDropDown() {
+    if (this.state.dropDownIsOpen) {
+      this.setState({dropDownIsOpen: false }) 
+    } else {
+      this.setState({dropDownIsOpen: true})
+    }
+  }
+
+  checkUser() {
+    if(this.props.currentUser.id === this.props.post.posterId) {
+      return (
+        <div className='ellipsis-button-background' ref={this.container}>
+          <button className='ellipsis-button' onClick={() => this.handleDropDown()}> &#8230; </button>
+            {this.state.dropDownIsOpen && (
+            <div className="dropdown-post">
+            <button className="dropdown-item" onClick={() => this.props.deletePost(this.props.post.id)}> Delete Post </button>
+            <button className="dropdown-item">Share Post</button>
+            </div>
+            )}
+        </div>
+      )
+    }
   }
 
   render() {
@@ -17,9 +69,7 @@ class PostItem extends React.Component{
             <p className='poster-name'>
               {this.props.post.poster.firstName} {this.props.post.poster.lastName}
             </p>
-            <div className='ellipsis-button-background'>
-              <button className='ellipsis-button' onClick={() => this.props.deletePost(this.props.post.id)}> &#8230; </button>
-            </div>
+            {this.checkUser()}
           </div>
           <div className='post-body'>
           {this.props.post.body}
