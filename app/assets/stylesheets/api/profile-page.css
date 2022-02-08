@@ -6,9 +6,8 @@
 }
 
 .profile-photos-container {
-  /* margin-top: 75px; */
   width: 100%;
-  min-height: 50%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,11 +65,11 @@
 
 .bio button:hover {
   cursor: pointer;
-  background-color: #D1D1D1;
+  background-color: #DADDE1;
 }
 
 .bio button:active {
-  background-color: #B6B6B6;
+  background-color: #CCD0D5;
 }
 
 .bio-posts-background {
@@ -257,17 +256,17 @@
   color: #282828;
   font-size: 16px;
   border-radius: 20px;
-  background-color: #ECF3FF;
+  background-color: #EBEDF0;
   color: #AAAAAA;
 }
 
 .whats-on-your-mind button:hover {
-  background-color: #d1d1d1;
+  background-color: #DADDE1;
   cursor: pointer;
 }
 
 .whats-on-your-mind button:active {
-  background-color: #B6B6B6;
+  background-color: #CCD0D5;
 }
 
 .whats-on-your-mind img {

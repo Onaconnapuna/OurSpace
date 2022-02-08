@@ -55,6 +55,7 @@ class NavBar extends React.Component {
     } else {
       this.setState({dropDownIsOpen: true})
     }
+    console.log(this.state.dropDownIsOpen)
   }
 
   navBarWhileLoggedIn() {
