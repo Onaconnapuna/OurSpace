@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import LoginFormContainer from "../session_form/login_form_container"
 import SignUpFormContainer from "../session_form/signup_form_container";
 import Modal from 'react-modal'
+import FriendRequestsIndexContainer from "../friendships/friend_requests_index_container";
 
 class NavBar extends React.Component {
   constructor(props){
@@ -17,6 +18,7 @@ class NavBar extends React.Component {
       },
       signUpModalIsOpen: false,
       loginModalIsOpen: false,
+      notificationsModalIsOpen: false,
       dropDownIsOpen: false,
     }
 
@@ -26,6 +28,7 @@ class NavBar extends React.Component {
   }
 
   componentDidMount() {
+    // this.props.fetchFriendRequests(this.props.currentUser.id)
     document.addEventListener("mousedown", this.handleClickOutside);
   }
 
@@ -55,7 +58,6 @@ class NavBar extends React.Component {
     } else {
       this.setState({dropDownIsOpen: true})
     }
-    console.log(this.state.dropDownIsOpen)
   }
 
   navBarWhileLoggedIn() {
@@ -69,7 +71,7 @@ class NavBar extends React.Component {
           {this.state.dropDownIsOpen && (
             <div className="dropdown-nav">
               <button className="dropdown-item" onClick={() => this.handleLogOut()}>Logout</button>
-              <button className="dropdown-item"> Notifications </button>
+              <button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {this.props.friendRequests.length}</button>
             </div>
           )}
           </div>
@@ -85,8 +87,7 @@ class NavBar extends React.Component {
         {/* <button  className='splashbutton' onClick={() => this.setState({signUpModalIsOpen: true})}>Signup</button> */}
 
         {/* <button className='splashbutton' onClick={() => this.setState({loginModalIsOpen: true})}>Login</button> */}
-      </div>
-    )
+      </div>)
   }
 
   switchModals = (bool1, bool2) => {
@@ -95,39 +96,28 @@ class NavBar extends React.Component {
   }
 
   render() {
-   return(
-    <header className='navbar-container'>
-      <Modal
-        isOpen={this.state.signUpModalIsOpen}
-        overlayClassName='modal-background-alt'
-        className='modal-child-alt'
-        onRequestClose={() => this.setState({signUpModalIsOpen: false})}
-      >
-        <SignUpFormContainer
-        switchModals={this.switchModals}
-        />
-      </Modal>
-
-      <Modal
-        isOpen={this.state.loginModalIsOpen}
-        overlayClassName='modal-background-alt'
-        className='modal-child-alt'
-        onRequestClose={() => this.setState({loginModalIsOpen: false})}
-      >
-        <LoginFormContainer
-        switchModals={this.switchModals}
-        />
-      </Modal>
-      <Link to={'/main'} className="main-page-link">
-       <h1 className='ourspace'>Ourspace</h1>
-       <img className='logo-navbar' src="https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/ourspace.png"/>
-      </Link>
-       {
-        this.props.currentUser ? this.navBarWhileLoggedIn() : this.navBarWhileLoggedOut()
-       }
-    </header>
-   )
- }
+      return(
+       <header className='navbar-container'>
+         <Modal
+         isOpen={this.state.notificationsModalIsOpen}
+         overlayClassName='modal-background'
+         className='modal-child'
+         onRequestClose={ () => this.setState({notificationsModalIsOpen:false})}
+         >
+           <FriendRequestsIndexContainer 
+           friendRequests={this.props.friendRequests}
+           />
+         </Modal>
+         <Link to={'/main'} className="main-page-link">
+          <h1 className='ourspace'>Ourspace</h1>
+          <img className='logo-navbar' src="https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/ourspace.png"/>
+         </Link>
+          {
+           this.props.currentUser ? this.navBarWhileLoggedIn() : this.navBarWhileLoggedOut()
+          }
+       </header>
+      )
+    }
 }
 
 export default NavBar

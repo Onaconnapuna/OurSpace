@@ -5,6 +5,7 @@ const notificationsReducer = (oldState = {}, action) => {
   let newState = Object.assign({}, oldState);
   switch(action.type) {
     case RECEIVE_FRIEND_REQUESTS:
+      console.log('got here')
       return action.friendRequests;
     case REMOVE_FRIEND_REQUEST:
       delete newState[action.friendRequestId];

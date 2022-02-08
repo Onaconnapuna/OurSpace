@@ -13,11 +13,6 @@ class UsersProfile extends React.Component {
     key: 1
     }
 
-    this.forceProfileRender = this.forceProfileRender.bind(this)
-    this.backListener = this.backListener.bind(this)
-  }
-
-  componentDidMount() {
     this.listen = this.props.history.listen((location, action) => {
       if(action === "POP" ) {
         this.forceProfileRender();
@@ -25,6 +20,12 @@ class UsersProfile extends React.Component {
         this.forceProfileRender();
       }
     });
+
+    this.forceProfileRender = this.forceProfileRender.bind(this)
+    this.backListener = this.backListener.bind(this)
+  }
+
+  componentDidMount() {  
     if (this.props.user == undefined) {
       setTimeout(() => {
         this.props.fetchUser(this.props.match.params.userId)

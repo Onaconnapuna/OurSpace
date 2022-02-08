@@ -136,11 +136,11 @@
 
  .profile-link:hover {
    cursor: pointer;
-   background-color: #D1D1D1;
+   background-color: #DADDE1;
  }
 
  .profile-link:active {
-  background-color: #B6B6B6;
+  background-color: #CCD0D5;
  }
 
 input[type=text] {
@@ -379,4 +379,10 @@ label {
 .dropdown-item:hover {
   cursor: pointer;
   background-color: #e0e0e0;
+}
+
+.friend-requests-index-container {
+  min-height: 50%;
+  min-width: 50%;
+  background: white;
 }

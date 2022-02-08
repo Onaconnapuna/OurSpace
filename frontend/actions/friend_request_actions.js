@@ -1,5 +1,4 @@
 import * as APIUtil from '../util/friend_requests_api_util';
-import { receiveFriendships } from './friendship_actions';
 
 export const RECEIVE_FRIEND_REQUESTS = 'RECEIVE_FRIEND_REQUESTS'
 export const REMOVE_FRIEND_REQUEST = 'REMOVE_FRIEND_REQUEST'

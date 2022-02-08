@@ -1,16 +1,18 @@
 import { connect } from 'react-redux';
 import NavBar from './nav_bar';
 import { fetchUser } from '../../actions/users_actions';
-
+import { fetchFriendRequests } from '../../actions/friend_request_actions';
 import { logout, login } from '../../actions/session_actions'
 
 const mapStateToProps = state => ({
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  friendRequests: Object.values(state.entities.notifications)
 });
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  fetchUser: (userId) => dispatch(fetchUser(userId))
+  fetchUser: (userId) => dispatch(fetchUser(userId)),
+  fetchFriendRequests: (userId) => dispatch(fetchFriendRequests(userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

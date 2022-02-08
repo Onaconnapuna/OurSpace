@@ -60,7 +60,7 @@ class UpdateForm extends React.Component {
         processData: false
       }).then(this.props.forceProfileRender())
     }
-
+    
     if (this.state.updateBackgroundPhotoFile) {
       const backgroundFormData = new FormData();
       backgroundFormData.append('background_photo[photo]', this.state.updateBackgroundPhotoFile),

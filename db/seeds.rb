@@ -10,6 +10,8 @@ Post.destroy_all
 ProfilePhoto.destroy_all
 BackgroundPhoto.destroy_all
 Friendship.destroy_all
+Comment.destroy_all
+FriendRequest.destroy_all
 
 demo_user = User.create( email:'demouser@demo.com', password:'password', first_name: 'Pierre', last_name: 'Bezukhov')
 
@@ -19,6 +21,13 @@ user3 = User.create( email: 'rostovn@ourspace.org', password: 'password', first_
 user4 = User.create( email: 'rostovnatalia@ourspace.org', password: 'password', first_name: 'Natalia', last_name: 'Rostov')
 user5 = User.create( email: 'napoleon@ourspace.org', password: 'password', first_name: 'Napolean', last_name: 'Bonaparte')
 user6 = User.create( email: 'karaginj@ourspace.org', password: 'password', first_name: 'Julia', last_name: 'Karagin')
+user7 = User.create( email: 'kuragina@ourspace.org', password: 'password', first_name: 'Anatole', last_name: 'Kuragin')
+user8 = User.create( email: 'kuraginv@ourspace.org', password: 'password', first_name: 'Vasili', last_name: 'Kuragin')
+user9 = User.create( email: 'kuraginh@ourspace.org', password: 'password', first_name: 'Helene', last_name: 'Kuragin')
+
+friend_request1 = FriendRequest.create(user_id: demo_user.id, friend_id: user7.id)
+friend_request2 = FriendRequest.create(user_id: demo_user.id, friend_id: user8.id)
+friend_request3 = FriendRequest.create(user_id: demo_user.id, friend_id: user9.id)
 
 demopost1 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: 'My first Post')
 demopost1 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: 'My second Post')
@@ -32,3 +41,4 @@ friend3 = Friendship.create( user_id: demo_user.id, friend_id: user3.id)
 friend4 = Friendship.create( user_id: demo_user.id, friend_id: user4.id)
 friend5 = Friendship.create( user_id: demo_user.id, friend_id: user5.id)
 friend6 = Friendship.create( user_id: demo_user.id, friend_id: user6.id)
+

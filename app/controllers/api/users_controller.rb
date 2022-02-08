@@ -13,6 +13,7 @@ class Api::UsersController < ApplicationController
       @user_background_photo = @user.background_photo
       @user_profile_photo = @user.profile_photo
       @user_friends = @user.friends
+      @user_friend_requests = @user.friend_requests
       login(@user)
       render :show
     else 
@@ -26,6 +27,8 @@ class Api::UsersController < ApplicationController
       @user_posts = @user.posts
       @user_background_photo = @user.background_photo 
       @user_profile_photo = @user.profile_photo
+      @user_friends = @user.friends 
+      @user_friend_requests = @user.friend_requests
       render :show 
     else  
       render ['update unsuccessful'], status: 422
@@ -37,7 +40,7 @@ class Api::UsersController < ApplicationController
     @user_background_photo = @user.background_photo 
     @user_profile_photo = @user.profile_photo
     @user_friends = @user.friends 
-    @user_friendships = @user.friendships
+    @user_friend_requests = @user.friend_requests
     if @user 
       render :show 
     else  

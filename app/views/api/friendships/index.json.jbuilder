@@ -1,4 +1,4 @@
-@friendships.includes(:friend).each do |friendship| 
+@friendships.includes(:user).each do |friendship| 
   json.set! friendship.id do 
     json.extract! friendship, :user_id, :friend_id
     json.extract! friendship.user, :first_name, :last_name
