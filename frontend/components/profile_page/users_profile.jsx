@@ -4,7 +4,6 @@ import PostsIndexContainer from '../posts/posts_index_container';
 import BioContainer from '../bio/bio_container';
 import ProfilePhotosContainer from '../profile_photos/profile_photos_container';
 import FriendshipIndexContainer from '../friendships/friendships_index_container';
-import { useHistory } from 'react-router-dom'
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -22,6 +21,7 @@ class UsersProfile extends React.Component {
     if (this.props.user == undefined) {
       setTimeout(() => {
         this.props.fetchUser(this.props.match.params.userId)
+        this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
       }, 1000)
     }
     this.listen = this.props.history.listen((location, action) => {
@@ -45,6 +45,7 @@ class UsersProfile extends React.Component {
 
   componentWillUnmount() {
     this.listen(); 
+    // this.props.fetchCurrentUser(this.props.currentUser)
   }
 
   forceProfileRender() {
@@ -72,6 +73,7 @@ class UsersProfile extends React.Component {
               <BioContainer 
               user={this.props.user}
               forceProfileRender={this.forceProfileRender}
+              currentUser={this.props.currentUser}
               />
               <FriendshipIndexContainer 
               user={this.props.user}

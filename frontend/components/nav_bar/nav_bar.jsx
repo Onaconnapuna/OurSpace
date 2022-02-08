@@ -8,6 +8,8 @@ class NavBar extends React.Component {
   constructor(props){
     super(props)
 
+    this.container = React.createRef();
+
     this.state = {
       session: {
         email:'demouser@demo.com',
@@ -15,24 +17,62 @@ class NavBar extends React.Component {
       },
       signUpModalIsOpen: false,
       loginModalIsOpen: false,
+      dropDownIsOpen: false,
     }
 
     this.switchModals = this.switchModals.bind(this)
+    this.handleLogOut = this.handleLogOut.bind(this)
     Modal.setAppElement('#root')
   }
 
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
 
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+  }
+
+  handleClickOutside = (event) => {
+    if (
+      this.container.current &&
+      !this.container.current.contains(event.target)
+    ) {
+      this.setState({
+        dropDownIsOpen: false,
+      });
+    }
+  };
+
+  handleLogOut() {
+    this.setState({dropDownIsOpen: false})
+    this.props.logout()
+  }
+
+  handleDropDown() {
+    if (this.state.dropDownIsOpen === true) {
+      this.setState({dropDownIsOpen: false }) 
+    } else {
+      this.setState({dropDownIsOpen: true})
+    }
+  }
 
   navBarWhileLoggedIn() {
     return (
-      <div className='banner'>
+      <div className='banner' ref={this.container}>
         <div>
           <Link className='profile-link'to={`/profiles/${this.props.currentUser.id}`} onClick={() => this.props.fetchUser(this.props.currentUser.id)}> Hello, {this.props.currentUser.firstName}</Link> 
         </div>
-        <div className="ellipsis-button-background-nav">
-          <button className='ellipsis-button' onClick={ () => this.props.logout()}> &#8230; </button>
+        <div className="ellipsis-button-background-nav" ref={this.container}>
+          <button className='ellipsis-button' onClick={() => this.handleDropDown()}> &#8230; </button>
+          {this.state.dropDownIsOpen && (
+            <div className="dropdown-nav">
+              <button className="dropdown-item" onClick={() => this.handleLogOut()}>Logout</button>
+              <button className="dropdown-item"> Notifications </button>
+            </div>
+          )}
+          </div>
         </div>
-      </div>
     )
   }
 

@@ -23,6 +23,10 @@ class Bio extends React.Component {
     this.isFriend = this.isFriend.bind(this)
   }
 
+  componentDidMount() {
+    console.log(this.props.currentUser)
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props.user !== prevProps.user) {
       this.setState({
@@ -137,12 +141,13 @@ class Bio extends React.Component {
   }
 
   isFriend() {
-    for(let i = 1; i < this.props.currentUser.friends.length, i++; ) {
-      if (this.props.currentUser.friends[i].includes(`${this.props.user.id}`)) {
-        return true
+    let friends = false
+    this.props.user.friends.forEach((friend) => {
+      if (this.props.currentUser.id === friend.id) {
+        friends = true
       }
-    }
-    return false
+    })
+    return friends
   }
 
   addFriendButton() {
@@ -159,44 +164,48 @@ class Bio extends React.Component {
     }
   }
 
-  render() {
-    {console.log(this.props.currentUser)}
-    return(
+  render() { 
+    if (this.props.currentUser.friends === undefined) {
+      return null 
+    } else {
 
-      <div className='bio-container'>
-
-      <Modal 
-        isOpen={this.state.modalIsOpen}
-        overlayClassName='modal-background'
-        className='modal-child'
-        onRequestClose={() => this.setState({modalIsOpen: false})}
-      >
-        <UpdateBioContainer 
-        user={this.props.user} 
-        setStateOfParent={this.setStateOfParent}
-        forceProfileRender={this.props.forceProfileRender}
-        />
-      </Modal>
-
-      <div className='bio'>
+      return(
+  
+        <div className='bio-container'>
+  
+        <Modal 
+          isOpen={this.state.modalIsOpen}
+          overlayClassName='modal-background'
+          className='modal-child'
+          onRequestClose={() => this.setState({modalIsOpen: false})}
+        >
+          <UpdateBioContainer 
+          user={this.props.user} 
+          setStateOfParent={this.setStateOfParent}
+          forceProfileRender={this.props.forceProfileRender}
+          />
+        </Modal>
+  
+        <div className='bio'>
+        
+          {this.props.user.id == this.props.currentUser.id ? this.editProfile() : this.addFriendButton()}
       
-        {this.props.user.id == this.props.currentUser.id ? this.editProfile() : this.addFriendButton() }
-    
-        <br />
-
-        {this.renderBio()}
-
-        {this.renderBirthday()}
-
-        {this.renderGender()}
-
-        {this.renderRelationshipStatus()}
-
-      </div>
-
-      </div>
-    )
+          <br />
+  
+          {this.renderBio()}
+  
+          {this.renderBirthday()}
+  
+          {this.renderGender()}
+  
+          {this.renderRelationshipStatus()}
+  
+        </div>
+  
+        </div>
+      )
+    }
   }
-}
+  }
 
 export default Bio

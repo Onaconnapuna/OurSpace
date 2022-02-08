@@ -17,9 +17,7 @@ class Api::SessionsController < ApplicationController
     @user = current_user
     if @user 
       logout 
-      @user_profile_photo = @user.profile_photo
-      @user_background_photo = @user.background_photo
-      render 'api/users/show'
+      render json: ['Log Out Successful']
     else  
       render json: ['You aren not currently signed in'], status: 404
     end

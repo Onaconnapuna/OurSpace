@@ -5,7 +5,7 @@ import {updateUser, fetchUser} from '../../actions/users_actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.session.currentUser
+    // currentUser: state.session.currentUser
   }
 }
 
