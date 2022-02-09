@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchPosts, deletePost, removePosts } from '../../actions/post_actions';
+import { fetchCurrentUser } from '../../actions/users_actions';
 import MainPage from './main_page';
 
 
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId)),
     fetchPosts: (userId) => dispatch(fetchPosts(userId)),
     deletePost: (postId) => dispatch(deletePost(postId)),
   } 

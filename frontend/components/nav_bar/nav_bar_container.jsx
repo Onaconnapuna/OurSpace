@@ -6,7 +6,7 @@ import { logout, login } from '../../actions/session_actions'
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  friendRequests: Object.values(state.entities.notifications)
+  // friendRequests: state.session.currentUser.notifications
 });
 
 const mapDispatchToProps = dispatch => ({

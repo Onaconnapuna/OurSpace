@@ -18,6 +18,7 @@ const mapDispatchToProps = dispatch => {
     processForm: (user) => dispatch(login(user)),
     demoForm: (user) => dispatch(login(user)),
     removeErrors: () => dispatch(removeErrors()),
+    fetchFriendRequests: (userId) => dispatch(fetchFriendRequests(userId))
   }
 }
 

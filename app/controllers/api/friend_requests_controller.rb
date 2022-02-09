@@ -4,7 +4,7 @@ class Api::FriendRequestsController < ApplicationController
 
   def index 
     @friend_requests = FriendRequest.where(user_id: params[:user_id])
-    render :index
+    render '/api/users/show'
   end
 
   def create 

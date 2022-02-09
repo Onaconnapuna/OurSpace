@@ -8,9 +8,11 @@ class FriendRequestItem extends React.Component {
 
     this.state = {
       userId: this.props.currentUser.id,
-      friendId: this.props.friendRequest.id
+      friendId: this.props.friendRequest.friendId
     }
   }
+
+
 
   render() {
     return(
@@ -18,8 +20,8 @@ class FriendRequestItem extends React.Component {
         <div className='friend-request-item'>
           <img className='create-post-poster-img' src={`${this.props.friendRequest.imageUrl}`} />
           <p>{this.props.friendRequest.firstName} {this.props.friendRequest.lastName} wants to be friends</p>
-          <button onClick={() => this.props.createFriendship(this.state).then(this.props.deleteFriendRequest(this.props.friendRequest.id))}> Accept </button>
-          <button onClick={() => this.props.deleteFriendRequest(this.props.friendRequest.id)}> Deny </button>
+          <button onClick={() => this.props.createFriendship(this.state).then(this.props.deleteFriendRequest(this.props.friendRequest.id).then(this.props.forceRender()))}> Accept </button>
+          <button onClick={() => this.props.deleteFriendRequest(this.props.friendRequest.id).then(this.props.forceRender())}> Deny </button>
         </div>
       </div>
     )

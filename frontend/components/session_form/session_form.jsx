@@ -90,12 +90,13 @@ class SessionForm extends React.Component {
       email: 'demouser@demo.com',
       password: 'password'
     }
-    this.setState({loading: true})
     this.props.demoForm(user)
     this.props.switchModals(false, false)
   
     setTimeout( () => {
       this.props.history.push(`/main`)
+      // console.log(this.props.currentUser)
+      // this.props.fetchFriendRequests(this.props.currentUser.id)
     }, 1500)
   }
 
@@ -104,10 +105,11 @@ class SessionForm extends React.Component {
     const user = this.state;
     this.props.processForm(user).then(this.props.removeErrors())
     setTimeout( () => {
-      console.log(this.props.errors)
       if (this.props.errors == false) {
         this.props.switchModals(false, false);
         this.props.history.push(`/main`)
+        // console.log(this.props.currentUser)
+        // this.props.fetchFriendRequests(this.props.currentUser.id)
       } 
     }, 1500);
   }

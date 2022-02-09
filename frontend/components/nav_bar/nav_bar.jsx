@@ -22,18 +22,22 @@ class NavBar extends React.Component {
       dropDownIsOpen: false,
     }
 
+    this.notificationHelper = this.notificationHelper.bind(this)
     this.switchModals = this.switchModals.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
     Modal.setAppElement('#root')
   }
 
   componentDidMount() {
-    // this.props.fetchFriendRequests(this.props.currentUser.id)
     document.addEventListener("mousedown", this.handleClickOutside);
+    window.onbeforeunload = function() {
+      this.props.fetchFriendRequests(this.props.currentUser.id);
+    };
   }
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClickOutside);
+    window.onbeforeunload = null;
   }
 
   handleClickOutside = (event) => {
@@ -60,6 +64,14 @@ class NavBar extends React.Component {
     }
   }
 
+  notificationHelper() {
+    if (this.props.currentUser.notifications) {
+      return Object.values(this.props.currentUser.notifications).length
+    } else {
+      return ''
+    }
+  }
+
   navBarWhileLoggedIn() {
     return (
       <div className='banner'>
@@ -71,7 +83,7 @@ class NavBar extends React.Component {
           {this.state.dropDownIsOpen && (
             <div className="dropdown-nav">
               <button className="dropdown-item" onClick={() => this.handleLogOut()}>Logout</button>
-              <button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {this.props.friendRequests.length}</button>
+              <button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {this.notificationHelper()}</button>
             </div>
           )}
           </div>

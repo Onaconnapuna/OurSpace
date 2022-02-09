@@ -16,7 +16,8 @@
           "lastName": "<%= current_user.last_name %>",
           "profilePhoto": {
             "imageUrl": "<%= url_for(current_user.profile_photo.photo)%>"
-          }
+          },
+          "notifications": "<%= current_user.friend_requests.to_a %>".split('FriendRequest')
         };
       </script>
     <% end %>
