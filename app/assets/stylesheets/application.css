@@ -382,7 +382,103 @@ label {
 }
 
 .friend-requests-index-container {
-  min-height: 50%;
-  min-width: 50%;
+  min-height: 250px;
+  min-width: 600px;
   background: white;
+  border-radius: 10px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.friend-requests {
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #282828;
+  font-weight: 700;
+  padding: 10px;
+  border-bottom: 1px solid #282828;
+  width: 90%;
+  text-align: center;
+}
+
+.friend-requests-index {
+  width: 90%;
+}
+
+.friend-request-item-container{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.friend-request-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.friend-request-item p {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.friend-request-item-buttons {
+  position: absolute;
+  right: 0px;
+  padding: 5px;
+}
+
+.friend-request-item-buttons button {
+  margin-left: 5px;
+}
+
+.accept {
+  border: none;
+  padding: 10px;
+  background-color: #1877F2;
+  color: white;
+  font-weight: 700;
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+
+}
+
+.accept:hover {
+  background-color: #2851A3;
+  cursor: pointer;
+}
+
+.accept:active {
+ background-color: #1D3C78;
+}
+
+.accept:disabled {
+  background-color: #1D3C78;
+}
+
+.deny {
+  border: none;
+  padding: 10px;
+  background-color: #EBEDF0;
+  font-weight: 600;
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.deny:hover {
+  cursor: pointer;
+  background-color: #DADDE1;
+}
+
+.deny:active {
+  background-color: #CCD0D5;
+}
+
+.deny:disabled {
+  background-color: #CCD0D5;
 }

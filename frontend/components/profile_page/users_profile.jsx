@@ -50,7 +50,6 @@ class UsersProfile extends React.Component {
   }
 
   forceProfileRender() {
-    console.log(this.props.history)
     this.setState({
       key: this.state.key + 1
     })

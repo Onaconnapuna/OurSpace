@@ -20,11 +20,14 @@ class NavBar extends React.Component {
       loginModalIsOpen: false,
       notificationsModalIsOpen: false,
       dropDownIsOpen: false,
+
+      // key: 0
     }
 
     this.notificationHelper = this.notificationHelper.bind(this)
     this.switchModals = this.switchModals.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
+    this.forceNavRender = this.forceNavRender.bind(this)
     Modal.setAppElement('#root')
   }
 
@@ -39,6 +42,13 @@ class NavBar extends React.Component {
     document.removeEventListener("mousedown", this.handleClickOutside);
     window.onbeforeunload = null;
   }
+
+  forceNavRender() {
+    // this.setState({
+    //   key: this.state.key + 1
+    // })
+    this.forceUpdate()
+  } 
 
   handleClickOutside = (event) => {
     if (
@@ -66,7 +76,7 @@ class NavBar extends React.Component {
 
   notificationHelper() {
     if (this.props.currentUser.notifications) {
-      return Object.values(this.props.currentUser.notifications).length
+      return<button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {Object.values(this.props.currentUser.notifications).length}</button>                 
     } else {
       return ''
     }
@@ -83,7 +93,7 @@ class NavBar extends React.Component {
           {this.state.dropDownIsOpen && (
             <div className="dropdown-nav">
               <button className="dropdown-item" onClick={() => this.handleLogOut()}>Logout</button>
-              <button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {this.notificationHelper()}</button>
+              {this.notificationHelper()}
             </div>
           )}
           </div>
@@ -118,6 +128,7 @@ class NavBar extends React.Component {
          >
            <FriendRequestsIndexContainer 
            friendRequests={this.props.friendRequests}
+           forceNavRender= {this.forceNavRender}
            />
          </Modal>
          <Link to={'/main'} className="main-page-link">
