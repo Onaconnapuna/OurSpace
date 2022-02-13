@@ -382,7 +382,7 @@ label {
 }
 
 .friend-requests-index-container {
-  min-height: 250px;
+  /* min-height: 250px; */
   min-width: 600px;
   background: white;
   border-radius: 10px;
