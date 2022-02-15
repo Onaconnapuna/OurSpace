@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Modal from 'react-modal'
 import UpdateBioContainer from './update_bio_container'
+import FriendRequestsIndex from '../friendships/friend_requests_index';
 
 class Bio extends React.Component {
   constructor(props) {
@@ -9,10 +10,12 @@ class Bio extends React.Component {
     this.state = {
       user: this.props.user,
       modalIsOpen: false, 
+      notifModalIsOpen: false,
       friendRequest: {
         userId: this.props.currentUser.id,
         friendId: this.props.user.id,
-      }
+      },
+      friends: ''
     } 
     
     // Modal.setAppElement('#root')
@@ -25,6 +28,7 @@ class Bio extends React.Component {
     this.renderRelationshipStatus = this.renderRelationshipStatus.bind(this)
     this.addFriendButton = this.addFriendButton.bind(this)
     this.isFriend = this.isFriend.bind(this)
+    this.friendRequestSent = this.friendRequestSent.bind(this)
   }
 
   componentDidMount() {
@@ -154,23 +158,46 @@ class Bio extends React.Component {
     return friends
   }
 
+  friendRequestSent() {
+    let friendRequest = false  
+    this.props.notifications.forEach((notification)=> {
+      if (this.props.user.id === notification.userId) {
+        friendRequest = true
+      }
+    })
+    return friendRequest
+  }
+
   handleFriendRequest() {
     this.props.createFriendRequest(this.state.friendRequest)
   }
 
+  // setStateofFriendship() {
+
+  // }
+
   addFriendButton() {
-    if (this.isFriend()) {
+    if (this.isFriend()) { 
+      // this.setState({friends: `Friends &#10004` })
       return (
         <div>
-          Friends 'Checkmark'
+          {/* {this.state.friends} */}
+          Friends &#10004;
         </div>
       )
+    } else if (this.friendRequestSent()) {
+      // this.setState({friends: 'Pending Friend Request'})
+      return (
+        <button onClick={() => this.setState({notifModalIsOpen: true})}> Pending Friend Request</button>
+      ) 
     } else {
+      // this.setState({friends: 'Add Friend'})
       return(
         <button onClick={()=> this.props.createFriendRequest(this.state.friendRequest)}> Add Friend </button>
       )
     }
-  }
+}
+
 
   render() { 
     if (this.props.currentUser.friends === undefined) {
@@ -180,6 +207,19 @@ class Bio extends React.Component {
       return(
   
         <div className='bio-container'>
+        <Modal
+        parentSelector={ () => document.body}
+        isOpen={this.state.notifModalIsOpen}
+        overlayClassName='modal-background'
+        className='modal-child'
+        onRequestClose={() => this.setState({notifModalIsOpen: false})}
+        >
+        <FriendRequestsIndex
+        friendRequests={this.props.notifications}
+        forceProfileRender={this.props.forceProfileRender}
+        />
+
+        </Modal>
   
         <Modal 
           parentSelector={ () => document.body}

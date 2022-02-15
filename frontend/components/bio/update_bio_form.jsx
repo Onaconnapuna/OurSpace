@@ -58,7 +58,8 @@ class UpdateForm extends React.Component {
         data: formData,
         contentType: false,
         processData: false
-      }).then(this.props.forceProfileRender())
+      })
+      .then(this.props.forceProfileRender())
     }
     
     if (this.state.updateBackgroundPhotoFile) {
@@ -72,7 +73,8 @@ class UpdateForm extends React.Component {
         data: backgroundFormData,
         contentType: false,
         processData: false
-      }).then(this.props.forceProfileRender())
+      })
+      .then(this.props.forceProfileRender())
     }
   }
 

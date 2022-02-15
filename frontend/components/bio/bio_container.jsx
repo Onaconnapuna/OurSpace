@@ -6,7 +6,8 @@ import { createFriendRequest } from '../../actions/friend_request_actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    notifications: Object.values(state.entities.notifications)
   }
 }
 

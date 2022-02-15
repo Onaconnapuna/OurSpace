@@ -8,7 +8,7 @@ export const createFriendRequest = friendRequest => {
   return $.ajax({
     url: '/api/friend_requests',
     method: 'POST',
-    data: friendRequest
+    data: {friendRequest}
   })
 }
 

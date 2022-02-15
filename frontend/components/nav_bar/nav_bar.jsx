@@ -27,7 +27,7 @@ class NavBar extends React.Component {
     this.notificationHelper = this.notificationHelper.bind(this)
     this.switchModals = this.switchModals.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
-    this.forceNavUpdate = this.forceNavUpdate.bind(this)
+    // this.forceNavUpdate = this.forceNavUpdate.bind(this)
     Modal.setAppElement('#root')
   }
 
@@ -36,9 +36,15 @@ class NavBar extends React.Component {
     // window.onbeforeunload = function() {
     //   this.props.fetchFriendRequests(this.props.currentUser.id);
     // };
-    setTimeout(() => {
+    // setTimeout(() => {
+    //   this.props.fetchFriendRequests(this.props.currentUser.id)
+    // }, 1500);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.friendRequests === prevProps.friendRequests && this.props.currentUser) {
       this.props.fetchFriendRequests(this.props.currentUser.id)
-    }, 750);
+    }
   }
 
   componentWillUnmount() {
@@ -70,15 +76,15 @@ class NavBar extends React.Component {
     }
   }
 
-  forceNavUpdate() {
-    console.log('forcing update')
-    this.setState({
-      key: this.state.key + 1,
-      notificationsModalIsOpen : false
-    })
-    this.forceUpdate();
-    this.props.fetchFriendRequests(this.props.currentUser.id)
-  }
+  // forceNavUpdate() {
+  //   console.log('forcing update')
+  //   this.setState({
+  //     key: this.state.key + 1,
+  //     notificationsModalIsOpen : false
+  //   })
+  //   this.forceUpdate();
+  //   this.props.fetchFriendRequests(this.props.currentUser.id)
+  // }
 
   notificationHelper() {
     if (this.props.currentUser.notifications) {
@@ -89,6 +95,9 @@ class NavBar extends React.Component {
   }
 
   navBarWhileLoggedIn() {
+    // setTimeout(() => {
+    //   this.props.fetchFriendRequests(this.props.currentUser.id)
+    // }, 750);
     return (
       <div className='banner'>
         <div>
@@ -131,10 +140,9 @@ class NavBar extends React.Component {
          isOpen={this.state.notificationsModalIsOpen}
          overlayClassName='modal-background'
          className='modal-child'
-         onRequestClose={ () => this.forceNavUpdate({notificationsModalIsOpen: false})}
+         onRequestClose={ () => this.setState({notificationsModalIsOpen: false})}
          >
            <FriendRequestsIndexContainer 
-           forceNavUpdate={this.forceNavUpdate}
            friendRequests={this.props.friendRequests}
            />
          </Modal>

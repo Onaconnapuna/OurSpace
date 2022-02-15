@@ -17,33 +17,16 @@ class FriendRequestItem extends React.Component {
     this.handleDeny = this.handleDeny.bind(this);
   }
 
-  // componentDidUpdate(prevState) {
-  //   if (this.state.disabled !== prevState.disabled) {
-
-  //   }
-  // }
-
   handleAccept() {
     this.props.createFriendship(this.state)
     .then(this.props.deleteFriendRequest(this.props.friendRequest.id))
-    // this.setState({
-    //   accept: 'Accepted',
-    //   disabled: true
-    // })
-
-    // this.props.tryingThis();
-    // this.props.forceNavUpdate();
+    this.props.forceProfileRender()
+    this.props.fetchFriendships(this.state.userId)
+    this.props.fetchUser(this.props.friendRequest.userId)
   }
 
   handleDeny() {
     this.props.deleteFriendRequest(this.props.friendRequest.id)
-    // this.setState({
-    //   deny: 'Denied',
-    //   disabled: false
-    // })
-  
-    // this.props.tryingThis();
-    // this.props.forceNavUpdate();
   }
 
 

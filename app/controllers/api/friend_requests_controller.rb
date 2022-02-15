@@ -14,8 +14,8 @@ class Api::FriendRequestsController < ApplicationController
 
   def create 
     @friend_request = FriendRequest.new(friend_request_params)
-    if @friend_requests.save 
-      render :show
+    if @friend_request.save 
+      render :json ['Friend Request successful']
     else  
       render json: ['Friend Request unsuccessful'], status: 400 
     end
