@@ -15,7 +15,8 @@ class Bio extends React.Component {
         userId: this.props.currentUser.id,
         friendId: this.props.user.id,
       },
-      friends: ''
+      // friends: 'Friends',
+      // pending: 'Pending Friend Request' 
     } 
     
     // Modal.setAppElement('#root')
@@ -29,10 +30,15 @@ class Bio extends React.Component {
     this.addFriendButton = this.addFriendButton.bind(this)
     this.isFriend = this.isFriend.bind(this)
     this.friendRequestSent = this.friendRequestSent.bind(this)
+    this.renderButton = this.renderButton.bind(this)
   }
 
   componentDidMount() {
-    console.log(this.props.currentUser)
+    // console.log(this.props.currentUser)
+    // this.props.fetchFriendships(this.props.currentUser.id)
+    setTimeout(() => {
+      this.props.fetchCurrentUser(this.props.currentUser.id)
+    },2000)
   }
 
   componentDidUpdate(prevProps) {
@@ -168,13 +174,11 @@ class Bio extends React.Component {
     return friendRequest
   }
 
-  handleFriendRequest() {
-    this.props.createFriendRequest(this.state.friendRequest)
+  renderButton() {
+    this.setState({
+      pending: 'Friends Checkmark'
+    })
   }
-
-  // setStateofFriendship() {
-
-  // }
 
   addFriendButton() {
     if (this.isFriend()) { 
@@ -188,7 +192,7 @@ class Bio extends React.Component {
     } else if (this.friendRequestSent()) {
       // this.setState({friends: 'Pending Friend Request'})
       return (
-        <button onClick={() => this.setState({notifModalIsOpen: true})}> Pending Friend Request</button>
+        <button onClick={() => this.setState({notifModalIsOpen: true})}> Pending Friend Request </button>
       ) 
     } else {
       // this.setState({friends: 'Add Friend'})
@@ -216,6 +220,7 @@ class Bio extends React.Component {
         >
         <FriendRequestsIndex
         friendRequests={this.props.notifications}
+        renderButton={this.renderButton}
         forceProfileRender={this.props.forceProfileRender}
         />
 

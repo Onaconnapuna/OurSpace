@@ -26,9 +26,11 @@ class FriendRequestsIndex extends React.Component {
           this.props.friendRequests.map((friendRequest, idx) =>
           <FriendRequestItemContainer
           key={idx}
+          forceProfileRender={this.props.forceProfileRender}
           friendRequest={friendRequest} 
           tryingThis={this.tryingThis}
           forceNavUpdate={this.props.forceNavUpdate}
+          renderButton={this.props.renderButton}
           />
           )
          }
