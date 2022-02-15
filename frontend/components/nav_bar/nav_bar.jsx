@@ -20,19 +20,25 @@ class NavBar extends React.Component {
       loginModalIsOpen: false,
       notificationsModalIsOpen: false,
       dropDownIsOpen: false,
+
+      key: 0 
     }
 
     this.notificationHelper = this.notificationHelper.bind(this)
     this.switchModals = this.switchModals.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
+    this.forceNavUpdate = this.forceNavUpdate.bind(this)
     Modal.setAppElement('#root')
   }
 
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClickOutside);
-    window.onbeforeunload = function() {
-      this.props.fetchFriendRequests(this.props.currentUser.id);
-    };
+    // window.onbeforeunload = function() {
+    //   this.props.fetchFriendRequests(this.props.currentUser.id);
+    // };
+    setTimeout(() => {
+      this.props.fetchFriendRequests(this.props.currentUser.id)
+    }, 750);
   }
 
   componentWillUnmount() {
@@ -64,9 +70,19 @@ class NavBar extends React.Component {
     }
   }
 
+  forceNavUpdate() {
+    console.log('forcing update')
+    this.setState({
+      key: this.state.key + 1,
+      notificationsModalIsOpen : false
+    })
+    this.forceUpdate();
+    this.props.fetchFriendRequests(this.props.currentUser.id)
+  }
+
   notificationHelper() {
     if (this.props.currentUser.notifications) {
-      return<button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {Object.values(this.props.currentUser.notifications).length}</button>                 
+      return<button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {this.props.friendRequests.length}</button>                 
     } else {
       return ''
     }
@@ -111,14 +127,14 @@ class NavBar extends React.Component {
       return(
        <header className='navbar-container'>
          <Modal
-         key={this.state.key}
          parentSelector = { () => document.body}
          isOpen={this.state.notificationsModalIsOpen}
          overlayClassName='modal-background'
          className='modal-child'
-         onRequestClose={ () => this.setState({notificationsModalIsOpen: false})}
+         onRequestClose={ () => this.forceNavUpdate({notificationsModalIsOpen: false})}
          >
            <FriendRequestsIndexContainer 
+           forceNavUpdate={this.forceNavUpdate}
            friendRequests={this.props.friendRequests}
            />
          </Modal>

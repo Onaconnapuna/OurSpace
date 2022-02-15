@@ -3,6 +3,11 @@ class Api::FriendRequestsController < ApplicationController
   before_action :underscore_params!
 
   def index 
+    @user = User.find_by(id: params[:user_id])
+    @user_profile_photo = @user.profile_photo
+    @user_background_photo = @user.background_photo
+    @user_friends = @user.friends
+    @user_friend_requests = @user.friend_requests
     @friend_requests = FriendRequest.where(friend_id: params[:user_id])
     render :index
   end

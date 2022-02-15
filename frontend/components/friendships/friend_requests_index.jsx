@@ -6,14 +6,16 @@ class FriendRequestsIndex extends React.Component {
   constructor(props){
     super(props)
 
-    this.tryingThis=this.tryingThis.bind(this)
+    // this.tryingThis=this.tryingThis.bind(this)
   }
 
-  tryingThis() {
-    console.log('this fired')
-    console.log(this.props.currentUser.id)
-    this.props.fetchFriendRequests(this.props.currentUser.id)
-  }
+  // componentDidUpdate() {
+  //   console.log('the component did update')
+  // }
+
+  // tryingThis(){
+  //   this.props.fetchFriendRequests(this.props.currentUser.id)
+  // }
 
   render() {
     return(
@@ -26,6 +28,7 @@ class FriendRequestsIndex extends React.Component {
           key={idx}
           friendRequest={friendRequest} 
           tryingThis={this.tryingThis}
+          forceNavUpdate={this.props.forceNavUpdate}
           />
           )
          }

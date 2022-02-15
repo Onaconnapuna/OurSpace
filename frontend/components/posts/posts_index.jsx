@@ -9,7 +9,7 @@ class PostsIndex extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.fetchPosts(this.props.user.id)
-    }, 750);
+    }, 1000);
   }
 
   render() {
