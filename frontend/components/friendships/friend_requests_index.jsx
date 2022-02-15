@@ -6,15 +6,13 @@ class FriendRequestsIndex extends React.Component {
   constructor(props){
     super(props)
 
-    // this.state = {
-    //   key: 0
-    // }
-  
-    this.forceRender = this.forceRender.bind(this)
+    this.tryingThis=this.tryingThis.bind(this)
   }
 
-  forceRender() {
-    this.forceUpdate
+  tryingThis() {
+    console.log('this fired')
+    console.log(this.props.currentUser.id)
+    this.props.fetchFriendRequests(this.props.currentUser.id)
   }
 
   render() {
@@ -27,8 +25,7 @@ class FriendRequestsIndex extends React.Component {
           <FriendRequestItemContainer
           key={idx}
           friendRequest={friendRequest} 
-          forceRender = {this.forceRender}
-          forceNavRender = {this.props.forceNavRender}
+          tryingThis={this.tryingThis}
           />
           )
          }

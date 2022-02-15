@@ -8,10 +8,14 @@ class Bio extends React.Component {
 
     this.state = {
       user: this.props.user,
-      modalIsOpen : false 
+      modalIsOpen: false, 
+      friendRequest: {
+        userId: this.props.currentUser.id,
+        friendId: this.props.user.id,
+      }
     } 
     
-    Modal.setAppElement('#root')
+    // Modal.setAppElement('#root')
     
     this.setStateOfParent = this.setStateOfParent.bind(this)
     this.editProfile = this.editProfile.bind(this)
@@ -150,6 +154,10 @@ class Bio extends React.Component {
     return friends
   }
 
+  handleFriendRequest() {
+    this.props.createFriendRequest(this.state.friendRequest)
+  }
+
   addFriendButton() {
     if (this.isFriend()) {
       return (
@@ -159,7 +167,7 @@ class Bio extends React.Component {
       )
     } else {
       return(
-        <button> Add Friend </button>
+        <button onClick={()=> this.props.createFriendRequest(this.state.friendRequest)}> Add Friend </button>
       )
     }
   }
@@ -174,6 +182,7 @@ class Bio extends React.Component {
         <div className='bio-container'>
   
         <Modal 
+          parentSelector={ () => document.body}
           isOpen={this.state.modalIsOpen}
           overlayClassName='modal-background'
           className='modal-child'

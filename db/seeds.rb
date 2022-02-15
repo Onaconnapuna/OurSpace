@@ -25,9 +25,9 @@ user7 = User.create( email: 'kuragina@ourspace.org', password: 'password', first
 user8 = User.create( email: 'kuraginv@ourspace.org', password: 'password', first_name: 'Vasili', last_name: 'Kuragin')
 user9 = User.create( email: 'kuraginh@ourspace.org', password: 'password', first_name: 'Helene', last_name: 'Kuragin')
 
-friend_request1 = FriendRequest.create(user_id: demo_user.id, friend_id: user7.id)
-friend_request2 = FriendRequest.create(user_id: demo_user.id, friend_id: user8.id)
-friend_request3 = FriendRequest.create(user_id: demo_user.id, friend_id: user9.id)
+friend_request1 = FriendRequest.create(user_id: user2.id, friend_id: demo_user.id)
+friend_request2 = FriendRequest.create(user_id: user3.id, friend_id: demo_user.id)
+friend_request3 = FriendRequest.create(user_id: user4.id, friend_id: demo_user.id)
 
 demopost1 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: 'My first Post')
 demopost1 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: 'My second Post')
@@ -41,4 +41,6 @@ friend3 = Friendship.create( user_id: demo_user.id, friend_id: user3.id)
 friend4 = Friendship.create( user_id: demo_user.id, friend_id: user4.id)
 friend5 = Friendship.create( user_id: demo_user.id, friend_id: user5.id)
 friend6 = Friendship.create( user_id: demo_user.id, friend_id: user6.id)
+
+friend7 = Friendship.create( user_id: user2.id, friend_id:user3.id)
 

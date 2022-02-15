@@ -41,6 +41,7 @@ class LandingPage extends React.Component{
             <button onClick={() => this.setState({loginModalIsOpen: true})}>Log In</button>
           </div>
           <Modal
+          parentSelector = { () => document.body}
           isOpen={this.state.signUpModalIsOpen}
           overlayClassName='modal-background'
           className='modal-child'
@@ -52,6 +53,7 @@ class LandingPage extends React.Component{
           </Modal>
 
           <Modal
+          parentSelector = { () => document.body}
           isOpen={this.state.loginModalIsOpen}
           overlayClassName='modal-background'
           className='modal-child'

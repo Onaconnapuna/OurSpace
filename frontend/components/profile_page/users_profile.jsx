@@ -21,6 +21,8 @@ class UsersProfile extends React.Component {
       }
     });
 
+    // this.listen();
+
     this.forceProfileRender = this.forceProfileRender.bind(this)
     this.backListener = this.backListener.bind(this)
   }

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import NavBar from './nav_bar';
 import { fetchUser } from '../../actions/users_actions';
 import { fetchFriendRequests } from '../../actions/friend_request_actions';
-import { logout, login } from '../../actions/session_actions'
+import { logout } from '../../actions/session_actions'
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,

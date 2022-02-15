@@ -1,9 +1,11 @@
 import {connect} from 'react-redux';
 import ProfilePhotos from './profile_photos';
-import { fetchUser } from '../../actions/users_actions'
+import { fetchCurrentUser, fetchUser } from '../../actions/users_actions'
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+    currentUser: state.session.currentUser
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

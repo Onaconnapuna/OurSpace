@@ -19,22 +19,21 @@ class FriendRequestItem extends React.Component {
 
   handleAccept() {
     this.props.createFriendship(this.state)
-    .then(this.props.deleteFriendRequest(this.props.friendRequest.id))
+    .then(this.props.deleteFriendRequest(this.state.friendId))
     this.setState({
       accept: 'Accepted',
       disabled: true
-      }) 
-    
+    })
+    this.props.tryingThis();
   }
 
   handleDeny() {
-    this.props.deleteFriendRequest(this.props.friendRequest.id)
+    this.props.deleteFriendRequest(this.state.friendId)
     this.setState({
       deny: 'Denied',
       disabled: true
     })
-      // .then(this.props.forceRender())
-      // .then(this.props.forceNavRender())
+    this.props.tryingThis();
   }
 
 

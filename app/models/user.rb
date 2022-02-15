@@ -38,11 +38,11 @@ class User < ApplicationRecord
     class_name: 'Like'
 
   has_many :friend_requests_sent, 
-    foreign_key: :friend_id, 
+    foreign_key: :user_id, 
     class_name: 'FriendRequest'
 
   has_many :friend_requests,
-    foreign_key: :user_id, 
+    foreign_key: :friend_id, 
     class_name: 'FriendRequest'
   
   attr_reader :password

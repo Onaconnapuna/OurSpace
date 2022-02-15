@@ -15,7 +15,10 @@ class PostFrom extends React.Component {
       modalIsOpen: false
     }
 
-    Modal.setAppElement('#root')
+    // ref = React.createRef();
+
+    // getModalParent = () =>  this.ref.current;
+    // Modal.setAppElement('#root')
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -48,7 +51,8 @@ class PostFrom extends React.Component {
   render() {
     return(
       <div className='whats-on-your-mind-container'>
-        <Modal
+       <Modal
+        parentSelector={ () => document.body}
         isOpen={this.state.modalIsOpen}
         overlayClassName='modal-background'
         className='modal-child'
@@ -68,7 +72,7 @@ class PostFrom extends React.Component {
             <button>{this.props.formType}</button>
         </form>
         </div>
-        </Modal>
+        </Modal> 
 
         <div className='whats-on-your-mind'>
             <img src={`${this.props.user.profilePhoto.imageUrl}`}/>

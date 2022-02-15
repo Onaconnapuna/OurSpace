@@ -20,14 +20,11 @@ class NavBar extends React.Component {
       loginModalIsOpen: false,
       notificationsModalIsOpen: false,
       dropDownIsOpen: false,
-
-      // key: 0
     }
 
     this.notificationHelper = this.notificationHelper.bind(this)
     this.switchModals = this.switchModals.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
-    this.forceNavRender = this.forceNavRender.bind(this)
     Modal.setAppElement('#root')
   }
 
@@ -42,13 +39,6 @@ class NavBar extends React.Component {
     document.removeEventListener("mousedown", this.handleClickOutside);
     window.onbeforeunload = null;
   }
-
-  forceNavRender() {
-    // this.setState({
-    //   key: this.state.key + 1
-    // })
-    this.forceUpdate()
-  } 
 
   handleClickOutside = (event) => {
     if (
@@ -85,7 +75,7 @@ class NavBar extends React.Component {
   navBarWhileLoggedIn() {
     return (
       <div className='banner'>
-        <div className>
+        <div>
           <Link className='profile-link'to={`/profiles/${this.props.currentUser.id}`} onClick={() => this.props.fetchUser(this.props.currentUser.id)}> Hello, {this.props.currentUser.firstName}</Link> 
         </div>
         <div className="ellipsis-button-background-nav" ref={this.container}>
@@ -121,14 +111,15 @@ class NavBar extends React.Component {
       return(
        <header className='navbar-container'>
          <Modal
+         key={this.state.key}
+         parentSelector = { () => document.body}
          isOpen={this.state.notificationsModalIsOpen}
          overlayClassName='modal-background'
          className='modal-child'
-         onRequestClose={ () => this.setState({notificationsModalIsOpen:false})}
+         onRequestClose={ () => this.setState({notificationsModalIsOpen: false})}
          >
            <FriendRequestsIndexContainer 
            friendRequests={this.props.friendRequests}
-           forceNavRender= {this.forceNavRender}
            />
          </Modal>
          <Link to={'/main'} className="main-page-link">

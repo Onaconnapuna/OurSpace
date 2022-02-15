@@ -3,8 +3,8 @@ class Api::FriendRequestsController < ApplicationController
   before_action :underscore_params!
 
   def index 
-    @friend_requests = FriendRequest.where(user_id: params[:user_id])
-    render '/api/users/show'
+    @friend_requests = FriendRequest.where(friend_id: params[:user_id])
+    render :index
   end
 
   def create 
