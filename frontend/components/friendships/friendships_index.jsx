@@ -19,11 +19,15 @@ class FrienshipIndex extends React.Component {
     return friendshipPreview;
   }
 
+  noFriends() {
+    if (!this.props.friendships.length === 0) return <div> No Friends :(</div>
+  }
+
   render() {
     return(
       <div className='friendships-container'>
         <div className='friendships-index-container'>
-        <div className='friends'> Friends </div>
+        <div className='friends'> Friends ({this.props.friendships.length}) </div>
           <div className='friendships-index'>
             {
               this.friendshipPreview().map((friendship, idx) => <FriendshipItem
