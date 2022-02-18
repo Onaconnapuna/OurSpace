@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Modal from 'react-modal'
 import UpdateBioContainer from './update_bio_container'
-import FriendRequestsIndex from '../friendships/friend_requests_index';
+import FriendRequestsIndexContainer from '../friendships/friend_requests_index_container';
 
 class Bio extends React.Component {
   constructor(props) {
@@ -15,11 +15,7 @@ class Bio extends React.Component {
         userId: this.props.currentUser.id,
         friendId: this.props.user.id,
       },
-      // friends: 'Friends',
-      // pending: 'Pending Friend Request' 
     } 
-    
-    // Modal.setAppElement('#root')
     
     this.setStateOfParent = this.setStateOfParent.bind(this)
     this.editProfile = this.editProfile.bind(this)
@@ -30,11 +26,9 @@ class Bio extends React.Component {
     this.addFriendButton = this.addFriendButton.bind(this)
     this.isFriend = this.isFriend.bind(this)
     this.friendRequestSent = this.friendRequestSent.bind(this)
-    this.renderButton = this.renderButton.bind(this)
   }
 
   componentDidMount() {
-    // console.log(this.props.currentUser)
     // this.props.fetchFriendships(this.props.currentUser.id)
     setTimeout(() => {
       this.props.fetchCurrentUser(this.props.currentUser.id)
@@ -166,18 +160,12 @@ class Bio extends React.Component {
 
   friendRequestSent() {
     let friendRequest = false  
-    this.props.notifications.forEach((notification)=> {
+    this.props.friendRequests.forEach((notification)=> {
       if (this.props.user.id === notification.userId) {
         friendRequest = true
       }
     })
     return friendRequest
-  }
-
-  renderButton() {
-    this.setState({
-      pending: 'Friends Checkmark'
-    })
   }
 
   addFriendButton() {
@@ -218,10 +206,10 @@ class Bio extends React.Component {
         className='modal-child'
         onRequestClose={() => this.setState({notifModalIsOpen: false})}
         >
-        <FriendRequestsIndex
-        friendRequests={this.props.notifications}
-        renderButton={this.renderButton}
+        <FriendRequestsIndexContainer
+        currentUser={this.props.currentUser}
         forceProfileRender={this.props.forceProfileRender}
+        friendRequests={this.props.friendRequests}
         />
 
         </Modal>

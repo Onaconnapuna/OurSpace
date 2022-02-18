@@ -16,14 +16,14 @@ class FriendRequestItem extends React.Component {
 
     this.handleAccept = this.handleAccept.bind(this);
     this.handleDeny = this.handleDeny.bind(this);
-    this.handleAcceptHelper = this.handleAcceptHelper.bind(this)
+    // this.handleHelper = this.handleHelper.bind(this)
   }
 
-  handleAcceptHelper() {
-    if (this.props.forceProfileRender) {
-      this.props.forceProfileRender();
-    }
-  }
+  // handleHelper() {
+  //   if (this.props.forceProfileRender) {
+  //     this.props.forceProfileRender();
+  //   }
+  // }
 
 
   handleAccept() {
@@ -33,7 +33,8 @@ class FriendRequestItem extends React.Component {
     })
     this.props.createFriendship(this.state)
     .then(this.props.deleteFriendRequest(this.props.friendRequest.id))
-    .then(this.handleAcceptHelper())
+    .then(this.props.forceProfileRender())
+    // .then(this.handleHelper())
     // .then(this.props.fetchCurrentUser(this.props.currentUser.id))
     // this.props.fetchFriendships(this.state.userId)
 
@@ -47,6 +48,7 @@ class FriendRequestItem extends React.Component {
       deny: 'Denied'
     })
     this.props.deleteFriendRequest(this.props.friendRequest.id)
+    .then(this.props.forceProfileRender())
   }
 
 
@@ -57,8 +59,8 @@ class FriendRequestItem extends React.Component {
           <img className='create-post-poster-img' src={`${this.props.friendRequest.imageUrl}`} />
           <p>{this.props.friendRequest.firstName} {this.props.friendRequest.lastName} wants to be friends</p>
           <div className='friend-request-item-buttons'>
-            <button className='accept' onClick={() => this.handleAccept()} > {this.state.accept} </button>
-            <button className='deny' onClick={() => this.handleDeny()} > {this.state.deny} </button>
+            <button className='accept' disabled={this.state.disabled}  onClick={() => this.handleAccept()} > {this.state.accept} </button>
+            <button className='deny' disabled={this.state.disabled} onClick={() => this.handleDeny()} > {this.state.deny} </button>
           </div>
         </div>
       </div>

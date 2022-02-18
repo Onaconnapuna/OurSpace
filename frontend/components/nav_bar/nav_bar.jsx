@@ -33,12 +33,6 @@ class NavBar extends React.Component {
 
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClickOutside);
-    // window.onbeforeunload = function() {
-    //   this.props.fetchFriendRequests(this.props.currentUser.id);
-    // };
-    // setTimeout(() => {
-    //   this.props.fetchFriendRequests(this.props.currentUser.id)
-    // }, 1500);
   }
 
   componentDidUpdate(prevProps) {
@@ -144,6 +138,7 @@ class NavBar extends React.Component {
          >
            <FriendRequestsIndexContainer 
            friendRequests={this.props.friendRequests}
+           forceProfileRender={this.props.forceProfileRender}
            />
          </Modal>
          <Link to={'/main'} className="main-page-link">

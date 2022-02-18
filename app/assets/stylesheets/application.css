@@ -267,14 +267,6 @@ label {
   text-align: left;
  }
 
-/* .navbar-container { */
-  /* position: fixed;
-  width: 100%;
-  background-color: #F5F5F5;
-  z-index: 9;
-
-} */
-
 .main-page-link {
   display: flex;
   text-decoration: none;
@@ -299,11 +291,14 @@ label {
 }
 
 .navbar-container {
+  position: fixed;
   background-color: white;
   display: flex;
   align-items: center;
   box-shadow: 0px 2px 2px -2px #AAAAAA;;
   height: 75px;
+  width: 100%;
+  z-index: 9;
 }
 
 .banner {

@@ -1,6 +1,7 @@
 import React from 'react'
 import LoginFormContainer from "../session_form/login_form_container"
 import SignUpFormContainer from "../session_form/signup_form_container";
+import NavBarContainer from '../nav_bar/nav_bar_container';
 import Modal from 'react-modal'
 
 class LandingPage extends React.Component{
@@ -25,7 +26,9 @@ class LandingPage extends React.Component{
   }
 
   render() {
-    return (
+    return ( 
+    <div className='nav-landing'>
+      <NavBarContainer />
       <div className='landing-page'>
         <div className='welcome'>
           <div className='landing-page-welcome'>
@@ -65,8 +68,9 @@ class LandingPage extends React.Component{
           </Modal>
         </div>
       </div>
+    </div>
     )
-  }
+    }
 }
 
 export default LandingPage

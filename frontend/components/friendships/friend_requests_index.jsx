@@ -9,8 +9,10 @@ class FriendRequestsIndex extends React.Component {
     // this.tryingThis=this.tryingThis.bind(this)
   }
 
-  // componentDidUpdate() {
-  //   console.log('the component did update')
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     this.props.fetchFriendRequests(this.props.currentUser.id)
+  //   }, 1000)
   // }
 
   // tryingThis(){
@@ -18,26 +20,28 @@ class FriendRequestsIndex extends React.Component {
   // }
 
   render() {
-    return(
-      <div className='friend-requests-index-container'>
-        <div className='friend-requests'> Friend Requests </div>
-        <div className='friend-requests-index'>
-          {
-          this.props.friendRequests.map((friendRequest, idx) =>
-          <FriendRequestItemContainer
-          key={idx}
-          forceProfileRender={this.props.forceProfileRender}
-          friendRequest={friendRequest} 
-          tryingThis={this.tryingThis}
-          forceNavUpdate={this.props.forceNavUpdate}
-          renderButton={this.props.renderButton}
-          />
-          )
-         }
+    if (this.props.friendRequests === undefined) {
+      return null
+    } 
+    else {
+      return(
+        <div className='friend-requests-index-container'>
+          <div className='friend-requests'> Friend Requests </div>
+          <div className='friend-requests-index'>
+            {
+            this.props.friendRequests.map((friendRequest, idx) =>
+            <FriendRequestItemContainer
+            key={idx}
+            forceProfileRender={this.props.forceProfileRender}
+            friendRequest={friendRequest} 
+            />
+            )
+           }
+        </div>
       </div>
-    </div>
-      )
+        )
+        }
+      }
     }
-  }
 
 export default FriendRequestsIndex

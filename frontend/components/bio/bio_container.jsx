@@ -9,8 +9,7 @@ import { fetchFriendships } from '../../actions/friendship_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.session.currentUser,
-    notifications: Object.values(state.session.currentUser.notifications),
-    friendRequests: state.session.currentUser.notifications
+    notifications: Object.values(state.entities.notifications),
   }
 }
 

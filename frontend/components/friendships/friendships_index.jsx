@@ -6,6 +6,7 @@ class FrienshipIndex extends React.Component {
     super(props)
 
     this.friendshipPreview = this.friendshipPreview.bind(this)
+    this.noFriends = this.noFriends.bind(this)
   }
 
   componentDidMount() {
@@ -28,6 +29,7 @@ class FrienshipIndex extends React.Component {
       <div className='friendships-container'>
         <div className='friendships-index-container'>
         <div className='friends'> Friends ({this.props.friendships.length}) </div>
+        {this.noFriends()}
           <div className='friendships-index'>
             {
               this.friendshipPreview().map((friendship, idx) => <FriendshipItem
