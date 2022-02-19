@@ -32,6 +32,12 @@ import { useEffect } from "react";
           setDropDown(true)
         }
       }
+
+      const handleDelete = (commentId) => {
+        props.deleteComment(commentId)
+        props.forceProfileRender()
+      }
+
       const helperComments = (props) => {
         if (props.currentUserId === props.posterId || props.currentUserId=== props.comment.userId) {
           return (
@@ -39,7 +45,7 @@ import { useEffect } from "react";
                 <button className='ellipsis-button' onClick={() => handleDropdown(dropDown)}> &#8230; </button>
                   {dropDown && (
                     <div className="dropdown-post">
-                  <button className="dropdown-item" onClick={() => props.deleteComment(props.comment.id)}> Delete Comment</button>
+                  <button className="dropdown-item" onClick={() => handleDelete(props.comment.id)}> Delete Comment</button>
                   {/* <button className="dropdown-item">Share Post</button> */}
                   </div>
                   )}

@@ -90,6 +90,7 @@ class PostItem extends React.Component{
               key={idx}
               comment={comment}
               deleteComment={this.props.deleteComment}
+              forceProfileRender={this.props.forceProfileRender}
               />)
             }
           </div>

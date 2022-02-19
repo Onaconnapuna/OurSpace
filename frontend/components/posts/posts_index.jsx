@@ -20,6 +20,7 @@ class PostsIndex extends React.Component {
           key={idx}
           post={post} 
           user={this.props.user}
+          forceProfileRender={this.props.forceProfileRender}
           />)
         }
       </div>
