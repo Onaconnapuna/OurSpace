@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import PostsIndex from './posts_index';
 import { fetchPosts } from '../../actions/post_actions';
 import { fetchUser } from '../../actions/users_actions';
+// import { fetchComments } from '../../actions/comment_actions';
 
 const mapStateToProps = state => ({
   posts: Object.values(state.entities.posts)

@@ -34,7 +34,7 @@ friend_request4 = FriendRequest.create(user_id: user10.id, friend_id: demo_user.
 friend_request5 = FriendRequest.create(user_id: user11.id, friend_id: demo_user.id)
 
 demopost1 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: 'My first Post')
-demopost1 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: 'My second Post')
+demopost2 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: 'My second Post')
 
 post1 = Post.create( user_id: user1.id, poster_id: user1.id, body: 'Wait a minute, I, a bastard, became the primary beneficiary to my fathers will? Im Rich!')
 post2 = Post.create( user_id: user1.id, poster_id: user1.id, body: 'I will free my serfs')
@@ -47,4 +47,10 @@ friend5 = Friendship.create( user_id: demo_user.id, friend_id: user5.id)
 friend6 = Friendship.create( user_id: demo_user.id, friend_id: user6.id)
 
 friend7 = Friendship.create( user_id: user2.id, friend_id:user3.id)
+
+comment1 = Comment.create(user_id: user1.id, post_id: demopost1.id, body: 'Congrats')
+comment2 = Comment.create(user_id: user1.id, post_id: demopost1.id, body: 'Congrats again')
+comment3 = Comment.create(user_id: user3.id, post_id: demopost2.id, body: 'Congrats again again')
+comment3 = Comment.create(user_id: user3.id, post_id: demopost2.id, body: 'Woohoooo')
+
 

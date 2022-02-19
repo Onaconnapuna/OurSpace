@@ -76,10 +76,14 @@ class PostItem extends React.Component{
           </div>
           <img className='post-photo' src={this.props.post.photoUrl}/>
           <div> 
-
-          {/* <button className='share-post-button'>Share</button>
-          <button className='delete-post-button' onClick={() => this.props.deletePost(this.props.post.id)}>Delete Post</button>
-          <button className='edit-post-button'>Edit Post</button> */}
+          <div className='comments-container'> Comments
+            {this.props.post.comments.map((comment, idx) => 
+              <Comment 
+              key={idx}
+              comment={comment}
+              />)
+            }
+          </div>
           </div>
         </div>
       )
