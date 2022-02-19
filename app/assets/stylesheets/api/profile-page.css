@@ -212,11 +212,19 @@
   width: 100%;
 }
 
-.poster-id {
+.poster-id-container{
   position: relative;
   display: flex;
   align-items: center;
   padding-top: 10px;
+}
+
+.poster-id {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
 }
 
 .poster-id img {
@@ -424,6 +432,7 @@
 }
 
 .comment {
+  position: relative;
   display: flex;
   font-weight: 400;
   align-items: center;
@@ -445,6 +454,12 @@
   background-color: #CCD0D5;
   padding: 10px;
   border-radius: 33px;
+}
+
+.comment-delete {
+  position: absolute;
+  right: 10px;
+  font-size: 45px;
 }
 
 

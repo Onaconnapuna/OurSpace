@@ -1,5 +1,6 @@
 import React from 'react'
 import Comment from '../comments/comments'
+import { Link } from 'react-router-dom';
 
 class PostItem extends React.Component{
   constructor(props) {
@@ -43,7 +44,7 @@ class PostItem extends React.Component{
   }
 
   checkUser() {
-    if(this.props.currentUser.id === this.props.post.posterId) {
+    if(this.props.currentUser.id === this.props.post.posterId || this.props.currentUser.id === this.props.user.id) {
       return (
         <div className='ellipsis-button-background' ref={this.container}>
           <button className='ellipsis-button' onClick={() => this.handleDropDown()}> &#8230; </button>
@@ -64,11 +65,15 @@ class PostItem extends React.Component{
     } else {
       return (
         <div className='post'>
-          <div className='poster-id'>
+          <div className='poster-id-container'>
+            <div className='poster-id'> 
+            <Link className='poster-id' to={`profiles/${this.props.post.poster.id}`}>
             <img src={`${this.props.post.poster.imageUrl}`}/>
             <p className='poster-name'>
               {this.props.post.poster.firstName} {this.props.post.poster.lastName}
             </p>
+            </Link>
+          </div>
             {this.checkUser()}
           </div>
           <div className='post-body'>
@@ -79,8 +84,12 @@ class PostItem extends React.Component{
           <div className='comments-container'> Comments
             {this.props.post.comments.map((comment, idx) => 
               <Comment 
+              // userId={this.props.user.id}
+              posterId={this.props.post.posterId}
+              currentUserId={this.props.currentUser.id}
               key={idx}
               comment={comment}
+              deleteComment={this.props.deleteComment}
               />)
             }
           </div>
