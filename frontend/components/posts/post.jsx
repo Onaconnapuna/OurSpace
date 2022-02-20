@@ -9,11 +9,18 @@ class PostItem extends React.Component{
     this.container = React.createRef();
 
     this.state = {
-      dropDownIsOpen: false 
+      userId: this.props.user.id, 
+      postId: this.props.post.id,
+      parentCommentId: null,
+      body: '',
+      dropDownIsOpen: false, 
+      // postCommentButton: true,
     }
 
     this.handleDropDown = this.handleDropDown.bind(this)
     this.checkUser = this.checkUser.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.checkEmptyBody = this.checkEmptyBody.bind(this)
   }
 
   componentDidMount() {
@@ -59,6 +66,17 @@ class PostItem extends React.Component{
     }
   }
 
+  update(field) {
+    return (e) => 
+    this.setState({
+      [field]: e.currentTarget.value,
+    })
+  }
+
+  handleSubmit() {
+    this.props.createComment(this.state).then(this.props.forceProfileRender())
+  }
+
   render() {
     if (this.props.comments == null) {
       return null
@@ -84,7 +102,6 @@ class PostItem extends React.Component{
           <div className='comments-container'> Comments
             {this.props.post.comments.map((comment, idx) => 
               <Comment 
-              // userId={this.props.user.id}
               posterId={this.props.post.posterId}
               currentUserId={this.props.currentUser.id}
               key={idx}
@@ -94,6 +111,11 @@ class PostItem extends React.Component{
               />)
             }
           </div>
+          <form className='comment-input'onSubmit={this.handleSubmit}>
+            <img src={`${this.props.currentUser.profilePhoto.imageUrl}`}/>
+            <input className='comment-body-input' value={this.state.body} placeholder="Write a Comment" onChange={this.update('body')}></input>
+            <button className='post-comment' disabled={!this.state.body}> Post Comment </button>
+          </form>
           </div>
         </div>
       )
@@ -102,9 +124,3 @@ class PostItem extends React.Component{
 }
   
 export default PostItem
-
- {/* <div className='comments-container'>
-            {
-              this.props.comments.map((comment, idx) => <Comment key={idx} comment={comment}/>)
-            } */}
-            // </div>

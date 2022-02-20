@@ -1,12 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useEffect } from "react";
 
-
-// class Comment extends React.comment {
-  //   constructor(props) {
-    //     super(props)
-    //   }
-    const Comment = (props) => {
+  const Comment = (props) => {
       const container = useRef(null)
       const [dropDown, setDropDown] = useState(false)
       const handleClickOutside = (event) => {
@@ -46,7 +41,6 @@ import { useEffect } from "react";
                   {dropDown && (
                     <div className="dropdown-post">
                   <button className="dropdown-item" onClick={() => handleDelete(props.comment.id)}> Delete Comment</button>
-                  {/* <button className="dropdown-item">Share Post</button> */}
                   </div>
                   )}
               </div>

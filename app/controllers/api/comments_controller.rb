@@ -1,4 +1,6 @@
 class Api::CommentsController < ApplicationController
+  
+  before_action :underscore_params!
 
   def index 
     @comments = Comment.where(post_id: params[:post_id])
@@ -8,7 +10,7 @@ class Api::CommentsController < ApplicationController
   def create 
     @comment = Comment.new(comment_params)
     if @comment.save 
-      render :show
+      render json: ['Success']
     else  
       render json: @comment.errors.full_messages, status: 422
     end
@@ -21,6 +23,6 @@ class Api::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :user_id, :post_id, :parent_comment_id)
   end
 end
