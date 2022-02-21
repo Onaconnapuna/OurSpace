@@ -78,9 +78,10 @@ class PostFrom extends React.Component {
 
   forceRender() {
     this.setState({modalIsOpen: false})
-    this.props.fetchPosts(this.props.user.id)
+    // this.props.fetchPosts(this.props.user.id)
     this.props.forceProfileRender()
   }
+
 
   handleSubmit(e) {
     e.preventDefault();

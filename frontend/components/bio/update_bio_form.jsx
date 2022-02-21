@@ -7,11 +7,15 @@ class UpdateForm extends React.Component {
     this.state = {
       user: this.props.user,
       updateProfilePhotoFile: null,
-      updateBackgroundPhotoFile: null
+      updateBackgroundPhotoFile: null,
+      profilePhotoUrl: '',
+      backgroundPhotoUrl: '',
      }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleProfileFile = this.handleProfileFile.bind(this)
     this.handleBackgroundFile = this.handleBackgroundFile.bind(this)
+    this.profilePicFilePreview = this.profilePicFilePreview.bind(this)
+    this.backgroundPhotoFilePreview = this.backgroundPhotoFilePreview.bind(this)
   }
 
   update(field) {
@@ -31,20 +35,74 @@ class UpdateForm extends React.Component {
   }
 
   handleProfileFile(e) {
-    const file =  e.currentTarget.files[0]
-    this.setState({updateProfilePhotoFile: file})
+    // const file =  e.currentTarget.files[0]
+    // this.setState({updateProfilePhotoFile: file})
+    e.preventDefault();
+    this.setState({updateProfilePhotoFile: e.currentTarget.files[0]})
+    const reader = new FileReader()
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ profilePhotoUrl: reader.result, updateProfilephotoFile: file });
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        this.setState({ profilePhotoUrl: "", updateProfilePhotoFile: null });
+      }
   }
 
   handleBackgroundFile(e) {
-    const file =  e.currentTarget.files[0]
-    this.setState({updateBackgroundPhotoFile: file})
+    e.preventDefault();
+    // const file =  e.currentTarget.files[0]
+    // this.setState({updateBackgroundPhotoFile: file})
+    this.setState({updateBackgroundPhotoFile: e.currentTarget.files[0]});
+
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ backgroundPhotoUrl: reader.result, updateBackgroundPhotoFile: file });
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({backgroundPhotoUrl: "", updateBackgroundPhotoFile: null });
+    }
+    
+  }
+
+  profilePicFilePreview() {
+    if (this.state.profilePhotoUrl) {
+      // const reader = new FileReader();
+      // const file = this.state.updateProfilePhotoFile
+      // reader.readAsDataURL(file)
+      return (
+        <img className='update-form-profile-photo' src={`${this.state.profilePhotoUrl}`}/>
+      )
+    } else {
+      return (
+        <img className='update-form-profile-photo' src={`${this.props.user.profilePhoto.imageUrl}`}/>
+      )
+    }
+  }
+
+  backgroundPhotoFilePreview() {
+    if (this.state.backgroundPhotoUrl) {
+      // const reader = new FileReader();
+      // const file = this.state.updateBackgroundPhotoFile
+      return (
+        <img className='update-background-photo' src={`${this.state.backgroundPhotoUrl}`}/>
+      )
+    } else {
+      return (
+        <img className='update-background-photo' src={`${this.props.user.backgroundPhoto.imageUrl}`}></img>
+      )
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.setStateOfParent(false);
     this.props.updateUser(this.state.user);
-
     
     if (this.state.updateProfilePhotoFile) {
 
@@ -79,33 +137,40 @@ class UpdateForm extends React.Component {
   }
 
   render() {
-
+    
     return (
-    <div className='session-form-background'>
-      <div className='form-container'>
-        <form className ='session-form' onSubmit={this.handleSubmit}>
-         
-          <h3>Profile</h3>
+      <div className='session-form-background'>
+      <div className='update-form-container'>
+          <h3 className='update-profile'>Profile</h3>
+        <div className='centering-div'>
 
-          <label>Profile Photo
+         
+      <form className ='update-form' onSubmit={this.handleSubmit}>
+        <div className='update-photos'>
+          {this.profilePicFilePreview()}
+          {/* <img className='update-form-profile-photo' src={`${this.props.user.profilePhoto.imageUrl}`}/> */}
+          <label className='bio-img-select'> <i className='fa fa-camera' style={{fontSize: 24 }}></i>
             <input type="file" onChange={this.handleProfileFile} />
           </label>
-
-          <label>Background Photo
+          {this.backgroundPhotoFilePreview()}
+          {/* <img className='update-background-photo' src={`${this.props.user.backgroundPhoto.imageUrl}`}></img> */}
+          <label className='bio-img-select'> <i className='fa fa-camera' style={{fontSize: 24 }}></i>
             <input type="file" onChange={this.handleBackgroundFile}/>
           </label>
+        </div>
 
-          <label>Bio
-            <input type='text' value={this.state.user.bio}
+        <div className='update-info'>
+          <label> Bio </label>
+          {/* <label> */}
+            <textarea className='update-bio' type='text' value={this.state.user.bio} rows='10'
             // value={this.defaultValue(this.state.user.bio)} 
             onChange={this.update('bio')}/>
-          </label>
+          {/* </label> */}
 
-          <label>Birthday
-            <input type="text" value={this.state.user.birthday}
+          <label>Birthday </label>
+            <input type="date" value={this.state.user.birthday}
             // {this.defaultValue(this.state.user.birthday)} 
             onChange={this.update('birthday')} />
-          </label>
 
           <label>Gender/Pronouns
             <input type="text" value={this.state.user.gender}
@@ -113,13 +178,23 @@ class UpdateForm extends React.Component {
             onChange={this.update('gender')} />
           </label>
 
-          <label>RelationshipStatus
-            <input type="text" value={this.state.user.relationshipStatus}
-            // value={this.defaultValue(this.state.user.relationshipStatus)}
-             onChange={this.update('relationshipStatus')} />
+          <label>RelationshipStatus 
+
+            {/* <input type="text" value={this.state.user.relationshipStatus} */}
+            {/* // value={this.defaultValue(this.state.user.relationshipStatus)} */}
+             {/* onChange={this.update('relationshipStatus')} /> */}
+             <select className='select-relationship-status' onChange={this.update('relationship-status')} >
+            {/* //  name="relationship-status" id="relationship-status"> */}
+                <option value="Single" onChange={this.update('relationship-status')}>Single</option>
+                <option value="Married" onChange={this.update('relationship-status')}>Married</option>
+                <option value="In a Relationship" onChange={this.update('relationship-status')}>In a Relationship</option>
+                <option value="Its Complicated" onChange={this.update('relationship-status')}>Its Complicated</option>
+              </select>
           </label>
-          <button>Update Bio</button>
+        </div>
+          <button className='update-bio-button'>Update Bio</button>
         </form>
+        </div>
       </div>
     </div>
     )

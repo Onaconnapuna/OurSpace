@@ -9,9 +9,14 @@ class PostsIndex extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.fetchPosts(this.props.user.id)
-    }, 250);
+    }, 500);
   }
 
+  componentWillUnmount() {
+    this.setState = (state, callback) => {
+      return;
+    }
+  }
 
   render() {
     return(
@@ -22,7 +27,7 @@ class PostsIndex extends React.Component {
           post={post} 
           user={this.props.user}
           forceProfileRender={this.props.forceProfileRender}
-          forceIndexReload={this.forceIndexReload}
+          currentUser={this.props.currentUser}
           />)
         }
       </div>

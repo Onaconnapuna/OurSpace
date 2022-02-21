@@ -59,13 +59,14 @@ class Bio extends React.Component {
        if(this.state.user.bio === null ) {
         return (
           <div className='user-info'>
-            Bio: Pending
+             <div className='display'> <i className="fa fa-user-circle" aria-hidden="true" style={{fontSize: 24 }}></i> </div>
           </div>
         )
        } else {
          return (
            <div className='user-info'>
-             Bio: {this.state.user.bio} 
+             <div className='display'> <i className="fa fa-user-circle" aria-hidden="true" style={{fontSize: 24 }}></i> </div>
+            <p id='bio-text'> {this.state.user.bio} </p>
            </div>
          )
        }
@@ -83,13 +84,14 @@ class Bio extends React.Component {
       if (this.state.user.birthday === null) {
         return (
           <div className='user-info'>
-          Birthday: Pending
+            <div className='display'> <i className="fa fa-birthday-cake" aria-hidden="true" style={{fontSize: 24 }}></i></div>
           </div>
         )
       } else  {
         return (
           <div className='user-info'>
-            Birthday: {this.state.user.birthday} 
+            <div className='display'> <i className="fa fa-birthday-cake" aria-hidden="true" style={{fontSize: 24 }}></i></div>
+            <p>{this.state.user.birthday}</p>
           </div>
         )
       }
@@ -107,13 +109,14 @@ class Bio extends React.Component {
       if (this.state.user.gener === null) {
         return (
           <div className='user-info'>
-            Gender: Pending 
+            <div className='display'> <i className="fa fa-venus-mars" aria-hidden="true" style={{fontSize: 24 }}></i></div>
           </div>
         )
       } else {
         return (
           <div className='user-info'>
-            Gender/Pronouns: {this.state.user.gender} 
+            <div className='display'> <i className="fa fa-venus-mars" aria-hidden="true" style={{fontSize: 24 }}></i></div>
+            <p>{this.state.user.gender}</p>
           </div>
         )
       }
@@ -131,13 +134,14 @@ class Bio extends React.Component {
       if (this.state.user.relationshipStatus === null ) {
         return (
           <div className='user-info'>
-          RelationshipStatus: Pending
+          <div className='display'> <i className="fa fa-heart" aria-hidden="true" style={{fontSize: 24 }}></i></div>
         </div>
         )
       } else {
         return (
           <div className='user-info'>
-            RelationshipStatus: {this.state.user.relationshipStatus} 
+          <div className='display'> <i className="fa fa-heart" aria-hidden="true" style={{fontSize: 24 }}></i></div>
+            <p>{this.state.user.relationshipStatus}</p>
           </div>
         )
       }
@@ -172,7 +176,7 @@ class Bio extends React.Component {
     if (this.isFriend()) { 
       // this.setState({friends: `Friends &#10004` })
       return (
-        <div>
+        <div className='display-friends'>
           {/* {this.state.friends} */}
           Friends &#10004;
         </div>

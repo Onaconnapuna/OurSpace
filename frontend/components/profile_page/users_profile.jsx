@@ -31,8 +31,9 @@ class UsersProfile extends React.Component {
 
   componentDidMount() {  
     // if (this.props.user == undefined) {
+      // this.forceUpdate()
       // setTimeout(() => {
-        console.log('hello')
+        // console.log('hello')
         this.props.fetchUser(this.props.match.params.userId)
         this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
         this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
@@ -63,7 +64,7 @@ class UsersProfile extends React.Component {
         key: this.state.key + 1
       })
       this.props.fetchUser(this.props.match.params.userId)
-      // this.props.fetchCurrentUser(this.props.user)
+      this.props.fetchCurrentUser(this.props.user)
       // this.props.fetchPosts(this.props.user.id)
     // }, 1000)
   }
@@ -111,7 +112,9 @@ class UsersProfile extends React.Component {
                    <PostsIndexContainer
                    key={this.state.key + 5}
                    forceProfileRender={this.forceProfileRender} 
-                   user={this.props.user}/>
+                   user={this.props.user}
+                   currentUser={this.props.currentUser}
+                   />
                    </div>
                </div>
              </div>

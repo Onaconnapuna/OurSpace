@@ -123,6 +123,7 @@ class PostItem extends React.Component{
               <Comment 
               posterId={this.props.post.posterId}
               currentUserId={this.props.currentUser.id}
+              currentUser={this.props.currentUser}
               key={idx}
               comment={comment}
               deleteComment={this.props.deleteComment}
