@@ -5,6 +5,7 @@ import BioContainer from '../bio/bio_container';
 import ProfilePhotosContainer from '../profile_photos/profile_photos_container';
 import FriendshipIndexContainer from '../friendships/friendships_index_container';
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import App from '../app';
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class UsersProfile extends React.Component {
       }
     });
 
-    this.listen();
+    // this.listen();
 
     this.forceProfileRender = this.forceProfileRender.bind(this)
     // this.backListener = this.backListener.bind(this)
@@ -31,6 +32,7 @@ class UsersProfile extends React.Component {
   componentDidMount() {  
     // if (this.props.user == undefined) {
       // setTimeout(() => {
+        console.log('hello')
         this.props.fetchUser(this.props.match.params.userId)
         this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
         this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
@@ -54,14 +56,16 @@ class UsersProfile extends React.Component {
   }
 
   forceProfileRender() {
-    setTimeout ( () => {
+    // App.reRenderGodDamnIt();
+    console.log('i fired')
+    // setTimeout ( () => {
       this.setState({
         key: this.state.key + 1
       })
       this.props.fetchUser(this.props.match.params.userId)
       // this.props.fetchCurrentUser(this.props.user)
       // this.props.fetchPosts(this.props.user.id)
-    }, 1000)
+    // }, 1000)
   }
 
   render() {

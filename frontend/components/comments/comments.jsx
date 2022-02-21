@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
 import { useEffect } from "react";
 
-  const Comment = (props) => {
+const Comment = (props) => {
+    const [dropDown, setDropDown] = useState(false)
       const container = useRef(null)
-      const [dropDown, setDropDown] = useState(false)
       const handleClickOutside = (event) => {
         if (
           container.current &&
