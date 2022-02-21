@@ -14,12 +14,15 @@ class PostFrom extends React.Component {
       photoFile: null,
       imageUrl: "",
       modalIsOpen: false,
+      // postButtonDisabled: true
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.filePreview = this.filePreview.bind(this);
-    this.clearValues = this.clearValues.bind(this);
+    this.disableButton = this.disableButton.bind(this);
+    this.fileError = this.fileError.bind(this)
+    // this.clearValues = this.clearValues.bind(this);
   }
 
   update(field) {
@@ -38,6 +41,14 @@ class PostFrom extends React.Component {
     }
   }
 
+  fileError() {
+    if (this.state.photoFile && this.state.photoFile.size > 300000) {
+      return (
+        <div className='file-error'> File is too large, please select another </div>
+      )
+    }
+  }
+
   handleFile(e) {
     this.setState({photoFile: e.currentTarget.files[0]});
 
@@ -50,6 +61,37 @@ class PostFrom extends React.Component {
       reader.readAsDataURL(file);
     } else {
       this.setState({ imageUrl: "", photoFile: null });
+    }
+    
+  }
+
+  // disableButton() {
+  //   if (this.state.photoFile) {
+  //     if (this.state.photoFile.size > 300000 || !this.state.post.body) {
+  //       // this.setState({postButtonDisabled: true})
+  //       return ( 
+  //         <button className='create-post-button' disabled={true}>Create Post</button>
+  //       )
+  //     } else {
+  //       // this.setState({
+  //       //   postButtonDisabled: false
+  //       // })
+  //       return (
+  //         <button className='create-post-button' disabled={false}> Create Post</button>
+  //       )
+  //     }
+  //   }
+  // }
+
+  disableButton() {
+    if ((this.state.photoFile && this.state.photoFile.size > 300000) || !this.state.post.body) {
+      return (
+        <button className='create-post-button' disabled={true}>Create Post</button>
+      )
+    } else {
+      return (
+        <button className='create-post-button' disabled={false}>Create Post</button>
+      )
     }
   }
 
@@ -112,13 +154,16 @@ class PostFrom extends React.Component {
             </div>
             <textarea className='create-post-body' value = {this.state.post.body} placeholder="What's on your mind?" rows="5" onChange={this.update('body')}></textarea>  
             {this.filePreview()}
-            <button className='create-post-button' disabled={!this.state.post.body}>{this.props.formType}</button>
+            {this.fileError()}
+            {/* <button className='create-post-button' disabled={this.state.postButtonDisabled}>Create Post</button> */}
+            {this.disableButton()}
         </form>
         </div>
         </Modal> 
 
         <div className='whats-on-your-mind'>
             <img src={`${this.props.user.profilePhoto.imageUrl}`}/>
+            {this.disableButton}
             <button onClick={() => this.setState({modalIsOpen: true})}>What's on your mind?</button>
         </div>
       </div>
