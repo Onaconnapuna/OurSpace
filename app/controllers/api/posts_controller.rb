@@ -9,7 +9,10 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if !@post.save 
+    if @post.save 
+      @posts = Post.where(user_id: params[:user_id])
+      render :index
+    else 
       render json: @post.errors.full_messages, status: 422
     end
   end

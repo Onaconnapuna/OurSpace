@@ -14,18 +14,25 @@ class PostItem extends React.Component{
       parentCommentId: null,
       body: '',
       dropDownIsOpen: false, 
-      // postCommentButton: true,
     }
 
     this.handleDropDown = this.handleDropDown.bind(this)
     this.checkUser = this.checkUser.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.checkEmptyBody = this.checkEmptyBody.bind(this)
   }
 
   componentDidMount() {
     document.addEventListener("mousedown", this.handleClickOutside);
   }
+
+  componentWillReceiveProps(prevProps) {
+    if (this.props.postId !== prevProps.post.id)
+    this.setState({
+      postId: this.props.post.id
+    })
+  }
+
+
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClickOutside);
@@ -73,12 +80,25 @@ class PostItem extends React.Component{
     })
   }
 
-  handleSubmit() {
-    this.props.createComment(this.state).then(this.props.forceProfileRender())
+  handleSubmit(e) {
+    e.preventDefault();
+    // this.props.forceProfileRender()
+    this.props.forceProfileRender();
+    // this.props.forceIndexReload()
+    // setTimeout(() => {
+    //   this.props.createComment(this.state)
+    // },1000)
+    this.props.createComment(this.state)
+    // console.log(this.state)
+    // this.props.createComment(this.state)
+    // this.props.forceProfileRender();
+    // this.setState({
+    //   body: ''
+    // })
   }
 
   render() {
-    if (this.props.comments == null) {
+    if (!this.state) {
       return null
     } else {
       return (
@@ -99,6 +119,7 @@ class PostItem extends React.Component{
           </div>
           <img className='post-photo' src={this.props.post.photoUrl}/>
           <div> 
+          <div className='break'></div>
           <div className='comments-container'> Comments
             {this.props.post.comments.map((comment, idx) => 
               <Comment 
@@ -113,7 +134,7 @@ class PostItem extends React.Component{
           </div>
           <form className='comment-input'onSubmit={this.handleSubmit}>
             <img src={`${this.props.currentUser.profilePhoto.imageUrl}`}/>
-            <input className='comment-body-input' value={this.state.body} placeholder="Write a Comment" onChange={this.update('body')}></input>
+            <input onClick={()=> console.log(this.state.postId)}className='comment-body-input' value={this.state.body} placeholder="Write a Comment" onChange={this.update('body')}></input>
             <button className='post-comment' disabled={!this.state.body}> Post Comment </button>
           </form>
           </div>

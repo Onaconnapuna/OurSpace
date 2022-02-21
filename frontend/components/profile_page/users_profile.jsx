@@ -54,10 +54,13 @@ class UsersProfile extends React.Component {
   }
 
   forceProfileRender() {
-    this.setState({
-      key: this.state.key + 1
-    })
-    this.props.fetchUser(this.props.match.params.userId)
+    // setTimeout ( () => {
+      this.setState({
+        key: this.state.key + 1
+      })
+      this.props.fetchUser(this.props.match.params.userId)
+      this.props.fetchPosts(this.props.user.id)
+    // }, 1000)
     // this.props.fetchCurrentUser(this.props.user)
   }
 
@@ -104,7 +107,6 @@ class UsersProfile extends React.Component {
                    <PostsIndexContainer
                    key={this.state.key + 5}
                    forceProfileRender={this.forceProfileRender} 
-                   key={this.state.key}
                    user={this.props.user}/>
                    </div>
                </div>

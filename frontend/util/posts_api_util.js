@@ -8,9 +8,7 @@ export const createPost = post => {
   return $.ajax({
     url: '/api/posts',
     method: 'POST',
-    data: post,
-    contentType: false,
-    processData: false
+    data: { post } ,
   })
 }
 
@@ -20,3 +18,4 @@ export const deletePost = postId => {
     method: 'DELETE',
   })
 }
+

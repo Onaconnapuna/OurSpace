@@ -12,16 +12,14 @@ class PostFrom extends React.Component {
         body: '',
       },
       photoFile: null,
-      modalIsOpen: false
+      imageUrl: "",
+      modalIsOpen: false,
     }
-
-    // ref = React.createRef();
-
-    // getModalParent = () =>  this.ref.current;
-    // Modal.setAppElement('#root')
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.filePreview = this.filePreview.bind(this);
+    this.clearValues = this.clearValues.bind(this);
   }
 
   update(field) {
@@ -32,20 +30,62 @@ class PostFrom extends React.Component {
     }
   }
 
+  filePreview() {
+    if (this.state.imageUrl) {
+      return (
+        <img className='post-img-preview' src={`${this.state.imageUrl}`}></img>
+      )
+    }
+  }
+
   handleFile(e) {
     this.setState({photoFile: e.currentTarget.files[0]});
+
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({ imageUrl: reader.result, photoFile: file });
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", photoFile: null });
+    }
+  }
+
+  forceRender() {
+    this.setState({modalIsOpen: false})
+    this.props.fetchPosts(this.props.user.id)
+    this.props.forceProfileRender()
+  }
+
+  clearValues() {
+    this.setState({
+      modalIsOpen: false,
+      photoFile: null, 
+      imageUrl: ""
+    })
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('post[userId]', this.state.post.userId);
-    formData.append('post[posterId]', this.state.post.posterId);
-    formData.append('post[body]', this.state.post.body);
     if (this.state.photoFile) {
+      const formData = new FormData();
+      formData.append('post[userId]', this.state.post.userId);
+      formData.append('post[posterId]', this.state.post.posterId);
+      formData.append('post[body]', this.state.post.body);
       formData.append('post[photo]', this.state.photoFile);
+      $.ajax({
+        url: '/api/posts',
+        method: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false
+      }).then(this.forceRender())
+    } else {
+    this.props.createPost(this.state.post).then(this.setState({modalIsOpen:false}))
+    .then(this.props.forceProfileRender())
     }
-    this.props.createPost(formData).then(this.setState({modalIsOpen:false})).then(this.props.forceProfileRender())
   }
 
   render() {
@@ -56,7 +96,7 @@ class PostFrom extends React.Component {
         isOpen={this.state.modalIsOpen}
         overlayClassName='modal-background'
         className='modal-child'
-        onRequestClose={() => this.setState({modalIsOpen: false})}
+        onRequestClose={() => this.clearValues()}
         >
         <div className='post-form-container'>
         <form className='post-form' onSubmit={this.handleSubmit}>
@@ -66,10 +106,13 @@ class PostFrom extends React.Component {
               <p className='poster-name'>
                 {this.props.currentUser.firstName} {this.props.currentUser.lastName}
               </p>
+            <label className='post-img-select'> <i className='fa fa-camera' style={{fontSize: 24 }}></i>
+              <input type='file' onChange={this.handleFile}/>
+            </label>
             </div>
-            <textarea className='create-post-body' value = {this.state.post.body} placeholder="What's on your mind?" onChange={this.update('body')} cols="30" rows="10"></textarea>  
-            <input type='file' onChange={this.handleFile}/>
-            <button>{this.props.formType}</button>
+            <textarea className='create-post-body' value = {this.state.post.body} placeholder="What's on your mind?" rows="5" onChange={this.update('body')}></textarea>  
+            {this.filePreview()}
+            <button className='create-post-button' disabled={!this.state.post.body}>{this.props.formType}</button>
         </form>
         </div>
         </Modal> 

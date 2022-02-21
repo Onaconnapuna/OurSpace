@@ -12,6 +12,7 @@ class PostsIndex extends React.Component {
     }, 1000);
   }
 
+
   render() {
     return(
       <div className='posts-index'>
@@ -21,6 +22,7 @@ class PostsIndex extends React.Component {
           post={post} 
           user={this.props.user}
           forceProfileRender={this.props.forceProfileRender}
+          forceIndexReload={this.forceIndexReload}
           />)
         }
       </div>

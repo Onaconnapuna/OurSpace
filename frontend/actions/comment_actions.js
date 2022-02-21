@@ -21,12 +21,12 @@ export const removeComment = commentId => ({
 
 export const fetchComments = (postId) => dispatch => {
   return APIUtil.fetchComments(postId)
-    .then((comments) => dispatch(receiveComments(comments)))
+    // .then((comments) => dispatch(receiveComments(comments)))
 }
 
 export const createComment = (comment) => dispatch => {
   return APIUtil.createComment(comment)
-    .then((comment) => dispatch(receiveComment(comment)))
+    // .then((comment) => dispatch(receiveComment(comment)))
 }
 
 export const deleteComment = (commentId) => dispatch => {

@@ -3,6 +3,7 @@ import { fetchUser } from '../../actions/users_actions';
 import UsersProfile from './users_profile';
 import { fetchCurrentUser} from '../../actions/users_actions'
 import { fetchFriendRequests } from '../../actions/friend_request_actions';
+import { fetchPosts } from '../../actions/post_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -15,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchPosts: (userId) => dispatch(fetchPosts(userId)),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
     fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId)),
     fetchFriendRequests:(userId) => dispatch(fetchFriendRequests(userId))

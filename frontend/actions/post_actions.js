@@ -10,10 +10,10 @@ export const receivePosts = posts => ({
   posts 
 })
 
-// export const receivePost = post => ({
-//   type: RECEIVE_POST,
-//   post
-// })
+export const receivePost = post => ({
+  type: RECEIVE_POST,
+  post
+})
 
 export const removePost = postId => ({
   type: REMOVE_POST,
@@ -33,7 +33,7 @@ export const fetchPosts = (userId) => dispatch => {
 export const createPost = (post) => dispatch => 
 {
   return APIUtil.createPost(post)
-    // .then((post) => dispatch(receivePost(post)))
+    .then((posts) => dispatch(receivePosts(posts)))
 }
 
 export const deletePost = (postId) => dispatch => {

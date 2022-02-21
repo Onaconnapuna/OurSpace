@@ -8,7 +8,7 @@
     end
     json.set! :comments do 
       json.array! post.comments.includes(:user).each do |comment|
-        json.extract! comment, :id, :user_id, :body
+        json.extract! comment, :id, :user_id, :body, :post_id
         json.image_url url_for(comment.user.profile_photo.photo)
       end 
     end

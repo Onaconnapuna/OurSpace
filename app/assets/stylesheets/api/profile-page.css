@@ -140,8 +140,13 @@
 
 .create-post-body {
   width: 100%;
-  font-size: 18px;
+  height: 40%;
+  max-height:80%;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.333;
 }
+
 
 .create-post-poster-id {
   display: flex;
@@ -160,13 +165,43 @@
   overflow: hidden;
 }
 
+.create-post-button {
+  position: absolute;
+  right: 33%;
+  bottom: 0;
+  margin-bottom: 10px;
+  border: none;
+  padding: 10px;
+  background-color: #1877F2;
+  color: white;
+  font-weight: 700;
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.create-post-button:hover {
+  background-color: #2851A3;
+  cursor: pointer;
+}
+
+.create-post-button:active {
+  background-color: #1D3C78;
+}
+
+.create-post-button:disabled {
+  background-color: #1D3C78;
+}
+
 .post-form {
+  position: relative;
   border: none;
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 400px;
-  width: 500px;
+  min-height: 400px;
+  width: 600px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 5px 2px #D1D1D1;
@@ -193,19 +228,28 @@
   padding-bottom: 20px;
   overflow-wrap: break-word ;
   width: 100%;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.333;
-  font-weight: 400;
+  font-weight: 500;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #282828;
-  background:linear-gradient(#AAAAAA, #AAAAAA) bottom no-repeat;
-  background-size:95% 1px;
+  /* background:linear-gradient(#AAAAAA, #AAAAAA) bottom no-repeat;
+  background-size:95% 1px; */
 }
 
 .post-photo {
   object-fit: cover;
   overflow: hidden;
   width: 100%;
+}
+
+.break {
+  margin-top: 20px;
+  /* background:linear-gradient(#AAAAAA, #AAAAAA) bottom no-repeat; 
+  background-size:95% 1px; */
+  border-bottom: 1px solid #AAAAAA;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
 }
 
 .posts-index {
@@ -290,7 +334,25 @@
   font-size: 16px;
   font-weight: 600;
   padding-left: 10px;
+} 
+
+.post-img-select {
+  position: absolute;
+  right: 3%;
 }
+
+.post-img-select:hover {
+  cursor: pointer;
+}
+
+.post-img-select input[type='file'] {
+  display: none;
+}
+
+.post-img-preview {
+  margin-bottom: 75px;
+}
+
 
 .ellipsis-button-background {
   position: absolute;
@@ -365,9 +427,6 @@
 
 .friend-id img {
   margin-left: 5px;
-  /* height: 50px; */
-  /* width: 50px; */
-  /* border-radius: 50%; */
   border-radius: 5%;
   height: 100px;
   width: 100px;
