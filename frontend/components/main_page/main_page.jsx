@@ -32,13 +32,13 @@ class MainPage extends React.Component {
           friendRequests={this.props.friendRequests}
           // friendRequests={Object.values(this.props.currentUser.friendRequests)}
           />
-        <div className='main-page'>
+        {/* <div className='main-page'>
           <div className='posts-container'>
           {
             this.props.posts.map((post, idx) => <PostContainer  key={idx} post={post} deletePost={this.props.deletePost}/> )
           }
           </div>
-        </div>
+        </div> */}
         </div>
       )
     }

@@ -35,11 +35,11 @@ class NavBar extends React.Component {
     document.addEventListener("mousedown", this.handleClickOutside);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.friendRequests === prevProps.friendRequests && this.props.currentUser) {
-  //     this.props.fetchFriendRequests(this.props.currentUser.id)
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.friendRequests === prevProps.friendRequests && this.props.currentUser) {
+      this.props.fetchFriendRequests(this.props.currentUser.id)
+    }
+  }
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClickOutside);
