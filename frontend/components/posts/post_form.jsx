@@ -20,7 +20,7 @@ class PostFrom extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.filePreview = this.filePreview.bind(this);
-    // this.disableButton = this.disableButton.bind(this);
+    this.disableButton = this.disableButton.bind(this);
     this.fileError = this.fileError.bind(this)
   }
 
@@ -64,17 +64,17 @@ class PostFrom extends React.Component {
     
   }
 
-  // disableButton() {
-  //   if ((this.state.photoFile && this.state.photoFile.size > 300000) || !this.state.post.body) {
-  //     return (
-  //       <button className='create-post-button' disabled={true}>Create Post</button>
-  //     )
-  //   } else {
-  //     return (
-  //       <button className='create-post-button' disabled={false}>Create Post</button>
-  //     )
-  //   }
-  // }
+  disableButton() {
+    if ((this.state.photoFile && this.state.photoFile.size > 300000) || !this.state.post.body) {
+      return (
+        <button className='create-post-button' disabled={true}>Create Post</button>
+      )
+    } else {
+      return (
+        <button className='create-post-button' disabled={false}>Create Post</button>
+      )
+    }
+  }
 
   forceRender() {
     this.setState({modalIsOpen: false})
@@ -128,7 +128,7 @@ class PostFrom extends React.Component {
             <textarea className='create-post-body' value = {this.state.post.body} placeholder="What's on your mind?" rows="5" onChange={this.update('body')}></textarea>  
             {this.filePreview()}
             {this.fileError()}
-            {/* {this.disableButton()} */}
+            {this.disableButton()}
         </form>
         </div>
         </Modal> 

@@ -30,9 +30,9 @@ class Bio extends React.Component {
 
   componentDidMount() {
     // this.props.fetchFriendships(this.props.currentUser.id)
-    setTimeout(() => {
-      this.props.fetchCurrentUser(this.props.currentUser.id)
-    },2000)
+    // setTimeout(() => {
+    //   this.props.fetchCurrentUser(this.props.currentUser.id)
+    // },2000)
   }
 
   componentDidUpdate(prevProps) {
