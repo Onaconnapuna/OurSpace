@@ -22,31 +22,31 @@ class UsersProfile extends React.Component {
       }
     });
 
-    // this.listen();
+    this.listen();
 
     this.forceProfileRender = this.forceProfileRender.bind(this)
-    this.backListener = this.backListener.bind(this)
+    // this.backListener = this.backListener.bind(this)
   }
 
   componentDidMount() {  
-    if (this.props.user == undefined) {
-      setTimeout(() => {
+    // if (this.props.user == undefined) {
+      // setTimeout(() => {
         this.props.fetchUser(this.props.match.params.userId)
         this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
         this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
-      }, 500)
-    }
+      // }, 500)
+    // }
   }
   
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.match.params.id !== prevProps.match.params.id) { 
-      this.forceProfileRender();
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.props.match.params.id !== prevProps.match.params.id) { 
+  //     this.forceProfileRender();
+  //   }
+  // }
 
-  backListener() {
-    this.props.history.listen()
-  }
+  // backListener() {
+  //   this.props.history.listen()
+  // }
 
   componentWillUnmount() {
     this.listen(); 
@@ -54,14 +54,14 @@ class UsersProfile extends React.Component {
   }
 
   forceProfileRender() {
-    // setTimeout ( () => {
+    setTimeout ( () => {
       this.setState({
         key: this.state.key + 1
       })
       this.props.fetchUser(this.props.match.params.userId)
-      this.props.fetchPosts(this.props.user.id)
-    // }, 1000)
-    // this.props.fetchCurrentUser(this.props.user)
+      // this.props.fetchCurrentUser(this.props.user)
+      // this.props.fetchPosts(this.props.user.id)
+    }, 1000)
   }
 
   render() {

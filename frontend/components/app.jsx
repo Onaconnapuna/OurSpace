@@ -11,7 +11,6 @@ import LandingPage from './landing-page/landing-page';
 
 const App = () => (
   <div className='window'>
-    {/* <NavBarContainer/> */}
     <Switch>
       <ProtectedRoute path = '/profiles/:userId/creatpost' component={PostFormContainer}/>
       <ProtectedRoute path='/profiles/:userId' component={UsersProfileContainer}/>

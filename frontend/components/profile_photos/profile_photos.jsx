@@ -1,4 +1,5 @@
 import React from 'react'
+import { useCallback } from 'react';
 // import 'regenerator-runtime/runtime'
 
 class ProfilePhotos extends React.Component {
@@ -8,19 +9,32 @@ class ProfilePhotos extends React.Component {
       profilePhoto: this.props.user.profilePhoto.imageUrl,
       backgroundPhoto: this.props.user.backgroundPhoto.imageUrl,
     }
+    // this.isMounted = false;
   }
 
   componentDidMount(){
-    setTimeout(() => {
-      this.props.fetchUser(this.props.user.id)
-    }, 1000);
+    // this.isMounted = true
+    // 
+    // if (isMounted) {
+      setTimeout(() => {
+        this.props.fetchUser(this.props.user.id)
+      }, 500);
+    // }
 
-    setTimeout(() => {
-      this.setState({
-        profilePhoto: this.props.user.profilePhoto.imageUrl,
-        backgroundPhoto: this.props.user.backgroundPhoto.imageUrl
-      })
-    }, 2000);
+    // if (isMounted) {
+      setTimeout(() => {
+        this.setState({
+          profilePhoto: this.props.user.profilePhoto.imageUrl,
+          backgroundPhoto: this.props.user.backgroundPhoto.imageUrl
+        })
+      }, 1000);
+    // }
+  }
+
+  componentWillUnmount() {
+    this.setState = (state, callback) => {
+      return;
+    }
   }
 
   render() { 

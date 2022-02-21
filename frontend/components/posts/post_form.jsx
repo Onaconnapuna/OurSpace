@@ -14,15 +14,14 @@ class PostFrom extends React.Component {
       photoFile: null,
       imageUrl: "",
       modalIsOpen: false,
-      // postButtonDisabled: true
+
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.filePreview = this.filePreview.bind(this);
-    this.disableButton = this.disableButton.bind(this);
+    // this.disableButton = this.disableButton.bind(this);
     this.fileError = this.fileError.bind(this)
-    // this.clearValues = this.clearValues.bind(this);
   }
 
   update(field) {
@@ -66,47 +65,21 @@ class PostFrom extends React.Component {
   }
 
   // disableButton() {
-  //   if (this.state.photoFile) {
-  //     if (this.state.photoFile.size > 300000 || !this.state.post.body) {
-  //       // this.setState({postButtonDisabled: true})
-  //       return ( 
-  //         <button className='create-post-button' disabled={true}>Create Post</button>
-  //       )
-  //     } else {
-  //       // this.setState({
-  //       //   postButtonDisabled: false
-  //       // })
-  //       return (
-  //         <button className='create-post-button' disabled={false}> Create Post</button>
-  //       )
-  //     }
+  //   if ((this.state.photoFile && this.state.photoFile.size > 300000) || !this.state.post.body) {
+  //     return (
+  //       <button className='create-post-button' disabled={true}>Create Post</button>
+  //     )
+  //   } else {
+  //     return (
+  //       <button className='create-post-button' disabled={false}>Create Post</button>
+  //     )
   //   }
   // }
-
-  disableButton() {
-    if ((this.state.photoFile && this.state.photoFile.size > 300000) || !this.state.post.body) {
-      return (
-        <button className='create-post-button' disabled={true}>Create Post</button>
-      )
-    } else {
-      return (
-        <button className='create-post-button' disabled={false}>Create Post</button>
-      )
-    }
-  }
 
   forceRender() {
     this.setState({modalIsOpen: false})
     this.props.fetchPosts(this.props.user.id)
     this.props.forceProfileRender()
-  }
-
-  clearValues() {
-    this.setState({
-      modalIsOpen: false,
-      photoFile: null, 
-      imageUrl: ""
-    })
   }
 
   handleSubmit(e) {
@@ -138,7 +111,7 @@ class PostFrom extends React.Component {
         isOpen={this.state.modalIsOpen}
         overlayClassName='modal-background'
         className='modal-child'
-        onRequestClose={() => this.clearValues()}
+        onRequestClose={() => this.setState({modalIsOpen: false})}
         >
         <div className='post-form-container'>
         <form className='post-form' onSubmit={this.handleSubmit}>
@@ -155,8 +128,7 @@ class PostFrom extends React.Component {
             <textarea className='create-post-body' value = {this.state.post.body} placeholder="What's on your mind?" rows="5" onChange={this.update('body')}></textarea>  
             {this.filePreview()}
             {this.fileError()}
-            {/* <button className='create-post-button' disabled={this.state.postButtonDisabled}>Create Post</button> */}
-            {this.disableButton()}
+            {/* {this.disableButton()} */}
         </form>
         </div>
         </Modal> 

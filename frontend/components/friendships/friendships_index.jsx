@@ -1,5 +1,6 @@
 import React from 'react'
 import FriendshipItem from './friendship_item'
+import { withRouter } from 'react-router-dom'
 
 class FrienshipIndex extends React.Component {
   constructor(props) {

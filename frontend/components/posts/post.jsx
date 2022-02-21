@@ -25,14 +25,12 @@ class PostItem extends React.Component{
     document.addEventListener("mousedown", this.handleClickOutside);
   }
 
-  componentWillReceiveProps(prevProps) {
+  UNSAFE_componentWillReceiveProps(prevProps) {
     if (this.props.postId !== prevProps.post.id)
     this.setState({
       postId: this.props.post.id
     })
   }
-
-
 
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClickOutside);
