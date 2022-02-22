@@ -16,13 +16,6 @@ class PostsIndex extends React.Component {
     }, 500);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.posts !== prevProps.posts) {
-      this.setState({key: this.state.key + 1})
-    }
-    // this.props.fetchPosts(this.props.user.id)
-  }
-
   componentWillUnmount() {
     this.setState = (state, callback) => {
       return;
