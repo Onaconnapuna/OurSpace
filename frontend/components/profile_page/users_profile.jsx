@@ -41,11 +41,20 @@ class UsersProfile extends React.Component {
     // }
   }
   
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.match.params.id !== prevProps.match.params.id) { 
-  //     this.forceProfileRender();
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('I updated')
+    // console.log(prevProps)
+    // console.log(this.props)
+    if (this.props.match.params.userId !== prevProps.match.params.userId) { 
+      this.setState({
+        key: this.state.key + 1
+      })
+      console.log(this.state.key);
+      this.props.fetchUser(this.props.match.params.userId)
+      this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
+      this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
+    }
+  }
 
   // backListener() {
   //   this.props.history.listen()
@@ -58,7 +67,7 @@ class UsersProfile extends React.Component {
 
   forceProfileRender() {
     // App.reRenderGodDamnIt();
-    console.log('i fired')
+    // console.log('i fired')
     // setTimeout ( () => {
       this.setState({
         key: this.state.key + 1
