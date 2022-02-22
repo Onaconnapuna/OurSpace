@@ -15,13 +15,13 @@ class UsersProfile extends React.Component {
     key: 1
     }
 
-    // this.listen = this.props.history.listen((location, action) => {
-    //   if(action === "POP" ) {
-    //     this.forceProfileRender();
-    //   } else if (action === "PUSH") {
-    //     this.forceProfileRender();
-    //   }
-    // });
+    this.listen = this.props.history.listen((location, action) => {
+      if(action === "POP" ) {
+        this.forceProfileRender();
+      } else if (action === "PUSH") {
+        this.forceProfileRender();
+      }
+    });
 
     // this.listen();
 
@@ -61,7 +61,7 @@ class UsersProfile extends React.Component {
   // }
 
   componentWillUnmount() {
-    // this.listen(); 
+    this.listen(); 
     // this.props.fetchCurrentUser(this.props.currentUser)
   }
 
