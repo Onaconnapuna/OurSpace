@@ -15,6 +15,8 @@ class Bio extends React.Component {
         userId: this.props.currentUser.id,
         friendId: this.props.user.id,
       },
+      addFriendButton: 'Add Friend',
+      disabled: false
     } 
     
     this.setStateOfParent = this.setStateOfParent.bind(this)
@@ -26,13 +28,7 @@ class Bio extends React.Component {
     this.addFriendButton = this.addFriendButton.bind(this)
     this.isFriend = this.isFriend.bind(this)
     this.friendRequestSent = this.friendRequestSent.bind(this)
-  }
-
-  componentDidMount() {
-    // this.props.fetchFriendships(this.props.currentUser.id)
-    // setTimeout(() => {
-    //   this.props.fetchCurrentUser(this.props.currentUser.id)
-    // },2000)
+    this.sentFriendRequest = this.sentFriendRequest.bind(this)
   }
 
   componentDidUpdate(prevProps) {
@@ -166,6 +162,17 @@ class Bio extends React.Component {
     return friends
   }
 
+  sentFriendRequest() {
+    let sent = false
+    // let sentRequests = Object.values(this.props.currentUser.friendRequestSent)
+    this.props.currentUser.friendRequestsSent.forEach((request) => {
+      if (this.props.user.id === request.friendId) {
+        sent = true
+      }
+    })
+    return sent
+  }
+
   friendRequestSent() {
     let friendRequest = false  
     this.props.friendRequests.forEach((notification)=> {
@@ -174,6 +181,14 @@ class Bio extends React.Component {
       }
     })
     return friendRequest
+  }
+
+  handleAddFriend() {
+    this.setState({
+      addFriendButton: 'Friend Request Sent',
+      disabled: true
+    })
+    this.props.createFriendRequest(this.state.friendRequest)
   }
 
   addFriendButton() {
@@ -190,10 +205,13 @@ class Bio extends React.Component {
       return (
         <button onClick={() => this.setState({notifModalIsOpen: true})}> Pending Friend Request </button>
       ) 
-    } else {
+    } else if (this.sentFriendRequest()) {
+        return (<button disabled={true}> Friend Request Sent</button>)
+      } else 
+      {
       // this.setState({friends: 'Add Friend'})
       return(
-        <button onClick={()=> this.props.createFriendRequest(this.state.friendRequest)}> Add Friend </button>
+        <button onClick={()=> this.handleAddFriend()} disabled={this.state.disabled}> {this.state.addFriendButton} </button>
       )
     }
 }

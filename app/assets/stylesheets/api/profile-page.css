@@ -171,6 +171,11 @@
   background-color: #EBEDF0;
 }
 
+.bio button:disabled {
+  background-color: #CCD0D5;
+  cursor: none;
+}
+
 .update-bio-button {
   position: absolute;
   bottom: 5%;

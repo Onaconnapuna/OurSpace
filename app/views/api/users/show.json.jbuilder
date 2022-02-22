@@ -19,3 +19,11 @@ json.set! :notifications do
     end 
   end 
 end
+json.set! :friend_requests_sent do 
+  # @user_friend_requests_sent.each do |sent_request|
+    # json.set! sent_request.id do 
+      # json.extract! sent_request, :id, :user_id, :friend_id 
+    json.array! @user_friend_requests_sent, :id, :user_id, :friend_id
+    # end 
+  # end
+end

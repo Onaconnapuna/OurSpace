@@ -8,6 +8,7 @@ class Api::SessionsController < ApplicationController
       @user_background_photo = @user.background_photo
       @user_friends = @user.friends
       @user_friend_requests = @user.friend_requests
+      @user_friend_requests_sent = @user.friend_requests_sent
       render 'api/users/show'
     else  
       render json: ['Invalid credentials'], status: 401
