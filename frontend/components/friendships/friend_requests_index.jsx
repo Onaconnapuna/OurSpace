@@ -10,12 +10,7 @@ class FriendRequestsIndex extends React.Component {
       key: 1
     }
 
-    this.forceRender=this.forceRender.bind(this)
   }
-
-  // tryingThis(){
-  //   this.props.fetchFriendRequests(this.props.currentUser.id)
-  // }
 
   forceRender() {
     this.setState({
@@ -44,11 +39,11 @@ class FriendRequestsIndex extends React.Component {
             key={idx}
             forceProfileRender={this.props.forceProfileRender}
             friendRequest={friendRequest} 
-            // forceRender={this.forceRender}
             />
             )
            }
         </div>
+        <div className='friend-requests-icon'> <i class="fa fa-envelope-o" aria-hidden="true" style={{fontSize: 36 }}></i></div>
       </div>
         )
         }

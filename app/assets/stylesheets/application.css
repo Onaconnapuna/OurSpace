@@ -408,6 +408,10 @@ label {
   text-align: center;
 }
 
+.friend-requests-icon {
+  padding: 10px;
+}
+
 .friend-requests-index {
   width: 90%;
 }

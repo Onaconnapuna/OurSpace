@@ -138,7 +138,7 @@ class Bio extends React.Component {
         return (
           <div className='user-info'>
           <div className='display'> <i className="fa fa-heart" aria-hidden="true" style={{fontSize: 24 }}></i></div>
-          <p> Pending </p>
+          <p> Single </p>
         </div>
         )
       } else {

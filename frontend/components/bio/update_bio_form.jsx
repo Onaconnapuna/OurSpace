@@ -183,12 +183,18 @@ class UpdateForm extends React.Component {
             {/* <input type="text" value={this.state.user.relationshipStatus} */}
             {/* // value={this.defaultValue(this.state.user.relationshipStatus)} */}
              {/* onChange={this.update('relationshipStatus')} /> */}
-             <select className='select-relationship-status' onChange={this.update('relationship-status')} >
+             <select className='select-relationship-status' 
+              onChange={this.update('relationship-status')} 
+              >
             {/* //  name="relationship-status" id="relationship-status"> */}
-                <option value="Single" onChange={this.update('relationship-status')}>Single</option>
-                <option value="Married" onChange={this.update('relationship-status')}>Married</option>
-                <option value="In a Relationship" onChange={this.update('relationship-status')}>In a Relationship</option>
-                <option value="Its Complicated" onChange={this.update('relationship-status')}>Its Complicated</option>
+            <optgroup label="Relationship Status">
+                <option value="Withold" onClick={this.update('relationship-status')}>Withold</option>
+                <option value="Single" onClick={this.update('relationship-status')}>Single</option>
+                <option value="Married" onClick={this.update('relationship-status')}>Married</option>
+                <option value="In a Relationship" onClick={this.update('relationship-status')}>In a Relationship</option>
+                <option value="Its Complicated" onClick={this.update('relationship-status')}>Its Complicated</option>
+
+            </optgroup>
               </select>
           </label>
         </div>
