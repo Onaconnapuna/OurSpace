@@ -10,12 +10,15 @@ class UpdateForm extends React.Component {
       updateBackgroundPhotoFile: null,
       profilePhotoUrl: '',
       backgroundPhotoUrl: '',
+      disabled: false
      }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleProfileFile = this.handleProfileFile.bind(this)
     this.handleBackgroundFile = this.handleBackgroundFile.bind(this)
     this.profilePicFilePreview = this.profilePicFilePreview.bind(this)
     this.backgroundPhotoFilePreview = this.backgroundPhotoFilePreview.bind(this)
+    this.handleFileSize= this.handleFileSize.bind(this)
+    // this.handleFileSizeProfile = this.handleFileSizeProfile.bind(this)
   }
 
   update(field) {
@@ -44,6 +47,15 @@ class UpdateForm extends React.Component {
     reader.onloadend = () =>
       this.setState({ profilePhotoUrl: reader.result, updateProfilephotoFile: file });
 
+      if (file.size > 300000) {
+        this.setState({disabled: true})
+        // return (
+        //   <div className='error'> Files too large, please select another </div>
+        // )
+      } else {
+        this.setState({disabled: false})
+      }
+
       if (file) {
         reader.readAsDataURL(file);
       } else {
@@ -61,6 +73,12 @@ class UpdateForm extends React.Component {
     const file = e.currentTarget.files[0];
     reader.onloadend = () =>
       this.setState({ backgroundPhotoUrl: reader.result, updateBackgroundPhotoFile: file });
+
+    if (file.size > 300000) {
+      this.setState({disabled: true})
+    } else {
+      this.setState({disabled: false})
+    }
 
     if (file) {
       reader.readAsDataURL(file);
@@ -136,6 +154,25 @@ class UpdateForm extends React.Component {
     }
   }
 
+  // handleFileSizeBackground() {
+  //   if (this.state.disabled) {
+  //     if(this.state.updateBackgroundPhotoFile && this.state.updateBackgroundPhotoFile.size > 300000)
+  //       return (
+  //         <div className='error'> Files too large, please select another </div>
+  //       )
+  //   }
+  //   }
+
+  handleFileSize() {
+    if (this.state.disabled) {
+        return (
+          <div className='error'> One or both of these files are too large, please select another </div>
+        )
+    }
+  }
+  
+
+
   render() {
     
     return (
@@ -157,6 +194,7 @@ class UpdateForm extends React.Component {
           <label className='bio-img-select'> <i className='fa fa-camera' style={{fontSize: 24 }}></i>
             <input type="file" onChange={this.handleBackgroundFile}/>
           </label>
+         {this.handleFileSize()}
         </div>
 
         <div className='update-info'>
@@ -198,7 +236,7 @@ class UpdateForm extends React.Component {
               </select>
           </label>
         </div>
-          <button className='update-bio-button'>Update Bio</button>
+          <button className='update-bio-button' disabled={this.state.disabled}>Update Bio</button>
         </form>
         </div>
       </div>

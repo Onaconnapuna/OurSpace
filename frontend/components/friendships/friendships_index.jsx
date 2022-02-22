@@ -47,6 +47,7 @@ class FrienshipIndex extends React.Component {
               this.friendshipPreview().map((friendship, idx) => <FriendshipItem
               key={idx}
               friendship={friendship}
+              flag={false}
               user={this.props.user}
               forceProfileRender={this.props.forceProfileRender}
               fetchUser={this.props.fetchUser}
@@ -62,19 +63,24 @@ class FrienshipIndex extends React.Component {
          className='modal-child'
          onRequestClose={() => this.setState({modalIsOpen: false})}
         >
-        <div className='friendships-index-container'>
+        <div className='modal-friends' >
+
+        <div className='full-friendships-index-container'>
         <div className='friends'> Friends ({this.props.friendships.length}) </div>
            <div className='friendships-index'>
             {
               this.props.friendships.map((friendship, idx) => <FriendshipItem
               key={idx}
+              flag={true}
               friendship={friendship}
               user={this.props.user}
               forceProfileRender={this.props.forceProfileRender}
               fetchUser={this.props.fetchUser}
+              deleteFriendship={this.props.deleteFriendship}
               />)
             }
           </div>
+        </div>
         </div>
         </Modal>
       </div>

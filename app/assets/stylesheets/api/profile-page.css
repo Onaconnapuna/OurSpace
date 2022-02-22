@@ -113,6 +113,7 @@
   cursor: pointer;
 }
 
+
 .update-form-profile-photo {
   height: 200px;
   width: 200px;
@@ -191,6 +192,10 @@
 }
 
 .update-bio-button:active {
+  background-color: #1D3C78;
+}
+
+.update-bio-button:disabled {
   background-color: #1D3C78;
 }
 
@@ -572,6 +577,13 @@
   padding-right: 20px;
 }
 
+.modal-friends {
+  width: 500px;
+  max-height: 600px;
+  overflow-y: auto;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+}
+
 .friendships-index {
   display: flex;
   justify-content: space-evenly;
@@ -586,6 +598,18 @@
   box-shadow: 1px 1px 1px 1px #D1D1D1;
   padding: 15px;
   width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.full-friendships-index-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  width: 100%;
+  /* height: 100%; */
   border-radius: 5px;
 }
 
@@ -593,9 +617,31 @@
   width: 33%;
   padding: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
+
+/* .remove-friend-button {
+  border: none;
+  padding: 10px;
+  background-color: #ce2e12;
+  color: white;
+  font-weight: 700;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.remove-friend-button:hover {
+  background-color: #99210c ;
+  cursor: pointer;
+}
+
+.remove-friend-button:active {
+  background-color: #5f1508;
+} */
 
 .friend-id {
   display: flex;

@@ -370,6 +370,7 @@ label {
 }
 
 .dropdown-item {
+  text-decoration: none;
   background-color: white;
   border: 1px solid #282828;
 	color: inherit;

@@ -18,8 +18,14 @@ class Api::FriendshipsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find_by(id: params[:id])
-    @friendship_requited = Friendship.find_by(user_id: :friend_id)
-    @friendship.destroy 
+    # @friendship_requited = Friendship.where(user_id: @friendship.friend.id, friend_id: @friendship.user.id)
+    if @friendship
+          @friendship.destroy
+          render json: ['Success']
+    else  
+      render json: ['Unable to delete friends'], status: 400
+    end
+
   end
 
   private 
