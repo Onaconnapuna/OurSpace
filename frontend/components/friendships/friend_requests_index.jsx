@@ -6,18 +6,28 @@ class FriendRequestsIndex extends React.Component {
   constructor(props){
     super(props)
 
-    // this.tryingThis=this.tryingThis.bind(this)
-  }
+    this.state = {
+      key: 1
+    }
 
-  // componentDidMount() {
-  //   setTimeout(() => {
-  //     this.props.fetchFriendRequests(this.props.currentUser.id)
-  //   }, 1000)
-  // }
+    this.forceRender=this.forceRender.bind(this)
+  }
 
   // tryingThis(){
   //   this.props.fetchFriendRequests(this.props.currentUser.id)
   // }
+
+  forceRender() {
+    this.setState({
+      key: this.state.key + 1
+    })
+  }
+
+  closeModal() {
+    if (this.props.friendRequests.length === 0) {
+      this.props.requestClose()
+    }
+  }
 
   render() {
     if (this.props.friendRequests === undefined) {
@@ -34,6 +44,7 @@ class FriendRequestsIndex extends React.Component {
             key={idx}
             forceProfileRender={this.props.forceProfileRender}
             friendRequest={friendRequest} 
+            // forceRender={this.forceRender}
             />
             )
            }

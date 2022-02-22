@@ -27,6 +27,7 @@ class NavBar extends React.Component {
     this.notificationHelper = this.notificationHelper.bind(this)
     this.switchModals = this.switchModals.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
+    this.requestClose = this.requestClose.bind(this)
     // this.forceNavUpdate = this.forceNavUpdate.bind(this)
     Modal.setAppElement('#root')
   }
@@ -126,6 +127,10 @@ class NavBar extends React.Component {
     this.setState({loginModalIsOpen: bool2});
   }
 
+  requestClose() {
+    this.setState({notificationsModalIsOpen: false})
+  }
+
   render() {
       return(
        <header className='navbar-container'>
@@ -139,6 +144,7 @@ class NavBar extends React.Component {
            <FriendRequestsIndexContainer 
            friendRequests={this.props.friendRequests}
            forceProfileRender={this.props.forceProfileRender}
+           requestClose={this.requestClose}
            />
          </Modal>
          <Link to={'/main'} className="main-page-link">
