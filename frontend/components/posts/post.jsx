@@ -9,7 +9,7 @@ class PostItem extends React.Component{
     this.container = React.createRef();
 
     this.state = {
-      userId: this.props.user.id, 
+      userId: this.props.currentUser.id, 
       postId: this.props.post.id,
       parentCommentId: null,
       body: '',
@@ -103,7 +103,7 @@ class PostItem extends React.Component{
         <div className='post'>
           <div className='poster-id-container'>
             <div className='poster-id'> 
-            <Link className='poster-id' to={`profiles/${this.props.post.poster.id}`}>
+            <Link className='poster-id' to={`/profiles/${this.props.post.posterId}`}>
             <img src={`${this.props.post.poster.imageUrl}`}/>
             <p className='poster-name'>
               {this.props.post.poster.firstName} {this.props.post.poster.lastName}

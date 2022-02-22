@@ -64,7 +64,7 @@ class UsersProfile extends React.Component {
         key: this.state.key + 1
       })
       this.props.fetchUser(this.props.match.params.userId)
-      this.props.fetchCurrentUser(this.props.user)
+      this.props.fetchCurrentUser(this.props.currentUser.id)
       // this.props.fetchPosts(this.props.user.id)
     // }, 1000)
   }

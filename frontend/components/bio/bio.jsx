@@ -60,6 +60,7 @@ class Bio extends React.Component {
         return (
           <div className='user-info'>
              <div className='display'> <i className="fa fa-user-circle" aria-hidden="true" style={{fontSize: 24 }}></i> </div>
+             <p> Pending </p>
           </div>
         )
        } else {
@@ -85,6 +86,7 @@ class Bio extends React.Component {
         return (
           <div className='user-info'>
             <div className='display'> <i className="fa fa-birthday-cake" aria-hidden="true" style={{fontSize: 24 }}></i></div>
+            <p> Pending </p>
           </div>
         )
       } else  {
@@ -106,10 +108,11 @@ class Bio extends React.Component {
         </div>
       )
     } else {
-      if (this.state.user.gener === null) {
+      if (this.state.user.gender === null) {
         return (
           <div className='user-info'>
             <div className='display'> <i className="fa fa-venus-mars" aria-hidden="true" style={{fontSize: 24 }}></i></div>
+            <p> Pending </p>
           </div>
         )
       } else {
@@ -135,6 +138,7 @@ class Bio extends React.Component {
         return (
           <div className='user-info'>
           <div className='display'> <i className="fa fa-heart" aria-hidden="true" style={{fontSize: 24 }}></i></div>
+          <p> Pending </p>
         </div>
         )
       } else {
