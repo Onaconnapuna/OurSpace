@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     user: state.entities.users[ownProps.match.params.userId],
     currentUser: state.session.currentUser,
+    posts: state.entities.posts,
     friendRequests: Object.values(state.entities.notifications)
   }
 }

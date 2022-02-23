@@ -56,7 +56,7 @@ class PostItem extends React.Component{
   }
 
   checkUser() {
-    if(this.props.currentUser.id === this.props.post.posterId || this.props.currentUser.id === this.props.user.id) {
+    if(this.props.currentUser.id === this.props.post.posterId || this.props.currentUser === this.props.user) {
       return (
         <div className='ellipsis-button-background' ref={this.container}>
           <button className='ellipsis-button' onClick={() => this.handleDropDown()}> &#8230; </button>

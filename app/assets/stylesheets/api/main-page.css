@@ -1,0 +1,13 @@
+.nav-main {
+  height: 100px;
+}
+.posts-container {
+  /* margin-top: px; */
+  display: flex;
+  justify-content: center;
+}
+
+.main-page {
+  background-color: #ECF3FF;
+  height: 100%;
+}

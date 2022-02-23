@@ -6,14 +6,29 @@ class PostsIndex extends React.Component {
     super(props)
 
     this.state = {
-      key: 1
+      key: 1,
+      posts: null
+    }
+
+    this.togglePosts = this.togglePosts.bind(this)
+  }
+
+  togglePosts() {
+    if (this.props.user) {
+      return this.props.profilePosts
+    } else {
+      return this.props.mainPosts
     }
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.props.fetchPosts(this.props.user.id)
-    }, 500);
+    if(this.props.user) {
+      setTimeout(() => {
+        this.props.fetchPosts(this.props.user.id)
+      }, 500);
+    } else {
+      this.props.fetchPosts(this.props.currentUser.id)
+    }
   }
 
   componentWillUnmount() {
@@ -22,21 +37,27 @@ class PostsIndex extends React.Component {
     }
   }
 
-  render() {
-    return(
-      <div className='posts-index'>
-        {
-          this.props.posts.reverse().map((post, idx) => <PostItemContainer
-          key={idx}
-          post={post} 
-          user={this.props.user}
-          forceProfileRender={this.props.forceProfileRender}
-          currentUser={this.props.currentUser}
-          />)
-        }
-      </div>
-    )
-  }
-}
+  render() { 
+    // if (!this.props.posts) {
+    //   return null 
+    // } else {
+
+      return(
+        <div className='posts-index'>
+          {
+            this.togglePosts().reverse().map((post, idx) => <PostItemContainer
+            key={idx}
+            post={post} 
+            user={this.props.user}
+            forceProfileRender={this.props.forceProfileRender}
+            currentUser={this.props.currentUser}
+            />)
+          }
+        </div>
+      ) 
+    }
+      }
+    // } 
+  
 
 export default PostsIndex

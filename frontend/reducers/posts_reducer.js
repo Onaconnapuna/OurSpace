@@ -1,11 +1,15 @@
 import { RECEIVE_POST, RECEIVE_POSTS, REMOVE_POST } from "../actions/post_actions";
 
-const postsReducer = (oldState = {}, action) => {
+const profilelPostsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState = Object.assign({}, oldState);
   switch (action.type) {
     case RECEIVE_POSTS:
-      return action.posts;
+      if(action.posts.profilePosts) {
+        return action.posts.profilePosts;
+      } else {
+        return {}
+      }
     case RECEIVE_POST:
       newState[action.post.id] = action.post;
       return newState;
@@ -17,4 +21,4 @@ const postsReducer = (oldState = {}, action) => {
   }
 }
 
-export default postsReducer
+export default profilelPostsReducer

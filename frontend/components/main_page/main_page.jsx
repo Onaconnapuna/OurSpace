@@ -1,10 +1,15 @@
 import React from "react";
-import PostContainer from "../posts/post_container";
+import PostsIndexContainer from "../posts/posts_index_container";
+import PostFormContainer from "../posts/post_form_container";
 import NavBarContainer from "../nav_bar/nav_bar_container";
 
 class MainPage extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      key: 1
+    }
 
     // this.listen = this.props.history.listen((location, action) => {
     //   if(action === "POP" ) {
@@ -13,33 +18,56 @@ class MainPage extends React.Component {
     //     this.props.fetchCurrentUser(this.props.currentUser.id);
     //   }
     // });
+    this.forceProfileRender = this.forceProfileRender.bind(this)
   }
 
   componentDidMount() {
-    this.props.fetchPosts()
+    // this.props.fetchPosts()
     this.props.fetchCurrentUser(this.props.currentUser.id)
 
   }
+
+  forceProfileRender() {
+    this.setState({
+      key: this.state.key + 1
+    })
+    this.props.fetchCurrentUser(this.props.currentUser.id)
+    this.props.fetchPosts(this.props.currentUser.id)
+}
+
 
   render() {    
     if (!this.props.currentUser) {
       return null
     } else {
       return( 
-        <div className="nav-all">
+        <div className="main-page">
+          <div className="nav-main">
+
           <NavBarContainer 
           currentUser={this.props.currentUser}
           friendRequests={this.props.friendRequests}
-          // friendRequests={Object.values(this.props.currentUser.friendRequests)}
           />
-        {/* <div className='main-page'>
-          <div className='posts-container'>
-          {
-            this.props.posts.map((post, idx) => <PostContainer  key={idx} post={post} deletePost={this.props.deletePost}/> )
-          }
           </div>
-        </div> */}
+    
+        <div className="posts-container">
+          <div className="posts">
+            <PostFormContainer 
+            key={this.state.key + 4}
+            currentUser={this.props.currentUser}
+            user={null}
+            forceProfileRender={this.forceProfileRender}
+                   />
+
+            <PostsIndexContainer
+            currentUser={this.props.currentUser}
+            user={null}
+            forceProfileRender={this.forceProfileRender}
+            />
+          </div>
         </div>
+        </div>
+
       )
     }
   }

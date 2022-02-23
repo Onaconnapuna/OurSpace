@@ -7,7 +7,7 @@ class PostFrom extends React.Component {
 
     this.state = {
       post: {
-        userId: this.props.user.id,
+        // userId: this.props.user.id,
         posterId: this.props.posterId,
         body: '',
       },
@@ -22,6 +22,20 @@ class PostFrom extends React.Component {
     this.filePreview = this.filePreview.bind(this);
     this.disableButton = this.disableButton.bind(this);
     this.fileError = this.fileError.bind(this)
+  }
+
+  componentDidMount() {
+    if (this.props.user) {
+      let post = {...this.state.post}
+      post.userId = this.props.user.id;
+      this.setState({post})
+      // this.setState({userId: this.props.user.id})
+    } else  {
+      let post = {...this.state.post}
+      post.userId = this.props.posterId;
+      this.setState({post})
+      // this.setState({userId: this.props.posterId})
+    }
   }
 
   update(field) {
@@ -84,6 +98,7 @@ class PostFrom extends React.Component {
 
 
   handleSubmit(e) {
+    console.log(this.state)
     e.preventDefault();
     if (this.state.photoFile) {
       const formData = new FormData();
@@ -135,7 +150,7 @@ class PostFrom extends React.Component {
         </Modal> 
 
         <div className='whats-on-your-mind'>
-            <img src={`${this.props.user.profilePhoto.imageUrl}`}/>
+            <img src={`${this.props.currentUser.profilePhoto.imageUrl}`}/>
             {this.disableButton}
             <button onClick={() => this.setState({modalIsOpen: true})}>What's on your mind?</button>
         </div>

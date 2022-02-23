@@ -7,7 +7,7 @@ import MainPage from './main_page';
 
 const mapStateToProps = (state) => {
   return {
-    posts: Object.values(state.entities.posts),
+    // posts: Object.values(state.entities.posts),
     currentUser: state.session.currentUser,
     friendRequests: Object.values(state.entities.notifications)
   }
