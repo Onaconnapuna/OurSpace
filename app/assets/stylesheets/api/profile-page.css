@@ -538,7 +538,6 @@
   position: absolute;
   bottom: 7%;
   right: 25%;
-  /* text-align: center; */
   color: red;
   font-size: 18px;
 }
@@ -571,7 +570,6 @@
   font-weight: 900;
   text-align: center;  
   margin:auto;
-
 }
 
 .friendships-container{
@@ -741,7 +739,6 @@
 }
 
 .comment-content {
-  /* position: absolute; */
   overflow-wrap: break-word;
   left: 7%
 }
@@ -769,6 +766,16 @@
   margin-bottom: 10px;
 }
 
+.trash-button {
+  all: unset; 
+  width: 100%;
+  padding-bottom: 20%;
+  font-size: 30px;
+  font-weight: 900;
+  text-align: center;  
+  margin:auto;
+}
+
 .comment-delete {
   position: absolute;
   right: 10px;
@@ -778,7 +785,6 @@
 .comment-input {
   position: relative;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
 }
 

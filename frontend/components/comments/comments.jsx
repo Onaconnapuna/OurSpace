@@ -38,7 +38,11 @@ const Comment = (props) => {
         if (props.currentUserId === props.posterId || props.currentUserId=== props.comment.userId) {
           return (
             <div className='ellipsis-button-background' ref={container}>
-                <button className='ellipsis-button' onClick={() => handleDropdown(dropDown)}> &#8230; </button>
+                <button className="trash-button" onClick={() => handleDropdown(dropDown)}> <i className="fa fa-trash" aria-hidden="true" style={{
+                  fontSize: 24,
+                  backgroundColor: "inherit",
+                  border: 'none'
+                }}></i> </button>
                   {dropDown && (
                     <div className="dropdown-post">
                   <button className="dropdown-item" onClick={() => handleDelete(props.comment.id)}> Delete Comment</button>

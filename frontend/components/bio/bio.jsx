@@ -164,7 +164,6 @@ class Bio extends React.Component {
 
   sentFriendRequest() {
     let sent = false
-    // let sentRequests = Object.values(this.props.currentUser.friendRequestSent)
     this.props.currentUser.friendRequestsSent.forEach((request) => {
       if (this.props.user.id === request.friendId) {
         sent = true
