@@ -15,10 +15,10 @@ class PostItem extends React.Component{
       body: '',
       dropDownIsOpen: false, 
     }
-
     this.handleDropDown = this.handleDropDown.bind(this)
     this.checkUser = this.checkUser.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.onWall = this.onWall.bind(this)
   }
 
   componentDidMount() {
@@ -49,7 +49,7 @@ class PostItem extends React.Component{
 
   handleDropDown() {
     if (this.state.dropDownIsOpen) {
-      this.setState({dropDownIsOpen: false }) 
+      this.setState({dropDownIsOpen: false}) 
     } else {
       this.setState({dropDownIsOpen: true})
     }
@@ -78,21 +78,34 @@ class PostItem extends React.Component{
     })
   }
 
+  onWall() {
+    if (this.props.post.userId === this.props.post.posterId) {
+      return ( 
+        <div className='poster-id'> 
+            <Link className='poster-id' to={`/profiles/${this.props.post.posterId}`}>
+            <img src={`${this.props.post.poster.imageUrl}`}/>
+            <p className='poster-name'>
+              {this.props.post.poster.firstName} {this.props.post.poster.lastName}
+            </p>
+            </Link>
+        </div>
+      )
+    } else {
+      return (
+        <div className='poster-id'>
+          <Link className='poster-name' to={`/profiles/${this.props.post.posterId}`}> <img src={`${this.props.post.poster.imageUrl}`}/></Link>
+          <Link className='poster-name' to={`/profiles/${this.props.post.posterId}`}> {this.props.post.poster.firstName} {this.props.post.poster.lastName}</Link>
+            <i className="fa fa-arrow-right" aria-hidden="true"></i>
+          <Link className='poster-name' to={`/profiles/${this.props.post.userId}`}> {this.props.post.user.firstName} {this.props.post.user.lastName} </Link>
+        </div>
+      )
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.forceProfileRender()
     this.props.forceProfileRender();
-    // this.props.forceIndexReload()
-    // setTimeout(() => {
-    //   this.props.createComment(this.state)
-    // },1000)
     this.props.createComment(this.state)
-    // console.log(this.state)
-    // this.props.createComment(this.state)
-    // this.props.forceProfileRender();
-    // this.setState({
-    //   body: ''
-    // })
   }
 
   render() {
@@ -102,14 +115,7 @@ class PostItem extends React.Component{
       return (
         <div className='post'>
           <div className='poster-id-container'>
-            <div className='poster-id'> 
-            <Link className='poster-id' to={`/profiles/${this.props.post.posterId}`}>
-            <img src={`${this.props.post.poster.imageUrl}`}/>
-            <p className='poster-name'>
-              {this.props.post.poster.firstName} {this.props.post.poster.lastName}
-            </p>
-            </Link>
-          </div>
+          {this.onWall()}
             {this.checkUser()}
           </div>
           <div className='post-body'>

@@ -507,10 +507,13 @@
 }
 
 .poster-name {
+  text-decoration: none;
+  color: #282828;
   text-align: center;
   font-size: 16px;
   font-weight: 600;
   padding-left: 10px;
+  padding-right: 10px;
 } 
 
 .post-img-select {
@@ -723,12 +726,28 @@
   position: relative;
   display: flex;
   font-weight: 400;
-  align-items: center;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
+.comment-name {
+  text-decoration: none;
+  color: #282828;
+  font-size: 14px;
+  font-weight: 600;
+  padding-left: 10px;
+  position: absolute;
+  left: 7%;
+}
+
+.comment-content {
+  /* position: absolute; */
+  overflow-wrap: break-word;
+  left: 7%
+}
+
 .comment img {
+  position: absolute;
   margin-left: 5px;
   height: 40px;
   width: 40px;
@@ -738,13 +757,16 @@
 }
 
 .comment-body {
-  margin-left: 10px;
+  max-width: 75%;
   background-color: #CCD0D5;
-  padding: 10px;
-  border-radius: 33px;
+  padding: 12px;
+  border-radius: 20px;
   max-width: 80%;
-  overflow-wrap: break-word;
   text-align: start;
+  overflow-wrap: anywhere;
+  margin-left: 50px;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .comment-delete {

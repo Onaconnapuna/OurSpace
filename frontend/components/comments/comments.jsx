@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Comment = (props) => {
     const [dropDown, setDropDown] = useState(false)
@@ -51,7 +52,10 @@ const Comment = (props) => {
   return(
     <div className="comment">
       <img src={`${props.comment.imageUrl}`}/>
+      <div className='comment-content'>
+      <Link className="comment-name" to={`/profiles/${props.comment.userId}`}>{props.comment.firstName} {props.comment.lastName}</Link>
       <p className="comment-body">{props.comment.body}</p>
+      </div>
       {helperComments(props)}
     </div>
   )

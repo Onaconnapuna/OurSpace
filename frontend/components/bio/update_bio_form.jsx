@@ -185,7 +185,7 @@ class UpdateForm extends React.Component {
             onChange={this.update('gender')} />
           </label>
 
-          <label>RelationshipStatus 
+          <label>Relationship Status 
              <select className='select-relationship-status' 
               onChange={this.update('relationship-status')} 
               >

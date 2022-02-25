@@ -1,5 +1,4 @@
 import React from 'react'
-// import 'regenerator-runtime/runtime'
 
 class ProfilePhotos extends React.Component {
   constructor(props) {
