@@ -19,6 +19,7 @@ class PostItem extends React.Component{
     this.checkUser = this.checkUser.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.onWall = this.onWall.bind(this)
+    this.renderDate = this.renderDate.bind(this)
   }
 
   componentDidMount() {
@@ -74,8 +75,14 @@ class PostItem extends React.Component{
   update(field) {
     return (e) => 
     this.setState({
-      [field]: e.currentTarget.value,
+      [field]: e.currentTarget.value
     })
+  }
+
+  renderDate() {
+   let date = new Date(this.props.post.createdAt)
+   let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+   return date.toLocaleDateString("en-US", options)
   }
 
   onWall() {
@@ -84,19 +91,31 @@ class PostItem extends React.Component{
         <div className='poster-id'> 
             <Link className='poster-id' to={`/profiles/${this.props.post.posterId}`}>
             <img src={`${this.props.post.poster.imageUrl}`}/>
-            <p className='poster-name'>
+            <div className='poster-name'>
               {this.props.post.poster.firstName} {this.props.post.poster.lastName}
+            <p className='post-created-at-on-wall'>
+              <i className="fa fa-clock-o" aria-hidden="true" style={{paddingRight: '5px'}}></i>
+              {this.renderDate()}
             </p>
+            </div> 
             </Link>
         </div>
       )
     } else {
       return (
         <div className='poster-id'>
-          <Link className='poster-name' to={`/profiles/${this.props.post.posterId}`}> <img src={`${this.props.post.poster.imageUrl}`}/></Link>
-          <Link className='poster-name' to={`/profiles/${this.props.post.posterId}`}> {this.props.post.poster.firstName} {this.props.post.poster.lastName}</Link>
-            <i className="fa fa-arrow-right" aria-hidden="true"></i>
-          <Link className='poster-name' to={`/profiles/${this.props.post.userId}`}> {this.props.post.user.firstName} {this.props.post.user.lastName} </Link>
+          <Link to={`/profiles/${this.props.post.posterId}`}> <img src={`${this.props.post.poster.imageUrl}`}/></Link>
+          <div>
+            <div>
+              <Link className='poster-name' to={`/profiles/${this.props.post.posterId}`}> {this.props.post.poster.firstName} {this.props.post.poster.lastName}</Link>
+                <i className="fa fa-arrow-right" aria-hidden="true"></i>
+              <Link className='poster-name' to={`/profiles/${this.props.post.userId}`}> {this.props.post.user.firstName} {this.props.post.user.lastName} </Link>
+            <p className='post-created-at'>
+              <i className="fa fa-clock-o" aria-hidden="true" style={{paddingRight: '5px'}}></i>
+              {this.renderDate()}
+            </p>
+            </div>
+          </div>
         </div>
       )
     }
@@ -116,7 +135,7 @@ class PostItem extends React.Component{
         <div className='post'>
           <div className='poster-id-container'>
           {this.onWall()}
-            {this.checkUser()}
+          {this.checkUser()}
           </div>
           <div className='post-body'>
           {this.props.post.body}
@@ -139,7 +158,7 @@ class PostItem extends React.Component{
           </div>
           <form className='comment-input'onSubmit={this.handleSubmit}>
             <img src={`${this.props.currentUser.profilePhoto.imageUrl}`}/>
-            <input onClick={()=> console.log(this.state.postId)}className='comment-body-input' value={this.state.body} placeholder="Write a Comment" onChange={this.update('body')}></input>
+            <input className='comment-body-input' value={this.state.body} placeholder="Write a Comment" onChange={this.update('body')}></input>
             <button className='post-comment' disabled={!this.state.body}> Post Comment </button>
           </form>
           </div>

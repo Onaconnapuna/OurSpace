@@ -29,7 +29,7 @@ class Post < ApplicationRecord
       main_posts.push(post) if post 
     end 
     if user.posts
-      user_posts_today  = Post.where(created_at: Time.parse("12am")..Time.parse("11:59pm"))
+      user_posts_today  = Post.where(user_id: user.id, created_at: Time.parse("12am")..Time.parse("11:59pm"))
       if !user_posts_today 
         main_posts.push(user.posts.to_a.last(1))
       else  
