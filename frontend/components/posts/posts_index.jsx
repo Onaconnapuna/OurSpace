@@ -27,7 +27,9 @@ class PostsIndex extends React.Component {
         this.props.fetchPosts(this.props.user.id)
       }, 500);
     } else {
-      this.props.fetchPosts(this.props.currentUser.id)
+      setTimeout(() =>  {
+        this.props.fetchPosts(this.props.currentUser.id)
+      }, 500)
     }
   }
 

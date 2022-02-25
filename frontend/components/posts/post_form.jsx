@@ -92,13 +92,11 @@ class PostFrom extends React.Component {
 
   forceRender() {
     this.setState({modalIsOpen: false})
-    // this.props.fetchPosts(this.props.user.id)
     this.props.forceProfileRender()
   }
 
 
   handleSubmit(e) {
-    console.log(this.state)
     e.preventDefault();
     if (this.state.photoFile) {
       const formData = new FormData();
@@ -114,8 +112,7 @@ class PostFrom extends React.Component {
         processData: false
       }).then(this.forceRender())
     } else {
-    this.props.createPost(this.state.post).then(this.setState({modalIsOpen:false}))
-    .then(this.props.forceProfileRender())
+    this.props.createPost(this.state.post).then(this.forceRender())
     }
   }
 

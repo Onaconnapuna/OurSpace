@@ -5,7 +5,6 @@ import BioContainer from '../bio/bio_container';
 import ProfilePhotosContainer from '../profile_photos/profile_photos_container';
 import FriendshipIndexContainer from '../friendships/friendships_index_container';
 import NavBarContainer from '../nav_bar/nav_bar_container';
-import App from '../app';
 
 class UsersProfile extends React.Component {
   constructor(props) {
@@ -15,30 +14,21 @@ class UsersProfile extends React.Component {
     key: 1
     }
 
-    this.listen = this.props.history.listen((location, action) => {
-      if(action === "POP" ) {
-        this.forceProfileRender();
-      } else if (action === "PUSH") {
-        this.forceProfileRender();
-      }
-    });
-
-    // this.listen();
+    // this.listen = this.props.history.listen((location, action) => {
+    //   if(action === "POP" ) {
+    //     this.forceProfileRender();
+    //   } else if (action === "PUSH") {
+    //     this.forceProfileRender();
+    //   }
+    // });
 
     this.forceProfileRender = this.forceProfileRender.bind(this)
-    // this.backListener = this.backListener.bind(this)
   }
 
   componentDidMount() {  
-    // if (this.props.user == undefined) {
-      // this.forceUpdate()
-      // setTimeout(() => {
-        // console.log('hello')
-        this.props.fetchUser(this.props.match.params.userId)
-        this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
-        this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
-      // }, 500)
-    // }
+    this.props.fetchUser(this.props.match.params.userId)
+    this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
+    this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
   }
   
   componentDidUpdate(prevProps, prevState) {
@@ -50,19 +40,15 @@ class UsersProfile extends React.Component {
       this.props.fetchUser(this.props.match.params.userId)
       this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
       this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
-      // this.props.fetchPosts(this.props.match.params.userId)
-    
     }
   }
 
-  // backListener() {
-  //   this.props.history.listen()
+  // componentWillUnmount() {
+    // this.setState = (state, callback) => {
+    //   return;
+    // }
+  //   this.listen(); 
   // }
-
-  componentWillUnmount() {
-    this.listen(); 
-    // this.props.fetchCurrentUser(this.props.currentUser)
-  }
 
   forceProfileRender() {
       this.setState({

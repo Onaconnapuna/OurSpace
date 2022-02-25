@@ -22,9 +22,8 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchPosts()
     this.props.fetchCurrentUser(this.props.currentUser.id)
-
+    // this.props.fetchPosts(this.props.currentUser.id)
   }
 
   forceProfileRender() {
@@ -57,12 +56,13 @@ class MainPage extends React.Component {
             currentUser={this.props.currentUser}
             user={null}
             forceProfileRender={this.forceProfileRender}
-                   />
+            />
 
             <PostsIndexContainer
             currentUser={this.props.currentUser}
             user={null}
             forceProfileRender={this.forceProfileRender}
+            key={this.state.key + 1}
             />
           </div>
         </div>

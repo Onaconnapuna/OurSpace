@@ -38,6 +38,11 @@ demopost2 = Post.create( user_id: demo_user.id, poster_id: demo_user.id, body: '
 
 post1 = Post.create( user_id: user1.id, poster_id: user1.id, body: 'Wait a minute, I, a bastard, became the primary beneficiary to my fathers will? Im Rich!')
 post2 = Post.create( user_id: user1.id, poster_id: user1.id, body: 'I will free my serfs')
+post3 = Post.create( user_id: user2.id, poster_id: user2.id, body: 'these are simply demo posts')
+post4 = Post.create( user_id: user3.id, poster_id: user3.id, body: 'all of them')
+post5 = Post.create( user_id: user4.id, poster_id: user4.id, body: 'Even this one')
+
+
 
 friend1 = Friendship.create( user_id: demo_user.id, friend_id: user1.id)
 friend2 = Friendship.create( user_id: demo_user.id, friend_id: user2.id)

@@ -12,22 +12,16 @@ class ProfilePhotos extends React.Component {
   }
 
   componentDidMount(){
-    // this.setState({isMounted: true})
-    
-    // if (this.state.isMounted) {
-      setTimeout(() => {
-        this.props.fetchUser(this.props.user.id)
-      }, 500);
-    // }
-
-    // if (this.state.isMounted) {
-      setTimeout(() => {
-        this.setState({
-          profilePhoto: this.props.user.profilePhoto.imageUrl,
-          backgroundPhoto: this.props.user.backgroundPhoto.imageUrl
-        })
-      }, 1000);
-    // }
+    setTimeout(() => {
+      this.props.fetchUser(this.props.user.id)
+    }, 500);
+  
+    setTimeout(() => {
+      this.setState({
+        profilePhoto: this.props.user.profilePhoto.imageUrl,
+        backgroundPhoto: this.props.user.backgroundPhoto.imageUrl
+      })
+    }, 1000);
   }
 
   componentWillUnmount() {

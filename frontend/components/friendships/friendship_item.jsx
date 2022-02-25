@@ -30,14 +30,12 @@ const FriendshipItem = (props) => {
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
-    console.log(props)
     return () => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [])
 
   const handleDeleteFriend = (friendshipId) => {
-    console.log(friendshipId)
     props.deleteFriendship(friendshipId); 
     redirect();
   }
