@@ -4,7 +4,8 @@ import { fetchFriendships, deleteFriendship } from '../../actions/friendship_act
 import { fetchUser } from '../../actions/users_actions'
 
 const mapStateToProps = state => ({
-  friendships: Object.values(state.entities.friendships)
+  friendships: Object.values(state.entities.friendships),
+  recommendedFriends: Object.values(state.entities.recommendedFriends)
 })
 
 const mapDispatchToProps = dispatch => ({

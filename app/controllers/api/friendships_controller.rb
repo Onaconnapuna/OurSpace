@@ -4,12 +4,14 @@ class Api::FriendshipsController < ApplicationController
 
   def index 
     @friendships = Friendship.where(friend_id: params[:user_id])
+    @recommended_friends = Friendship.recommended_friends(params[:user_id])
     render :index
   end
 
   def create
     @friendship = Friendship.new(friendship_params)
     if @friendship.save
+      @recommended_friends = Friendship.recommended_friends(friendship_params[:user_id])
       render :show
     else 
       render json: ['Friendship unsuccessful :('], status: 400
@@ -18,7 +20,6 @@ class Api::FriendshipsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find_by(id: params[:id])
-    # @friendship_requited = Friendship.where(user_id: @friendship.friend.id, friend_id: @friendship.user.id)
     if @friendship
           @friendship.destroy
           render json: ['Success']

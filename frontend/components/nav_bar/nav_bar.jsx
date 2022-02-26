@@ -71,16 +71,6 @@ class NavBar extends React.Component {
     }
   }
 
-  // forceNavUpdate() {
-  //   console.log('forcing update')
-  //   this.setState({
-  //     key: this.state.key + 1,
-  //     notificationsModalIsOpen : false
-  //   })
-  //   this.forceUpdate();
-  //   this.props.fetchFriendRequests(this.props.currentUser.id)
-  // }
-
   notificationHelper() {
     if (this.props.currentUser.notifications) {
       return<button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {this.props.friendRequests.length}</button>                 
@@ -90,9 +80,6 @@ class NavBar extends React.Component {
   }
 
   navBarWhileLoggedIn() {
-    // setTimeout(() => {
-    //   this.props.fetchFriendRequests(this.props.currentUser.id)
-    // }, 750);
     return (
       <div className='banner'>
         <div>

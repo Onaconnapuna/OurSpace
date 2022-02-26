@@ -5,7 +5,11 @@ const mainPostsReducer = (oldState = {}, action) => {
   let newState = Object.assign({}, oldState);
   switch (action.type) {
     case RECEIVE_POSTS:
-      return action.posts.mainPosts;
+      if (action.posts.mainPosts) {
+        return action.posts.mainPosts;
+      } else {
+        return {}
+      }
     case RECEIVE_POST:
       newState[action.post.id] = action.post;
       return newState;

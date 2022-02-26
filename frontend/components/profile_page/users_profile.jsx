@@ -4,6 +4,7 @@ import PostsIndexContainer from '../posts/posts_index_container';
 import BioContainer from '../bio/bio_container';
 import ProfilePhotosContainer from '../profile_photos/profile_photos_container';
 import FriendshipIndexContainer from '../friendships/friendships_index_container';
+import RecommendedFriendsContainer from '../friendships/recommended-friends-container';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 
 class UsersProfile extends React.Component {
@@ -90,16 +91,22 @@ class UsersProfile extends React.Component {
                    user={this.props.user}
                    forceProfileRender={this.forceProfileRender}
                    />
+                  
+                  <RecommendedFriendsContainer 
+                  key={this.state.key + 4}
+                  user={this.props.user}
+                  forceProfileRender={this.forceProfileRender}
+                  />
                  </div>
                    <div className='posts'>
                    <PostFormContainer 
-                   key={this.state.key + 4}
+                   key={this.state.key + 5}
                    currentUser={this.props.currentUser}
                    user={this.props.user}
                    forceProfileRender={this.forceProfileRender}
                    />
                    <PostsIndexContainer
-                   key={this.state.key + 5}
+                   key={this.state.key + 6}
                    forceProfileRender={this.forceProfileRender} 
                    user={this.props.user}
                    currentUser={this.props.currentUser}

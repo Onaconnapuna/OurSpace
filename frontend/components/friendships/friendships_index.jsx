@@ -8,7 +8,7 @@ class FrienshipIndex extends React.Component {
     super(props)
 
     this.state = {
-      modalIsOpen: false 
+      modalIsOpen: false, 
     }
 
     this.friendshipPreview = this.friendshipPreview.bind(this)
@@ -24,7 +24,6 @@ class FrienshipIndex extends React.Component {
 
   openModal() {
     this.setState({modalIsOpen: true})
-    // console.log(this.state.modalIsOpen)
   }
 
   friendshipPreview() {
@@ -33,7 +32,23 @@ class FrienshipIndex extends React.Component {
   }
 
   noFriends() {
-    if (!this.props.friendships.length === 0) return <div> No Friends :(</div>
+    if (this.props.friendships.length === 0) {
+      return (
+        <div className='see-recommendations'>
+          You currently have no friends, browse Recommended Friends below
+        </div>
+      )
+    } else {
+      
+    }
+  }
+
+  viewFriendsButton() {
+    if (this.props.friendships.length > 6) {
+      return (
+        <button className='view-all-friends' onClick={() => this.openModal()}> View all friends </button>
+      )
+    }
   }
 
   render() {
@@ -47,6 +62,7 @@ class FrienshipIndex extends React.Component {
               this.friendshipPreview().map((friendship, idx) => <FriendshipItem
               key={idx}
               friendship={friendship}
+              recommendedFriends={false}
               flag={false}
               user={this.props.user}
               forceProfileRender={this.props.forceProfileRender}
@@ -54,7 +70,7 @@ class FrienshipIndex extends React.Component {
               />)
             }
           </div>
-        <button className='view-all-friends' onClick={() => this.openModal()}> View all friends </button>
+          {this.viewFriendsButton()}
         </div>
         <Modal
          parentSelector = { () => document.body}
@@ -72,6 +88,7 @@ class FrienshipIndex extends React.Component {
               this.props.friendships.map((friendship, idx) => <FriendshipItem
               key={idx}
               flag={true}
+              recommendedFriends={false}
               friendship={friendship}
               user={this.props.user}
               forceProfileRender={this.props.forceProfileRender}

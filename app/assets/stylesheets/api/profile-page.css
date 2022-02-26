@@ -536,6 +536,13 @@
   padding-right: 10px;
 }
 
+.see-recommendations {
+  color: #282828;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .post-img-select {
   position: absolute;
   right: 3%;

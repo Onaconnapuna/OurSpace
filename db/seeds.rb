@@ -42,8 +42,6 @@ post3 = Post.create( user_id: user2.id, poster_id: user2.id, body: 'these are si
 post4 = Post.create( user_id: user3.id, poster_id: user3.id, body: 'all of them')
 post5 = Post.create( user_id: user4.id, poster_id: user4.id, body: 'Even this one')
 
-
-
 friend1 = Friendship.create( user_id: demo_user.id, friend_id: user1.id)
 friend2 = Friendship.create( user_id: demo_user.id, friend_id: user2.id)
 friend3 = Friendship.create( user_id: demo_user.id, friend_id: user3.id)
@@ -52,6 +50,8 @@ friend5 = Friendship.create( user_id: demo_user.id, friend_id: user5.id)
 friend6 = Friendship.create( user_id: demo_user.id, friend_id: user6.id)
 
 friend7 = Friendship.create( user_id: user2.id, friend_id:user3.id)
+friend8 = Friendship.create( user_id: user2.id, friend_id:user9.id)
+friend9 = Friendship.create( user_id: user2.id, friend_id:user10.id)
 
 comment1 = Comment.create(user_id: user1.id, post_id: demopost1.id, body: 'Congrats')
 comment2 = Comment.create(user_id: user1.id, post_id: demopost1.id, body: 'Congrats again')

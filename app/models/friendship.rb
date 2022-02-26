@@ -1,4 +1,3 @@
-require 'byebug'
 class Friendship < ApplicationRecord
 
   validates :user_id, :friend_id, presence: true
@@ -22,11 +21,27 @@ class Friendship < ApplicationRecord
   end
 
   def delete_requited_friendship 
-    # debugger
     @friendship_requited = Friendship.where(user_id: self.friend_id, friend_id: self.user_id)
     if @friendship_requited
       @friendship_requited.destroy_all
     end
   end
 
+  def self.recommended_friends(user_id)
+    recommended_friends = []
+    user = User.find_by(id: user_id)
+    if user.friends.length == 0 
+      return User.all
+    else 
+      user.friends.each do |friend|
+        friend.friends.each do |recommended_friend|
+          if !recommended_friend.friends.to_a.include?(user) && recommended_friend != user
+            recommended_friends.push(recommended_friend)
+          end
+        end
+      end
+      return recommended_friends
+    end
+  end
+  
 end

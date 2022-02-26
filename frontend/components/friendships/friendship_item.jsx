@@ -35,6 +35,24 @@ const FriendshipItem = (props) => {
     }
   }, [])
 
+  const checkRecommeded = (props) => {
+    console.log(props)
+    if (props.recommendedFriends === true) {
+      return (
+        <div className="dropdown-post">
+          <Link className="dropdown-item" to={`/profiles/${props.friendship.userId}`}> Visit Profile</Link>
+        </div>
+      )
+    } else {
+      return (
+        <div className="dropdown-post">
+          <button className="dropdown-item" onClick={() => handleDeleteFriend(props.friendship.id)}>Remove Friend</button>
+          <Link className="dropdown-item" to={`/profiles/${props.friendship.userId}`}> Visit Profile</Link>
+        </div>
+      )
+    }
+  }
+
   const handleDeleteFriend = (friendshipId) => {
     props.deleteFriendship(friendshipId); 
     redirect();
@@ -45,14 +63,8 @@ const FriendshipItem = (props) => {
       return (
         <div className="ellipsis-button-background-nav" ref={container}>
           <button className='ellipsis-button' onClick={() => handleDropdown()}> &#8230; </button>
-          {dropDown && (
-            <div className="dropdown-post">
-              <button className="dropdown-item" onClick={() => handleDeleteFriend(props.friendship.id)}>Remove Friend</button>
-              <Link className="dropdown-item" to={`/profiles/${props.friendship.userId}`}> Visit Profile</Link>
-            </div>
-          )}
+          {dropDown && checkRecommeded(props)}
           </div>
-        // <button onClick={() => handleDeleteFriend(props.friendship.id)}className='remove-friend-button'> Remove Friend </button>
       )
     }
   }
