@@ -9,12 +9,12 @@ class BackgroundPhoto < ApplicationRecord
 
   has_one_attached :photo
 
-  after_save :attach_default_photo
+  # after_save :attach_default_photo
 
-  def attach_default_photo
-    if !self.photo.attached?
-      file = URI.open('https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/default_background_photo.png')
-      self.photo.attach(io: file, filename: 'default_background_photo.png')
-    end
-  end
+  # def attach_default_photo
+  #   if !self.photo.attached?
+  #     file = URI.open('https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/default_background_photo.png')
+  #     self.photo.attach(io: file, filename: 'default_background_photo.png')
+  #   end
+  # end
 end
