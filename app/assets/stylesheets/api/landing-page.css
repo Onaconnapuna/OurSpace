@@ -1,22 +1,29 @@
-.nav-landing {
-  height: 100%;
-}
+
 .landing-page{
-  margin: 0;
   height: 100%;
+  width: 100%;
   background-size: cover;
   background-color: #F5F5F5;
   display: flex;
+  /* flex-wrap: wrap; */
 }
 
-.welcome {
-  height: 50%;
-  width: 50%;
+.welcome-container {
+  height: 500px;
+  width: 1000px;
   position: relative;
   left: 20%;
   top: 35%;
   display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+}
+
+.welcome {
+  min-width: 49%;
+  display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
 }
 
 .landing-page-welcome h3 {
@@ -25,7 +32,6 @@
   align-items: center;
   font-size: 60px;
   color: #282828;
-  margin-bottom: 10px;
 }
 
 .landing-page-welcome {
@@ -46,11 +52,8 @@
 }
 
 .landing-page-session-buttons-container {
-  position: relative;
-  left: 5%;
-  width: 25%;
-  height: 25%;
-  top: 35%;
+  min-width: 49%;
+  height: 100%
 }
 
 .landing-page-session-buttons {
@@ -61,7 +64,7 @@
 .landing-page-session-buttons button {
   border: none;
   height: 50px;
-  width: 100%;
+  min-width: 500px;
   padding: 10px;
   margin-bottom: 20px;
   font-size: 16px;

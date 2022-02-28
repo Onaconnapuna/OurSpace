@@ -23,6 +23,8 @@ class UsersProfile extends React.Component {
     //   }
     // });
 
+    this.renderRecommendedFriends = this.renderRecommendedFriends.bind(this)
+
     this.forceProfileRender = this.forceProfileRender.bind(this)
   }
 
@@ -42,6 +44,19 @@ class UsersProfile extends React.Component {
       this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
       this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
     }
+  }
+
+  renderRecommendedFriends() {
+    if (this.props.user.id  === this.props.currentUser.id) {
+      return (
+        <RecommendedFriendsContainer 
+        key={this.state.key + 4}
+        user={this.props.user}
+        forceProfileRender={this.forceProfileRender}
+        />
+      )
+    }
+
   }
 
   // componentWillUnmount() {
@@ -92,11 +107,7 @@ class UsersProfile extends React.Component {
                    forceProfileRender={this.forceProfileRender}
                    />
                   
-                  <RecommendedFriendsContainer 
-                  key={this.state.key + 4}
-                  user={this.props.user}
-                  forceProfileRender={this.forceProfileRender}
-                  />
+                  {this.renderRecommendedFriends()}
                  </div>
                    <div className='posts'>
                    <PostFormContainer 

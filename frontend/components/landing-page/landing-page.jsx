@@ -27,48 +27,48 @@ class LandingPage extends React.Component{
 
   render() {
     return ( 
-    <div className='nav-landing'>
-      <NavBarContainer />
       <div className='landing-page'>
-        <div className='welcome'>
-          <div className='landing-page-welcome'>
-            <h3>Ourspace</h3>
+          <NavBarContainer />
+        <div className='welcome-container'>
+          <div className='welcome'>
+            <div className='landing-page-welcome'>
+              <h3>Ourspace</h3>
             <img className='landing-page-logo' src="https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/ourspace.png"/>
+            </div>
+            <h4>A Demo Application Made by Connor Germain</h4>
           </div>
-          <h4>A Demo Application Made by Connor Germain</h4>
+          <div className='landing-page-session-buttons-container'>
+            <div className='landing-page-session-buttons'>
+              <button onClick={() => this.setState({signUpModalIsOpen: true})}>Sign Up</button>
+              <button onClick={() => this.setState({loginModalIsOpen: true})}>Log In</button>
+            </div>
+            <Modal
+            parentSelector = { () => document.body}
+            isOpen={this.state.signUpModalIsOpen}
+            overlayClassName='modal-background'
+            className='modal-child'
+            onRequestClose={() => this.setState({signUpModalIsOpen: false})}
+            >
+            <SignUpFormContainer
+            switchModals={this.switchModals}
+            />
+            </Modal>
+
+            <Modal
+            parentSelector = { () => document.body}
+            isOpen={this.state.loginModalIsOpen}
+            overlayClassName='modal-background'
+            className='modal-child'
+            onRequestClose={() => this.setState({loginModalIsOpen: false})}
+            >
+            <LoginFormContainer
+            switchModals={this.switchModals}
+            />
+            </Modal>
+          </div>
         </div>
   
-        <div className='landing-page-session-buttons-container'>
-          <div className='landing-page-session-buttons'>
-            <button onClick={() => this.setState({signUpModalIsOpen: true})}>Sign Up</button>
-            <button onClick={() => this.setState({loginModalIsOpen: true})}>Log In</button>
-          </div>
-          <Modal
-          parentSelector = { () => document.body}
-          isOpen={this.state.signUpModalIsOpen}
-          overlayClassName='modal-background'
-          className='modal-child'
-          onRequestClose={() => this.setState({signUpModalIsOpen: false})}
-          >
-          <SignUpFormContainer
-          switchModals={this.switchModals}
-          />
-          </Modal>
-
-          <Modal
-          parentSelector = { () => document.body}
-          isOpen={this.state.loginModalIsOpen}
-          overlayClassName='modal-background'
-          className='modal-child'
-          onRequestClose={() => this.setState({loginModalIsOpen: false})}
-          >
-          <LoginFormContainer
-          switchModals={this.switchModals}
-          />
-          </Modal>
-        </div>
       </div>
-    </div>
     )
     }
 }

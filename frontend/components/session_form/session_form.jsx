@@ -87,7 +87,7 @@ class SessionForm extends React.Component {
 
   demoSignUp() {
     const user = {
-      email: 'demouser@demo.com',
+      email: 'bagginsfrodo@ourspace.org',
       password: 'password'
     }
     this.props.demoForm(user)
@@ -95,8 +95,6 @@ class SessionForm extends React.Component {
   
     setTimeout( () => {
       this.props.history.push(`/main`)
-      // console.log(this.props.currentUser)
-      // this.props.fetchFriendRequests(this.props.currentUser.id)
     }, 1500)
   }
 
@@ -108,8 +106,6 @@ class SessionForm extends React.Component {
       if (this.props.errors == false) {
         this.props.switchModals(false, false);
         this.props.history.push(`/main`)
-        // console.log(this.props.currentUser)
-        // this.props.fetchFriendRequests(this.props.currentUser.id)
       } 
     }, 1500);
   }

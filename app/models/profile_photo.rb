@@ -13,10 +13,8 @@ class ProfilePhoto < ApplicationRecord
 
   def attach_default_photo
     if !self.photo.attached?
-      # file = URI.open('https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/default_profile_pic.jpg')
-      file = File.open('app/assets/images/default_profile_pic.jpg')
+      file = URI.open('https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/default_profile_pic.jpg')
       self.photo.attach(io: file, filename: 'default_profile_pic.png')
     end
   end
-
 end
