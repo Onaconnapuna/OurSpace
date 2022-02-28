@@ -36,7 +36,6 @@ const FriendshipItem = (props) => {
   }, [])
 
   const checkRecommeded = (props) => {
-    console.log(props)
     if (props.recommendedFriends === true) {
       return (
         <div className="dropdown-post">

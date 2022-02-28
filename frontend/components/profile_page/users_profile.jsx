@@ -39,7 +39,6 @@ class UsersProfile extends React.Component {
       this.setState({
         key: this.state.key + 1
       })
-      console.log(this.state.key);
       this.props.fetchUser(this.props.match.params.userId)
       this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
       this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))

@@ -1,4 +1,4 @@
-require 'byebug'
+
 class Post < ApplicationRecord
 
   validates :user_id, :poster_id, :body, presence: true
