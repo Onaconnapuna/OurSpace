@@ -10,10 +10,12 @@ end
 
 json.set! :recommended_friends do
   @recommended_friends.each do |friend| 
-    json.set! friend.id do 
-      json.extract! friend, :id, :first_name, :last_name
-      json.set! :user_id, friend.id
-      json.image_url url_for(friend.profile_photo.photo)
+    if friend.id != @user.id
+      json.set! friend.id do 
+        json.extract! friend, :id, :first_name, :last_name
+        json.set! :user_id, friend.id
+        json.image_url url_for(friend.profile_photo.photo)
+      end
     end
   end 
 end

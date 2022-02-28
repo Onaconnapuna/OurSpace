@@ -5,11 +5,13 @@ class Api::FriendshipsController < ApplicationController
   def index 
     @friendships = Friendship.where(friend_id: params[:user_id])
     @recommended_friends = Friendship.recommended_friends(params[:user_id])
+    @user = User.find_by(id: params[:user_id])
     render :index
   end
 
   def create
     @friendship = Friendship.new(friendship_params)
+    @user = User.find_by(id: friendship_params[:user_id])
     if @friendship.save
       @recommended_friends = Friendship.recommended_friends(friendship_params[:user_id])
       render :show
