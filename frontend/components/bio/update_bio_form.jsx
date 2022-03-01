@@ -44,7 +44,7 @@ class UpdateForm extends React.Component {
     reader.onloadend = () =>
       this.setState({ profilePhotoUrl: reader.result, updateProfilephotoFile: file });
 
-      if (file.size > 300000) {
+      if (file.size > 500000) {
         this.setState({disabled: true})
       } else {
         this.setState({disabled: false})
@@ -66,7 +66,7 @@ class UpdateForm extends React.Component {
     reader.onloadend = () =>
       this.setState({ backgroundPhotoUrl: reader.result, updateBackgroundPhotoFile: file });
 
-    if (file.size > 300000) {
+    if (file.size > 500000) {
       this.setState({disabled: true})
     } else {
       this.setState({disabled: false})
@@ -104,6 +104,27 @@ class UpdateForm extends React.Component {
     }
   }
 
+  getData(url, formData) {
+    return  $.ajax({
+      url: url,
+      method: 'PUT',
+      data: formData,
+      contentType: false,
+      processData: false
+    })
+  }
+
+  async awaitUpload(url, formData) {
+    try {
+      const res = await this.getData(url, formData)
+      if (res) {
+        this.props.forceProfileRender()
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.setStateOfParent(false);
@@ -115,14 +136,7 @@ class UpdateForm extends React.Component {
       formData.append('profile_photo[photo]', this.state.updateProfilePhotoFile);
       formData.append('profile_photo[user_id]', this.state.user.id)
   
-      $.ajax({
-        url: `/api/users/${this.props.user.id}/profile_photos/${this.props.user.profilePhoto.id}`,
-        method: 'PUT',
-        data: formData,
-        contentType: false,
-        processData: false
-      })
-      .then(this.props.forceProfileRender())
+      this.awaitUpload(`/api/users/${this.props.user.id}/profile_photos/${this.props.user.profilePhoto.id}`, formData)
     }
     
     if (this.state.updateBackgroundPhotoFile) {
@@ -130,14 +144,7 @@ class UpdateForm extends React.Component {
       backgroundFormData.append('background_photo[photo]', this.state.updateBackgroundPhotoFile),
       backgroundFormData.append('background_photo[user_id]', this.state.user.id)
   
-      $.ajax({
-        url: `/api/users/${this.props.user.id}/background_photos/${this.props.user.backgroundPhoto.id}`,
-        method: 'PUT',
-        data: backgroundFormData,
-        contentType: false,
-        processData: false
-      })
-      .then(this.props.forceProfileRender())
+      this.awaitUpload(`/api/users/${this.props.user.id}/background_photos/${this.props.user.backgroundPhoto.id}`, backgroundFormData) 
     }
   }
 

@@ -57,7 +57,6 @@ class UsersProfile extends React.Component {
     }
 
   }
-
   // componentWillUnmount() {
     // this.setState = (state, callback) => {
     //   return;
@@ -65,12 +64,14 @@ class UsersProfile extends React.Component {
   //   this.listen(); 
   // }
 
-  forceProfileRender() {
+  async forceProfileRender() {
+    let user = await this.props.fetchUser(this.props.match.params.userId)
+    let currentUser = await this.props.fetchCurrentUser(this.props.currentUser.id)
+    if (user && currentUser) {
       this.setState({
         key: this.state.key + 1
       })
-      this.props.fetchUser(this.props.match.params.userId)
-      this.props.fetchCurrentUser(this.props.currentUser.id)
+    }
   }
 
   render() {

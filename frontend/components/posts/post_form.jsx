@@ -7,7 +7,6 @@ class PostFrom extends React.Component {
 
     this.state = {
       post: {
-        // userId: this.props.user.id,
         posterId: this.props.posterId,
         body: '',
       },
@@ -22,6 +21,7 @@ class PostFrom extends React.Component {
     this.filePreview = this.filePreview.bind(this);
     this.disableButton = this.disableButton.bind(this);
     this.fileError = this.fileError.bind(this)
+    this.awaitPost = this.awaitPost.bind(this);
   }
 
   componentDidMount() {
@@ -29,12 +29,10 @@ class PostFrom extends React.Component {
       let post = {...this.state.post}
       post.userId = this.props.user.id;
       this.setState({post})
-      // this.setState({userId: this.props.user.id})
     } else  {
       let post = {...this.state.post}
       post.userId = this.props.posterId;
       this.setState({post})
-      // this.setState({userId: this.props.posterId})
     }
   }
 
@@ -95,6 +93,27 @@ class PostFrom extends React.Component {
     this.props.forceProfileRender()
   }
 
+  getData(formData) {
+    return $.ajax({
+      url: '/api/posts',
+      method: 'POST',
+      data: formData,
+      contentType: false,
+      processData: false
+    })
+  }
+
+  async awaitPost(formData) {
+    try {
+      const res = await this.getData(formData)
+      if (res) {
+        this.forceRender();
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
 
   handleSubmit(e) {
     e.preventDefault();
@@ -104,13 +123,7 @@ class PostFrom extends React.Component {
       formData.append('post[posterId]', this.state.post.posterId);
       formData.append('post[body]', this.state.post.body);
       formData.append('post[photo]', this.state.photoFile);
-      $.ajax({
-        url: '/api/posts',
-        method: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false
-      }).then(this.forceRender())
+      this.awaitPost(formData)
     } else {
     this.props.createPost(this.state.post).then(this.forceRender())
     }

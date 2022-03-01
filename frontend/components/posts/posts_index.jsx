@@ -23,13 +23,9 @@ class PostsIndex extends React.Component {
 
   componentDidMount() {
     if(this.props.user) {
-      setTimeout(() => {
-        this.props.fetchPosts(this.props.user.id)
-      }, 500);
+      this.props.fetchPosts(this.props.user.id)
     } else {
-      setTimeout(() =>  {
-        this.props.fetchPosts(this.props.currentUser.id)
-      }, 500)
+      this.props.fetchPosts(this.props.currentUser.id)
     }
   }
 
@@ -40,10 +36,6 @@ class PostsIndex extends React.Component {
   }
 
   render() { 
-    // if (!this.props.posts) {
-    //   return null 
-    // } else {
-
       return(
         <div className='posts-index'>
           {
@@ -59,7 +51,6 @@ class PostsIndex extends React.Component {
       ) 
     }
       }
-    // } 
   
 
 export default PostsIndex
