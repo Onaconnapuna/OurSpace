@@ -2,8 +2,8 @@
   height: 100px;
 }
 .posts-container {
-  /* margin-top: px; */
   display: flex;
+  background-color: #ECF3FF;
   justify-content: center;
 }
 

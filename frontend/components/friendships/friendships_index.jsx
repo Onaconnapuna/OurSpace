@@ -55,7 +55,11 @@ class FrienshipIndex extends React.Component {
     return(
       <div className='friendships-container'>
         <div className='friendships-index-container'>
-        <div className='friends'> Friends ({this.props.friendships.length}) </div>
+          <div className='friends-container'>
+            <div className='friends'> Friends </div> 
+            {this.viewFriendsButton()}
+          </div>
+        <p className='friends-number'>{this.props.friendships.length} friends </p>
         {this.noFriends()}
           <div className='friendships-index'>
             {
@@ -70,7 +74,6 @@ class FrienshipIndex extends React.Component {
               />)
             }
           </div>
-          {this.viewFriendsButton()}
         </div>
         <Modal
          parentSelector = { () => document.body}
@@ -82,7 +85,8 @@ class FrienshipIndex extends React.Component {
         <div className='modal-friends' >
 
         <div className='full-friendships-index-container'>
-        <div className='friends'> Friends ({this.props.friendships.length}) </div>
+        <div className='friends'> Friends </div>
+            <p className='friends-number'>{this.props.friendships.length} friends </p>
            <div className='friendships-index'>
             {
               this.props.friendships.map((friendship, idx) => <FriendshipItem

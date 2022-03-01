@@ -159,7 +159,6 @@ class PostItem extends React.Component{
           <form className='comment-input'onSubmit={this.handleSubmit}>
             <img src={`${this.props.currentUser.profilePhoto.imageUrl}`}/>
             <input className='comment-body-input' value={this.state.body} placeholder="Write a Comment" onChange={this.update('body')}></input>
-            <button className='post-comment' disabled={!this.state.body}> Post Comment </button>
           </form>
           </div>
         </div>
