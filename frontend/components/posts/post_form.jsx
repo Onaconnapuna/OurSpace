@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import "regenerator-runtime/runtime"
 
 class PostFrom extends React.Component {
   constructor(props) {

@@ -1,4 +1,5 @@
 import React from 'react'
+import "regenerator-runtime/runtime"
 
 class UpdateForm extends React.Component {
   constructor(props) {
