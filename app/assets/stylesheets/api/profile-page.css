@@ -13,8 +13,8 @@
   flex-direction: column;
   align-items: center;
   z-index: 5;
-  background: rgb(1,1,1);
-  background: linear-gradient(180deg, rgba(1,1,1,1) 0%, rgba(126,126,126,1) 42%, rgba(255,255,255,1) 100%);
+  /* background: rgb(1,1,1); */
+  background: linear-gradient(180deg, rgba(1,1,1) 0%, rgba(126,126,126) 42%, rgba(255,255,255) 100%);
 }
 
 .basic-user-info {
