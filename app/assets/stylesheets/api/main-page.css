@@ -3,11 +3,11 @@
 }
 .posts-container {
   display: flex;
-  background-color: #ECF3FF;
+  background-color: #F0F2F5;;
   justify-content: center;
 }
 
 .main-page {
-  background-color: #ECF3FF;
+  background-color: #F0F2F5;;
   height: 100%;
 }

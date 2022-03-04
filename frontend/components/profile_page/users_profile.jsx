@@ -85,6 +85,7 @@ class UsersProfile extends React.Component {
           currentUser = {this.props.currentUser}
           forceProfileRender = {this.forceProfileRender}
           friendRequests = {this.props.friendRequests}
+          profilePage={true}
            />
            <div className='profile-page'>
              <ProfilePhotosContainer

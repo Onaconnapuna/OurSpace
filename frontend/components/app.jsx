@@ -28,14 +28,13 @@ class App extends React.Component {
     <div className='window'>
       <Switch>
         <ProtectedRoute exact path='/profiles/:userId' component={(props) => (
-    <UsersProfileContainer
-      {...props}
-      key={props.match.params.user_id}
-    />
-  )}/>
+        <UsersProfileContainer
+          {...props}
+          key={props.match.params.user_id}
+        />
+        )}/>
         <ProtectedRoute path='/main' component={MainPageContainer}/>
         <AuthRoute path='/' component={LandingPage} />
-        {/* <Redirect to='/' component={LandingPage}/> */}
       </Switch>
    </div>
     )

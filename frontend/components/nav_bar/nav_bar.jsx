@@ -28,7 +28,7 @@ class NavBar extends React.Component {
     this.switchModals = this.switchModals.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
     this.requestClose = this.requestClose.bind(this)
-    // this.forceNavUpdate = this.forceNavUpdate.bind(this)
+    this.onProfilePage = this.onProfilePage.bind(this)
     Modal.setAppElement('#root')
   }
 
@@ -58,6 +58,28 @@ class NavBar extends React.Component {
     }
   };
 
+  onProfilePage() {
+    if (this.props.profilePage) {
+      return (
+        <div>
+          <Link className='profile-link-profile'to={`/profiles/${this.props.currentUser.id}`} onClick={() => this.props.fetchUser(this.props.currentUser.id)}> 
+            <img className='nav-photo' src={`${this.props.currentUser.profilePhoto.imageUrl}`}/>
+            Hello, {this.props.currentUser.firstName}
+          </Link> 
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <Link className='profile-link'to={`/profiles/${this.props.currentUser.id}`} onClick={() => this.props.fetchUser(this.props.currentUser.id)}> 
+            <img className='nav-photo' src={`${this.props.currentUser.profilePhoto.imageUrl}`}/>
+            Hello, {this.props.currentUser.firstName}
+          </Link> 
+        </div>
+      )
+    }
+  }
+
   handleLogOut() {
     this.setState({dropDownIsOpen: false})
     this.props.logout()
@@ -82,9 +104,7 @@ class NavBar extends React.Component {
   navBarWhileLoggedIn() {
     return (
       <div className='banner'>
-        <div>
-          <Link className='profile-link'to={`/profiles/${this.props.currentUser.id}`} onClick={() => this.props.fetchUser(this.props.currentUser.id)}> Hello, {this.props.currentUser.firstName}</Link> 
-        </div>
+        {this.onProfilePage()}
         <div className="ellipsis-button-background-nav" ref={this.container}>
           <button className='ellipsis-button' onClick={() => this.handleDropDown()}> &#8230; </button>
           {this.state.dropDownIsOpen && (
