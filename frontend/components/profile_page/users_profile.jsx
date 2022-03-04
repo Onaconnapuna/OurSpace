@@ -32,6 +32,7 @@ class UsersProfile extends React.Component {
     this.props.fetchUser(this.props.match.params.userId)
     this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
     this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
+    this.props.fetchFriendships(this.props.match.params.userId)
   }
   
   componentDidUpdate(prevProps, prevState) {
@@ -90,7 +91,10 @@ class UsersProfile extends React.Component {
              key={this.state.key + 1}
              user={this.props.user} 
              />
-             <h3 className='profile-name'> {this.props.user.firstName} {this.props.user.lastName}</h3>
+             <div className='basic-user-info'>
+              <div className='profile-name'> {this.props.user.firstName} {this.props.user.lastName}</div>
+              <div className='num-friends'> {this.props.friends.length} Friends </div>
+             </div>
              <div className='bio-posts-background'>
                <div className='bio-posts-container'>
                  <div className='bio-friends'>

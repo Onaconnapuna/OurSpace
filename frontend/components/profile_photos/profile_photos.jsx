@@ -10,11 +10,11 @@ class ProfilePhotos extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.setState = (state, callback) => {
-      return;
-    }
-  }
+  // componentWillUnmount() {
+  //   this.setState = (state, callback) => {
+  //     return;
+  //   }
+  // }
 
   render() { 
     return(

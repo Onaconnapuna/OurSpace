@@ -161,13 +161,15 @@ input[type=password] {
   margin: 8px 0;
 }
 
+input:focus {
+  outline: none;
+}
+
 label {
   font-size: 12px;
   font-weight: 400;
   color: #747474;
   padding: 12px;
-  /* padding-top: 12px; */
-  /* padding-bottom: 5px; */
   vertical-align: top;
 }
 
@@ -300,7 +302,7 @@ label {
 
 .navbar-container {
   position: fixed;
-  background-color: white;
+  background-color: #F0F2F5;
   display: flex;
   align-items: center;
   box-shadow: 0px 2px 2px -2px #AAAAAA;;
@@ -316,16 +318,6 @@ label {
   align-items: center;
 }
 
-.splashbutton {
-  padding: 8px;
-  margin: 10px;
-  border-radius: 12px;
-  font-weight: 700;
-  width: 72px;
-  background-color: #1473e6;
-  border-color: #1473e6;
-  color: white;
-}
 
 #root {
   height: 100%;
@@ -386,7 +378,6 @@ label {
 }
 
 .friend-requests-index-container {
-  /* min-height: 250px; */
   min-width: 600px;
   background: white;
   border-radius: 10px;

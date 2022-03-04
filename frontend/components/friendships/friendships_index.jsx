@@ -17,9 +17,9 @@ class FrienshipIndex extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    // setTimeout(() => {
       this.props.fetchFriendships(this.props.user.id)
-    }, 500)
+    // }, 500)
   }
 
   openModal() {
