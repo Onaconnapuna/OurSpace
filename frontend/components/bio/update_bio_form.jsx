@@ -44,7 +44,7 @@ class UpdateForm extends React.Component {
     reader.onloadend = () =>
       this.setState({ profilePhotoUrl: reader.result, updateProfilephotoFile: file });
 
-      if (file.size > 500000) {
+      if (file.size > 2000000) {
         this.setState({disabled: true})
       } else {
         this.setState({disabled: false})
@@ -66,7 +66,7 @@ class UpdateForm extends React.Component {
     reader.onloadend = () =>
       this.setState({ backgroundPhotoUrl: reader.result, updateBackgroundPhotoFile: file });
 
-    if (file.size > 500000) {
+    if (file.size > 2000000) {
       this.setState({disabled: true})
     } else {
       this.setState({disabled: false})
