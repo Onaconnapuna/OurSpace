@@ -15,22 +15,22 @@ json.set! :profile_posts do
         json.extract! comment, :id, :user_id, :body, :post_id
         json.extract! comment.user, :first_name, :last_name
         json.image_url url_for(comment.user.profile_photo.photo)
-      #   json.set! :comment_likes do 
-      #   json.array! comment.likes.includes(:user).each do |like|
-      #     json.extract! like, :id, :user_id
-      #     json.extract! like.user, :first_name, :last_name
-      #     json.image_url url_for(like.user.profile_photo.photo)
-      #   end
-      # end
+        json.set! :comment_likes do 
+        json.array! comment.likes.includes(:user).each do |like|
+          json.extract! like, :id, :user_id
+          json.extract! like.user, :first_name, :last_name
+          json.image_url url_for(like.user.profile_photo.photo)
+        end
+      end
       end 
     end
-    # json.set! :likes do 
-    #   json.array! post.likes.includes(:user).each do |like|
-    #     json.extract! like, :id, :user_id
-    #     json.extract! like.user, :first_name, :last_name
-    #     json.image_url url_for(like.user.profile_photo.photo)
-    #   end 
-    # end
+    json.set! :likes do 
+      json.array! post.likes.includes(:user).each do |like|
+        json.extract! like, :id, :user_id
+        json.extract! like.user, :first_name, :last_name
+        json.image_url url_for(like.user.profile_photo.photo)
+      end 
+    end
   end
 
 end
@@ -53,22 +53,22 @@ json.set! :main_posts do
           json.extract! comment, :id, :user_id, :body, :post_id
           json.extract! comment.user, :first_name, :last_name
           json.image_url url_for(comment.user.profile_photo.photo)
-          # json.set! :comment_likes do 
-          #   json.array! comment.likes.includes(:user).each do |like|
-          #     json.extract! like, :id, :user_id
-          #     json.extract! like.user, :first_name, :last_name
-          #     json.image_url url_for(like.user.profile_photo.photo)
-          #   end
-          # end
+          json.set! :comment_likes do 
+            json.array! comment.likes.includes(:user).each do |like|
+              json.extract! like, :id, :user_id
+              json.extract! like.user, :first_name, :last_name
+              json.image_url url_for(like.user.profile_photo.photo)
+            end
+          end
         end 
       end
-      # json.set! :likes do
-      #   json.array! post.likes.includes(:user).each do |like|
-      #     json.extract! like, :id, :user_id
-      #     json.extract! like.user, :first_name, :last_name
-      #     json.image_url url_for(like.user.profile_photo.photo)
-      #   end
-      # end
+      json.set! :likes do
+        json.array! post.likes.includes(:user).each do |like|
+          json.extract! like, :id, :user_id
+          json.extract! like.user, :first_name, :last_name
+          json.image_url url_for(like.user.profile_photo.photo)
+        end
+      end
     end
   end
 end
