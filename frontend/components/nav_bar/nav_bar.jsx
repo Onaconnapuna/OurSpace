@@ -106,13 +106,13 @@ class NavBar extends React.Component {
     return (
       <div className="links-container">
         <div className="link-item">
-          <a href='https://www.linkedin.com/in/connor-germain-04ab10188/' className="linked-in" ><img src="/assets/linked_in" alt="" /></a>
+          <a href='https://www.linkedin.com/in/connor-germain-04ab10188/' className="linked-in" ><img src="https://ourspace-fullstack-project-seeds.s3.us-east-2.amazonaws.com/linked_in.jpg" alt="" /></a>
         </div>
         <div className="link-item">
-          <a href= 'https://angel.co/profile/edit/overview' className="angel-list"> <img src="/assets/angel_list" /></a>
+          <a href= 'https://angel.co/profile/edit/overview' className="angel-list"> <img src="https://ourspace-fullstack-project-seeds.s3.us-east-2.amazonaws.com/angel_list.jpg" /></a>
         </div>
         <div className="link-item">
-          <a href='https://github.com/Onaconnapuna' className="git-hub"> <img src="/assets/github_logo" alt="" /></a>
+          <a href='https://github.com/Onaconnapuna' className="git-hub"> <img src="https://ourspace-fullstack-project-seeds.s3.us-east-2.amazonaws.com/github_logo.png" alt="" /></a>
         </div>
       </div>
     )

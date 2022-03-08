@@ -84,10 +84,10 @@ class MainPage extends React.Component {
                 <div className="other-projects"> Other Projects I've worked on </div>
                 <div className="other-projects-links">
                   <div className='chess-reference-container'>
-                    <a className="chess-reference" href="https://onaconnapuna.github.io/chess_openings_reference/"> Chess Openings Reference  <img src="/assets/chess_reference" alt="" /></a>
+                    <a className="chess-reference" href="https://onaconnapuna.github.io/chess_openings_reference/"> Chess Openings Reference  <img src="https://ourspace-fullstack-project-seeds.s3.us-east-2.amazonaws.com/chess_reference.PNG" alt="" /></a>
                   </div>
                   <div className="cut-above-container">
-                    <a className='cut-above' href="https://pacific-sea-61217.herokuapp.com/#/"> Cut Above <img src="/assets/cutAbove" alt="" /> </a>
+                    <a className='cut-above' href="https://pacific-sea-61217.herokuapp.com/#/"> Cut Above <img src="https://ourspace-fullstack-project-seeds.s3.us-east-2.amazonaws.com/cutAbove.PNG" alt="" /> </a>
                   </div>
                 </div>
               </div>
