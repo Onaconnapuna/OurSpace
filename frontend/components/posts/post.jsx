@@ -15,7 +15,8 @@ class PostItem extends React.Component{
       parentCommentId: null,
       body: '',
       dropDownIsOpen: false,
-      liked: false
+      liked: false,
+      numLikes: this.props.post.likes.length
     }
     this.handleDropDown = this.handleDropDown.bind(this)
     this.checkUser = this.checkUser.bind(this)
@@ -32,7 +33,7 @@ class PostItem extends React.Component{
   componentDidMount() {
     this.setLiked()
     document.addEventListener("mousedown", this.handleClickOutside);
-    console.log(this.props)
+    window.scrollTo(0,0)
   }
 
   UNSAFE_componentWillReceiveProps(prevProps) {
@@ -69,7 +70,7 @@ class PostItem extends React.Component{
     if(this.props.currentUser.id === this.props.post.posterId || this.props.currentUser === this.props.user) {
       return (
         <div className='ellipsis-button-background' ref={this.container}>
-          <button className='ellipsis-button' onClick={() => this.handleDropDown()}> &#8230; </button>
+          <button className='ellipsis-button' onClick={() => this.handleDropDown()}> <i className="fa fa-ellipsis-h" aria-hidden="true"></i> </button>
             {this.state.dropDownIsOpen && (
             <div className="dropdown-post">
             <button className="dropdown-item" onClick={() => this.props.deletePost(this.props.post.id)}> Delete Post </button>
@@ -130,16 +131,21 @@ class PostItem extends React.Component{
     }
   }
 
-  like() {
+  async like() {
     this.setState({
-      liked: true
+      liked: true,
+      numLikes: this.state.numLikes + 1 
     })
-    this.props.createLike(this.state)
+    const res = await this.props.createLike(this.state)
+    if (res) {
+      this.props.forceProfileRender()
+    }
   }
 
-  deleteLike() {
+  async deleteLike() {
     this.setState({
-      liked: false
+      liked: false,
+      numLikes: this.state.numLikes - 1
     })
     let likeId = null 
     this.props.post.likes.forEach((like, i) => {
@@ -147,8 +153,10 @@ class PostItem extends React.Component{
         likeId = like.id
       } 
     })
-
-    this.props.deleteLike(likeId)
+    const res = await this.props.deleteLike(likeId)
+    if (res) {
+      // this.props.forceProfileRender()
+    }
   }
 
   isLiked() {
@@ -206,6 +214,7 @@ class PostItem extends React.Component{
           </div>
           <img className='post-photo' src={this.props.post.photoUrl}/>
           <div> 
+          <div className='num-likes'> <i className="fa fa-thumbs-o-up"  style={{fontSize: 16, color: 'rgb(32, 120, 244)' }}></i> {this.state.numLikes}</div>
           <div className='break'></div>
           <div className='like-comment'>
             {this.renderLiked()}

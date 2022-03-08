@@ -24,7 +24,7 @@ class NavBar extends React.Component {
       key: 0 
     }
 
-    this.notificationHelper = this.notificationHelper.bind(this)
+    // this.notificationHelper = this.notificationHelper.bind(this)
     this.switchModals = this.switchModals.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
     this.requestClose = this.requestClose.bind(this)
@@ -93,28 +93,34 @@ class NavBar extends React.Component {
     }
   }
 
-  notificationHelper() {
-    if (this.props.currentUser.notifications) {
-      return<button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {this.props.friendRequests.length}</button>                 
-    } else {
-      return ''
-    }
-  }
+  // notificationHelper() {
+  //   if (this.props.currentUser.notifications) {
+  //     return<button className="dropdown-item" onClick={() => this.setState({notificationsModalIsOpen: true})}> Notifications {this.props.friendRequests.length}</button>                 
+  //   } else {
+  //     return ''
+  //   }
+  // }
 
   navBarWhileLoggedIn() {
     return (
       <div className='banner'>
         {this.onProfilePage()}
-        <div className="ellipsis-button-background-nav" ref={this.container}>
-          <button className='ellipsis-button' onClick={() => this.handleDropDown()}> &#8230; </button>
-          {this.state.dropDownIsOpen && (
-            <div className="dropdown-nav">
-              <button className="dropdown-item" onClick={() => this.handleLogOut()}>Logout</button>
-              {this.notificationHelper()}
-            </div>
-          )}
+        <div className="ellipsis-button-background-nav">
+          <button className='ellipsis-button'onClick={() => this.setState({notificationsModalIsOpen: true})} className="bell"> <i className="fa fa-bell" aria-hidden="true" style={{fontSize: 24, color: '#65676B' }}></i></button>
+          <div className="notifications-num-container">
+            <div className="notifications-num"> {this.props.friendRequests.length} </div>
           </div>
         </div>
+        <div className="ellipsis-button-background-nav" ref={this.container}>
+          <button className='ellipsis-button' onClick={() => this.handleDropDown()}> <i className="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+          {this.state.dropDownIsOpen && (
+          <div className="dropdown-nav">
+            <button className="dropdown-item" onClick={() => this.handleLogOut()}>Logout</button>
+            {/* {this.notificationHelper()} */}
+          </div>
+          )}
+        </div>
+      </div>
     )
   }
 

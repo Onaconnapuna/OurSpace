@@ -22,8 +22,9 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0,0)
     this.props.fetchCurrentUser(this.props.currentUser.id)
-    // this.props.fetchPosts(this.props.currentUser.id)
+    this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
   }
 
   forceProfileRender() {
@@ -32,6 +33,7 @@ class MainPage extends React.Component {
     })
     this.props.fetchCurrentUser(this.props.currentUser.id)
     this.props.fetchPosts(this.props.currentUser.id)
+    this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
 }
 
 

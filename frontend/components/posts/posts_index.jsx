@@ -31,12 +31,6 @@ class PostsIndex extends React.Component {
     window.scrollTo(0,0)
   }
 
-  componentWillUnmount() {
-    this.setState = (state, callback) => {
-      return;
-    }
-  }
-
   render() { 
       return(
         <div className='posts-index'>
