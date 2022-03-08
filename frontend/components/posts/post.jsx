@@ -14,8 +14,7 @@ class PostItem extends React.Component{
       postId: this.props.post.id,
       parentCommentId: null,
       body: '',
-      dropDownIsOpen: false, 
-      // color: '#65676B',
+      dropDownIsOpen: false,
       liked: false
     }
     this.handleDropDown = this.handleDropDown.bind(this)
@@ -27,11 +26,13 @@ class PostItem extends React.Component{
     this.renderLiked = this.renderLiked.bind(this)
     this.deleteLike = this.deleteLike.bind(this)
     this.like = this.like.bind(this)
+    this.focus = this.focus.bind(this)
   }
 
   componentDidMount() {
     this.setLiked()
     document.addEventListener("mousedown", this.handleClickOutside);
+    console.log(this.props)
   }
 
   UNSAFE_componentWillReceiveProps(prevProps) {
@@ -171,13 +172,17 @@ class PostItem extends React.Component{
   renderLiked() {
     if (this.state.liked) {
       return (
-        <button onClick = {() => this.deleteLike()} style={{color: this.state.color}}> <i className="fa fa-thumbs-o-up"  style={{fontSize: 24, color: 'rgb(32, 120, 244)' }}></i> Liked </button>
+        <button onClick = {() => this.deleteLike()}> <i className="fa fa-thumbs-o-up"  style={{fontSize: 24, color: 'rgb(32, 120, 244)' }}></i> Liked </button>
       )
     } else {
       return (
         <button onClick={() => this.like()}> <i className="fa fa-thumbs-o-up"  style={{fontSize: 24, color: '#65676B' }}></i> Like </button>
       )
     }
+  }
+
+  focus() {
+    document.getElementsByClassName('comment-body-input')[this.props.idx].focus()
   }
 
   handleSubmit(e) {
@@ -204,7 +209,7 @@ class PostItem extends React.Component{
           <div className='break'></div>
           <div className='like-comment'>
             {this.renderLiked()}
-            <button> Comment </button>
+            <button  onClick={()=> this.focus()}> <i className="fa fa-comment-o" aria-hidden="true" style={{fontSize: 24, color: '#65676B' }}></i> Comment </button>
           </div>
           <div className='comments-container'> Comments
             {this.props.post.comments.map((comment, idx) => 

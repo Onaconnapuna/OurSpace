@@ -27,6 +27,8 @@ class PostsIndex extends React.Component {
     } else {
       this.props.fetchPosts(this.props.currentUser.id)
     }
+
+    window.scrollTo(0,0)
   }
 
   componentWillUnmount() {
@@ -41,6 +43,7 @@ class PostsIndex extends React.Component {
           {
             this.togglePosts().reverse().map((post, idx) => <PostItemContainer
             key={idx}
+            idx={idx}
             post={post} 
             user={this.props.user}
             forceProfileRender={this.props.forceProfileRender}

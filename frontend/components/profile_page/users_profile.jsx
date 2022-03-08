@@ -33,6 +33,8 @@ class UsersProfile extends React.Component {
     this.props.fetchCurrentUser(parseInt(this.props.currentUser.id))
     this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
     this.props.fetchFriendships(this.props.match.params.userId)
+
+    window.scrollTo(0,0);
   }
   
   componentDidUpdate(prevProps, prevState) {
