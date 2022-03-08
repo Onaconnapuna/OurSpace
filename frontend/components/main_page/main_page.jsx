@@ -2,6 +2,7 @@ import React from "react";
 import PostsIndexContainer from "../posts/posts_index_container";
 import PostFormContainer from "../posts/post_form_container";
 import NavBarContainer from "../nav_bar/nav_bar_container";
+import RecomendedFriendsContainer from "../friendships/recommended-friends-container";
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -50,24 +51,49 @@ class MainPage extends React.Component {
           friendRequests={this.props.friendRequests}
           />
           </div>
-    
-        <div className="posts-container">
-          <div className="posts">
-            <PostFormContainer 
-            key={this.state.key + 4}
-            currentUser={this.props.currentUser}
-            user={null}
-            forceProfileRender={this.forceProfileRender}
-            />
 
-            <PostsIndexContainer
-            currentUser={this.props.currentUser}
-            user={null}
-            forceProfileRender={this.forceProfileRender}
-            key={this.state.key + 1}
-            />
+          <div className="main-page-components">
+            <div className="main-page-recommendations">
+              <RecomendedFriendsContainer 
+              key={this.state.key + 1}
+              user={this.props.user}
+              currentUser={this.props.currentUser}
+              forceProfileRender={this.forceProfileRender}
+              />
+            </div>
+          
+            <div className="posts-container">
+              <div className="posts">
+                <PostFormContainer 
+                key={this.state.key + 2}
+                currentUser={this.props.currentUser}
+                user={null}
+                forceProfileRender={this.forceProfileRender}
+                />
+
+                <PostsIndexContainer
+                currentUser={this.props.currentUser}
+                user={null}
+                forceProfileRender={this.forceProfileRender}
+                key={this.state.key + 3}
+                />
+              </div>
+            </div>
+          
+              <div className="other-projects-container">
+                <div className="other-projects"> Other Projects I've worked on </div>
+                <div className="other-projects-links">
+                  <div className='chess-reference-container'>
+                    <a className="chess-reference" href="https://onaconnapuna.github.io/chess_openings_reference/"> Chess Openings Reference  <img src="/assets/chess_reference" alt="" /></a>
+                  </div>
+                  <div className="cut-above-container">
+                    <a className='cut-above' href="https://pacific-sea-61217.herokuapp.com/#/"> Cut Above <img src="/assets/cutAbove" alt="" /> </a>
+                  </div>
+                </div>
+              </div>
+          
+
           </div>
-        </div>
         </div>
 
       )

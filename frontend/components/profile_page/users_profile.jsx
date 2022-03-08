@@ -54,6 +54,7 @@ class UsersProfile extends React.Component {
         <RecommendedFriendsContainer 
         key={this.state.key + 4}
         user={this.props.user}
+        currentUser={this.props.currentUser}
         forceProfileRender={this.forceProfileRender}
         />
       )

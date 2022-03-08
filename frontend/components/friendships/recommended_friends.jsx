@@ -16,7 +16,7 @@ class RecommendedFriends extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {
-      this.props.fetchFriendships(this.props.user.id)
+      this.props.fetchFriendships(this.props.currentUser.id)
     }, 500)
   }
 

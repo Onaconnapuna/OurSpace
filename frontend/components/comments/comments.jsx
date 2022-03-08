@@ -38,7 +38,7 @@ const Comment = (props) => {
         if (props.currentUserId === props.posterId || props.currentUserId=== props.comment.userId) {
           return (
             <div className='ellipsis-button-background' ref={container}>
-                <button className="trash-button" onClick={() => handleDropdown(dropDown)}> <i class="fa fa-ellipsis-h" aria-hidden="true"style={{
+                <button className="trash-button" onClick={() => handleDropdown(dropDown)}> <i className="fa fa-ellipsis-h" aria-hidden="true"style={{
                   fontSize: 24,
                   // backgroundColor: "inherit",
                   // border: 'none'
