@@ -56,7 +56,7 @@ class MainPage extends React.Component {
             <div className="main-page-recommendations">
               <RecomendedFriendsContainer 
               key={this.state.key + 1}
-              user={this.props.user}
+              // user={this.props.user}
               currentUser={this.props.currentUser}
               forceProfileRender={this.forceProfileRender}
               />

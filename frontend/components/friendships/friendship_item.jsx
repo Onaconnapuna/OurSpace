@@ -54,7 +54,7 @@ const FriendshipItem = (props) => {
 
   const handleDeleteFriend = (friendshipId) => {
     props.deleteFriendship(friendshipId); 
-    redirect();
+    // redirect();
   }
 
   const toggleRemove = () => {
@@ -70,7 +70,9 @@ const FriendshipItem = (props) => {
 
   return (
     <div className='friendship'>
-        <Link className='friend-name' to={`/profiles/${props.friendship.userId}`} onClick={()=> props.fetchUser(props.friendship.userId).then(redirect())}>
+        <Link className='friend-name' to={`/profiles/${props.friendship.userId}`} onClick={()=> props.fetchUser(props.friendship.userId)
+          // .then(redirect())
+          }>
       <div className='friend-id'>
         <img src={`${props.friendship.imageUrl}`} /> 
         <div> {props.friendship.firstName} </div> 

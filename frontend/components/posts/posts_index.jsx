@@ -22,9 +22,13 @@ class PostsIndex extends React.Component {
   }
 
   componentDidMount() {
+    // console.log(this.props.user)
     if(this.props.user) {
+      // console.log(this.props.user.id)
       this.props.fetchPosts(this.props.user.id)
-    } else {
+    } 
+    
+    if (!this.props.user) {
       this.props.fetchPosts(this.props.currentUser.id)
     }
 

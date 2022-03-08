@@ -44,7 +44,7 @@ class RecommendedFriends extends React.Component {
             friendship={friendship}
             flag={false}
             recommendedFriends={true}
-            user={this.props.user}
+            // user={this.props.user}
             forceProfileRender={this.props.forceProfileRender}
             fetchUser={this.props.fetchUser}
             />)
@@ -70,7 +70,7 @@ class RecommendedFriends extends React.Component {
               flag={true}
               friendship={friendship}
               recommendedFriends={true}
-              user={this.props.user}
+              // user={this.props.user}
               forceProfileRender={this.props.forceProfileRender}
               fetchUser={this.props.fetchUser}
               />)
