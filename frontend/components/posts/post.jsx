@@ -138,7 +138,11 @@ class PostItem extends React.Component{
     })
     const res = await this.props.createLike(this.state)
     if (res) {
-      this.props.forceProfileRender()
+      if (this.props.user) {
+        this.props.fetchPosts(this.props.user.id)
+      } else {
+        this.props.fetchPosts(this.props.currentUser.id)
+      }
     }
   }
 
@@ -155,7 +159,11 @@ class PostItem extends React.Component{
     })
     const res = await this.props.deleteLike(likeId)
     if (res) {
-      // this.props.forceProfileRender()
+      if (this.props.user) {
+        this.props.fetchPosts(this.props.user.id)
+      } else {
+        this.props.fetchPosts(this.props.currentUser.id)
+      }
     }
   }
 

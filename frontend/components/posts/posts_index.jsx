@@ -40,6 +40,7 @@ class PostsIndex extends React.Component {
             idx={idx}
             post={post} 
             user={this.props.user}
+            fetchPosts={this.props.fetchPosts}
             forceProfileRender={this.props.forceProfileRender}
             currentUser={this.props.currentUser}
             />)
