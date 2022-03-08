@@ -148,7 +148,7 @@ class PostFrom extends React.Component {
               <p className='poster-name'>
                 {this.props.currentUser.firstName} {this.props.currentUser.lastName}
               </p>
-            <label className='post-img-select'> <i className='fa fa-camera' style={{fontSize: 24 }}></i>
+            <label className='post-img-select'> <i className='fa fa-camera' style={{fontSize: 24}}></i>
               <input type='file' onChange={this.handleFile}/>
             </label>
             </div>

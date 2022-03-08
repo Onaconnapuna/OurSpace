@@ -1,6 +1,7 @@
 import React from 'react'
 import Comment from '../comments/comments'
 import { Link } from 'react-router-dom';
+import 'regenerator-runtime/runtime'
 
 class PostItem extends React.Component{
   constructor(props) {
@@ -14,15 +15,22 @@ class PostItem extends React.Component{
       parentCommentId: null,
       body: '',
       dropDownIsOpen: false, 
+      // color: '#65676B',
+      liked: false
     }
     this.handleDropDown = this.handleDropDown.bind(this)
     this.checkUser = this.checkUser.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.onWall = this.onWall.bind(this)
     this.renderDate = this.renderDate.bind(this)
+    this.isLiked = this.isLiked.bind(this)
+    this.renderLiked = this.renderLiked.bind(this)
+    this.deleteLike = this.deleteLike.bind(this)
+    this.like = this.like.bind(this)
   }
 
   componentDidMount() {
+    this.setLiked()
     document.addEventListener("mousedown", this.handleClickOutside);
   }
 
@@ -121,6 +129,57 @@ class PostItem extends React.Component{
     }
   }
 
+  like() {
+    this.setState({
+      liked: true
+    })
+    this.props.createLike(this.state)
+  }
+
+  deleteLike() {
+    this.setState({
+      liked: false
+    })
+    let likeId = null 
+    this.props.post.likes.forEach((like, i) => {
+      if (like.userId === this.props.currentUser.id) {
+        likeId = like.id
+      } 
+    })
+
+    this.props.deleteLike(likeId)
+  }
+
+  isLiked() {
+    let liked = false  
+    this.props.post.likes.forEach((like, i) => {
+      if (like.userId === this.props.currentUser.id) {
+        liked = true
+      } 
+    })
+    return liked
+  }
+
+  setLiked() {
+    if (this.isLiked()) {
+      this.setState({
+        liked: true
+      })
+    }
+  }
+
+  renderLiked() {
+    if (this.state.liked) {
+      return (
+        <button onClick = {() => this.deleteLike()} style={{color: this.state.color}}> <i className="fa fa-thumbs-o-up"  style={{fontSize: 24, color: 'rgb(32, 120, 244)' }}></i> Liked </button>
+      )
+    } else {
+      return (
+        <button onClick={() => this.like()}> <i className="fa fa-thumbs-o-up"  style={{fontSize: 24, color: '#65676B' }}></i> Like </button>
+      )
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.forceProfileRender();
@@ -143,6 +202,10 @@ class PostItem extends React.Component{
           <img className='post-photo' src={this.props.post.photoUrl}/>
           <div> 
           <div className='break'></div>
+          <div className='like-comment'>
+            {this.renderLiked()}
+            <button> Comment </button>
+          </div>
           <div className='comments-container'> Comments
             {this.props.post.comments.map((comment, idx) => 
               <Comment 

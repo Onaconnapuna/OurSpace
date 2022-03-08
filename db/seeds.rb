@@ -15,6 +15,7 @@ BackgroundPhoto.destroy_all
 Friendship.destroy_all
 Comment.destroy_all
 FriendRequest.destroy_all
+Like.destroy_all
 
 demo_user = User.create(email:'bagginsfrodo@ourspace.org', password:'password', first_name: 'Frodo', last_name: 'Baggins')
 
@@ -60,7 +61,7 @@ user6.profile_photo.photo.attach(io: user6_profilepic, filename: 'smeagol.jpg')
 user6_backgroundpic = URI.open('https://ourspace-fullstack-project-seeds.s3.us-east-2.amazonaws.com/gollums_cave.jpg')
 user6.background_photo.photo.attach(io: user6_backgroundpic, filename: 'gollums_cave.jpg')
 
-user7 = User.create(email: 'legolas@ourspace.org', password: 'password', first_name: 'Legolas', last_name: 'of the Woodland Realm')
+user7 = User.create(email: 'legolas@ourspace.org', password: 'password', first_name: 'Legolas', last_name: 'Greenleaf')
 user7_profilepic = URI.open('https://ourspace-fullstack-project-seeds.s3.us-east-2.amazonaws.com/legolas.png')
 user7.profile_photo.photo.attach(io: user7_profilepic, filename: 'legolas.png')
 user7_backgroundpic = URI.open('https://ourspace-fullstack-project-seeds.s3.us-east-2.amazonaws.com/fellowship.jpg')
@@ -107,6 +108,9 @@ demopost1file = URI.open('https://ourspace-fullstack-project-seeds.s3.us-east-2.
 demopost1.photo.attach(io: demopost1file , filename: 'frodo_bilbo_party.jpg')
 demopost2 = Post.create(user_id: demo_user.id, poster_id: demo_user.id, body: 'I wish the ring had never come to me, I wish none of this had happened')
 comment1 = Comment.create(post_id: demopost2.id, user_id: user1.id, body: 'So do all to live to see such times, but it is not for them to decide, all we have to decide is what to do with the time that is given to us')
+like1 = Like.create(user_id: user1.id, post_id: demopost2.id)
+like2 = Like.create(user_id: user2.id, post_id: demopost2.id)
+like3 = Like.create(user_id: demo_user.id, comment_id: comment1.id)
 
 post1 = Post.create( user_id: user1.id, poster_id: user1.id, body: 'You cannot pass... YOU SHALL NOT PASS')
 post1file = URI.open('https://ourspace-fullstack-project-seeds.s3.us-east-2.amazonaws.com/gandalf_balrog.jpg')

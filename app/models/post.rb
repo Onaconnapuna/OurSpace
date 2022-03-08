@@ -2,6 +2,7 @@
 class Post < ApplicationRecord
 
   validates :user_id, :poster_id, :body, presence: true
+  validates :body, length: {maximum: 400}
 
   has_one_attached :photo
 
