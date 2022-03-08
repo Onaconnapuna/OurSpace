@@ -614,7 +614,6 @@
   /* font-size: 30px; */
   /* font-weight: 600; */
   text-align: center;  
-  /* margin:auto; */
 }
 
 .ellipsis-button i {
@@ -626,9 +625,6 @@
   all: unset; 
   width: 45px;
   height: 45px;
-  /* padding-bottom: 30%; */
-  /* font-size: 30px; */
-  /* font-weight: 900; */
   text-align: center;  
   margin:auto;
 }
