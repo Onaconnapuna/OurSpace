@@ -21,7 +21,6 @@
     color: #282828;;
   }
 
-
  textarea {
    resize: none;
    outline: none;
@@ -42,6 +41,32 @@
   left: 0;
   background: rgba(92, 92, 92, 0.7);
   z-index: 9;
+ }
+
+ .links-container {
+   display: flex;
+   justify-content: space-evenly;
+   width: 600px;
+   height: 100%;
+   position: relative;
+   left: 28%;
+ }
+
+ .linked-in img{
+   /* background-image: url('/assets/linked_in_logo'); */
+   height: 100%;
+   width: 100%;
+ }
+
+ .angel-list img {
+   /* object-fit: cover; */
+   height: 100%;
+   width: 100%px;
+ }
+
+ .git-hub img {
+   height: 100%;
+   width: 100%;
  }
 
  .modal-background {

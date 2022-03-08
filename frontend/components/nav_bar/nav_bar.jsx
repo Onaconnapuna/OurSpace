@@ -25,6 +25,7 @@ class NavBar extends React.Component {
     }
 
     // this.notificationHelper = this.notificationHelper.bind(this)
+    this.links = this.links.bind(this)
     this.switchModals = this.switchModals.bind(this)
     this.handleLogOut = this.handleLogOut.bind(this)
     this.requestClose = this.requestClose.bind(this)
@@ -101,6 +102,22 @@ class NavBar extends React.Component {
   //   }
   // }
 
+  links() {
+    return (
+      <div className="links-container">
+        <div className="link-item">
+          <a href='https://www.linkedin.com/in/connor-germain-04ab10188/' className="linked-in" ><img src="/assets/linked_in" alt="" /></a>
+        </div>
+        <div className="link-item">
+          <a href= 'https://angel.co/profile/edit/overview' className="angel-list"> <img src="/assets/angel_list" /></a>
+        </div>
+        <div className="link-item">
+          <a href='https://github.com/Onaconnapuna' className="git-hub"> <img src="/assets/github_logo" alt="" /></a>
+        </div>
+      </div>
+    )
+  }
+
   navBarWhileLoggedIn() {
     return (
       <div className='banner'>
@@ -164,6 +181,8 @@ class NavBar extends React.Component {
           <h1 className='ourspace'>Ourspace</h1>
           <img className='logo-navbar' src="https://ourspace-fullstackproject-dev.s3.us-east-2.amazonaws.com/ourspace.png"/>
          </Link>
+
+         {this.links()}
           {
            this.props.currentUser ? this.navBarWhileLoggedIn() : this.navBarWhileLoggedOut()
           }
