@@ -802,6 +802,10 @@
   border: none 
 }
 
+.like-comment button:hover {
+  cursor: pointer;
+} 
+
 .comments-container {
   padding-top: 10px;
   background:linear-gradient(#AAAAAA, #AAAAAA) bottom no-repeat;
@@ -903,6 +907,10 @@
   border-radius: 33px;
   width: 85%;
   overflow-wrap: break-word;
+}
+
+.comment-body-input:focus {
+  border: 1px solid rgb(32, 120, 244);
 }
 
 .post-comment {

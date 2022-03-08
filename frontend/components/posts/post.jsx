@@ -172,11 +172,11 @@ class PostItem extends React.Component{
   renderLiked() {
     if (this.state.liked) {
       return (
-        <button onClick = {() => this.deleteLike()}> <i className="fa fa-thumbs-o-up"  style={{fontSize: 24, color: 'rgb(32, 120, 244)' }}></i> Liked </button>
+        <button className='like-button' onClick = {() => this.deleteLike()}> <i className="fa fa-thumbs-o-up"  style={{fontSize: 24, color: 'rgb(32, 120, 244)' }}></i> Liked </button>
       )
     } else {
       return (
-        <button onClick={() => this.like()}> <i className="fa fa-thumbs-o-up"  style={{fontSize: 24, color: '#65676B' }}></i> Like </button>
+        <button className='like-button' onClick={() => this.like()}> <i className="fa fa-thumbs-o-up"  style={{fontSize: 24, color: '#65676B' }}></i> Like </button>
       )
     }
   }
