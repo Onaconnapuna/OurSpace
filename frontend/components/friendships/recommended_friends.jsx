@@ -15,9 +15,9 @@ class RecommendedFriends extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    // setTimeout(() => {
       this.props.fetchFriendships(this.props.currentUser.id)
-    }, 500)
+    // }, 500)
   }
 
   openModal() {
