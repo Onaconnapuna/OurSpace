@@ -28,12 +28,14 @@ class PostItem extends React.Component{
     this.deleteLike = this.deleteLike.bind(this)
     this.like = this.like.bind(this)
     this.focus = this.focus.bind(this)
+    this.filterComments = this.filterComments.bind(this)
   }
 
+  
   componentDidMount() {
-    this.setLiked()
-    document.addEventListener("mousedown", this.handleClickOutside);
-    window.scrollTo(0,0)
+      this.setLiked()
+      document.addEventListener("mousedown", this.handleClickOutside)
+      window.scrollTo(0,0)
   }
 
   UNSAFE_componentWillReceiveProps(prevProps) {
@@ -201,16 +203,31 @@ class PostItem extends React.Component{
     document.getElementsByClassName('comment-body-input')[this.props.idx].focus()
   }
 
-  handleSubmit(e) {
+  filterComments() {
+    let post = this.props.comments.filter(comment=> comment[0] === this.props.post.id)
+    return Array.from(post[1])
+  }
+
+  async handleSubmit(e) {
     e.preventDefault();
-    this.props.forceProfileRender();
-    this.props.createComment(this.state)
+    if (this.state.body) {
+      const res = await this.props.createComment(this.state)
+      if (res) {
+        // if (this.props.user) {
+          // this.props.fetchPosts(this.props.user.id)
+          // this.props.forceProfileRender();
+          // this.props.fetchComments(this.props.post.id)
+        // } else {
+          // this.props.fetchPosts(this.props.currentUser.id)
+          // this.props.fetchComments(this.props.post.id)
+        // }
+        this.props.forceProfileRender();
+      }
+      this.setState({body: ''})
+    }
   }
 
   render() {
-    if (!this.state) {
-      return null
-    } else {
       return (
         <div className='post'>
           <div className='poster-id-container'>
@@ -229,14 +246,17 @@ class PostItem extends React.Component{
             <button  onClick={()=> this.focus()}> <i className="fa fa-comment-o" aria-hidden="true" style={{fontSize: 24, color: '#65676B' }}></i> Comment </button>
           </div>
           <div className='comments-container'> Comments
-            {this.props.post.comments.map((comment, idx) => 
+          {this.props.post.comments.map((comment, idx) => 
               <Comment 
+              post = {this.props.post}
               posterId={this.props.post.posterId}
               currentUserId={this.props.currentUser.id}
               currentUser={this.props.currentUser}
+              user={this.props.user}
               key={idx}
               comment={comment}
               deleteComment={this.props.deleteComment}
+              fetchPosts={this.props.fetchPosts}
               forceProfileRender={this.props.forceProfileRender}
               />)
             }
@@ -249,7 +269,6 @@ class PostItem extends React.Component{
         </div>
       )
     }
-  }
-}
+    }
   
 export default PostItem

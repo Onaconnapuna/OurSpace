@@ -12,13 +12,14 @@ class MainPage extends React.Component {
       key: 1
     }
 
-    // this.listen = this.props.history.listen((location, action) => {
-    //   if(action === "POP" ) {
-    //     this.props.fetchCurrentUser(this.props.currentUser.id);
-    //   } else if (action === "PUSH") {
-    //     this.props.fetchCurrentUser(this.props.currentUser.id);
-    //   }
-    // });
+    this.listen = this.props.history.listen((location, action) => {
+      if(action === "POP" ) {
+        this.props.fetchCurrentUser(this.props.currentUser.id);
+      } else if (action === "PUSH") {
+        this.props.fetchCurrentUser(this.props.currentUser.id);
+      }
+    });
+
     this.forceProfileRender = this.forceProfileRender.bind(this)
   }
 
@@ -35,8 +36,14 @@ class MainPage extends React.Component {
     this.props.fetchCurrentUser(this.props.currentUser.id)
     this.props.fetchPosts(this.props.currentUser.id)
     this.props.fetchFriendRequests(parseInt(this.props.currentUser.id))
-}
+  }
 
+  componentWillUnmount() {
+    this.setState = (state, callback) => {
+      return;
+    }
+    this.listen(); 
+  }
 
   render() {    
     if (!this.props.currentUser) {

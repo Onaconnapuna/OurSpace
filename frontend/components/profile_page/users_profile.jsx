@@ -15,13 +15,13 @@ class UsersProfile extends React.Component {
     key: 1
     }
 
-    // this.listen = this.props.history.listen((location, action) => {
-    //   if(action === "POP" ) {
-    //     this.forceProfileRender();
-    //   } else if (action === "PUSH") {
-    //     this.forceProfileRender();
-    //   }
-    // });
+    this.listen = this.props.history.listen((location, action) => {
+      if(action === "POP" ) {
+        this.forceProfileRender();
+      } else if (action === "PUSH") {
+        this.forceProfileRender();
+      }
+    });
 
     this.renderRecommendedFriends = this.renderRecommendedFriends.bind(this)
 
@@ -61,12 +61,12 @@ class UsersProfile extends React.Component {
     }
 
   }
-  // componentWillUnmount() {
-    // this.setState = (state, callback) => {
-    //   return;
-    // }
-  //   this.listen(); 
-  // }
+  componentWillUnmount() {
+    this.setState = (state, callback) => {
+      return;
+    }
+    this.listen(); 
+  }
 
   async forceProfileRender() {
     let user = await this.props.fetchUser(this.props.match.params.userId)

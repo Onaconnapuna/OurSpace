@@ -30,8 +30,16 @@ const Comment = (props) => {
       }
 
       const handleDelete = (commentId) => {
+        console.log(commentId)
         props.deleteComment(commentId)
-        props.forceProfileRender()
+        // handleClickOutside
+        // // props.fetchPosts(props.currentUserId)
+        if (props.user) {
+          props.fetchPosts(props.user.id)
+        } else {
+          props.fetchPosts(props.currentUser.id)
+        }
+        
       }
 
       const helperComments = (props) => {

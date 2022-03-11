@@ -4,13 +4,14 @@ import { fetchComments, deleteComment, createComment } from '../../actions/comme
 import { deletePost } from '../../actions/post_actions';
 import { createLike, deleteLike } from '../../actions/like_actions';
   
-  const mapStateToProps = (state) => {
-    return {
-    }
-  }
+  const mapStateToProps = (state) => ({
+    // comments: Object.keys(state.entities.comments).map((key) => [Number(key), state.entities.comments[key]])
+    comments: Object.entries(state.entities.comments)
+  })
 
   const mapDispatchToProps = (dispatch) => {
     return {
+      fetchComments: (postId) => dispatch(fetchComments(postId)),
       deletePost: (postId)=> dispatch(deletePost(postId)),
       deleteComment: (commentId) => dispatch(deleteComment(commentId)),
       createComment: (comment) => dispatch(createComment(comment)),
