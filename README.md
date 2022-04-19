@@ -65,4 +65,23 @@ Upon loading a profile page, I will utilize Redux and a centralized state for wh
 
 We fetch the info with componentDidUpdate as well. From here we feed the basic info of the currentUser and the user whose profile we are visiting to all these components which build up the profile page we see. The user profile page is analogous to a root node of a tree. 
 
-![alt text](./app/assets/images/userprofile-components.PNG)
+![alt text](./app/assets/images/userprofile-components.PNG) 
+
+### Rails/Backend
+
+As listed in the technologies above, I used Rails for this applications' backend framework. One aspect of the backend that I would like to emphasize is the user authentication, which leverages BCrypt. Upon the creation of a user, a password digest is created in the setter function 'password.' Then upon logging in, the 'is_password' function is called, which then utilizes a built in BCrypt funtion by the same name to compare the encrypted password digest to the password that the user submitted when logging in. Here is a snippet of those functions. 
+
+![alt text](./app/assets/images/userauth.PNG)
+
+One last technology I used was Jbuilder, which essentially allows my Controllers to send JavaScript objects to my front-end, imporving the communication between the two. Here is an example of a controller method and the corresponding Jbuilder file. 
+
+![alt text](./app/assets/images/usershowcontroller.PNG)
+![alt text](./app/assets/images/userjbuilder.PNG)
+
+As you may notice in the controller method, I utilize Rails associations to ascertain relatable data between Users and, for instance, their profile photo, which is another model. 
+
+This jbuilder file will make an object that then is created in state via redux, and ends up looking like this:
+
+![alt text](./app/assets/images/userjsobject.PNG)
+
+This pretty much concludes what I wanted to highlight from the project, I really appreciate those who took the time to read this and get a better understanding of what I am working on. Until I am employed, you can expect that I will be working on and adding features to this project!
