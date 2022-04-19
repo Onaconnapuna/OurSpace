@@ -15,7 +15,6 @@ Technologies Used:
 * Heroku for deploying a build / [Ourspace deployed on Heroku](https://our-space-facebook-clone.herokuapp.com/#/)
 
 ## Features and Development 
----
 
 As briefly mentioned before, Ourspace was developed to be a clone of facebook, in which it carries much of the same basic functionality. Here I will be going into some of those features and how I implemented them in development. 
 
@@ -37,7 +36,7 @@ A skeleton of a post is created when the constructor runs, creating a post body 
 
 ![alt text](./app/assets/images/ourspace-handleFile.PNG)
 
-This function is call onChange in the input type 'file.'
+This function is called onChange in the input type 'file.'
 
 ![alt text](./app/assets/images/ourspace-formData-handlesubmit.PNG) 
 
