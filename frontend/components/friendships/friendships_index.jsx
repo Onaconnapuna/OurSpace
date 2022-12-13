@@ -38,9 +38,7 @@ class FrienshipIndex extends React.Component {
           You currently have no friends, browse Recommended Friends below
         </div>
       )
-    } else {
-      
-    }
+    } 
   }
 
   viewFriendsButton() {

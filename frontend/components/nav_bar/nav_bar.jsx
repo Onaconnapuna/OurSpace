@@ -123,7 +123,7 @@ class NavBar extends React.Component {
       <div className='banner'>
         {this.onProfilePage()}
         <div className="ellipsis-button-background-nav">
-          <button className='ellipsis-button'onClick={() => this.setState({notificationsModalIsOpen: true})} className="bell"> <i className="fa fa-bell" aria-hidden="true" style={{fontSize: 24, color: '#65676B' }}></i></button>
+          <button className='ellipsis-button'onClick={() => this.setState({notificationsModalIsOpen: true})}> <i className="fa fa-bell" aria-hidden="true" style={{fontSize: 24, color: '#65676B' }}></i></button>
           <div className="notifications-num-container">
             <div className="notifications-num"> {this.props.friendRequests.length} </div>
           </div>
